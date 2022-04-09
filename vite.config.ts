@@ -29,11 +29,14 @@ export default defineConfig({
             resolvers: [ElementPlusResolver()],
         }),
     ],
-    base: './', // 公共基础路径
+    base: './', // 公共基础路径('./'用于开发环境)
     server: {
         port: 8080,
         open: true,
         cors: true,
         proxy: {}
+    },
+    build: {
+        outDir: 'docs', // 打包输出目录
     }
 });

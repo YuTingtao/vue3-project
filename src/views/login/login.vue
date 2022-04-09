@@ -2,7 +2,7 @@
     <div class="login-bg">
         <div class="login-box">
             <h3>登录</h3>
-            <el-form :model="loginForm" ref="formRef" :rules="rules">
+            <el-form :model="loginForm" ref="formRef" :rules="rules" size="large">
                 <el-form-item label="" prop="username">
                     <el-input v-model="loginForm.username" placeholder="请输入账号/手机号/邮箱" prefix-icon="user"></el-input>
                 </el-form-item>
