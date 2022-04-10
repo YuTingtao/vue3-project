@@ -1,13 +1,14 @@
 <template>
-   <div class="">
-       资源列表
-   </div>
+    <div class="">
+        资源列表
+    </div>
 </template>
 
 <script setup>
 import { ref, reactive, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
+
 const router = useRouter();
 const route = useRoute();
 const store = useStore();

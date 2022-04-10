@@ -24,11 +24,11 @@
         <el-container class="g-body">
             <el-scrollbar class="g-aside">
                 <el-menu :default-active="$route.meta.activePath || $route.path" router>
-                    <MenuItem :menus="menuData"></MenuItem>
+                    <MenuItem :menus="userMenus"></MenuItem>
                 </el-menu>
             </el-scrollbar>
             <el-main class="g-main">
-                <router-view></router-view>
+                <router-view class="g-view"></router-view>
             </el-main>
         </el-container>
     </el-container>
@@ -39,7 +39,6 @@ import { ref, reactive, computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import MenuItem from './components/menu-item.vue';
-import menuData from './components/menu-data.js';
 
 const router = useRouter();
 const route = useRoute();
@@ -47,6 +46,8 @@ const store = useStore();
 
 // 用户信息
 const userInfo = computed(() => store.state.userInfo);
+// 用户菜单
+const userMenus = computed(() => store.state.userMenus);
 
 // 退出登录
 function Logout() {

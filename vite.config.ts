@@ -29,7 +29,7 @@ export default defineConfig({
             resolvers: [ElementPlusResolver()],
         }),
     ],
-    base: './', // 公共基础路径('./'用于开发环境)
+    base: './', // 公共基础路径
     server: {
         port: 8080,
         open: true,

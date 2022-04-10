@@ -5,6 +5,7 @@ const store = createStore({
         return {
             token: '',
             userInfo: {},
+            userMenus: []
         }
     },
     getters: {
@@ -19,6 +20,9 @@ const store = createStore({
             state.token = '';
             state.userInfo = {};
             sessionStorage.removeItem('vuex');
+        },
+        setUserMenus(state, data) {
+            state.userMenus = data;
         }
     },
     actions: {

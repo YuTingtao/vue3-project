@@ -5,15 +5,11 @@ const { ucHost } = config
 
 export default {
     // 登录
-    Login(params) {
-        return axios.post(ucHost + '/login/account', params, {
-            headers: {
-                'appName': 'resourceCloudAdmin'
-            }
-        })
+    login(params) {
+        return axios.post(ucHost + '/login/account', params)
     },
     // 退出登录
-    Logout() {
+    logout() {
         return axios.post(ucHost + '/login/loginOut')
     },
     // 用户菜单

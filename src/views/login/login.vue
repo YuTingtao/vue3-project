@@ -18,10 +18,11 @@
 </template>
 
 <script setup>
-import { ref, reactive, toRaw } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useStore } from 'vuex'
-import loginApi from '@/request/uc/login.js'
+import { ref, reactive, toRaw } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { useStore } from 'vuex';
+import loginApi from '@/request/uc/login.js';
+import menuData from '@/layout/components/menu-data.js';
 
 const router = useRouter();
 const route = useRoute();
@@ -53,12 +54,40 @@ async function submitLogin() {
 
 // 登录
 function Login() {
-    store.commit('LOGIN', { token: 'Token-123456789', userInfo: { realName: 'admin', facePhoto: '' } });
+    store.commit('LOGIN', { 
+        token: 'Token-123456789', 
+        userInfo: { realName: 'admin', facePhoto: '' } 
+    });
+    store.commit('setUserMenus', menuData);
+    removeRoutes(menuData);
     if (route.query.redirect) {
         router.push(route.query.redirect);
     } else {
         router.push('/');
     }
+}
+
+// 根据用户菜单移除没有权限的路由
+function removeRoutes(menus) {
+    const menuNames = flatMenuNames(menus);
+    const baseNames = ['layout', 'login']; // 必须存在的路由name
+    const removeNames = router.getRoutes().map(item => item.name).filter(item => !baseNames.includes(item));
+    removeNames.forEach(item => {
+        if (!menuNames.includes(item)) {
+            router.removeRoute(item);
+        }
+    })
+}
+
+// 计算扁平化菜单names数组
+function flatMenuNames(menus, flats = []) {
+    menus.forEach(item => {
+        flats.push(item.name);
+        if (item.children && item.children.length > 0) {
+            flatMenuNames(item.children, flats);
+        }
+    })
+    return flats;
 }
 </script>
 
