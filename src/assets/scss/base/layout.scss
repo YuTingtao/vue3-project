@@ -1,5 +1,11 @@
+body{
+    min-width: 1200px;
+    overflow-y: hidden;
+}
+
 .g-layout{
     height: 100vh;
+    overflow: hidden;
 }
 
 .g-header{

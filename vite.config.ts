@@ -31,6 +31,7 @@ export default defineConfig({
     ],
     base: './', // 公共基础路径
     server: {
+        host: '0.0.0.0',
         port: 8080,
         open: true,
         cors: true,
