@@ -28,7 +28,7 @@
                 </el-menu>
             </el-scrollbar>
             <el-main class="g-main">
-                <router-view class="g-view"></router-view>
+                <router-view></router-view>
             </el-main>
         </el-container>
     </el-container>
