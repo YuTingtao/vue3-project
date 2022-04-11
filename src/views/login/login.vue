@@ -59,7 +59,7 @@ function Login() {
         userInfo: { realName: 'admin', facePhoto: '' } 
     });
     store.commit('setUserMenus', menuData);
-    removeRoutes(menuData);
+    filterRoutes(menuData);
     if (route.query.redirect) {
         router.push(route.query.redirect);
     } else {
@@ -68,7 +68,7 @@ function Login() {
 }
 
 // 根据用户菜单移除没有权限的路由
-function removeRoutes(menus) {
+function filterRoutes(menus) {
     const menuNames = flatMenuNames(menus);
     const baseNames = ['layout', 'login']; // 必须存在的路由name
     const removeNames = router.getRoutes().map(item => item.name).filter(item => !baseNames.includes(item));
