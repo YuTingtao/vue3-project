@@ -19,6 +19,7 @@ const store = createStore({
         LOGOUT(state) {
             state.token = '';
             state.userInfo = {};
+            state.userMenus = [];
             sessionStorage.removeItem('vuex');
         },
         setUserMenus(state, data) {
