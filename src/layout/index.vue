@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, computed, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import MenuItem from './components/menu-item.vue';
@@ -52,6 +52,11 @@ function Logout() {
     store.commit('LOGOUT');
     router.replace('/login')
 }
+
+// 路由变化，页面滚动到顶部
+watch(() => route.path, (val) => {
+    document.querySelector('.g-main').scrollTo(0, 0);
+})
 </script>
 
 <style lang="scss">
