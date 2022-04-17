@@ -54,7 +54,7 @@ function Logout() {
 }
 
 // 路由变化，页面滚动到顶部
-watch(() => route.path, (val) => {
+watch(() => route.path, () => {
     document.querySelector('.g-main').scrollTo(0, 0);
 })
 </script>
