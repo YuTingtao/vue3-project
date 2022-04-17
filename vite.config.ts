@@ -35,7 +35,9 @@ export default defineConfig({
         port: 8080,
         open: true,
         cors: true,
-        proxy: {}
+        proxy: {
+            '/api': 'http://xxx.com'
+        }
     },
     build: {
         outDir: 'docs', // 打包输出目录

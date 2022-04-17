@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="res-list">
         资源列表
     </div>
 </template>

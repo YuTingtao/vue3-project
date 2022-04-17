@@ -1,17 +1,15 @@
-body{
-    min-width: 1200px;
-    overflow-y: hidden;
-}
-
-.g-layout{
-    height: 100vh;
-    overflow: hidden;
+#app{
+    height: 100%;
+    min-width: 1300px;
 }
 
 .g-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
+    height: 60px;
+    padding: 0 20px;
     background: var(--el-color-primary);
     color: #fff;
 }
@@ -51,8 +49,8 @@ body{
 }
 
 .g-aside{
+    float: left;
     box-sizing: border-box;
-    flex-shrink: 0;
     width: 240px;
     height: 100%;
     .el-menu{
@@ -61,5 +59,9 @@ body{
 }
 
 .g-main{
+    overflow: auto;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 20px;
     background: #eff1f3;
 }
