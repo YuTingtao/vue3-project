@@ -31,6 +31,10 @@
     }
 }
 
+:deep(.el-input--large .el-input__prefix) {
+    left: 10px;
+}
+
 .row-btn{
     width: 100%;
     font-size: 16px;
