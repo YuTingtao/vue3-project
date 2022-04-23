@@ -1,8 +1,11 @@
-function formatDate(date, fmt = 'yyyy-MM-dd HH:mm:ss') {
+function formatDate(date, fmt = 'YYYY-MM-DD HH:mm:ss') {
+    if (typeof(date) != 'Object') {
+        date = new Date(date);
+    }
     const opt = {
-        'y+': date.getFullYear().toString(),        // 年
+        'Y+': date.getFullYear().toString(),        // 年
         'M+': (date.getMonth() + 1).toString(),     // 月
-        'd+': date.getDate().toString(),            // 日
+        'D+': date.getDate().toString(),            // 日
         'H+': date.getHours().toString(),           // 时
         'm+': date.getMinutes().toString(),         // 分
         's+': date.getSeconds().toString()          // 秒
