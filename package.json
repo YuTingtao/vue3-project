@@ -10,7 +10,6 @@
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
     "axios": "^0.26.1",
-    "dplayer": "^1.26.0",
     "element-plus": "^2.2.5",
     "vue": "^3.2.25",
     "vue-router": "^4.0.14",
