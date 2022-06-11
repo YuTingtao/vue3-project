@@ -1,42 +1,45 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import store from '../store';
 
-const routes: Array<RouteRecordRaw> = [
+const routes = [
     {
         path: '/',
         name: 'layout',
         redirect: '/res-list',
-        component: () => import(/* webpackChunkName: "layout" */ '@/layout/index.vue'),
+        component: () => import('@/layout/index.vue'),
         children: [
             // 素材库
             {
                 path: '/res-list',
                 name: 'resList',
-                component: () => import(/* webpackChunkName: "resList" */ '@/views/res/list/index.vue'),
+                component: () => import('@/views/res/list/index.vue'),
             },
             {
                 path: '/res-upload',
                 name: 'resUpload',
-                component: () => import(/* webpackChunkName: "resUpload" */ '@/views/res/upload/index.vue'),
+                component: () => import('@/views/res/upload/index.vue'),
             },
             // 课程库
             {
                 path: '/course-list',
                 name: 'courseList',
-                component: () => import(/* webpackChunkName: "courseList" */ '@/views/course/list/index.vue'),
+                component: () => import('@/views/course/list/index.vue'),
             },
             {
                 path: '/course-detail',
                 name: 'courseDetail',
-                component: () => import(/* webpackChunkName: "courseDetail" */ '@/views/course/detail/index.vue'),
-            }
-        ]
+                component: () => import('@/views/course/detail/index.vue'),
+                meta: {
+                    activePath: '/course-list'
+                }
+            },
+        ],
     },
     // 登录
     {
         path: '/login',
         name: 'login',
-        component: () => import(/* webpackChunkName: "login" */ '@/views/login/login.vue'),
+        component: () => import('@/views/login/login.vue'),
     },
 ];
 
@@ -50,6 +53,14 @@ router.beforeEach((to, from, next) => {
         next('/login?redirect=' + to.fullPath);
     } else {
         next();
+    }
+})
+
+router.afterEach((to, from, failure) => {
+    if (document.querySelector('.g-main')) {
+        document.querySelector('.g-main').scrollIntoView({
+            behavior: 'smooth',
+        });
     }
 })
 

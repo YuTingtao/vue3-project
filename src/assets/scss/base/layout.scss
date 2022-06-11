@@ -41,6 +41,8 @@
     }
     .el-tooltip__trigger{
         cursor: pointer;
+        display: flex;
+        align-items: center;
     }
 }
 

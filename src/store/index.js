@@ -1,4 +1,6 @@
 import { createStore } from 'vuex';
+import router from '../router';
+import menuData from '@/layout/components/menu-data.js';
 
 const store = createStore({
     state() {
@@ -22,12 +24,15 @@ const store = createStore({
             state.userMenus = [];
             sessionStorage.removeItem('vuex');
         },
-        setUserMenus(state, data) {
+        setMenus(state, data) {
             state.userMenus = data;
         }
     },
     actions: {
-        
+        getMenus({ commit }) {
+            commit('setMenus', menuData);
+            filterRoutes(menuData);
+        }
     },
     modules: {
         
@@ -48,6 +53,29 @@ if (sessionStorage.vuex) {
     store.replaceState(
         Object.assign({}, store.state, JSON.parse(sessionStorage.vuex))
     );
+}
+
+// 根据用户菜单移除没有权限的路由
+function filterRoutes(menus) {
+    const menuNames = flatMenuNames(menus);
+    const baseNames = ['layout', 'login']; // 必须存在的路由name
+    const removeNames = router.getRoutes().map(item => item.name).filter(item => !baseNames.includes(item));
+    removeNames.forEach(item => {
+        if (!menuNames.includes(item)) {
+            router.removeRoute(item);
+        }
+    })
+}
+
+// 计算扁平化菜单names数组
+function flatMenuNames(menus, names = []) {
+    menus.forEach(item => {
+        names.push(item.name);
+        if (item.children && item.children.length > 0) {
+            flatMenuNames(item.children, names);
+        }
+    })
+    return names;
 }
 
 export default store;

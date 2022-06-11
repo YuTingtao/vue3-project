@@ -8,9 +8,12 @@
         <div class="g-header-right">
             <el-avatar :src="userInfo.facePhoto" icon="user-filled" shape="circle" fit="cover"></el-avatar>
             <el-dropdown trigger="hover">
-                {{ userInfo.realName || userInfo.nickName }}<el-icon class="el-icon--right">
-                    <arrow-down />
-                </el-icon>
+                <span>
+                    {{ userInfo.realName || userInfo.nickName }}
+                    <el-icon>
+                        <arrow-down />
+                    </el-icon>
+                </span>
                 <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item>用户中心</el-dropdown-item>

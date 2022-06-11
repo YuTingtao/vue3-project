@@ -6,6 +6,10 @@ import store from './store/index'
 import './assets/scss/base/reset.css'
 import * as ElIcons from '@element-plus/icons-vue'
 
+if (store.state.token) {
+    store.dispatch('getMenus')
+}
+
 const app = createApp(App)
 app.use(router)
 app.use(store)

@@ -1,7 +1,7 @@
 <template>
     <div class="login-bg">
         <div class="login-box">
-            <h3>登录</h3>
+            <h3 class="title">登录</h3>
             <el-form :model="loginForm" ref="formRef" :rules="rules" size="large">
                 <el-form-item label="" prop="username">
                     <el-input v-model="loginForm.username" placeholder="请输入账号/手机号/邮箱" prefix-icon="user"></el-input>
@@ -53,41 +53,17 @@ async function submitLogin() {
 }
 
 // 登录
-function Login() {
+async function Login() {
     store.commit('LOGIN', { 
         token: 'Token-123456789', 
         userInfo: { realName: 'admin', facePhoto: '' } 
-    });
-    store.commit('setUserMenus', menuData);
-    filterRoutes(menuData);
+    })
+    await store.dispatch('getMenus');
     if (route.query.redirect) {
         router.push(route.query.redirect);
     } else {
         router.push('/');
     }
-}
-
-// 根据用户菜单移除没有权限的路由
-function filterRoutes(menus) {
-    const menuNames = flatMenuNames(menus);
-    const baseNames = ['layout', 'login']; // 必须存在的路由name
-    const removeNames = router.getRoutes().map(item => item.name).filter(item => !baseNames.includes(item));
-    removeNames.forEach(item => {
-        if (!menuNames.includes(item)) {
-            router.removeRoute(item);
-        }
-    })
-}
-
-// 计算扁平化菜单names数组
-function flatMenuNames(menus, flats = []) {
-    menus.forEach(item => {
-        flats.push(item.name);
-        if (item.children && item.children.length > 0) {
-            flatMenuNames(item.children, flats);
-        }
-    })
-    return flats;
 }
 </script>
 

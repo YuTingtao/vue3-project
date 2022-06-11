@@ -1,6 +1,6 @@
 <template>
     <div class="res-list">
-        资源列表
+        素材列表
     </div>
 </template>
 
@@ -9,9 +9,9 @@ import { ref, reactive, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 
-const router = useRouter();
-const route = useRoute();
-const store = useStore();
+const router = useRouter()
+const route = useRoute()
+const store = useStore()
 
 </script>
 

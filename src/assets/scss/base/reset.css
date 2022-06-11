@@ -89,6 +89,10 @@ button {
     cursor: pointer;
 }
 
+.clearfix {
+    *zoom: 1;
+}
+
 .clearfix:after {
     display: block;
     clear: both;
