@@ -1,6 +1,9 @@
 <template>
     <div class="res-list">
-        素材列表
+        <div class="icon-box">
+            <svg-icon name="case"></svg-icon>
+            <span> 素材列表</span>
+        </div>
     </div>
 </template>
 

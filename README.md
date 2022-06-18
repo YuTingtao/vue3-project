@@ -1,11 +1,23 @@
-# Vue 3 + Typescript + Vite
+# Vue 3 + Vite
+vue3 + vite + Element-Plus项目模板，支持自定义主题色，动态路由菜单，svg-icon组件，axios拦截
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-
-## Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+## 目录结构
+```
+├── public
+├── src
+│   ├── assets 静态资源
+│   ├── components 公共基础组件
+│   ├── layout 页面布局
+│   ├── request 接口请求
+│   ├── router 路由
+│   ├── store vuex状态管理
+│   ├── utils 工具
+│   ├── views 页面组件
+│   ├── App.vue
+│   ├── env.d.ts
+│   └── main.js
+├── auto-imports.d.ts element-plus按需自动导入生成文件
+├── auto-imports.d.ts element-plus按需自动导入生成文件
+├── index.html
+└── vite.config.ts
+```

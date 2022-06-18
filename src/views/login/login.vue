@@ -31,9 +31,9 @@ const store = useStore();
 const formRef = ref();
 
 // 登录参数
-const loginForm = reactive({
-    username: '',
-    password: '',
+const loginForm = ref({
+    username: 'admin',
+    password: '123456',
 })
 
 // 校验规则

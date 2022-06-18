@@ -5,6 +5,8 @@ import { resolve } from 'path';
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+// svg-icon
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,10 +25,24 @@ export default defineConfig({
     plugins: [
         vue(),
         AutoImport({
-            resolvers: [ElementPlusResolver()],
+            resolvers: [
+                ElementPlusResolver({
+                    importStyle: 'sass',
+                })
+            ],
         }),
         Components({
-            resolvers: [ElementPlusResolver()],
+            resolvers: [
+                ElementPlusResolver({
+                    importStyle: 'sass',
+                })
+            ],
+        }),
+        createSvgIconsPlugin({
+            iconDirs: [resolve(process.cwd(), 'src/assets/icon')],
+            symbolId: 'icon-[dir]-[name]',
+            inject: 'body-last',
+            customDomId: 'svg__icon__dom',
         }),
     ],
     base: './', // 公共基础路径
