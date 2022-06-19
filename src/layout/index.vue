@@ -6,7 +6,7 @@
             <h2>管理后台</h2>
         </router-link>
         <div class="g-header-right">
-            <el-avatar :src="userInfo.facePhoto" icon="user-filled" shape="circle" fit="cover"></el-avatar>
+            <el-avatar :src="userInfo.avatar" icon="user-filled" shape="circle" fit="cover"></el-avatar>
             <el-dropdown trigger="hover">
                 <span>
                     {{ userInfo.realName || userInfo.nickName }}

@@ -1,6 +1,11 @@
+html, body{
+    min-width: 1300px;
+    overflow-y: hidden;
+}
+
 #app{
     height: 100%;
-    min-width: 1300px;
+    background: #fff;
 }
 
 .g-header{
@@ -61,9 +66,12 @@
 }
 
 .g-main{
-    overflow: auto;
+    overflow-y: scroll;
     box-sizing: border-box;
     height: 100%;
-    padding: 20px;
-    background: #eff1f3;
+    padding: 20px 0 20px 20px;
+    background: #fff;
+    border-left: 20px solid #eff1f3;
+    border-top: 20px solid #eff1f3;
+    border-bottom: 20px solid #eff1f3;
 }
