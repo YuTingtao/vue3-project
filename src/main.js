@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router/index'
 import store from './store/index'
 
-import './assets/scss/base/reset.css'
+import './assets/scss/base/main.scss'
 import * as ElIcons from '@element-plus/icons-vue'
 import SvgIcon from './components/svg-icon/index.vue'
 import 'virtual:svg-icons-register'

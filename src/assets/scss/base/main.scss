@@ -1,0 +1,10 @@
+@import './reset.css';
+@import './layout.scss';
+
+// 覆盖element默认样式
+body {
+    .el-avatar {
+        background: var(--el-color-primary-light-9);
+        color: var(--el-color-primary-light-5);
+    }
+}

@@ -61,7 +61,3 @@ watch(() => route.path, () => {
     document.querySelector('.g-main').scrollTo(0, 0);
 })
 </script>
-
-<style lang="scss">
-@import '../assets/scss/base/layout.scss';
-</style>
