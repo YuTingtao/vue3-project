@@ -1,5 +1,5 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
-import store from '../store';
+import { createRouter, createWebHashHistory } from 'vue-router'
+import store from '../store'
 
 const routes = [
     {
@@ -41,12 +41,12 @@ const routes = [
         name: 'login',
         component: () => import('@/views/login/login.vue'),
     },
-];
+]
 
 const router = createRouter({
     history: createWebHashHistory(),
     routes,
-});
+})
 
 router.beforeEach((to, from, next) => {
     if (to.path !== '/login' && !store.state.token) {
@@ -60,8 +60,8 @@ router.afterEach((to, from, failure) => {
     if (document.querySelector('.g-main')) {
         document.querySelector('.g-main').scrollIntoView({
             behavior: 'smooth',
-        });
+        })
     }
 })
 
-export default router;
+export default router

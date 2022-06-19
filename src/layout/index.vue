@@ -6,14 +6,14 @@
             <h2>管理后台</h2>
         </router-link>
         <div class="g-header-right">
-            <el-avatar :src="userInfo.avatar" icon="user-filled" shape="circle" fit="cover"></el-avatar>
             <el-dropdown trigger="hover">
-                <span>
-                    {{ userInfo.realName || userInfo.nickName }}
+                <div>
+                    <el-avatar :src="userInfo.avatar" :size="34" icon="UserFilled" shape="circle" fit="cover"></el-avatar>
+                    <span>{{ userInfo.realName || userInfo.nickName }}</span>
                     <el-icon>
                         <arrow-down />
                     </el-icon>
-                </span>
+                </div>
                 <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item>用户中心</el-dropdown-item>
