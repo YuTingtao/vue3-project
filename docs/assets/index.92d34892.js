@@ -1,1 +1,0 @@
-import{a8 as e,a9 as s,aa as t,n as a,B as o}from"./index.8d219788.js";const r={class:"res-list"},l={setup(c){return e(),s(),t(),(u,n)=>(a(),o("div",r," \u8D44\u6E90\u5217\u8868 "))}};export{l as default};
