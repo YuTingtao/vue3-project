@@ -10,7 +10,7 @@ end_of_line = crlf # 控制换行类型(lf | cr | crlf)
 trim_trailing_whitespace = true # 去除行首的任意空白字符
 insert_final_newline = true # 始终在文件末尾插入一个新行
 
-[{package.json, package-lock.json}]
+[{auto-imports.d.ts,components.d.ts,package.json,package-lock.json,tsconfig.json,tsconfig.node.json}]
 indent_style = space
 indent_size = 2
 
