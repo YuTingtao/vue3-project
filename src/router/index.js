@@ -64,4 +64,4 @@ router.afterEach((to, from, failure) => {
     }
 })
 
-export default router
+export default router;

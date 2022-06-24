@@ -59,10 +59,11 @@ async function Login() {
         userInfo: { realName: 'admin', facePhoto: '' }
     })
     await store.dispatch('getMenus');
+    sessionStorage.vuex = JSON.stringify(store.state);
     if (route.query.redirect) {
-        router.push(route.query.redirect);
+        router.replace(route.query.redirect);
     } else {
-        router.push('/');
+        router.replace('/');
     }
 }
 </script>
