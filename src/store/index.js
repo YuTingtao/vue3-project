@@ -1,5 +1,6 @@
 import { createStore } from 'vuex';
 import router from '../router';
+import dataDic from './modules/dataDic.js'
 import menuData from '@/layout/components/menu-data.js';
 
 const store = createStore({
@@ -7,36 +8,34 @@ const store = createStore({
         return {
             token: '',
             userInfo: {},
-            userMenus: []
-        }
+            userMenus: [],
+        };
     },
-    getters: {
-        
-    },
+    getters: {},
     mutations: {
         LOGIN(state, data) {
             state.token = data.token;
             state.userInfo = data.userInfo;
         },
         LOGOUT(state) {
-            state.token = '';
+            state.token = "";
             state.userInfo = {};
             state.userMenus = [];
-            sessionStorage.removeItem('vuex');
+            sessionStorage.removeItem("vuex");
         },
         setMenus(state, data) {
             state.userMenus = data;
-        }
+        },
     },
     actions: {
         getMenus({ commit }) {
-            commit('setMenus', menuData);
+            commit("setMenus", menuData);
             filterRoutes(menuData);
-        }
+        },
     },
     modules: {
-        
-    }
+        dataDic,
+    },
 });
 
 // 防止vuex刷新失效

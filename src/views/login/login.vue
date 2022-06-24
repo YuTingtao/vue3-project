@@ -21,7 +21,7 @@
 import { ref, reactive, toRaw } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from 'vuex';
-import loginApi from '@/request/uc/login.js';
+import loginApi from '@/request/user/login.js';
 import menuData from '@/layout/components/menu-data.js';
 
 const router = useRouter();
@@ -54,9 +54,9 @@ async function submitLogin() {
 
 // 登录
 async function Login() {
-    store.commit('LOGIN', { 
-        token: 'Token-123456789', 
-        userInfo: { realName: 'admin', facePhoto: '' } 
+    store.commit('LOGIN', {
+        token: 'Token-123456789',
+        userInfo: { realName: 'admin', facePhoto: '' }
     })
     await store.dispatch('getMenus');
     if (route.query.redirect) {
