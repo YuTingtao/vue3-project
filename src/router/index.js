@@ -5,7 +5,13 @@ const routes = [
     {
         path: '/',
         name: 'layout',
-        redirect: '/res-list',
+        redirect: to => {
+            let path = '/login';
+            if (store.state.menus.length > 0) {
+                path = store.state.menus[0].redirect || store.state.menus[0].path;
+            }
+            return { path: path };
+        },
         component: () => import('@/layout/index.vue'),
         children: [
             // 素材库
@@ -30,8 +36,8 @@ const routes = [
                 name: 'courseDetail',
                 component: () => import('@/views/course/detail/index.vue'),
                 meta: {
-                    activePath: '/course-list'
-                }
+                    activePath: '/course-list',
+                },
             },
         ],
     },
@@ -41,7 +47,7 @@ const routes = [
         name: 'login',
         component: () => import('@/views/login/login.vue'),
     },
-]
+];
 
 const router = createRouter({
     history: createWebHashHistory(),

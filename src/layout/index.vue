@@ -26,7 +26,7 @@
     <div class="g-body">
         <el-scrollbar class="g-aside">
             <el-menu :default-active="$route.meta.activePath || $route.path" router>
-                <MenuItem :menus="userMenus"></MenuItem>
+                <MenuItem :menus="menus"></MenuItem>
             </el-menu>
         </el-scrollbar>
         <div class="g-main">
@@ -47,8 +47,8 @@ const store = useStore();
 
 // 用户信息
 const userInfo = computed(() => store.state.userInfo);
-// 用户菜单
-const userMenus = computed(() => store.state.userMenus);
+// 菜单数组
+const menus = computed(() => store.state.menus);
 
 // 退出登录
 function Logout() {

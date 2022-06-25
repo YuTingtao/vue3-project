@@ -22,7 +22,7 @@ import { ref, reactive, toRaw } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import loginApi from '@/request/user/login.js';
-import menuData from '@/layout/components/menu-data.js';
+import menuData from '@/layout/components/menuData.js';
 
 const router = useRouter();
 const route = useRoute();

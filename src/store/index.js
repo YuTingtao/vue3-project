@@ -1,14 +1,14 @@
 import { createStore } from 'vuex';
 import router from '../router';
-import dataDic from './modules/dataDic.js'
-import menuData from '@/layout/components/menu-data.js';
+import dataDic from './modules/dataDic.js';
+import menuData from '@/layout/components/menuData.js';
 
 const store = createStore({
     state() {
         return {
             token: '',
             userInfo: {},
-            userMenus: [],
+            menus: [], // 菜单
         };
     },
     getters: {},
@@ -18,18 +18,18 @@ const store = createStore({
             state.userInfo = data.userInfo;
         },
         LOGOUT(state) {
-            state.token = "";
+            state.token = '';
             state.userInfo = {};
-            state.userMenus = [];
-            sessionStorage.removeItem("vuex");
+            state.menus = [];
+            sessionStorage.removeItem('vuex');
         },
         setMenus(state, data) {
-            state.userMenus = data;
+            state.menus = data;
         },
     },
     actions: {
         getMenus({ commit }) {
-            commit("setMenus", menuData);
+            commit('setMenus', menuData);
             filterRoutes(menuData);
         },
     },
@@ -58,22 +58,22 @@ if (sessionStorage.vuex) {
 function filterRoutes(menus) {
     const menuNames = flatMenuNames(menus);
     const baseNames = ['layout', 'login']; // 必须存在的路由name
-    const removeNames = router.getRoutes().map(item => item.name).filter(item => !baseNames.includes(item));
-    removeNames.forEach(item => {
+    const removeNames = router.getRoutes().map((item) => item.name).filter((item) => !baseNames.includes(item));
+    removeNames.forEach((item) => {
         if (!menuNames.includes(item)) {
             router.removeRoute(item);
         }
-    })
+    });
 }
 
 // 计算扁平化菜单names数组
 function flatMenuNames(menus, names = []) {
-    menus.forEach(item => {
+    menus.forEach((item) => {
         names.push(item.name);
         if (item.children && item.children.length > 0) {
             flatMenuNames(item.children, names);
         }
-    })
+    });
     return names;
 }
 
