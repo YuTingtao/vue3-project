@@ -25,7 +25,7 @@
     </div>
     <div class="g-body">
         <el-scrollbar class="g-aside">
-            <el-menu :default-active="$route.meta.activePath || $route.path" router>
+            <el-menu class="g-menu" :default-active="$route.meta.activePath || $route.path" router>
                 <MenuItem :menus="menus"></MenuItem>
             </el-menu>
         </el-scrollbar>
@@ -55,9 +55,4 @@ function Logout() {
     store.commit('LOGOUT');
     router.replace('/login')
 }
-
-// 路由变化，页面滚动到顶部
-watch(() => route.path, () => {
-    document.querySelector('.g-main').scrollTo(0, 0);
-})
 </script>
