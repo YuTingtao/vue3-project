@@ -13,7 +13,6 @@ html, body{
 .g-header{
     flex-shrink: 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
     height: 60px;
@@ -25,6 +24,7 @@ html, body{
 .g-logo{
     display: flex;
     align-items: center;
+    margin-right: auto;
     img{
         margin-right: 10px;
         width: 36px;
