@@ -1,0 +1,1 @@
+import{a8 as e,a9 as s,aa as a,n as t,B as o}from"./index.2eeafd76.js";const r={class:""},p={__name:"index",setup(c){return e(),s(),a(),(n,_)=>(t(),o("div",r," \u8BFE\u7A0B\u5217\u8868 "))}};export{p as default};
