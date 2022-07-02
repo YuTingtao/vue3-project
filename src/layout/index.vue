@@ -24,11 +24,13 @@
         </div>
     </div>
     <div class="g-body">
-        <el-scrollbar class="g-aside">
-            <el-menu class="g-menu" :default-active="$route.meta.activePath || $route.path" router>
-                <MenuItem :menus="menus"></MenuItem>
-            </el-menu>
-        </el-scrollbar>
+        <div class="g-aside">
+            <el-scrollbar>
+                <el-menu :default-active="$route.meta.activePath || $route.path" router>
+                    <MenuItem :menus="menus"></MenuItem>
+                </el-menu>
+            </el-scrollbar>
+        </div>
         <div class="g-main">
             <router-view></router-view>
         </div>

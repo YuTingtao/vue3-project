@@ -9,7 +9,7 @@
 }
 
 .login-box{
-    width: 420px;
+    width: 500px;
     box-sizing: border-box;
     padding: 30px;
     background: #fff;
@@ -19,12 +19,11 @@
         text-align: center;
         font-size: 24px;
         font-weight: normal;
-        margin-bottom: 30px;
+        margin: 10px 0 40px 0;
     }
     .el-form-item{
         &:last-child{
             margin-top: 30px;
-            margin-bottom: 5px;
         }
     }
     :deep(.el-icon){

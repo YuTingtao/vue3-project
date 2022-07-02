@@ -16,6 +16,7 @@ const store = createStore({
         LOGIN(state, data) {
             state.token = data.token;
             state.userInfo = data.userInfo;
+            sessionStorage.vuex = state;
         },
         LOGOUT(state) {
             state.token = '';

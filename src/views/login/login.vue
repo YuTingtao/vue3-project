@@ -1,16 +1,18 @@
 <template>
     <div class="login-bg">
         <div class="login-box">
-            <h3 class="title">登录</h3>
+            <h3 class="title">登录系统</h3>
             <el-form :model="loginForm" ref="formRef" :rules="rules" size="large">
-                <el-form-item label="" prop="username">
-                    <el-input v-model="loginForm.username" placeholder="请输入账号/手机号/邮箱" prefix-icon="user"></el-input>
+                <el-form-item label="" prop="userName">
+                    <el-input v-model="loginForm.userName" placeholder="请输入账号/手机号/邮箱" prefix-icon="user">
+                    </el-input>
                 </el-form-item>
                 <el-form-item label="" prop="password">
-                    <el-input v-model="loginForm.password" placeholder="请输入密码" type="password" prefix-icon="lock"></el-input>
+                    <el-input v-model="loginForm.password" placeholder="请输入密码" type="password" prefix-icon="lock">
+                    </el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button class="row-btn" type="primary" @click="submitLogin">登 录</el-button>
+                    <el-button class="row-btn" type="primary" @click="submitLogin"> 登 录 </el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -32,15 +34,15 @@ const formRef = ref();
 
 // 登录参数
 const loginForm = ref({
-    username: 'admin',
+    userName: 'admin',
     password: '123456',
-})
+});
 
 // 校验规则
 const rules = reactive({
-    username: [{ required: true, message: '请输入账号/手机号/邮箱', trigger: 'blur' }],
+    userName: [{ required: true, message: '请输入账号/手机号/邮箱', trigger: 'blur' }],
     password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
-})
+});
 
 // 提交表单
 async function submitLogin() {
@@ -49,15 +51,15 @@ async function submitLogin() {
         if (valid) {
             Login();
         }
-    })
+    });
 }
 
 // 登录
 async function Login() {
     store.commit('LOGIN', {
         token: 'Token-123456789',
-        userInfo: { realName: 'admin', facePhoto: '' }
-    })
+        userInfo: { realName: 'admin', facePhoto: '' },
+    });
     await store.dispatch('getMenus');
     sessionStorage.vuex = JSON.stringify(store.state);
     if (route.query.redirect) {
