@@ -71,7 +71,7 @@ html, body {
 }
 
 .g-body{
-    overflow-y: scroll;
+    overflow: auto;
     box-sizing: border-box;
     padding-top: 60px;
     padding-left: 220px;
