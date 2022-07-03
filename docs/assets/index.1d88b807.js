@@ -1,1 +1,0 @@
-import{a8 as a,a9 as o,aa as t,n as c,B as n,y as s,C as _,ai as r}from"./index.549093a9.js";const i={class:"res-list"},u={class:"icon-box"},d=s("span",null," \u7D20\u6750\u5217\u8868",-1),h={__name:"index",setup(l){return a(),o(),t(),(m,p)=>{const e=r;return c(),n("div",i,[s("div",u,[_(e,{name:"case"}),d])])}}};export{h as default};

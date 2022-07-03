@@ -8,21 +8,21 @@
 import { computed } from 'vue'
 
 const props = defineProps({
-    prefix: {
-        type: String,
-        default: 'icon',
-    },
     name: {
         type: String,
         required: true,
+    },
+    size: {
+        type: String,
+        default: '1em',
     },
     color: {
         type: String,
         default: 'currentColor',
     },
-    size: {
+    prefix: {
         type: String,
-        default: '1em',
+        default: 'icon',
     },
 })
 const symbolId = computed(() => `#${props.prefix}-${props.name}`)
@@ -31,6 +31,6 @@ const symbolId = computed(() => `#${props.prefix}-${props.name}`)
 <style lang="scss">
 .svg-icon{
     line-height: 1em;
-    vertical-align: text-top;
+    vertical-align: middle;
 }
 </style>

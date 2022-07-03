@@ -5,39 +5,27 @@ const routes = [
     {
         path: '/',
         name: 'layout',
-        redirect: to => {
+        redirect: (to) => {
             let path = '/login';
             if (store.state.menus.length > 0) {
-                path = store.state.menus[0].redirect || store.state.menus[0].path;
+                path = store.state.menus[0].children[0]?.path || store.state.menus[0].redirect;
             }
             return { path: path };
         },
         component: () => import('@/layout/index.vue'),
         children: [
-            // 素材库
             {
-                path: '/res-list',
-                name: 'resList',
-                component: () => import('@/views/res/list/index.vue'),
-            },
-            {
-                path: '/res-upload',
-                name: 'resUpload',
-                component: () => import('@/views/res/upload/index.vue'),
-            },
-            // 课程库
-            {
-                path: '/course-list',
-                name: 'courseList',
-                component: () => import('@/views/course/list/index.vue'),
-            },
-            {
-                path: '/course-detail',
-                name: 'courseDetail',
-                component: () => import('@/views/course/detail/index.vue'),
+                path: '/svgIcon',
+                name: 'svgIcon',
+                component: () => import('@/views/useCase/svgIcon.vue'),
                 meta: {
-                    activePath: '/course-list',
+                    // activePath: '', // 导航高亮
                 },
+            },
+            {
+                path: '/wangEditor',
+                name: 'wangEditor',
+                component: () => import('@/views/useCase/wangEditor.vue'),
             },
         ],
     },
@@ -63,10 +51,10 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to, from, failure) => {
-    if (document.querySelector('.g-main')) {
-        document.querySelector('.g-main').scrollIntoView({
+    if (document.querySelector('.g-body')) {
+        document.querySelector('.g-body').scrollIntoView({
             behavior: 'smooth',
-        })
+        });
     }
 })
 
