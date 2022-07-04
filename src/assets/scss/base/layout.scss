@@ -21,15 +21,14 @@ html, body {
 }
 
 #app{
+    display: flex;
+    flex-direction: column;
     height: 100%;
     background: #fff;
 }
 
 .g-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -72,9 +71,10 @@ html, body {
 }
 
 .g-body{
+    position: relative;
+    flex-grow: 1;
     overflow: auto;
     box-sizing: border-box;
-    padding-top: 60px;
     padding-left: 220px;
     height: 100%;
 }
@@ -86,8 +86,10 @@ html, body {
     bottom: 0;
     z-index: 100;
     width: 220px;
+    background: #fff;
+    border-right: 1px solid var(--el-border-color);
     .el-menu--vertical{
-        min-height: calc(100vh - 60px);
+        border-right: none;
     }
 }
 
