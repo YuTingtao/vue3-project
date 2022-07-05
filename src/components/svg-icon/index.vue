@@ -13,7 +13,7 @@ const props = defineProps({
         required: true,
     },
     size: {
-        type: String,
+        type: [String, Number],
         default: '1em',
     },
     color: {
@@ -25,12 +25,13 @@ const props = defineProps({
         default: 'icon',
     },
 })
-const symbolId = computed(() => `#${props.prefix}-${props.name}`)
+const symbolId = computed(() => {
+    return `#${props.prefix}-${props.name}`
+})
 </script>
 
 <style lang="scss">
 .svg-icon{
-    line-height: 1em;
     vertical-align: middle;
 }
 </style>

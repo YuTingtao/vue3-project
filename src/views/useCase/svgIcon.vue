@@ -1,7 +1,7 @@
 <template>
     <div class="">
         <div class="icon-box">
-            <svg-icon name="case" size="16px"></svg-icon>
+            <svg-icon name="case" :size="16"></svg-icon>
             <span> svg-icon案例</span>
         </div>
     </div>
@@ -15,8 +15,6 @@ import { useStore } from 'vuex'
 const router = useRouter()
 const route = useRoute()
 const store = useStore()
-
-let richText = ref('<p>123</p>')
 </script>
 
 <style lang="scss" scoped>
