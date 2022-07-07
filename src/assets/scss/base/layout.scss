@@ -71,21 +71,15 @@ html, body {
 }
 
 .g-body{
-    position: relative;
     flex-grow: 1;
-    overflow: auto;
-    box-sizing: border-box;
-    padding-left: 220px;
-    height: 100%;
+    display: flex;
+    overflow: hidden;
 }
 
 .g-aside{
-    position: fixed;
-    top: 60px;
-    left: 0;
-    bottom: 0;
-    z-index: 100;
+    flex-shrink: 0;
     width: 220px;
+    height: 100%;
     background: #fff;
     border-right: 1px solid var(--el-border-color);
     .el-menu--vertical{
@@ -94,8 +88,10 @@ html, body {
 }
 
 .g-main{
+    flex-grow: 1;
+    overflow: auto;
     box-sizing: border-box;
-    height: 100%;
     padding: 20px;
+    height: 100%;
     background: #fff;
 }

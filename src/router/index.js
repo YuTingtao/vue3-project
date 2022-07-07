@@ -40,21 +40,19 @@ const routes = [
 const router = createRouter({
     history: createWebHashHistory(),
     routes,
-})
+    scrollBehavior(to, from, savedPosition) {
+        return {
+            el: document.querySelector('.g-body'),
+            top: 0,
+        };
+    },
+});
 
 router.beforeEach((to, from, next) => {
     if (to.path !== '/login' && !store.state.token) {
         next('/login?redirect=' + to.fullPath);
     } else {
         next();
-    }
-})
-
-router.afterEach((to, from, failure) => {
-    if (document.querySelector('.g-body')) {
-        document.querySelector('.g-body').scrollIntoView({
-            behavior: 'smooth',
-        });
     }
 })
 
