@@ -1,1 +1,0 @@
-import{a6 as o,a7 as a,a8 as t,Q as c,k as n,y as _,q as e,z as r}from"./index.e7665b05.js";const i={class:""},u={class:"icon-box"},l=e("span",null," svg-icon\u6848\u4F8B",-1),g={__name:"svgIcon",setup(p){return o(),a(),t(),(d,m)=>{const s=c("svg-icon",!0);return n(),_("div",i,[e("div",u,[r(s,{name:"case",size:16}),l])])}}};export{g as default};

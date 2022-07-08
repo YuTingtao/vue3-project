@@ -17,26 +17,26 @@
 
 html, body {
     min-width: 1300px;
-    overflow-y: hidden;
 }
 
 #app{
-    display: flex;
-    flex-direction: column;
     height: 100%;
     background: #fff;
 }
 
 .g-header{
-    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
     display: flex;
     align-items: center;
     box-sizing: border-box;
     width: 100%;
     height: 60px;
     padding: 0 20px;
-    background: var(--el-color-primary);
     color: #fff;
+    background: var(--el-color-primary);
 }
 
 .g-logo{
@@ -71,15 +71,19 @@ html, body {
 }
 
 .g-body{
-    flex-grow: 1;
-    display: flex;
-    overflow: hidden;
+    box-sizing: border-box;
+    height: 100%;
+    padding-top: 60px;
+    padding-left: 220px;
 }
 
 .g-aside{
-    flex-shrink: 0;
+    position: fixed;
+    left: 0;
+    top: 60px;
+    bottom: 0;
+    z-index: 1000;
     width: 220px;
-    height: 100%;
     background: #fff;
     border-right: 1px solid var(--el-border-color);
     .el-menu--vertical{
@@ -88,10 +92,8 @@ html, body {
 }
 
 .g-main{
-    flex-grow: 1;
-    overflow: auto;
     box-sizing: border-box;
+    min-height: 100%;
     padding: 20px;
-    height: 100%;
     background: #fff;
 }

@@ -124,7 +124,6 @@ defineExpose({
 
 <style lang="scss">
 .wang-editor{
-    max-width: 800px;
     .w-e-bar{
         border: 1px solid var(--el-border-color);
         border-radius: 4px 4px 0 0;
