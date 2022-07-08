@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="page-svg">
         <div class="icon-box">
             <svg-icon name="case" :size="16"></svg-icon>
             <span> svg-icon案例</span>
@@ -8,15 +8,19 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+import { ref, reactive } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { useStore } from 'vuex';
 
-const router = useRouter()
-const route = useRoute()
-const store = useStore()
+const router = useRouter();
+const route = useRoute();
+const store = useStore();
 </script>
 
 <style lang="scss" scoped>
-
+.page-svg {
+    .icon-svg {
+        margin-bottom: 20px;
+    }
+}
 </style>

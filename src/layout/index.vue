@@ -31,9 +31,7 @@
                 </el-menu>
             </el-scrollbar>
         </div>
-        <div class="g-main">
-            <router-view></router-view>
-        </div>
+        <router-view class="g-page"></router-view>
     </div>
 </template>
 

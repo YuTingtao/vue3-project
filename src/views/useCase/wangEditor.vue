@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="page-editor">
         <editor ref="editorRef" v-model="richText"></editor>
         <div style="margin: 10px 0;">{{ richText }}</div>
         <div>
