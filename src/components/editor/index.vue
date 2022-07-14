@@ -129,11 +129,13 @@ defineExpose({
         border-radius: 4px 4px 0 0;
     }
     .w-e-text-container{
-        min-height: 150px;
         border-left: 1px solid var(--el-border-color);
         border-bottom: 1px solid var(--el-border-color);
         border-right: 1px solid var(--el-border-color);
         border-radius: 0 0 4px 4px;
+    }
+    .w-e-scroll > div{
+        min-height: 150px;
     }
     .w-e-text-placeholder{
         font-style: normal;
