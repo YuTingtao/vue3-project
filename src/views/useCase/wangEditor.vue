@@ -1,6 +1,6 @@
 <template>
     <div class="page-editor">
-        <editor ref="editorRef" v-model="richText"></editor>
+        <editor ref="editorRef" v-model="richText" :maxLength="500"></editor>
         <div style="margin: 10px 0;">{{ richText }}</div>
         <div>
             <el-button type="primary" @click="setHtml">设置富文本</el-button>
@@ -21,7 +21,7 @@ const store = useStore()
 
 const editorRef = ref()
 
-let richText = ref('<p>12345</p>')
+let richText = ref('<p>老王编辑器</p>')
 
 function setHtml() {
     editorRef.value.setHtml(`<p>设置内容：${Date.now()}</p>`);

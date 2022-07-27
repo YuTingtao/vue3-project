@@ -77,9 +77,6 @@ onBeforeUnmount(() => {
 
 function handleCreated(editor) {
     editorRef.value = editor; // 记录 editor 实例，重要！
-    if (props.modelValue) {
-        editorRef.value.setHtml(props.modelValue);
-    }
 }
 
 function handleChange(editor) {
@@ -133,11 +130,18 @@ defineExpose({
         border-bottom: 1px solid var(--el-border-color);
         border-right: 1px solid var(--el-border-color);
         border-radius: 0 0 4px 4px;
+        [data-slate-editor] {
+            padding: 5px 10px;
+            p {
+                margin: 5px 0;
+            }
+        }
     }
     .w-e-scroll > div{
         min-height: 150px;
     }
     .w-e-text-placeholder{
+        top: 12px;
         font-style: normal;
     }
 }
