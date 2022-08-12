@@ -40,12 +40,11 @@ const store = createStore({
 });
 
 // 防止vuex刷新失效
+window.addEventListener('beforeunload', () => {
+    sessionStorage.vuex = JSON.stringify(store.state);
+});
 if (/iphone|ipad|ipod/.test(navigator.userAgent)) {
     window.addEventListener('pagehide', () => {
-        sessionStorage.vuex = JSON.stringify(store.state);
-    });
-} else {
-    window.addEventListener('beforeunload', () => {
         sessionStorage.vuex = JSON.stringify(store.state);
     });
 }
