@@ -17,7 +17,7 @@
 
 <script setup>
 import '@wangeditor/editor/dist/css/style.css'
-import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
+import { onBeforeUnmount, ref, shallowRef, nextTick } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 
 const props = defineProps({
@@ -38,7 +38,7 @@ const props = defineProps({
         default: 'default' // default,simple
     }
 })
-const emit = defineEmits('update:modelValue')
+const emit = defineEmits(['update:modelValue'])
 
 const editorRef = shallowRef()
 const toolbarConfig = ref({
@@ -80,7 +80,7 @@ function handleCreated(editor) {
 }
 
 function handleChange(editor) {
-    emit('update:modelValue', editor.getHtml())
+    emit('update:modelValue', editor.getHtml());
 }
 
 // 获取富文本
