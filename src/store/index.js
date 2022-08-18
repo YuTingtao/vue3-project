@@ -13,29 +13,33 @@ const store = createStore({
     },
     getters: {},
     mutations: {
-        LOGIN(state, data) {
+        // 登录
+        setLogin(state, data) {
             state.token = data.token;
             state.userInfo = data.userInfo;
             sessionStorage.vuex = state;
         },
-        LOGOUT(state) {
+        // 退出登录
+        setLogout(state) {
             state.token = '';
             state.userInfo = {};
             state.menus = [];
             sessionStorage.removeItem('vuex');
         },
+        // 设置菜单
         setMenus(state, data) {
             state.menus = data;
         },
     },
     actions: {
+        // 获取菜单
         getMenus({ commit }) {
             commit('setMenus', menuData);
             filterRoutes(menuData);
         },
     },
     modules: {
-        dataDic,
+        dataDic, // 数据字典
     },
 });
 

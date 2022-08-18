@@ -2,22 +2,25 @@ import Axios from 'axios';
 import store from '../store'
 import router from '../router'
 
-const toast = function(msg) {
+// message提示
+function toast(msg) {
     ElMessage.closeAll();
     ElMessage.error({
         message: msg,
-        duration: 2000
+        duration: 2000,
     });
 }
 
-const toLogin = function() {
-    router.replace({
-        path: '/login',
-        query: {
-            redirect: router.currentRoute.fullPath
-        }
-    });
-}
+// 调到的登录页
+function toLogin() {
+    const currentRoute = router.currentRoute;
+    let path = '/login';
+    if (currentRoute.path != '/login') {
+        path = `/login?redirect=${currentRoute.fullPath}`;
+    }
+    router.push(path);
+    store.commit('setLogout');
+};
 
 const axios = Axios.create({
     // baseURL: '',
@@ -60,15 +63,7 @@ axios.interceptors.response.use(
     error => {
         if (error.response) {
             switch (error.response.status) {
-                case 401: // 401: 未登录
-                    toLogin();
-                    break;
-                case 403: // 403 token过期
-                    toast('登录过期，请重新登录')
-                    store.commit('LOGOUT');
-                    toLogin();
-                    break;
-                case 404: // 404请求不存在
+                case 404:
                     toast('网络请求不存在');
                     break;
                 default: // 其他错误

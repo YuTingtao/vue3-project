@@ -52,7 +52,7 @@ const menus = computed(() => store.state.menus);
 
 // 退出登录
 function Logout() {
-    store.commit('LOGOUT');
-    router.replace('/login')
+    store.commit('setLogout');
+    router.replace('/login');
 }
 </script>

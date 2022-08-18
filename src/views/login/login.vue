@@ -10,7 +10,7 @@
                     <el-input v-model="loginForm.password" placeholder="请输入密码" type="password" prefix-icon="lock"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button class="row-btn" type="primary" @click="submitLogin"> 登 录 </el-button>
+                    <el-button class="row-btn" type="primary" @click="submitLogin">登 录</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -21,7 +21,7 @@
 import { ref, reactive, toRaw } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from 'vuex';
-import loginApi from '@/request/user/login.js';
+import loginApi from '@/api/user/login.js';
 
 const router = useRouter();
 const route = useRoute();
@@ -53,7 +53,7 @@ async function submitLogin() {
 
 // 登录
 async function Login() {
-    store.commit('LOGIN', {
+    store.commit('setLogin', {
         token: 'Token-123456789',
         userInfo: { realName: 'admin', facePhoto: '' },
     });

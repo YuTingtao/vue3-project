@@ -5,12 +5,12 @@ vue3 + vite + Element-Plus项目模板，支持自定义主题色，动态路由
 ```
 ├── public
 ├── src
+│   ├── api 接口请求
 │   ├── assets 静态资源
 │   ├── components 公共基础组件
 │   ├── layout 页面布局
-│   ├── request 接口请求
 │   ├── router 路由
-│   ├── store vuex状态管理
+│   ├── store vuex 状态管理
 │   ├── utils 工具
 │   ├── views 页面组件
 │   ├── App.vue

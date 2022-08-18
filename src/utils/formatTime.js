@@ -1,8 +1,14 @@
-/* 
+/*
  * 格式化时间，大于3天显示日期
  */
 function formatTime(date) {
-    const d = new Date(date);
+    let d = date;
+    if (typeof date != 'object') {
+        if (typeof date == 'string') {
+            date = date.replace(/-/g, '/'); // 防止苹果系统报错
+        }
+        d = new Date(date);
+    }
     const now = Date.now();
     const diff = (now - d) / 1000;
 

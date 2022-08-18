@@ -1,14 +1,21 @@
+// 格式化日期
 function formatDate(date, fmt = 'YYYY-MM-DD HH:mm:ss') {
-    if (typeof(date) != 'Object') {
-        date = new Date(date);
+    let d = date;
+    if (typeof date != 'object') {
+        if (typeof date == 'string') {
+            date = date.replace(/-/g, '/'); // 防止苹果系统报错
+        }
+        console.log(date);
+        d = new Date(date);
+        console.log(d);
     }
     const opt = {
-        'Y+': date.getFullYear().toString(),        // 年
-        'M+': (date.getMonth() + 1).toString(),     // 月
-        'D+': date.getDate().toString(),            // 日
-        'H+': date.getHours().toString(),           // 时
-        'm+': date.getMinutes().toString(),         // 分
-        's+': date.getSeconds().toString()          // 秒
+        'Y+': d.getFullYear().toString(),        // 年
+        'M+': (d.getMonth() + 1).toString(),     // 月
+        'D+': d.getDate().toString(),            // 日
+        'H+': d.getHours().toString(),           // 时
+        'm+': d.getMinutes().toString(),         // 分
+        's+': d.getSeconds().toString()          // 秒
     };
     let ret;
     for (let key in opt) {

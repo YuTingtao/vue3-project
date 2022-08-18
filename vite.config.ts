@@ -57,5 +57,6 @@ export default defineConfig({
     },
     build: {
         outDir: 'docs', // 打包输出目录
-    }
+        chunkSizeWarningLimit: 1000,
+    },
 });
