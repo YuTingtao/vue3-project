@@ -19,7 +19,7 @@ const menuPaths = computed(() => {
     return ['/', '/login', ...store.getters.menuPaths];
 })
 
-// 首个菜单路劲
+// 首个菜单路径
 const firstMenuPath = computed(() => {
     return store.getters.firstMenuPath;
 })
