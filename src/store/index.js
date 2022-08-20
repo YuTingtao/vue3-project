@@ -11,7 +11,24 @@ const store = createStore({
             menus: [], // 菜单
         };
     },
-    getters: {},
+    getters: {
+        // 扁平菜单路径
+        menuPaths(state) {
+            return getFlatPaths(state.menus);
+        },
+        // 首个菜单路径
+        firstMenuPath(state) {
+            let res = '/login';
+            if (state.menus.length > 0) {
+                let item = state.menus[0];
+                res = item.redirect || item.path;
+                if (item.children && item.children.length > 0) {
+                    res = item.children[0].redirect || item.children[0].path;
+                }
+            }
+            return res;
+        },
+    },
     mutations: {
         // 登录
         setLogin(state, data) {
@@ -35,13 +52,25 @@ const store = createStore({
         // 获取菜单
         getMenus({ commit }) {
             commit('setMenus', menuData);
-            filterRoutes(menuData);
         },
     },
     modules: {
         dataDic, // 数据字典
     },
 });
+
+// 获取菜单扁平路径
+function getFlatPaths(menus, res = []) {
+    menus.forEach((item) => {
+        if (item.path) {
+            res.push(item.path);
+        }
+        if (item.children && item.children.length > 0) {
+            getFlatPaths(item.children, res);
+        }
+    });
+    return res;
+}
 
 // 防止vuex刷新失效
 window.addEventListener('beforeunload', () => {
@@ -56,29 +85,6 @@ if (sessionStorage.vuex) {
     store.replaceState(
         Object.assign({}, store.state, JSON.parse(sessionStorage.vuex))
     );
-}
-
-// 根据用户菜单移除没有权限的路由
-function filterRoutes(menus) {
-    const menuNames = flatMenuNames(menus);
-    const baseNames = ['layout', 'login']; // 必须存在的路由name
-    const removeNames = router.getRoutes().map((item) => item.name).filter((item) => !baseNames.includes(item));
-    removeNames.forEach((item) => {
-        if (!menuNames.includes(item)) {
-            router.removeRoute(item);
-        }
-    });
-}
-
-// 计算扁平化菜单names数组
-function flatMenuNames(menus, names = []) {
-    menus.forEach((item) => {
-        names.push(item.name);
-        if (item.children && item.children.length > 0) {
-            flatMenuNames(item.children, names);
-        }
-    });
-    return names;
 }
 
 export default store;

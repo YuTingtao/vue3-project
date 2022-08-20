@@ -5,13 +5,7 @@ const routes = [
     {
         path: '/',
         name: 'layout',
-        redirect: (to) => {
-            let path = '/login';
-            if (store.state.menus.length > 0) {
-                path = store.state.menus[0].children[0]?.path || store.state.menus[0].redirect;
-            }
-            return { path: path };
-        },
+        redirect: '/index',
         component: () => import('@/layout/index.vue'),
         children: [
             {
@@ -42,15 +36,15 @@ const router = createRouter({
     routes,
     scrollBehavior(to, from, savedPosition) {
         return {
-            el: document.querySelector('.g-body'),
+            // el: document.querySelector('.g-body'),
             top: 0,
         };
     },
-});
+})
 
 router.beforeEach((to, from, next) => {
-    if (to.path !== '/login' && !store.state.token) {
-        next('/login?redirect=' + to.fullPath);
+    if (!store.state.token && to.path !== '/login') {
+        next('/login');
     } else {
         next();
     }
