@@ -1,7 +1,7 @@
-import { createStore } from 'vuex';
-import router from '../router';
-import dataDic from './modules/dataDic.js';
-import menuData from '../router/menuData.js';
+import { createStore } from 'vuex'
+import router from '../router'
+import dataDic from './modules/dataDic.js'
+import menuData from '../router/menuData.js'
 
 const store = createStore({
     state() {

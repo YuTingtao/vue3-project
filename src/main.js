@@ -5,7 +5,7 @@ import store from './store/index'
 
 import './assets/scss/base/main.scss'
 import * as ElIcons from '@element-plus/icons-vue'
-import SvgIcon from './components/svg-icon/index.vue'
+import SvgIcon from './components/svgIcon/index.vue'
 import 'virtual:svg-icons-register'
 
 if (store.state.token) {

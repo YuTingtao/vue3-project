@@ -1,7 +1,7 @@
 <template>
     <div class="page-svg">
         <div class="icon-box">
-            <svg-icon name="case" :size="16"></svg-icon>
+            <svg-icon name="case" size="16px"></svg-icon>
             <span> svg-icon案例</span>
         </div>
     </div>

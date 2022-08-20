@@ -55,7 +55,7 @@ async function submitLogin() {
 async function Login() {
     store.commit('setLogin', {
         token: 'Token-123456789',
-        userInfo: { realName: 'admin', facePhoto: '' },
+        userInfo: { realName: 'admin', avatar: '' },
     });
     await store.dispatch('getMenus');
     sessionStorage.vuex = JSON.stringify(store.state);
