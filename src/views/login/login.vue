@@ -18,16 +18,16 @@
 </template>
 
 <script setup>
-import { ref, reactive, toRaw } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-import { useStore } from 'vuex';
-import loginApi from '@/api/user/login.js';
+import { ref, reactive, toRaw } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { useStore } from 'vuex'
+import loginApi from '@/api/user/login.js'
 
-const router = useRouter();
-const route = useRoute();
-const store = useStore();
+const router = useRouter()
+const route = useRoute()
+const store = useStore()
 
-const formRef = ref();
+const formRef = ref()
 
 // 登录参数
 const loginForm = ref({
@@ -39,7 +39,7 @@ const loginForm = ref({
 const rules = reactive({
     userName: [{ required: true, message: '请输入账号/手机号/邮箱', trigger: 'blur' }],
     password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
-});
+})
 
 // 提交表单
 async function submitLogin() {
@@ -48,7 +48,7 @@ async function submitLogin() {
         if (valid) {
             Login();
         }
-    });
+    })
 }
 
 // 登录

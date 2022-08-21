@@ -5,9 +5,7 @@ function formatDate(date, fmt = 'YYYY-MM-DD HH:mm:ss') {
         if (typeof date == 'string') {
             date = date.replace(/-/g, '/'); // 防止苹果系统报错
         }
-        console.log(date);
         d = new Date(date);
-        console.log(d);
     }
     const opt = {
         'Y+': d.getFullYear().toString(),        // 年
