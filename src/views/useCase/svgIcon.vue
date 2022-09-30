@@ -20,8 +20,8 @@ const store = useStore()
 </script>
 
 <style lang="scss" scoped>
-.page-svg{
-    .icon-box{
+.page-svg {
+    .icon-box {
         margin-bottom: 15px;
     }
 }

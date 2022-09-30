@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import { resolve } from 'path';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { resolve } from 'path'
 // Element Plus按需自动导入
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -18,32 +18,32 @@ export default defineConfig({
     css: {
         preprocessorOptions: {
             scss: {
-                additionalData: `@use '@/assets/scss/base/element.scss' as *;`,
-            },
-        },
+                additionalData: `@use '@/assets/scss/base/element.scss' as *;`
+            }
+        }
     },
     plugins: [
         vue(),
         AutoImport({
             resolvers: [
                 ElementPlusResolver({
-                    importStyle: 'sass',
+                    importStyle: 'sass'
                 })
-            ],
+            ]
         }),
         Components({
             resolvers: [
                 ElementPlusResolver({
-                    importStyle: 'sass',
+                    importStyle: 'sass'
                 })
-            ],
+            ]
         }),
         createSvgIconsPlugin({
             iconDirs: [resolve(process.cwd(), 'src/assets/icon')],
             symbolId: 'icon-[dir]-[name]',
             inject: 'body-last',
-            customDomId: 'svg__icon__dom',
-        }),
+            customDomId: 'svg__icon__dom'
+        })
     ],
     base: './', // 公共基础路径
     server: {
@@ -57,6 +57,6 @@ export default defineConfig({
     },
     build: {
         outDir: 'docs', // 打包输出目录
-        chunkSizeWarningLimit: 1000,
-    },
-});
+        chunkSizeWarningLimit: 1000
+    }
+})
