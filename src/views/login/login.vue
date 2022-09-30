@@ -74,5 +74,5 @@ async function Login() {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/scss/login/login.scss';
+@import '@/assets/scss/login/login.scss';
 </style>
