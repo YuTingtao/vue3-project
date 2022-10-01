@@ -21,12 +21,17 @@ module.exports = {
     rules: {
         'indent': ['error', 4],                               // 缩进4个空格
         'vue/html-indent': ['error', 4],
-        'max-len': ['error', { 'code': 100, 'tabWidth': 4 }], // 一行最大100长度
         'semi': ['error', 'never'],                           // js结尾不加分号
-        'quotes': ['error', 'single', { 'allowTemplateLiterals': true }], // js单引号
+        'quotes': ['error', 'single', { 'allowTemplateLiterals': true }], // js定义字符串使用单引号
         'camelcase': 'error',                                 // 驼峰命名
         'comma-dangle': ['error', 'never'],                   // 禁止使用拖尾逗号
         'comma-spacing': ['error', { 'before': false, 'after': true }], // 逗号后面带一个空格
+        'comma-style': ['error', 'last'],                     // 逗号放置在当前行末尾
+        'func-call-spacing': ['error', 'never'],              // 函数调用时括号前不带空格
+        'func-style': ['error', 'declaration', { 'allowArrowFunctions': true }], // 使用函数声明定义函数
+        'max-len': ['error', { 'code': 100, 'tabWidth': 4 }], // 一行最大100长度
+        'new-cap': ['error', { 'capIsNew': true }],           // 构造函数名首字母大写
+        'spaced-comment': ['error', 'always'],                // 注释斜杠后面加空格
         'object-curly-spacing': ['error', 'always'],          // 对象括号内带空格
         'no-multiple-empty-lines': ['error', { 'max': 2 }],   // 最大2空行
         'no-unused-vars': 'off',                              // 未使用变量不报错
