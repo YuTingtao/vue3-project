@@ -6,12 +6,19 @@
             <!-- 表单 -->
             <el-form :model="loginForm" ref="formRef" :rules="rules" size="large">
                 <el-form-item label="" prop="userName">
-                    <el-input v-model="loginForm.userName" placeholder="请输入账号/手机号/邮箱" prefix-icon="user">
+                    <el-input
+                        v-model="loginForm.userName"
+                        placeholder="请输入账号/手机号/邮箱"
+                        prefix-icon="user">
                     </el-input>
                 </el-form-item>
 
                 <el-form-item label="" prop="password">
-                    <el-input v-model="loginForm.password" placeholder="请输入密码" type="password" prefix-icon="lock">
+                    <el-input
+                        v-model="loginForm.password"
+                        placeholder="请输入密码"
+                        type="password"
+                        prefix-icon="lock">
                     </el-input>
                 </el-form-item>
 
