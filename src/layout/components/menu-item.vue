@@ -1,7 +1,8 @@
 <template>
     <template v-for="item in menus" :key="item.id">
         <template v-if="!item.hidden">
-            <el-menu-item v-if="!item.children || item.children.filter(item => !item.hidden).length < 1"
+            <el-menu-item
+                v-if="!item.children || item.children.filter(item => !item.hidden).length < 1"
                 :index="item.redirect || item.path">
                 <el-icon v-if="item.icon"><component :is="item.icon"></component></el-icon>
                 <span>{{ item.title }}</span>
@@ -26,6 +27,4 @@ const props = defineProps({
 })
 </script>
 
-<style lang="" scoped>
-
-</style>
+<style lang="" scoped></style>

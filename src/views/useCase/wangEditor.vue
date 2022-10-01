@@ -11,6 +11,7 @@
 </template>
 
 <script setup>
+/* global ElMessageBox */
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
@@ -19,6 +20,7 @@ const router = useRouter()
 const route = useRoute()
 const store = useStore()
 
+// 编辑器ref
 const editorRef = ref()
 
 let richText = ref('<p>老王编辑器</p>')

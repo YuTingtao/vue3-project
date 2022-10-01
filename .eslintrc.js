@@ -34,6 +34,7 @@ module.exports = {
         'spaced-comment': ['error', 'always'],                // 注释斜杠后面加空格
         'object-curly-spacing': ['error', 'always'],          // 对象括号内带空格
         'no-multiple-empty-lines': ['error', { 'max': 2 }],   // 最大2空行
+        'no-undef': ['error', { 'typeof': true }],            // 禁用未声明的变量
         'no-unused-vars': 'off',                              // 未使用变量不报错
         'vue/no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'off',

@@ -4,15 +4,9 @@ const dataDic = {
     state: () => ({
         data: []
     }),
-    getters: {
-
-    },
-    mutations: {
-
-    },
-    actions: {
-
-    }
+    getters: {},
+    mutations: {},
+    actions: {}
 }
 
-export default dataDic;
+export default dataDic
