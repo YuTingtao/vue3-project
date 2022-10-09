@@ -5,7 +5,8 @@
             :defaultConfig="toolbarConfig"
             :mode="mode"
         />
-        <Editor style="overflow-y: hidden;"
+        <Editor 
+            style="overflow-y: hidden;"
             v-model="modelValue"
             :defaultConfig="editorConfig"
             :mode="mode"
@@ -17,7 +18,7 @@
 
 <script setup>
 import '@wangeditor/editor/dist/css/style.css'
-import { onBeforeUnmount, ref, shallowRef, nextTick } from 'vue'
+import { onBeforeUnmount, ref, shallowRef } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 
 const props = defineProps({
@@ -35,7 +36,7 @@ const props = defineProps({
     },
     mode: {
         Type: String,
-        default: 'default' // default,simple
+        default: 'simple' // default,simple
     }
 })
 const emit = defineEmits(['update:modelValue'])
@@ -70,52 +71,52 @@ const editorConfig = ref({
 
 // 组件销毁时，也及时销毁编辑器
 onBeforeUnmount(() => {
-    const editor = editorRef.value;
-    if (editor == null) return;
-    editor.destroy();
+    const editor = editorRef.value
+    if (editor == null) return
+    editor.destroy()
 })
 
 function handleCreated(editor) {
-    editorRef.value = editor; // 记录 editor 实例，重要！
+    editorRef.value = editor // 记录 editor 实例，重要！
 }
 
 function handleChange(editor) {
-    emit('update:modelValue', editor.getHtml());
+    emit('update:modelValue', editor.getHtml())
 }
 
 // 获取富文本
 function getHtml() {
-    const editor = editorRef.value;
-    if (editor == null) return;
-    return editor.getHtml();
+    const editor = editorRef.value
+    if (editor == null) return
+    return editor.getHtml()
 }
 
 // 获取纯文本
 function getText() {
-    const editor = editorRef.value;
-    if (editor == null) return;
-    return editor.getText();
+    const editor = editorRef.value
+    if (editor == null) return
+    return editor.getText()
 }
 
 // 设置富文本
 function setHtml(html) {
-    const editor = editorRef.value;
-    if (editor == null) return;
-    editor.setHtml(html);
+    const editor = editorRef.value
+    if (editor == null) return
+    editor.setHtml(html)
 }
 
 // 插入文本
 function insertText(txt) {
-    const editor = editorRef.value;
-    if (editor == null) return;
-    editor.insertText(txt);
+    const editor = editorRef.value
+    if (editor == null) return
+    editor.insertText(txt)
 }
 
 defineExpose({
     getHtml,
     setHtml,
     getText,
-    insertText,
+    insertText
 })
 </script>
 
