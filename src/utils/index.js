@@ -19,7 +19,6 @@
 import deepClone from './deepClone.js'
 import formatDate from './formatDate.js'
 import formatFileSize from './formatFileSize.js'
-import formatTime from './formatTime.js'
 import generateGuid from './generateGuid.js'
 import getTreePath from './getTreePath.js'
 import numToChinese from './numToChinese.js'
@@ -29,7 +28,6 @@ export {
     deepClone,
     formatDate,
     formatFileSize,
-    formatTime,
     generateGuid,
     getTreePath,
     numToChinese,

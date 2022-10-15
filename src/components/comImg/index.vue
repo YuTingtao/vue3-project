@@ -20,9 +20,9 @@ const props = defineProps({
 
 function imgOnError(e) {
     if (props.errorSrc) {
-        let img = e.srcElement;
-        img.src = props.errorSrc;
-        img.onerror = null; // 防止无限循环
+        let img = e.srcElement
+        img.src = props.errorSrc
+        img.onerror = null // 防止无限循环
     }
 }
 </script>

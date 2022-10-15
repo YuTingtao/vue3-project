@@ -5,29 +5,29 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 const props = defineProps({
     name: {
         type: String,
-        required: true,
+        required: true
     },
     size: {
         type: [String, Number],
-        default: '1em',
+        default: '1em'
     },
     color: {
         type: String,
-        default: 'currentColor',
+        default: 'currentColor'
     },
     prefix: {
         type: String,
-        default: 'icon',
+        default: 'icon'
     },
-});
+})
 const symbolId = computed(() => {
-    return `#${props.prefix}-${props.name}`;
-});
+    return `#${props.prefix}-${props.name}`
+})
 </script>
 
 <style lang="scss">

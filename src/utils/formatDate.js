@@ -1,28 +1,42 @@
-// 格式化日期
+/*
+ * date: 字符串、时间戳、日期对象
+ * fmt: 日期格式，默认'YYYY-MM-DD HH:mm:ss'
+ */
 function formatDate(date, fmt = 'YYYY-MM-DD HH:mm:ss') {
-    let d = date;
-    if (typeof date != 'object') {
-        if (typeof date == 'string') {
-            date = date.replace(/-/g, '/'); // 防止苹果系统报错
-        }
-        d = new Date(date);
+    if (!date) {
+        return ''
     }
-    const opt = {
-        'Y+': d.getFullYear().toString(),        // 年
-        'M+': (d.getMonth() + 1).toString(),     // 月
-        'D+': d.getDate().toString(),            // 日
-        'H+': d.getHours().toString(),           // 时
-        'm+': d.getMinutes().toString(),         // 分
-        's+': d.getSeconds().toString()          // 秒
-    };
-    let ret;
-    for (let key in opt) {
-        ret = new RegExp('('+ key +')').exec(fmt);
+    if (typeof date === 'object' && !(date instanceof Date)) {
+        return ''
+    }
+    if (typeof date == 'string') {
+        // 防止苹果系统报错
+        date = date.replace(/-/g, '/')
+    }
+    if (!(date instanceof Date)) {
+        date = new Date(date)
+    }
+    // 补零函数
+    function padZero(num) {
+        return num < 10 ? ('0' + num) : num
+    }
+    // 年月日时分秒
+    var opt = {
+        'Y+': date.getFullYear(),
+        'M+': padZero((date.getMonth() + 1)),
+        'D+': padZero(date.getDate()),
+        'H+': padZero(date.getHours()),
+        'm+': padZero(date.getMinutes()),
+        's+': padZero(date.getSeconds())
+    }
+    var ret
+    for (var key in opt) {
+        ret = new RegExp('('+ key +')').exec(fmt)
         if (ret) {
-            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[key]) : (opt[key].padStart(ret[1].length, '0')))
+            fmt = fmt.replace(ret[1], opt[key])
         }
     }
-    return fmt;
+    return fmt
 }
 
-export default formatDate;
+export default formatDate
