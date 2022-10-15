@@ -29,11 +29,11 @@ function formatDate(date, fmt = 'YYYY-MM-DD HH:mm:ss') {
         'm+': padZero(date.getMinutes()),
         's+': padZero(date.getSeconds())
     }
-    var ret
+    var regRes
     for (var key in opt) {
-        ret = new RegExp('('+ key +')').exec(fmt)
-        if (ret) {
-            fmt = fmt.replace(ret[1], opt[key])
+        regRes = new RegExp(key).exec(fmt)
+        if (regRes) {
+            fmt = fmt.replace(regRes[0], opt[key])
         }
     }
     return fmt
