@@ -11,7 +11,7 @@ import SvgIcon from './components/svgIcon/index.vue'
 import 'virtual:svg-icons-register'
 
 // 自定义指令
-import errorDirective from '@/directives/error.js'
+import errorDirective from './directives/error.js'
 
 if (store.state.token) {
     store.dispatch('getMenus')

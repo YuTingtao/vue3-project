@@ -1,8 +1,8 @@
 /*
  * date: 字符串、时间戳、日期对象
- * fmt: 日期格式，默认'YYYY-MM-DD HH:mm:ss'
+ * fmt: 日期格式，默认'yyyy-MM-dd hh:mm:ss'
  */
-function formatDate(date, fmt = 'YYYY-MM-DD HH:mm:ss') {
+function formatDate(date, fmt = 'yyyy-MM-dd hh:mm:ss') {
     if (!date) {
         return ''
     }
@@ -22,10 +22,10 @@ function formatDate(date, fmt = 'YYYY-MM-DD HH:mm:ss') {
     }
     // 年月日时分秒
     var opt = {
-        'Y+': date.getFullYear(),
+        'y+': date.getFullYear(),
         'M+': padZero((date.getMonth() + 1)),
-        'D+': padZero(date.getDate()),
-        'H+': padZero(date.getHours()),
+        'd+': padZero(date.getDate()),
+        'h+': padZero(date.getHours()),
         'm+': padZero(date.getMinutes()),
         's+': padZero(date.getSeconds())
     }
