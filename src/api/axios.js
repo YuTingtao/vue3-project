@@ -1,4 +1,3 @@
-/* global ElMessage */
 import Axios from 'axios'
 import store from '../store'
 import router from '../router'

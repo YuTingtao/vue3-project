@@ -30,7 +30,13 @@ export default defineConfig({
                 ElementPlusResolver({
                     importStyle: 'sass'
                 })
-            ]
+            ],
+            // eslint报错解决
+            eslintrc: {
+                enabled: false,
+                filepath: './.eslintrc-auto-import.json',
+                globalsPropValue: true
+            }
         }),
         Components({
             resolvers: [
