@@ -31,7 +31,7 @@ export default defineConfig({
                     importStyle: 'sass'
                 })
             ],
-            // eslint报错解决
+            // 解决eslint报错
             eslintrc: {
                 enabled: false,
                 filepath: './.eslintrc-auto-import.json',
