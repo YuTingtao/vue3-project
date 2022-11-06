@@ -17,8 +17,6 @@ import { formatDate } from '@/utils'
 const router = useRouter()
 const route = useRoute()
 const store = useStore()
-
-console.log(import.meta.env)
 </script>
 
 <style lang="scss" scoped>
