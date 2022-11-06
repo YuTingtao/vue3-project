@@ -53,6 +53,7 @@ export default defineConfig({
         })
     ],
     base: './', // 公共基础路径
+    envDir: './env', // 多环境env文件目录
     server: {
         host: '0.0.0.0',
         port: 8083,
