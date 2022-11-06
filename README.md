@@ -7,7 +7,7 @@ vue3 + vite + Element-Plus项目模板，支持自定义主题色，动态路由
 ├── src
 │   ├── api 接口请求
 │   ├── assets 静态资源
-│   ├── components 公共基础组件
+│   ├── components 公共基础组件，此目录下组件会被自动导入，无需手动引入
 │   ├── layout 页面布局
 │   ├── router 路由
 │   ├── store vuex 状态管理
