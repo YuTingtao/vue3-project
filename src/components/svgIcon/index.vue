@@ -32,6 +32,6 @@ const symbolId = computed(() => {
 
 <style lang="scss">
 .svg-icon {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 </style>

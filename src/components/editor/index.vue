@@ -1,18 +1,13 @@
 <template>
   <div class="wang-editor">
-    <Toolbar
-      :editor="editorRef"
-      :defaultConfig="toolbarConfig"
-      :mode="mode"
-    />
-    <Editor 
-      style="overflow-y: hidden;"
+    <Toolbar :editor="editorRef" :defaultConfig="toolbarConfig" :mode="mode" />
+    <Editor
+      style="overflow-y: hidden"
       v-model="modelValue"
       :defaultConfig="editorConfig"
       :mode="mode"
       @onCreated="handleCreated"
-      @onChange="handleChange"
-    />
+      @onChange="handleChange" />
   </div>
 </template>
 
@@ -51,7 +46,7 @@ const editorConfig = ref({
   autoFocus: false,
   MENU_CONF: {
     uploadImage: {
-      server: '/api/upload',
+      server: '/api/upload'
       // 自定义上传
       // async customUpload(file, insertFn) {
       //     let url = '';
@@ -59,7 +54,7 @@ const editorConfig = ref({
       // }
     },
     uploadVideo: {
-      server: '/api/upload',
+      server: '/api/upload'
       // 自定义上传
       // async customUpload(file, insertFn) {
       //     let url = '';
@@ -121,34 +116,34 @@ defineExpose({
 </script>
 
 <style lang="scss">
-.wang-editor{
-    .w-e-bar{
-        border: 1px solid var(--el-border-color);
-        border-radius: 4px 4px 0 0;
+.wang-editor {
+  .w-e-bar {
+    border: 1px solid var(--el-border-color);
+    border-radius: 4px 4px 0 0;
+  }
+  .w-e-text-container {
+    border-left: 1px solid var(--el-border-color);
+    border-bottom: 1px solid var(--el-border-color);
+    border-right: 1px solid var(--el-border-color);
+    border-radius: 0 0 4px 4px;
+    [data-slate-editor] {
+      padding: 5px 10px;
+      p {
+        margin: 5px 0;
+      }
     }
-    .w-e-text-container{
-        border-left: 1px solid var(--el-border-color);
-        border-bottom: 1px solid var(--el-border-color);
-        border-right: 1px solid var(--el-border-color);
-        border-radius: 0 0 4px 4px;
-        [data-slate-editor] {
-            padding: 5px 10px;
-            p {
-                margin: 5px 0;
-            }
-        }
-    }
-    .w-e-scroll > div{
-        min-height: 150px;
-    }
-    .w-e-text-placeholder{
-        top: 12px;
-        font-style: normal;
-    }
+  }
+  .w-e-scroll > div {
+    min-height: 150px;
+  }
+  .w-e-text-placeholder {
+    top: 12px;
+    font-style: normal;
+  }
 }
-.w-e-modal{
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%);
+.w-e-modal {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
 }
 </style>

@@ -44,7 +44,7 @@
 import { ref, reactive, computed, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-import MenuItem from './components/menu-item.vue'
+import MenuItem from './components/menuItem.vue'
 
 const router = useRouter()
 const route = useRoute()

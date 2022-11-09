@@ -21,8 +21,8 @@ const store = useStore()
 
 <style lang="scss" scoped>
 .page-svg {
-    .icon-box {
-        margin-bottom: 15px;
-    }
+  .icon-box {
+    margin-bottom: 15px;
+  }
 }
 </style>
