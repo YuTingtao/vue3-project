@@ -1,19 +1,19 @@
 <template>
-    <div class="wang-editor">
-        <Toolbar
-            :editor="editorRef"
-            :defaultConfig="toolbarConfig"
-            :mode="mode"
-        />
-        <Editor 
-            style="overflow-y: hidden;"
-            v-model="modelValue"
-            :defaultConfig="editorConfig"
-            :mode="mode"
-            @onCreated="handleCreated"
-            @onChange="handleChange"
-        />
-    </div>
+  <div class="wang-editor">
+    <Toolbar
+      :editor="editorRef"
+      :defaultConfig="toolbarConfig"
+      :mode="mode"
+    />
+    <Editor 
+      style="overflow-y: hidden;"
+      v-model="modelValue"
+      :defaultConfig="editorConfig"
+      :mode="mode"
+      @onCreated="handleCreated"
+      @onChange="handleChange"
+    />
+  </div>
 </template>
 
 <script setup>
@@ -22,101 +22,101 @@ import { onBeforeUnmount, ref, shallowRef } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 
 const props = defineProps({
-    modelValue: {
-        Type: String,
-        default: ''
-    },
-    placeholder: {
-        Type: String,
-        default: '请输入内容...'
-    },
-    maxLength: {
-        Type: Number,
-        default: null
-    },
-    mode: {
-        Type: String,
-        default: 'simple' // default,simple
-    }
+  modelValue: {
+    Type: String,
+    default: ''
+  },
+  placeholder: {
+    Type: String,
+    default: '请输入内容...'
+  },
+  maxLength: {
+    Type: Number,
+    default: null
+  },
+  mode: {
+    Type: String,
+    default: 'simple' // default,simple
+  }
 })
 const emit = defineEmits(['update:modelValue'])
 
 const editorRef = shallowRef()
 const toolbarConfig = ref({
-    modalAppendToBody: true
+  modalAppendToBody: true
 })
 const editorConfig = ref({
-    placeholder: props.placeholder,
-    maxLength: props.maxLength,
-    autoFocus: false,
-    MENU_CONF: {
-        uploadImage: {
-            server: '/api/upload',
-            // 自定义上传
-            // async customUpload(file, insertFn) {
-            //     let url = '';
-            //     insertFn(url)
-            // }
-        },
-        uploadVideo: {
-            server: '/api/upload',
-            // 自定义上传
-            // async customUpload(file, insertFn) {
-            //     let url = '';
-            //     insertFn(url)
-            // }
-        }
+  placeholder: props.placeholder,
+  maxLength: props.maxLength,
+  autoFocus: false,
+  MENU_CONF: {
+    uploadImage: {
+      server: '/api/upload',
+      // 自定义上传
+      // async customUpload(file, insertFn) {
+      //     let url = '';
+      //     insertFn(url)
+      // }
+    },
+    uploadVideo: {
+      server: '/api/upload',
+      // 自定义上传
+      // async customUpload(file, insertFn) {
+      //     let url = '';
+      //     insertFn(url)
+      // }
     }
+  }
 })
 
 // 组件销毁时，也及时销毁编辑器
 onBeforeUnmount(() => {
-    const editor = editorRef.value
-    if (editor == null) return
-    editor.destroy()
+  const editor = editorRef.value
+  if (editor == null) return
+  editor.destroy()
 })
 
 function handleCreated(editor) {
-    editorRef.value = editor // 记录 editor 实例，重要！
+  editorRef.value = editor // 记录 editor 实例，重要！
 }
 
 function handleChange(editor) {
-    emit('update:modelValue', editor.getHtml())
+  emit('update:modelValue', editor.getHtml())
 }
 
 // 获取富文本
 function getHtml() {
-    const editor = editorRef.value
-    if (editor == null) return
-    return editor.getHtml()
+  const editor = editorRef.value
+  if (editor == null) return
+  return editor.getHtml()
 }
 
 // 获取纯文本
 function getText() {
-    const editor = editorRef.value
-    if (editor == null) return
-    return editor.getText()
+  const editor = editorRef.value
+  if (editor == null) return
+  return editor.getText()
 }
 
 // 设置富文本
 function setHtml(html) {
-    const editor = editorRef.value
-    if (editor == null) return
-    editor.setHtml(html)
+  const editor = editorRef.value
+  if (editor == null) return
+  editor.setHtml(html)
 }
 
 // 插入文本
 function insertText(txt) {
-    const editor = editorRef.value
-    if (editor == null) return
-    editor.insertText(txt)
+  const editor = editorRef.value
+  if (editor == null) return
+  editor.insertText(txt)
 }
 
 defineExpose({
-    getHtml,
-    setHtml,
-    getText,
-    insertText
+  getHtml,
+  setHtml,
+  getText,
+  insertText
 })
 </script>
 

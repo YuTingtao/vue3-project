@@ -11,60 +11,60 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    resolve: {
-        alias: {
-            '@': resolve(__dirname, 'src')
-        }
-    },
-    css: {
-        preprocessorOptions: {
-            scss: {
-                additionalData: `@use '@/assets/scss/base/element.scss' as *;`
-            }
-        }
-    },
-    plugins: [
-        vue(),
-        AutoImport({
-            resolvers: [
-                ElementPlusResolver({
-                    importStyle: 'sass'
-                })
-            ],
-            // 解决eslint报错
-            eslintrc: {
-                enabled: true,
-                filepath: './.eslintrc-auto-import.json',
-                globalsPropValue: true,
-            }
-        }),
-        Components({
-            resolvers: [
-                ElementPlusResolver({
-                    importStyle: 'sass'
-                })
-            ]
-        }),
-        createSvgIconsPlugin({
-            iconDirs: [resolve(process.cwd(), 'src/assets/icon')],
-            symbolId: 'icon-[dir]-[name]',
-            inject: 'body-last',
-            customDomId: 'svg__icon__dom'
-        })
-    ],
-    base: './', // 公共基础路径
-    envDir: './env', // 多环境env文件目录
-    server: {
-        host: '0.0.0.0',
-        port: 8083,
-        open: true,
-        cors: true,
-        proxy: {
-            '/api': 'http://xxx.com'
-        }
-    },
-    build: {
-        outDir: 'docs', // 打包输出目录
-        chunkSizeWarningLimit: 1000
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src')
     }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use '@/assets/scss/base/element.scss' as *;`
+      }
+    }
+  },
+  plugins: [
+    vue(),
+    AutoImport({
+      resolvers: [
+        ElementPlusResolver({
+          importStyle: 'sass'
+        })
+      ],
+      // 解决eslint报错
+      eslintrc: {
+        enabled: true,
+        filepath: './.eslintrc-auto-import.json',
+        globalsPropValue: true
+      }
+    }),
+    Components({
+      resolvers: [
+        ElementPlusResolver({
+          importStyle: 'sass'
+        })
+      ]
+    }),
+    createSvgIconsPlugin({
+      iconDirs: [resolve(process.cwd(), 'src/assets/icon')],
+      symbolId: 'icon-[dir]-[name]',
+      inject: 'body-last',
+      customDomId: 'svg__icon__dom'
+    })
+  ],
+  base: './', // 公共基础路径
+  envDir: './env', // 多环境env文件目录
+  server: {
+    host: '0.0.0.0',
+    port: 8083,
+    open: true,
+    cors: true,
+    proxy: {
+      '/api': 'http://xxx.com'
+    }
+  },
+  build: {
+    outDir: 'docs', // 打包输出目录
+    chunkSizeWarningLimit: 1000
+  }
 })

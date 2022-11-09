@@ -1,6 +1,6 @@
 {
     "printWidth": 120,
-    "tabWidth": 4,
+    "tabWidth": 2,
     "useTabs": false,
     "semi": false,
     "singleQuote": true,
@@ -10,6 +10,6 @@
     "jsxBracketSameLine": true,
     "arrowParens": "avoid",
     "vueIndentScriptAndStyle": false,
-    "endOfLine": "crlf",
+    "endOfLine": "lf",
     "embeddedLanguageFormatting": "auto"
 }

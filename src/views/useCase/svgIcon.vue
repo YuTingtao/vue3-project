@@ -1,11 +1,11 @@
 <template>
-    <div class="page-svg">
-        <div class="icon-box">
-            <svg-icon name="case" size="16px"></svg-icon>
-            <span> svg-icon案例</span>
-        </div>
-        <div>访问时间：{{ formatDate(Date.now()) }}</div>
+  <div class="page-svg">
+    <div class="icon-box">
+      <svg-icon name="case" size="16px"></svg-icon>
+      <span> svg-icon案例</span>
     </div>
+    <div>访问时间：{{ formatDate(Date.now()) }}</div>
+  </div>
 </template>
 
 <script setup>

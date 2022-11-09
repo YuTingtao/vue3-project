@@ -8,7 +8,8 @@
     "build:dev": "vue-tsc --noEmit && vite build --mode dev",
     "build:test": "vue-tsc --noEmit && vite build --mode test",
     "build:prod": "vue-tsc --noEmit && vite build --mode prod",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint:fix": "eslint --fix --ext .js,.ts,.vue src"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",

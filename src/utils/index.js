@@ -25,11 +25,11 @@ import numToChinese from './numToChinese.js'
 import saveBlobFile from './saveBlobFile.js'
 
 export {
-    deepClone,
-    formatDate,
-    formatFileSize,
-    generateGuid,
-    getTreePath,
-    numToChinese,
-    saveBlobFile
+  deepClone,
+  formatDate,
+  formatFileSize,
+  generateGuid,
+  getTreePath,
+  numToChinese,
+  saveBlobFile
 }

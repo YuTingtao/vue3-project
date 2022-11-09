@@ -20,8 +20,8 @@ module.exports = {
     },
     plugins: ['vue', '@typescript-eslint'],
     rules: {
-        'indent': ['error', 4, { 'SwitchCase': 1 }],          // 缩进4个空格
-        'vue/html-indent': ['error', 4],
+        'indent': ['error', 2, { 'SwitchCase': 1 }],          // 缩进2个空格
+        'vue/html-indent': ['error', 2],
         'semi': ['error', 'never'],                           // js结尾不加分号
         'quotes': ['error', 'single', { 'allowTemplateLiterals': true }], // js定义字符串使用单引号
         'camelcase': 'error',                                 // 驼峰命名

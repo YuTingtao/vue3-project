@@ -14,14 +14,14 @@ import 'virtual:svg-icons-register'
 import errorDirective from './directives/error.js'
 
 if (store.state.token) {
-    store.dispatch('getMenus')
+  store.dispatch('getMenus')
 }
 
 const app = createApp(App)
 app.use(router)
 app.use(store)
 for (let key in ElIcons) {
-    app.component(key, ElIcons[key])
+  app.component(key, ElIcons[key])
 }
 app.component('svg-icon', SvgIcon)
 app.directive('error', errorDirective)
