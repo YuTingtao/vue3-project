@@ -11,7 +11,7 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+import { useStore } from '@/store'
 import { formatDate } from '@/utils'
 
 const router = useRouter()

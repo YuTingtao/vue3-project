@@ -43,7 +43,7 @@
 <script setup>
 import { ref, reactive, computed, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+import { useStore } from '@/store'
 import MenuItem from './components/menuItem.vue'
 
 const router = useRouter()
@@ -51,13 +51,13 @@ const route = useRoute()
 const store = useStore()
 
 // 用户信息
-const userInfo = computed(() => store.state.userInfo)
+const userInfo = computed(() => store.userInfo)
 // 菜单数组
-const menus = computed(() => store.state.menus)
+const menus = store.menus
 
 // 退出登录
 function Logout() {
-  store.commit('setLogout')
+  store.setLogout()
   router.replace('/login')
 }
 </script>

@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import store from '../store'
+import { useStore } from '@/store'
 
 const routes = [
   {
@@ -36,14 +36,14 @@ const router = createRouter({
   routes,
   scrollBehavior(to, from, savedPosition) {
     return {
-      // el: document.querySelector('.g-body'),
       top: 0
     }
   }
 })
 
 router.beforeEach((to, from, next) => {
-  if (!store.state.token && to.path !== '/login') {
+  const store = useStore()
+  if (!store.token && to.path !== '/login') {
     next('/login')
   } else {
     next()

@@ -33,7 +33,7 @@
 <script setup>
 import { ref, reactive, toRaw } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+import { useStore } from '@/store'
 import loginApi from '@/api/user/login.js'
 
 const router = useRouter()
@@ -66,12 +66,11 @@ async function submitForm() {
 
 // 登录
 async function handleLogin() {
-  store.commit('setLogin', {
+  store.setLogin({
     token: 'Token-123456789',
     userInfo: { realName: 'admin', avatar: '' }
   })
-  await store.dispatch('getMenus')
-  sessionStorage.vuex = JSON.stringify(store.state)
+  await store.getMenus()
   if (route.query.redirect) {
     router.replace(route.query.redirect)
   } else {

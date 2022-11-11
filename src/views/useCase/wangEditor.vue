@@ -13,7 +13,7 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+import { useStore } from '@/store'
 
 const router = useRouter()
 const route = useRoute()

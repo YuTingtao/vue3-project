@@ -8,7 +8,7 @@
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import { computed, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+import { useStore } from '@/store'
 
 const router = useRouter()
 const route = useRoute()
@@ -16,13 +16,11 @@ const store = useStore()
 
 // 菜单路径
 const menuPaths = computed(() => {
-  return ['/', '/login', ...store.getters.menuPaths]
+  return ['/', '/login', ...store.menuPaths]
 })
 
 // 首个菜单路径
-const firstMenuPath = computed(() => {
-  return store.getters.firstMenuPath
-})
+const firstMenuPath = computed(() => store.firstMenuPath)
 
 // 路由拦截
 watch(() => route.path, val => {

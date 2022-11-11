@@ -1,6 +1,8 @@
 import Axios from 'axios'
-import store from '../store'
 import router from '../router'
+import { useStore } from '@/store'
+
+const store = useStore()
 
 // message提示
 function toast(msg) {
@@ -19,7 +21,7 @@ function toLogin() {
     path = `/login?redirect=${currentRoute.fullPath}`
   }
   router.push(path)
-  store.commit('setLogout')
+  store.setLogout()
 }
 
 const axios = Axios.create({
@@ -30,8 +32,8 @@ const axios = Axios.create({
 // 请求拦截
 axios.interceptors.request.use(
   config => {
-    if (store.state.token) {
-      config.headers['token'] = store.state.token
+    if (store.token) {
+      config.headers['token'] = store.token
     }
     return config
   },

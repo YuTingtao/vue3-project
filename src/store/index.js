@@ -1,22 +1,19 @@
-import { createStore } from 'vuex'
-import dataDic from './modules/dataDic.js'
+import { defineStore } from 'pinia'
 import menuData from '../router/menuData.js'
 
-const store = createStore({
-  state() {
-    return {
-      token: '',
-      userInfo: {},
-      menus: [] // 菜单
-    }
-  },
+export const useStore = defineStore('store', {
+  state: () => ({
+    token: '',
+    userInfo: {},
+    menus: [] // 菜单
+  }),
   getters: {
     // 扁平菜单路径
-    menuPaths(state) {
+    menuPaths: (state) => {
       return getFlatPaths(state.menus)
     },
     // 首个菜单路径
-    firstMenuPath(state) {
+    firstMenuPath: (state) => {
       let res = '/login'
       if (state.menus.length > 0) {
         let item = state.menus[0]
@@ -28,33 +25,29 @@ const store = createStore({
       return res
     }
   },
-  mutations: {
+  actions: {
     // 登录
-    setLogin(state, data) {
-      state.token = data.token
-      state.userInfo = data.userInfo
-      sessionStorage.vuex = state
+    setLogin(obj) {
+      this.token = obj.token
+      this.userInfo = obj.userInfo
     },
     // 退出登录
-    setLogout(state) {
-      state.token = ''
-      state.userInfo = {}
-      state.menus = []
-      sessionStorage.removeItem('vuex')
+    setLogout() {
+      this.token = ''
+      this.userInfo = {}
     },
-    // 设置菜单
-    setMenus(state, data) {
-      state.menus = data
-    }
-  },
-  actions: {
     // 获取菜单
-    getMenus({ commit }) {
-      commit('setMenus', menuData)
+    getMenus() {
+      this.menus = menuData
     }
   },
-  modules: {
-    dataDic // 数据字典
+  // 状态持久化
+  persist: {
+    enabled: true,
+    strategies: [{
+      key: 'store',
+      storage: sessionStorage, // 默认 sessionStorage
+    }]
   }
 })
 
@@ -70,18 +63,3 @@ function getFlatPaths(menus, res = []) {
   })
   return res
 }
-
-// 防止vuex刷新失效
-window.addEventListener('beforeunload', () => {
-  sessionStorage.vuex = JSON.stringify(store.state)
-})
-if (/iphone|ipad|ipod/.test(navigator.userAgent)) {
-  window.addEventListener('pagehide', () => {
-    sessionStorage.vuex = JSON.stringify(store.state)
-  })
-}
-if (sessionStorage.vuex) {
-  store.replaceState(Object.assign({}, store.state, JSON.parse(sessionStorage.vuex)))
-}
-
-export default store
