@@ -3,7 +3,7 @@
     <Toolbar :editor="editorRef" :defaultConfig="toolbarConfig" :mode="mode" />
     <Editor
       style="overflow-y: hidden"
-      v-model="modelValue"
+      v-model="richText"
       :defaultConfig="editorConfig"
       :mode="mode"
       @onCreated="handleCreated"
@@ -13,7 +13,7 @@
 
 <script setup>
 import '@wangeditor/editor/dist/css/style.css'
-import { onBeforeUnmount, ref, shallowRef } from 'vue'
+import { onBeforeUnmount, ref, shallowRef, watch } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 
 const props = defineProps({
@@ -36,7 +36,14 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:modelValue'])
 
+// 富文本内容
+const richText = ref(props.modelValue)
+watch(() => props.modelValue, (val) => {
+  richText.value = val
+})
+// 编辑器ref
 const editorRef = shallowRef()
+
 const toolbarConfig = ref({
   modalAppendToBody: true
 })
