@@ -1,14 +1,14 @@
 // 自动化导入
-// const files = import.meta.globEager('./*.js');
-// const modules = {};
+// const files = import.meta.glob('./*.js', { eager: true })
+// const modules = {}
 
 // Object.keys(files).forEach((key) => {
-//     if (key == './index.js') return;
-//     modules[key.replace(/(\.\/|\.js)/gi, '')] = files[key].default;
+//   if (key == './index.js') return
+//   modules[key.replace(/(\.\/|\.js)/g, '')] = files[key].default
 // })
 
 // module.exports = {
-//     ...modules
+//   ...modules
 // }
 
 /*
