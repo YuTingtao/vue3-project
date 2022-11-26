@@ -43,8 +43,18 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const store = useStore()
+  // 菜单路径
+  const menuPaths = ['/', '/login', '/404', ...store.menuPaths]
+  // 首个菜单路径
+  const firstMenuPath = store.firstMenuPath
+  // 路由拦截
   if (!store.token && to.path !== '/login') {
     next('/login')
+  } else if (!menuPaths.includes(to.path)) {
+    if (to.path != '/index') {
+      ElMessage.error('暂无权限访问')
+    }
+    router.replace(firstMenuPath)
   } else {
     next()
   }
