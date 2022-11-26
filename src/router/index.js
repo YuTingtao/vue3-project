@@ -54,7 +54,7 @@ router.beforeEach((to, from, next) => {
     if (to.path != '/index') {
       ElMessage.error('暂无权限访问')
     }
-    router.replace(firstMenuPath)
+    next(firstMenuPath)
   } else {
     next()
   }
