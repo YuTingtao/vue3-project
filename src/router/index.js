@@ -47,6 +47,7 @@ router.beforeEach((to, from, next) => {
   const menuPaths = ['/', '/login', '/404', ...store.menuPaths]
   // 首个菜单路径
   const firstMenuPath = store.firstMenuPath
+  
   // 路由拦截
   if (!store.token && to.path !== '/login') {
     next('/login')
