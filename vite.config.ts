@@ -8,6 +8,7 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // svg-icon
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import viteCompression from 'vite-plugin-compression'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,6 +21,28 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `@use '@/assets/scss/base/element.scss' as *;`
+      }
+    }
+  },
+  base: './', // 公共基础路径
+  envDir: './env', // 多环境env文件目录
+  server: {
+    host: '0.0.0.0',
+    port: 8083,
+    open: true,
+    cors: true,
+    proxy: {
+      '/api': 'http://xxx.com'
+    }
+  },
+  build: {
+    outDir: 'docs', // 打包输出目录
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          venders: ['vue', 'vue-router', 'pinia', 'axios'],
+        }
       }
     }
   },
@@ -50,21 +73,9 @@ export default defineConfig({
       symbolId: 'icon-[dir]-[name]',
       inject: 'body-last',
       customDomId: 'svg__icon__dom'
-    })
-  ],
-  base: './', // 公共基础路径
-  envDir: './env', // 多环境env文件目录
-  server: {
-    host: '0.0.0.0',
-    port: 8083,
-    open: true,
-    cors: true,
-    proxy: {
-      '/api': 'http://xxx.com'
-    }
-  },
-  build: {
-    outDir: 'docs', // 打包输出目录
-    chunkSizeWarningLimit: 1000
-  }
+    }),
+    viteCompression({
+      threshold: 51200, // 大于50K的文件进行gzip压缩
+    }),
+  ]
 })
