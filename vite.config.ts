@@ -26,26 +26,6 @@ export default defineConfig({
   },
   base: './', // 公共基础路径
   envDir: './env', // 多环境env文件目录
-  server: {
-    host: '0.0.0.0',
-    port: 8083,
-    open: true,
-    cors: true,
-    proxy: {
-      '/api': 'http://xxx.com'
-    }
-  },
-  build: {
-    outDir: 'docs', // 打包输出目录
-    chunkSizeWarningLimit: 1000,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          venders: ['vue', 'vue-router', 'pinia', 'axios'],
-        }
-      }
-    }
-  },
   plugins: [
     vue(),
     AutoImport({
@@ -77,5 +57,25 @@ export default defineConfig({
     viteCompression({
       threshold: 51200, // 大于50K的文件进行gzip压缩
     }),
-  ]
+  ],
+  server: {
+    host: '0.0.0.0',
+    port: 8083,
+    open: true,
+    cors: true,
+    proxy: {
+      '/api': 'http://xxx.com'
+    }
+  },
+  build: {
+    outDir: 'docs', // 打包输出目录
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          venders: ['vue', 'vue-router', 'pinia', 'axios'],
+        }
+      }
+    }
+  }
 })
