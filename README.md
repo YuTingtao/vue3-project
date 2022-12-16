@@ -17,7 +17,6 @@ vue3 + vite + Element-Plus项目模板，支持自定义主题色，动态路由
 │   ├── env.d.ts
 │   └── main.js
 ├── auto-imports.d.ts element-plus按需自动导入生成文件
-├── auto-imports.d.ts element-plus按需自动导入生成文件
 ├── index.html
 └── vite.config.js
 ```
