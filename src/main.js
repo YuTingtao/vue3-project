@@ -11,18 +11,26 @@ import * as ElIcons from '@element-plus/icons-vue'
 import SvgIcon from './components/svgIcon/index.vue'
 import 'virtual:svg-icons-register'
 
-// 自定义指令
-import errorDirective from './directives/error.js'
+// 导入自定义指令
+import importDirectives from './directives'
 
 const pinia = createPinia()
 pinia.use(piniaPersist)
+
 const app = createApp(App)
 app.use(pinia)
 app.use(router)
 
+// 注册自定义指令
+importDirectives(app)
+
+// 注册el-icon组件
 for (let key in ElIcons) {
   app.component(key, ElIcons[key])
 }
+
+// 注册svg-icon组件
 app.component('svg-icon', SvgIcon)
-app.directive('error', errorDirective)
+
+// 挂载
 app.mount('#app')
