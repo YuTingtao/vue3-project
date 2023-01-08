@@ -18,8 +18,8 @@ const pinia = createPinia()
 pinia.use(piniaPersist)
 
 const app = createApp(App)
-app.use(pinia)
 app.use(router)
+app.use(pinia)
 
 // 注册自定义指令
 importDirectives(app)
