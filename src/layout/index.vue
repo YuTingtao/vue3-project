@@ -2,7 +2,7 @@
 <template>
   <div class="g-header">
     <router-link class="g-logo" to="/">
-      <img src="../assets/img/logo.png" alt="" />
+      <img src="../assets/image/logo.png" alt="" />
       <h2>管理后台</h2>
     </router-link>
     <div class="g-header-right">
@@ -13,8 +13,9 @@
             :size="34"
             icon="UserFilled"
             shape="circle"
-            fit="cover"></el-avatar>
-          <span>{{ userInfo.realName || userInfo.nickName }}</span>
+            fit="cover">
+          </el-avatar>
+          <span>{{ userInfo.realName }}</span>
           <el-icon>
             <arrow-down />
           </el-icon>
@@ -61,3 +62,79 @@ function Logout() {
   router.replace('/login')
 }
 </script>
+
+<style lang="scss">
+.g-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+  color: #fff;
+  background: var(--el-color-primary);
+}
+
+.g-logo {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  img {
+    margin-right: 10px;
+    width: 36px;
+    height: 36px;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: normal;
+  }
+}
+
+.g-header-right {
+  display: flex;
+  align-items: center;
+  .el-dropdown {
+    color: #fff;
+  }
+  .el-avatar {
+    margin-right: 5px;
+  }
+  .el-tooltip__trigger {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.g-body {
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: 60px;
+  padding-left: 220px;
+}
+
+.g-aside {
+  position: fixed;
+  left: 0;
+  top: 60px;
+  bottom: 0;
+  z-index: 1000;
+  width: 220px;
+  background: #fff;
+  border-right: 1px solid var(--el-border-color);
+  .el-menu--vertical {
+    border-right: none;
+  }
+}
+
+.g-page {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 20px;
+  background: #fff;
+}
+</style>

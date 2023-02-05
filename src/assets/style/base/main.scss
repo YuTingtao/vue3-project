@@ -1,5 +1,13 @@
 @import './reset.css';
-@import './layout.scss';
+
+html, body {
+  min-width: 1300px;
+}
+
+#app {
+  height: 100%;
+  background: #fff;
+}
 
 // 覆盖element默认样式
 body {

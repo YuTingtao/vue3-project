@@ -4,7 +4,7 @@ import router from './router/index'
 import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persist'
 
-import './assets/scss/base/main.scss'
+import './assets/style/base/main.scss'
 import * as ElIcons from '@element-plus/icons-vue'
 
 // svg icon

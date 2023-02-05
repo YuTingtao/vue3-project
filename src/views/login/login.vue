@@ -80,5 +80,5 @@ async function handleLogin() {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/login/login.scss';
+@import '@/assets/style/login/login.scss';
 </style>
