@@ -1,48 +1,53 @@
 <!-- 全局layout -->
 <template>
-  <div class="g-header">
-    <router-link class="g-logo" to="/">
-      <img src="../assets/image/logo.png" alt="" />
-      <h2>管理后台</h2>
-    </router-link>
-    <div class="g-header-right">
-      <el-dropdown trigger="hover">
-        <div>
-          <el-avatar
-            :src="userInfo.avatar"
-            :size="34"
-            icon="UserFilled"
-            shape="circle"
-            fit="cover">
-          </el-avatar>
-          <span>{{ userInfo.realName }}</span>
-          <el-icon>
-            <arrow-down />
-          </el-icon>
-        </div>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item>用户中心</el-dropdown-item>
-            <el-dropdown-item @click="Logout">退出</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
-    </div>
+  <!-- 头部 -->
+  <div class="g-header" :style="`left: ${isCollapse ? '64px':'220px'};`">
+    <el-icon class="menu-collapse" @click="togglleCollapse()">
+      <component :is="isCollapse? 'Expand':'Fold'"></component>
+    </el-icon>
+    <el-dropdown trigger="hover">
+      <div>
+        <el-avatar
+          :src="userInfo.avatar"
+          :size="32"
+          icon="UserFilled"
+          shape="circle"
+          fit="cover">
+        </el-avatar>
+        <span>{{ userInfo.realName }}</span>
+        <el-icon>
+          <arrow-down />
+        </el-icon>
+      </div>
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item @click="handleLogout">退出</el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
   </div>
-  <div class="g-body">
-    <div class="g-aside">
-      <el-scrollbar>
-        <el-menu :default-active="$route.meta.activePath || $route.path" router>
-          <MenuItem :menus="menus"></MenuItem>
-        </el-menu>
-      </el-scrollbar>
-    </div>
+  <!-- 侧边菜单 -->
+  <div class="g-aside">
+    <el-scrollbar>
+      <el-menu
+        :collapse="isCollapse"
+        router
+        :default-active="$route.meta.activePath || $route.path"
+        text-color="#fff"
+        background-color="#545c64">
+        <MenuItem :menus="menus"></MenuItem>
+      </el-menu>
+    </el-scrollbar>
+  </div>
+  <!-- 主体 -->
+  <div class="g-main" :style="`padding-left: ${isCollapse ? '64px':'220px'};`">
+    <!-- 页面主体 -->
     <router-view class="g-page"></router-view>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
 import MenuItem from './components/menuItem.vue'
@@ -56,85 +61,86 @@ const userInfo = computed(() => store.userInfo)
 // 菜单数组
 const menus = store.menus
 
+const isCollapse = ref(false)
+function togglleCollapse() {
+  isCollapse.value = !isCollapse.value
+}
+
 // 退出登录
-function Logout() {
+function handleLogout() {
   store.setLogout()
   router.replace('/login')
 }
 </script>
 
 <style lang="scss">
+// 头部
 .g-header {
   position: fixed;
   top: 0;
-  left: 0;
-  z-index: 1000;
+  left: 220px;
+  right: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   box-sizing: border-box;
-  width: 100%;
-  height: 60px;
+  height: 56px;
   padding: 0 20px;
-  color: #fff;
-  background: var(--el-color-primary);
-}
-
-.g-logo {
-  display: flex;
-  align-items: center;
-  margin-right: auto;
-  img {
-    margin-right: 10px;
-    width: 36px;
-    height: 36px;
-  }
-  h2 {
-    font-size: 22px;
-    font-weight: normal;
-  }
-}
-
-.g-header-right {
-  display: flex;
-  align-items: center;
-  .el-dropdown {
-    color: #fff;
-  }
-  .el-avatar {
-    margin-right: 5px;
-  }
-  .el-tooltip__trigger {
+  color: #333;
+  background: #fff;
+  border-bottom: 1px solid var(--el-border-color-extra-light);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.04);
+  transition: left var(--el-transition-duration) ease-in-out;
+  .menu-collapse {
+    font-size: 18px;
+    color: #333;
     cursor: pointer;
+  }
+  .el-dropdown {
     display: flex;
     align-items: center;
+    .el-avatar {
+      margin-right: 5px;
+    }
+    .el-tooltip__trigger {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
   }
 }
 
-.g-body {
-  box-sizing: border-box;
-  height: 100%;
-  padding-top: 60px;
-  padding-left: 220px;
-}
-
+// 侧边菜单
 .g-aside {
   position: fixed;
+  top: 0;
   left: 0;
-  top: 60px;
   bottom: 0;
-  z-index: 1000;
-  width: 220px;
-  background: #fff;
-  border-right: 1px solid var(--el-border-color);
+  z-index: 110;
+  color: #fff;
+  background: #545c64;
   .el-menu--vertical {
     border-right: none;
+    &:not(.el-menu--collapse) {
+      width: 220px;
+    }
   }
+}
+
+// 主体
+.g-main {
+  box-sizing: border-box;
+  padding-left: 220px;
+  padding-top: 56px;
+  min-height: 100%;
+  background: #fff;
+  transition: padding-left var(--el-transition-duration) ease-in-out;
 }
 
 .g-page {
   box-sizing: border-box;
   min-height: 100%;
-  padding: 20px;
-  background: #fff;
+  margin: 20px;
 }
 </style>
