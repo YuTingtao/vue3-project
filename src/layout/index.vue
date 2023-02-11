@@ -2,7 +2,7 @@
 <template>
   <!-- 头部 -->
   <div class="g-header" :style="`left: ${isCollapse ? '64px':'220px'};`">
-    <el-icon class="menu-collapse" @click="togglleCollapse()">
+    <el-icon class="menu-collapse" @click="toggleCollapse()">
       <component :is="isCollapse? 'Expand':'Fold'"></component>
     </el-icon>
     <el-dropdown trigger="hover">
@@ -62,7 +62,7 @@ const userInfo = computed(() => store.userInfo)
 const menus = store.menus
 
 const isCollapse = ref(false)
-function togglleCollapse() {
+function toggleCollapse() {
   isCollapse.value = !isCollapse.value
 }
 
