@@ -34,7 +34,7 @@
         router
         :default-active="$route.meta.activePath || $route.path"
         text-color="#fff"
-        background-color="#545c64">
+        background-color="#404145">
         <MenuItem :menus="menus"></MenuItem>
       </el-menu>
     </el-scrollbar>
@@ -119,7 +119,7 @@ function handleLogout() {
   bottom: 0;
   z-index: 110;
   color: #fff;
-  background: #545c64;
+  background: #404145;
   .el-menu--vertical {
     border-right: none;
     &:not(.el-menu--collapse) {
