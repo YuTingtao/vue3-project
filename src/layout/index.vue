@@ -2,7 +2,7 @@
 <template>
   <!-- 头部 -->
   <div class="g-header" :style="`left: ${isCollapse ? '64px':'220px'};`">
-    <el-icon class="menu-collapse" @click="toggleCollapse()">
+    <el-icon class="menu-collapse" @click="toggleCollapse">
       <component :is="isCollapse? 'Expand':'Fold'"></component>
     </el-icon>
     <el-dropdown trigger="hover">
@@ -34,7 +34,7 @@
         router
         :default-active="$route.meta.activePath || $route.path"
         text-color="#fff"
-        background-color="#404145">
+        background-color="#323537">
         <MenuItem :menus="menus"></MenuItem>
       </el-menu>
     </el-scrollbar>
@@ -119,7 +119,7 @@ function handleLogout() {
   bottom: 0;
   z-index: 110;
   color: #fff;
-  background: #404145;
+  background: #323537;
   .el-menu--vertical {
     border-right: none;
     &:not(.el-menu--collapse) {
