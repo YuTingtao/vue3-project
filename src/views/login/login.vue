@@ -68,7 +68,7 @@ async function submitForm() {
 async function handleLogin() {
   store.setLogin({
     token: 'Token-123456789',
-    userInfo: { realName: 'admin', avatar: '' }
+    userInfo: { name: 'admin', avatar: '' }
   })
   await store.getMenus()
   if (route.query.redirect) {

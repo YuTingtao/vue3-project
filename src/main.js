@@ -8,7 +8,7 @@ import './assets/style/base/main.scss'
 import * as ElIcons from '@element-plus/icons-vue'
 
 // svg icon
-import SvgIcon from './components/svgIcon/index.vue'
+import SvgIcon from './components/base/svgIcon.vue'
 import 'virtual:svg-icons-register'
 
 // 自定义指令

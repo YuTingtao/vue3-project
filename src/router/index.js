@@ -4,9 +4,9 @@ import { useStore } from '@/store'
 const routes = [
   {
     path: '/',
-    name: 'layout',
+    name: 'useCase',
     redirect: '/svgIcon',
-    component: () => import('@/layout/index.vue'),
+    component: () => import('@/components/layout/index.vue'),
     children: [
       {
         path: '/svgIcon',

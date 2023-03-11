@@ -1,9 +1,9 @@
 <!-- 全局layout -->
 <template>
   <!-- 头部 -->
-  <div class="g-header" :style="`left: ${isCollapse ? '64px':'220px'};`">
+  <div class="g-header" :style="`left: ${isCollapse ? '64px' : '220px'};`">
     <el-icon class="menu-collapse" @click="toggleCollapse">
-      <component :is="isCollapse? 'Expand':'Fold'"></component>
+      <component :is="isCollapse ? 'Expand' : 'Fold'"></component>
     </el-icon>
     <el-dropdown trigger="hover">
       <div>
@@ -14,7 +14,7 @@
           shape="circle"
           fit="cover">
         </el-avatar>
-        <span>{{ userInfo.realName }}</span>
+        <span>{{ userInfo.name }}</span>
         <el-icon>
           <arrow-down />
         </el-icon>
@@ -34,7 +34,7 @@
         router
         :default-active="$route.meta.activePath || $route.path"
         text-color="#fff"
-        background-color="#323537">
+        background-color="#424548">
         <MenuItem :menus="menus"></MenuItem>
       </el-menu>
     </el-scrollbar>
@@ -119,7 +119,7 @@ function handleLogout() {
   bottom: 0;
   z-index: 110;
   color: #fff;
-  background: #323537;
+  background: #424548;
   .el-menu--vertical {
     border-right: none;
     &:not(.el-menu--collapse) {
