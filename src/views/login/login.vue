@@ -70,7 +70,7 @@ async function handleLogin() {
     token: 'Token-123456789',
     userInfo: { name: 'admin', avatar: '' }
   })
-  await store.getMenus()
+  await store.getUserMenus()
   if (route.query.redirect) {
     router.replace(route.query.redirect)
   } else {

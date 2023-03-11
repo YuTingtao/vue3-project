@@ -4,22 +4,21 @@ import menuData from '../router/menuData.js'
 export const useStore = defineStore('store', {
   state: () => ({
     token: '',
-    userInfo: {},
-    menus: [] // 菜单
+    userInfo: {}, // 用户信息
+    userMenus: [] // 用户菜单
   }),
   getters: {
     // 扁平菜单路径
-    menuPaths: (state) => {
-      return getFlatPaths(state.menus)
+    menuNames: (state) => {
+      return getFlatNames(state.userMenus)
     },
     // 首个菜单路径
-    firstMenuPath: (state) => {
-      let path = '/login'
-      if (state.menus.length > 0) {
-        let item = state.menus[0]
-        path = item.path || item.redirect
+    firstMenuName: (state) => {
+      let name = 'login'
+      if (state.userMenus.length > 0) {
+        name = state.userMenus[0].name
       }
-      return path
+      return name
     }
   },
   actions: {
@@ -34,8 +33,8 @@ export const useStore = defineStore('store', {
       this.userInfo = {}
     },
     // 获取菜单
-    getMenus() {
-      this.menus = menuData
+    getUserMenus() {
+      this.userMenus = menuData
     }
   },
   // 状态持久化
@@ -49,13 +48,13 @@ export const useStore = defineStore('store', {
 })
 
 // 获取菜单扁平路径
-function getFlatPaths(menus, res = []) {
+function getFlatNames(menus, res = []) {
   menus.forEach(item => {
-    if (item.path) {
-      res.push(item.path)
+    if (item.name) {
+      res.push(item.name)
     }
     if (item.children && item.children.length > 0) {
-      getFlatPaths(item.children, res)
+      getFlatNames(item.children, res)
     }
   })
   return res
