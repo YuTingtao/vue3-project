@@ -14,15 +14,12 @@ export const useStore = defineStore('store', {
     },
     // 首个菜单路径
     firstMenuPath: (state) => {
-      let res = '/login'
+      let path = '/login'
       if (state.menus.length > 0) {
         let item = state.menus[0]
-        res = item.redirect || item.path
-        if (item.children && item.children.length > 0) {
-          res = item.children[0].redirect || item.children[0].path
-        }
+        path = item.path || item.redirect
       }
-      return res
+      return path
     }
   },
   actions: {

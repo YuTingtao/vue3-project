@@ -6,20 +6,35 @@ const routes = [
     path: '/',
     name: 'useCase',
     redirect: '/svgIcon',
-    component: () => import('@/components/layout/index.vue'),
+    component: () => import('@/layout/index.vue'),
+    meta: {
+      title: '使用案例',
+      icon: 'document',
+      hiden: 0, // 是否显示
+      // activePath: '', // 导航高亮
+    },
     children: [
       {
         path: '/svgIcon',
         name: 'svgIcon',
         component: () => import('@/views/useCase/svgIcon.vue'),
         meta: {
+          title: 'svg图表',
+          icon: '',
+          hiden: 0, // 是否显示
           // activePath: '', // 导航高亮
-        }
+        },
       },
       {
         path: '/wangEditor',
         name: 'wangEditor',
-        component: () => import('@/views/useCase/wangEditor.vue')
+        component: () => import('@/views/useCase/wangEditor.vue'),
+        meta: {
+          title: 'wangEditor',
+          icon: '',
+          hiden: 0, // 是否显示
+          // activePath: '', // 导航高亮
+        },
       }
     ]
   },
