@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { useStore } from '@/store'
 
+// 路由
 const routes = [
   {
     path: '/',
@@ -10,36 +11,36 @@ const routes = [
   {
     path: '/useCase',
     name: 'useCase',
-    redirect: '/useCase/svgIcon',
+    redirect: '',
     component: () => import('@/layout/index.vue'),
     meta: {
       title: '使用案例',
       icon: 'document',
-      hiden: 0, // 是否显示
+      hidden: 0, // 是否显示
       // activePath: '', // 导航高亮
     },
     children: [
       {
-        path: '/useCase/svgIcon',
+        path: '/svgIcon',
         name: 'svgIcon',
         redirect: '',
         component: () => import('@/views/useCase/svgIcon.vue'),
         meta: {
-          title: 'svg图表',
+          title: 'svg图标',
           icon: '',
-          hiden: 0, // 是否显示
+          hidden: 0, // 是否显示
           // activePath: '', // 导航高亮
-        },
+        }
       },
       {
-        path: '/useCase/wangEditor',
+        path: '/wangEditor',
         name: 'wangEditor',
         redirect: '',
         component: () => import('@/views/useCase/wangEditor.vue'),
         meta: {
           title: 'wangEditor',
           icon: '',
-          hiden: 0, // 是否显示
+          hidden: 0, // 是否显示
           // activePath: '', // 导航高亮
         },
       }
@@ -64,20 +65,20 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  // store状态
   const store = useStore()
-  // 菜单names
-  const menuNames = ['login', '404', ...store.menuNames]
-  // 首个菜单name
-  const firstMenuName = store.firstMenuName
-  
+  // 扁平菜单数组
+  const flatMenuPaths = ['/login', '/404', ...store.flatMenuPaths]
+  // 首个菜单
+  const firstMenuPath = store.firstMenuPath
   // 路由拦截
   if (!store.token && to.path !== '/login') {
     next('/login')
-  } else if (!menuNames.includes(to.name)) {
-    if (to.path != '/') {
+  } else if (!flatMenuPaths.includes(to.path)) {
+    if (to.path != '/' && to.path != '/404') {
       ElMessage.error('暂无权限访问')
     }
-    next({ name: firstMenuName })
+    next(firstMenuPath)
   } else {
     next()
   }

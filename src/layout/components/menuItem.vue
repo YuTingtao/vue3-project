@@ -1,15 +1,19 @@
 <template>
   <template v-for="item in menus" :key="item.name">
-    <template v-if="store.menuNames.includes(item.name) && !item.meta.hidden">
+    <template v-if="store.flatMenuPaths.includes(item.path) && !item.meta.hidden">
       <el-menu-item
         v-if="!item.children || item.children.filter(item => !item.meta.hidden).length < 1"
-        :index="item.redirect || item.path">
-        <el-icon v-if="item.meta.icon"><component :is="item.meta.icon"></component></el-icon>
+        :index="item.path || item.redirect">
+        <el-icon v-if="item.meta.icon">
+          <component :is="item.meta.icon"></component>
+        </el-icon>
         <span>{{ item.meta.title }}</span>
       </el-menu-item>
       <el-sub-menu v-else :index="item.path || item.redirect">
         <template #title>
-          <el-icon v-if="item.meta.icon"><component :is="item.meta.icon"></component></el-icon>
+          <el-icon v-if="item.meta.icon">
+            <component :is="item.meta.icon"></component>
+          </el-icon>
           <span>{{ item.meta.title }}</span>
         </template>
         <menu-item :menus="item.children"></menu-item>
@@ -31,4 +35,5 @@ const props = defineProps({
 })
 </script>
 
-<style lang="" scoped></style>
+<style lang="scss" scoped>
+</style>

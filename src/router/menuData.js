@@ -1,15 +1,15 @@
 export default [
   {
     id: 2000,
-    name: 'useCase',
+    path: '/useCase',
     children: [
       {
         id: 2001,
-        name: 'svgIcon'
+        path: '/svgIcon',
       },
       {
         id: 2002,
-        name: 'wangEditor',
+        path: '/wangEditor',
       }
     ]
   }

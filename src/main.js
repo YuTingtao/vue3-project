@@ -1,8 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router/index'
-import { createPinia } from 'pinia'
-import piniaPersist from 'pinia-plugin-persist'
+import router from './router/index.js'
+import pinia from './store/pinia.js'
 
 import './assets/style/base/main.scss'
 import * as ElIcons from '@element-plus/icons-vue'
@@ -13,9 +12,6 @@ import 'virtual:svg-icons-register'
 
 // 自定义指令
 import importDirectives from './directives'
-
-const pinia = createPinia()
-pinia.use(piniaPersist)
 
 const app = createApp(App)
 app.use(router)

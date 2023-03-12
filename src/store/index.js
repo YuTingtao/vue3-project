@@ -9,16 +9,12 @@ export const useStore = defineStore('store', {
   }),
   getters: {
     // 扁平菜单路径
-    menuNames: (state) => {
-      return getFlatNames(state.userMenus)
+    flatMenuPaths: (state) => {
+      return getFlatPaths(state.userMenus)
     },
     // 首个菜单路径
-    firstMenuName: (state) => {
-      let name = 'login'
-      if (state.userMenus.length > 0) {
-        name = state.userMenus[0].name
-      }
-      return name
+    firstMenuPath: (state) => {
+      return getFirstPath(state.userMenus[0])
     }
   },
   actions: {
@@ -48,14 +44,25 @@ export const useStore = defineStore('store', {
 })
 
 // 获取菜单扁平路径
-function getFlatNames(menus, res = []) {
+function getFlatPaths(menus, res = []) {
   menus.forEach(item => {
-    if (item.name) {
-      res.push(item.name)
+    if (item.path) {
+      res.push(item.path)
     }
     if (item.children && item.children.length > 0) {
-      getFlatNames(item.children, res)
+      return getFlatPaths(item.children, res)
     }
   })
   return res
+}
+
+// 获取第一个菜单路径
+function getFirstPath(menu, path = '/login') {
+  if (menu) {
+    path = menu.path
+    if (menu.children && menu.children.length > 0) {
+      return getFirstPath(menu.children[0], path)
+    }
+  }
+  return path
 }
