@@ -13,6 +13,7 @@ const store = useStore()
 
 // 版本更新提示功能
 window.addEventListener('error', function(e) {
+  console.log(e)
   if (e.target.src) {
     getAppVersion()
   }
