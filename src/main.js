@@ -29,5 +29,9 @@ for (let key in ElIcons) {
 // 注册svg-icon组件
 app.component('svg-icon', SvgIcon)
 
+app.config.errorHandler = (err, instance, info) => {
+  console.log('err:', err, 'instance:', instance, 'info:', info)
+}
+
 // 挂载
 app.mount('#app')

@@ -90,9 +90,9 @@ button {
   cursor: pointer;
 }
 
-.clearfix {
+/* .clearfix {
   *zoom: 1;
-}
+} */
 
 .clearfix:after {
   display: block;

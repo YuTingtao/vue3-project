@@ -17,7 +17,7 @@ window.addEventListener('error', function(e) {
   if (e.target.src) {
     getAppVersion()
   }
-})
+}, true)
 // 获取版本信息
 async function getAppVersion() {
   let res = await baseApi.getAppVersion()
