@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
 import pinia from './store/pinia.js'
+import { useStore } from './store'
 
 import './assets/style/base/main.scss'
 import * as ElIcons from '@element-plus/icons-vue'

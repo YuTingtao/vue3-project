@@ -2,8 +2,6 @@ import Axios from 'axios'
 import router from '../router'
 import { useStore } from '@/store'
 
-const store = useStore()
-
 // message提示
 function toast(msg) {
   ElMessage.closeAll()
@@ -13,7 +11,7 @@ function toast(msg) {
   })
 }
 
-// 调到的登录页
+// 跳到的登录页
 function toLogin() {
   const currentRoute = router.currentRoute
   let path = '/login'
@@ -21,7 +19,6 @@ function toLogin() {
     path = `/login?redirect=${currentRoute.fullPath}`
   }
   router.push(path)
-  store.setLogout()
 }
 
 const axios = Axios.create({
@@ -32,6 +29,7 @@ const axios = Axios.create({
 // 请求拦截
 axios.interceptors.request.use(
   config => {
+    const store = useStore()
     if (store.token) {
       config.headers['token'] = store.token
     }
@@ -45,6 +43,7 @@ axios.interceptors.request.use(
 // 相应拦截
 axios.interceptors.response.use(
   res => {
+    const store = useStore()
     if (res.status === 200) {
       if (res.data instanceof Blob || res.data instanceof ArrayBuffer) {
         return res
@@ -55,6 +54,7 @@ axios.interceptors.response.use(
       }
       // 需要登录
       if (res.data.code == '000001') {
+        store.setLogout()
         toLogin()
       }
       return res.data

@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia'
+import baseApi from '@/api/base'
 import menuData from '../router/menuData.js'
 
 export const useStore = defineStore('store', {
   state: () => ({
+    appVersion: '', // 版本
     token: '',
     userInfo: {}, // 用户信息
     userMenus: [] // 用户菜单
@@ -18,6 +20,12 @@ export const useStore = defineStore('store', {
     }
   },
   actions: {
+    async getAppVersion() {
+      let res = await baseApi.getAppVersion()
+      if (res.status == 200) {
+        this.appVersion = res.data.version
+      }
+    },
     // 登录
     setLogin(obj) {
       this.token = obj.token

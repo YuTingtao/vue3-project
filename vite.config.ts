@@ -25,7 +25,6 @@ export default defineConfig({
     }
   },
   base: './', // 公共基础路径
-  envDir: './env', // 多环境env文件目录
   plugins: [
     vue(),
     AutoImport({
