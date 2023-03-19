@@ -1,6 +1,6 @@
 <template>
   <div class="page-editor">
-    <editor ref="editorRef" v-model="richText" :maxLength="1000"></editor>
+    <base-editor ref="editorRef" v-model="richText" :maxLength="1000"></base-editor>
     <div style="margin: 10px 0">{{ richText }}</div>
     <div>
       <el-button type="primary" @click="setHtml">设置富文本</el-button>
