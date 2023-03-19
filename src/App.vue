@@ -17,11 +17,20 @@ function getVersion() {
       var version = localStorage.appVersion || ''
       if (res.version != version) {
         localStorage.appVersion = res.version
-        location.reload()
+        openVersionTips()
       }
     }
   }
   xhr.send()
+}
+
+// 打开提示
+function openVersionTips() {
+  ElMessageBox.alert('检测到版本有更新，将要刷新页面', '版本更新提示', {
+    callback: () => {
+      location.reload()
+    }
+  })
 }
 
 // 监听Promise Reject
