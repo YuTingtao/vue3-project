@@ -27,7 +27,7 @@
     }
     getVersion();
     // 监听报错
-    document.querySelector('script').addEventListener('error', function(e) {
+    window.addEventListener('unhandledrejection', function(e) {
       console.log(e);
       getVersion();
     })
