@@ -17,7 +17,6 @@
 
 // 手动导入
 import deepClone from './deepClone.js'
-import formatDate from './formatDate.js'
 import formatFileSize from './formatFileSize.js'
 import generateGuid from './generateGuid.js'
 import getTreePath from './getTreePath.js'
@@ -26,7 +25,6 @@ import saveBlobFile from './saveBlobFile.js'
 
 export {
   deepClone,
-  formatDate,
   formatFileSize,
   generateGuid,
   getTreePath,

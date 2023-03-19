@@ -4,7 +4,7 @@
       <svg-icon name="case" size="16px"></svg-icon>
       <span> svg-icon案例</span>
     </div>
-    <div>访问时间：{{ formatDate(Date.now()) }}</div>
+    <div>访问时间：{{ dayjs().format('YYYY-MM-DD HH:mm:ss') }}</div>
   </div>
 </template>
 
@@ -12,7 +12,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
-import { formatDate } from '@/utils'
+import dayjs from 'dayjs'
 
 const router = useRouter()
 const route = useRoute()

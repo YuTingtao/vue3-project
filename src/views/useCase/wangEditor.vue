@@ -25,7 +25,7 @@ const editorRef = ref()
 let richText = ref('<p>老王编辑器</p>')
 
 function setHtml() {
-  editorRef.value.setHtml(`<p>设置内容：${Date.now()}</p>`)
+  editorRef.value.setHtml(`<p>设置内容：时间戳${Date.now()}</p>`)
 }
 
 function getHtml() {
