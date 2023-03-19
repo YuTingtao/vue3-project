@@ -23,10 +23,20 @@ function getVersion() {
   }
   xhr.send()
 }
+getVersion()
 
-// 监听script报错
+// 监听Promise Reject
+window.addEventListener('unhandledrejection', function(e) {
+  console.log('Promise Reject:', e)
+  if (e.reason.message == 'error loading dynamically imported module') {
+    getVersion()
+  }
+})
+// 监听报错
 window.addEventListener('error', function(e) {
   console.log('错误:', e)
-  getVersion()
+  if (e.target.src) {
+    getVersion()
+  }
 })
 </script>
