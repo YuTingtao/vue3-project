@@ -31,7 +31,7 @@
     getVersion();
     // 监听报错
     window.addEventListener('unhandledrejection', function(e) {
-      console.log(e);
+      console.log('html监听的错误:', e);
       getVersion();
     })
   </script>
