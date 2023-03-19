@@ -7,7 +7,7 @@
 <script setup>
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 
-// 监听报错
+// 监听script报错
 document.querySelector('script').addEventListener('error', function(e) {
   console.log(e)
 })
