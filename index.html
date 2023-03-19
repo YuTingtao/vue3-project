@@ -27,11 +27,9 @@
     }
     getVersion();
     // 监听报错
-    window.addEventListener('error', function(e) {
+    document.querySelector('script').addEventListener('error', function(e) {
       console.log(e);
-      if (e.target.src) {
-        getVersion();
-      }
+      getVersion();
     })
   </script>
 </body>
