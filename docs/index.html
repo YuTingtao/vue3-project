@@ -5,8 +5,8 @@
   <link rel="icon" href="./favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>管理后台</title>
-  <script type="module" crossorigin src="./assets/index.a42d81aa.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/vendors.86e72204.js">
+  <script type="module" crossorigin src="./assets/index.d7699d16.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/vendors.2d77e465.js">
   <link rel="stylesheet" href="./assets/index.2185bf09.css">
 </head>
 <body>
@@ -16,16 +16,19 @@
     // 获取版本信息
     function getVersion() {
       var xhr = new XMLHttpRequest();
-      xhr.open('get', '/version.json');
-      // xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.open('get', '/version.json', true);
       xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
           var res = JSON.parse(xhr.responseText);
-          console.log(res);
+          var version = localStorage.appVersion || '';
+          if (res.version != version) {
+            location.reload();
+          }
+          localStorage.appVersion = res.version;
         }
       }
-      xhr.send();
     }
+    getVersion();
     // 监听报错
     window.addEventListener('error', function(e) {
       console.log(e);
