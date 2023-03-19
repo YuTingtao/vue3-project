@@ -13,16 +13,19 @@
     // 获取版本信息
     function getVersion() {
       var xhr = new XMLHttpRequest();
-      xhr.open('get', '/version.json');
-      // xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.open('get', '/version.json', true);
       xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
           var res = JSON.parse(xhr.responseText);
-          console.log(res);
+          var version = localStorage.appVersion || '';
+          if (res.version != version) {
+            location.reload();
+          }
+          localStorage.appVersion = res.version;
         }
       }
-      xhr.send();
     }
+    getVersion();
     // 监听报错
     window.addEventListener('error', function(e) {
       console.log(e);
