@@ -10,7 +10,7 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 // 获取版本信息
 function getVersion() {
   var xhr = new XMLHttpRequest()
-  xhr.open('get', '/version.json', true)
+  xhr.open('get', './version.json', true)
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var res = JSON.parse(xhr.responseText)
@@ -23,19 +23,11 @@ function getVersion() {
   }
   xhr.send()
 }
-getVersion()
 
 // 监听Promise Reject
 window.addEventListener('unhandledrejection', function(e) {
   console.log('Promise Reject:', e)
   if (e.reason.message == 'error loading dynamically imported module') {
-    getVersion()
-  }
-})
-// 监听报错
-window.addEventListener('error', function(e) {
-  console.log('错误:', e)
-  if (e.target.src) {
     getVersion()
   }
 })
