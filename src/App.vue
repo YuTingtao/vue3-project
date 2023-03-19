@@ -31,4 +31,11 @@ window.addEventListener('unhandledrejection', function(e) {
     getVersion()
   }
 })
+// 监听报错
+window.addEventListener('error', function(e) {
+  console.log('错误:', e)
+  if (e.target.src) {
+    getVersion()
+  }
+})
 </script>
