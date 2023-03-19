@@ -26,7 +26,7 @@ function getVersion() {
 
 // 打开提示
 function openVersionTips() {
-  ElMessageBox.alert('检测到版本有更新，将要刷新页面', '版本更新提示', {
+  ElMessageBox.alert('检测到版本有更新，请刷新页面', '版本更新提示', {
     callback: () => {
       location.reload()
     }
@@ -37,13 +37,6 @@ function openVersionTips() {
 window.addEventListener('unhandledrejection', function(e) {
   console.log('Promise Reject:', e)
   if (e.reason.message == 'error loading dynamically imported module') {
-    getVersion()
-  }
-})
-// 监听报错
-window.addEventListener('error', function(e) {
-  console.log('错误:', e)
-  if (e.target.src) {
     getVersion()
   }
 })
