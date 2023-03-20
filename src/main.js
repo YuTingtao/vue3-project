@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
 import pinia from './store/pinia.js'
-import { useStore } from './store'
 
 import './assets/style/base/main.scss'
 import * as ElIcons from '@element-plus/icons-vue'
@@ -13,6 +12,9 @@ import 'virtual:svg-icons-register'
 
 // 自定义指令
 import importDirectives from './directives'
+
+// 版本检测
+import './utils/checkVersion.js'
 
 const app = createApp(App)
 app.use(router)
