@@ -23,9 +23,13 @@ function getVersion(isCheck = false) {
 }
 getVersion()
 
+let isChecked = false
 // 监听Promise Reject
 window.addEventListener('unhandledrejection', function(e) {
   if (e.reason.message == 'error loading dynamically imported module') {
-    getVersion(true)
+    if (!isChecked) {
+      isChecked = true
+      getVersion(true)
+    }
   }
 })
