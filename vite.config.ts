@@ -63,7 +63,7 @@ export default defineConfig({
     open: true,
     cors: true,
     proxy: {
-      '/api': 'http://xxx.com'
+      '/api': 'http://www.baidu.com'
     }
   },
   build: {

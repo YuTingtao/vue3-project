@@ -54,23 +54,29 @@ const rules = reactive({
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 })
 
+const captcha = ref(null)
+
 // 提交表单
 async function submitForm() {
   if (!formRef.value) return
   await formRef.value.validate(valid => {
     if (valid) {
-      handleLogin()
+      loginApi.login().then(() => {
+        handleLogin()
+      }).catch(() => {
+        handleLogin()
+      })
     }
   })
 }
 
 // 登录
-async function handleLogin() {
+function handleLogin() {
   store.setLogin({
     token: 'Token-123456789',
     userInfo: { name: 'admin', avatar: '' }
   })
-  await store.getUserMenus()
+  store.getUserMenus()
   if (route.query.redirect) {
     router.replace(route.query.redirect)
   } else {
