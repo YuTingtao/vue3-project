@@ -5,23 +5,23 @@ export default {
   login(data) {
     return ajax.request({
       url: '/api/user/login',
-      method: 'POST',
+      method: 'post',
       data,
-      timeout: 1000
+      timeout: 500
     })
   },
   // 退出登录
   logout() {
     return ajax.request({
       url: '/api/user/logout',
-      method: 'POST'
+      method: 'get'
     })
   },
   // 用户菜单
   userMenus() {
     return ajax.request({
       url: '/api/user/userMenus',
-      method: 'POST'
+      method: 'get'
     })
   }
 }

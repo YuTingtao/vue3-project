@@ -30,6 +30,8 @@ const axios = Axios.create({
 axios.interceptors.request.use(
   config => {
     const store = useStore()
+    // application/x-www-form-urlencoded, multipart/form-data
+    config.headers['Content-Type'] = 'application/json'
     if (store.token) {
       config.headers['token'] = store.token
     }

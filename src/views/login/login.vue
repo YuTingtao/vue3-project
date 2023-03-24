@@ -54,14 +54,12 @@ const rules = reactive({
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 })
 
-const captcha = ref(null)
-
 // 提交表单
 async function submitForm() {
   if (!formRef.value) return
   await formRef.value.validate(valid => {
     if (valid) {
-      loginApi.login().then(() => {
+      loginApi.login(loginForm.value).then(() => {
         handleLogin()
       }).catch(() => {
         handleLogin()

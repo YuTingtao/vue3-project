@@ -1,14 +1,14 @@
 export default [
   {
-    id: 2000,
+    id: 1000,
     path: '/useCase',
     children: [
       {
-        id: 2001,
+        id: 1001,
         path: '/svgIcon',
       },
       {
-        id: 2002,
+        id: 1002,
         path: '/wangEditor',
       }
     ]
