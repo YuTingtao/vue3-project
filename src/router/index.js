@@ -14,9 +14,6 @@ const routes = [
     redirect: '',
     component: () => import('@/layout/index.vue'),
     meta: {
-      title: '使用案例',
-      icon: 'document',
-      hidden: 0, // 是否显示
       // activePath: '', // 导航高亮
     },
     children: [
@@ -26,9 +23,6 @@ const routes = [
         redirect: '',
         component: () => import('@/views/useCase/svgIcon.vue'),
         meta: {
-          title: 'svg图标',
-          icon: '',
-          hidden: 0, // 是否显示
           // activePath: '', // 导航高亮
         }
       },
@@ -38,9 +32,6 @@ const routes = [
         redirect: '',
         component: () => import('@/views/useCase/wangEditor.vue'),
         meta: {
-          title: 'wangEditor',
-          icon: '',
-          hidden: 0, // 是否显示
           // activePath: '', // 导航高亮
         },
       }
@@ -85,4 +76,3 @@ router.beforeEach((to, from, next) => {
 })
 
 export default router
-export { routes }

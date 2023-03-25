@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import menuData from '../router/menuData.js'
+import userMenus from '../router/userMenus.js'
 
 export const useStore = defineStore('store', {
   state: () => ({
@@ -30,7 +30,7 @@ export const useStore = defineStore('store', {
     },
     // 获取菜单
     getUserMenus() {
-      this.userMenus = menuData
+      this.userMenus = userMenus
     }
   },
   // 状态持久化
@@ -44,16 +44,16 @@ export const useStore = defineStore('store', {
 })
 
 // 获取菜单扁平路径
-function getFlatPaths(menus, res = []) {
+function getFlatPaths(menus, paths = []) {
   menus.forEach(item => {
     if (item.path) {
-      res.push(item.path)
+      paths.push(item.path)
     }
     if (item.children && item.children.length > 0) {
-      return getFlatPaths(item.children, res)
+      return getFlatPaths(item.children, paths)
     }
   })
-  return res
+  return paths
 }
 
 // 获取第一个菜单路径

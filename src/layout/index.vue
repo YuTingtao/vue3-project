@@ -35,7 +35,7 @@
         :default-active="$route.meta.activePath || $route.path"
         text-color="#fff"
         background-color="#424548">
-        <MenuItem :menus="routes"></MenuItem>
+        <MenuItem :menus="userMenus"></MenuItem>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -51,7 +51,6 @@ import { ref, reactive, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
 import MenuItem from './components/menuItem.vue'
-import { routes } from '@/router'
 
 const router = useRouter()
 const route = useRoute()
@@ -59,6 +58,9 @@ const store = useStore()
 
 // 用户信息
 const userInfo = computed(() => store.userInfo)
+
+// 用户菜单
+const userMenus = computed(() => store.userMenus)
 
 const isCollapse = ref(false)
 function toggleCollapse() {

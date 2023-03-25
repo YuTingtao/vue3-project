@@ -1,32 +1,28 @@
 <template>
   <template v-for="item in menus" :key="item.name">
-    <template v-if="store.flatMenuPaths.includes(item.path) && !item.meta.hidden">
-      <el-menu-item
-        v-if="!item.children || item.children.filter(item => !item.meta.hidden).length < 1"
+    <template v-if="!item.hidden">
+      <el-sub-menu
+        v-if="item.children && item.children.filter(item => !item.hidden).length"
         :index="item.path || item.redirect">
-        <el-icon v-if="item.meta.icon">
-          <component :is="item.meta.icon"></component>
-        </el-icon>
-        <span>{{ item.meta.title }}</span>
-      </el-menu-item>
-      <el-sub-menu v-else :index="item.path || item.redirect">
         <template #title>
-          <el-icon v-if="item.meta.icon">
-            <component :is="item.meta.icon"></component>
+          <el-icon v-if="item.icon">
+            <component :is="item.icon"></component>
           </el-icon>
-          <span>{{ item.meta.title }}</span>
+          <span>{{ item.title }}</span>
         </template>
         <menu-item :menus="item.children"></menu-item>
       </el-sub-menu>
+      <el-menu-item v-else :index="item.path || item.redirect">
+        <el-icon v-if="item.icon">
+          <component :is="item.icon"></component>
+        </el-icon>
+        <span>{{ item.title }}</span>
+      </el-menu-item>
     </template>
   </template>
 </template>
 
 <script setup>
-import { useStore } from '@/store'
-
-const store = useStore()
-
 const props = defineProps({
   menus: {
     type: Array,
