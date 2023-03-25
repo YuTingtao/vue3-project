@@ -1,5 +1,5 @@
-# Vue 3 + Vite
-vue3 + vite + Element-Plus项目模板，支持自定义主题色，动态路由菜单，svg-icon组件，axios拦截
+# 介绍
+vue3 + vite + element-plus + vue-router + pinia项目模板，支持自定义主题色，菜单权限，版本更新提示，svg-icon组件，axios拦截
 
 ## 目录结构
 ```
