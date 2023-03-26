@@ -6,10 +6,10 @@
     </div>
     <div>
       <span>按钮权限：</span>
-      <el-button v-permission="'新增'" type="primary">新增</el-button>
-      <el-button v-permission="'编辑'" type="primary">编辑</el-button>
-      <el-button v-permission="'删除'" type="primary">删除</el-button>
-      <el-button v-permission="'导出'" type="primary">导出</el-button>
+      <el-button v-permission="'add'" type="primary">新增</el-button>
+      <el-button v-permission="'edit'" type="primary">编辑</el-button>
+      <el-button v-permission="'delete'" type="primary">删除</el-button>
+      <el-button v-permission="'export'" type="primary">导出</el-button>
     </div>
   </div>
 </template>

@@ -16,7 +16,7 @@ export default [
         title: 'svg图标',
         icon: '',
         hidden: 0,
-        buttons: ['新增', '编辑', '删除'], // 按钮权限
+        buttons: ['add', 'edit', 'delete'], // 按钮权限
       },
       {
         path: '/wangEditor',
@@ -25,7 +25,7 @@ export default [
         title: '富文本编辑器',
         icon: '',
         hidden: 0,
-        buttons: ['新增', '编辑', '删除'], // 按钮权限
+        buttons: ['add', 'edit', 'delete'], // 按钮权限
       }
     ]
   }
