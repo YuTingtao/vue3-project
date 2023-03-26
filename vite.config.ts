@@ -61,9 +61,12 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 8083,
     open: true,
-    cors: true,
     proxy: {
-      '/api': 'http://www.example.com'
+      '/api': {
+        target: 'http://www.example.com',
+        changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/api/, '')
+      }
     }
   },
   build: {
