@@ -9,8 +9,8 @@ export const useStore = defineStore('store', {
   }),
   getters: {
     // 扁平菜单路径
-    flatMenuPaths: (state) => {
-      return getFlatPaths(state.userMenus)
+    flatMenuBtns: (state) => {
+      return getFlatMenuBtns(state.userMenus)
     },
     // 首个菜单路径
     firstMenuPath: (state) => {
@@ -43,17 +43,17 @@ export const useStore = defineStore('store', {
   }
 })
 
-// 获取菜单扁平路径
-function getFlatPaths(menus, paths = []) {
+// 获取菜单按钮(多级转为一级)
+function getFlatMenuBtns(menus, obj = {}) {
   menus.forEach(item => {
-    if (item.path) {
-      paths.push(item.path)
+    if (item.name) {
+      obj[item.name] = item.buttons || []
     }
     if (item.children && item.children.length > 0) {
-      return getFlatPaths(item.children, paths)
+      return getFlatMenuBtns(item.children, obj)
     }
   })
-  return paths
+  return obj
 }
 
 // 获取第一个菜单路径

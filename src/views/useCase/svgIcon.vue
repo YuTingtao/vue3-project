@@ -2,9 +2,15 @@
   <div class="page-svg">
     <div class="icon-box">
       <svg-icon name="case" size="16px"></svg-icon>
-      <span> svg-icon案例</span>
+      <span> svg-icon案例：{{ dayjs().format('YYYY-MM-DD HH:mm:ss') }}</span>
     </div>
-    <div>访问时间：{{ dayjs().format('YYYY-MM-DD HH:mm:ss') }}</div>
+    <div>
+      <span>按钮权限：</span>
+      <el-button v-permission="'新增'" type="primary">新增</el-button>
+      <el-button v-permission="'编辑'" type="primary">编辑</el-button>
+      <el-button v-permission="'删除'" type="primary">删除</el-button>
+      <el-button v-permission="'导出'" type="primary">导出</el-button>
+    </div>
   </div>
 </template>
 

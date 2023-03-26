@@ -1,17 +1,17 @@
-// 图片加载错误，重新赋值src 指令
+// 图片加载错误重新赋值src指令
 export default {
-  mounted(el, directive) {
+  mounted(el, binding) {
     if (el.src) {
       el.onerror = () => {
-        el.src = directive.value
+        el.src = binding.value
         el.onerror = null
       }
     }
   },
-  updated(el, directive) {
+  updated(el, binding) {
     if (el.src) {
       el.onerror = () => {
-        el.src = directive.value
+        el.src = binding.value
         el.onerror = null
       }
     }

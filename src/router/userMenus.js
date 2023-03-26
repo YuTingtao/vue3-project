@@ -7,6 +7,7 @@ export default [
     title: '组件案例',
     icon: 'document',
     hidden: 0,
+    buttons: [], // 按钮权限
     children: [
       {
         path: '/svgIcon',
@@ -14,7 +15,8 @@ export default [
         redirect: '',
         title: 'svg图标',
         icon: '',
-        hidden: 0
+        hidden: 0,
+        buttons: ['新增', '编辑', '删除'], // 按钮权限
       },
       {
         path: '/wangEditor',
@@ -22,7 +24,8 @@ export default [
         redirect: '',
         title: '富文本编辑器',
         icon: '',
-        hidden: 0
+        hidden: 0,
+        buttons: ['新增', '编辑', '删除'], // 按钮权限
       }
     ]
   }

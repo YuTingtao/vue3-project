@@ -58,14 +58,14 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   // store状态
   const store = useStore()
-  // 扁平菜单数组
-  const flatMenuPaths = ['/login', '/404', ...store.flatMenuPaths]
+  // 所有菜单数组
+  const allMenus = ['login', '404', ...Object.keys(store.flatMenuBtns)]
   // 首个菜单
   const firstMenuPath = store.firstMenuPath
   // 路由拦截
   if (!store.token && to.path !== '/login') {
     next('/login')
-  } else if (!flatMenuPaths.includes(to.path)) {
+  } else if (!allMenus.includes(to.name)) {
     if (to.path != '/' && to.path != '/404') {
       ElMessage.error('暂无权限访问')
     }

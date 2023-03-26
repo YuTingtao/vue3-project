@@ -11,12 +11,12 @@ function toast(msg) {
   })
 }
 
-// 跳到的登录页
+// 跳到登录页
 function toLogin() {
   const currentRoute = router.currentRoute
   let path = '/login'
-  if (currentRoute.path != '/login') {
-    path = `/login?redirect=${currentRoute.fullPath}`
+  if (currentRoute.value.path != '/login') {
+    path = `/login?redirect=${currentRoute.value.fullPath}`
   }
   router.push(path)
 }
