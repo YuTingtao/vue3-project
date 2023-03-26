@@ -51,6 +51,7 @@ import { ref, reactive, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
 import MenuItem from './components/menuItem.vue'
+import loginApi from '@/api/user/login.js'
 
 const router = useRouter()
 const route = useRoute()
@@ -69,8 +70,13 @@ function toggleCollapse() {
 
 // 退出登录
 function handleLogout() {
-  store.setLogout()
-  router.replace('/login')
+  loginApi.logout().then(res => {
+    store.setLogout()
+    router.replace('/login')
+  }).catch(err => {
+    store.setLogout()
+    router.replace('/login')
+  })
 }
 </script>
 
