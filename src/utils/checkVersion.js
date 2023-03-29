@@ -1,3 +1,6 @@
+// 是否检测过
+let isChecked = false
+
 // 获取版本信息
 function getVersion(isCheck = false) {
   var xhr = new XMLHttpRequest()
@@ -14,6 +17,7 @@ function getVersion(isCheck = false) {
             }
           })
         }
+        isChecked = false // 重置是否检测过
       } else {
         sessionStorage.appVersion = res.version
       }
@@ -23,7 +27,6 @@ function getVersion(isCheck = false) {
 }
 getVersion()
 
-let isChecked = false
 // 监听Promise Reject
 window.addEventListener('unhandledrejection', function(e) {
   if (e.reason.message == 'error loading dynamically imported module') {
