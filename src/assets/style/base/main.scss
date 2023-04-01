@@ -9,5 +9,13 @@ html, body {
   background: #fff;
 }
 
+.lazyload, .lazyloading {
+	opacity: 0;
+}
+.lazyloaded {
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
 // 覆盖element默认样式
 

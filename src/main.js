@@ -13,6 +13,9 @@ import 'virtual:svg-icons-register'
 // 自定义指令
 import importDirectives from './directives'
 
+// 图片懒加载: <img class="lazyload" data-src="" />
+import 'lazysizes'
+
 // 版本检测
 import './utils/checkVersion.js'
 
