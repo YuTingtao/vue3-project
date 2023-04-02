@@ -71,13 +71,6 @@ export default defineConfig({
   },
   build: {
     outDir: 'docs', // 打包输出目录
-    chunkSizeWarningLimit: 1536,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendors: ['vue', 'vue-router', 'pinia', 'axios'],
-        }
-      }
-    }
+    chunkSizeWarningLimit: 1500,
   }
 })
