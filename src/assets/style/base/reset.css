@@ -67,6 +67,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 
 html, body {
   height: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -90,9 +91,9 @@ button {
   cursor: pointer;
 }
 
-/* .clearfix {
+.clearfix {
   *zoom: 1;
-} */
+}
 
 .clearfix:after {
   display: block;
