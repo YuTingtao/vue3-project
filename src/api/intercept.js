@@ -30,8 +30,8 @@ const axios = Axios.create({
 axios.interceptors.request.use(
   config => {
     const store = useStore()
-    // application/x-www-form-urlencoded, multipart/form-data
     config.headers['Content-Type'] = 'application/json'
+    // application/x-www-form-urlencoded 或 multipart/form-data
     if (store.token) {
       config.headers['token'] = store.token
     }
@@ -46,7 +46,7 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   res => {
     const store = useStore()
-    if (res.status === 200) {
+    if (res.status >= 200 & res.status < 300) {
       if (res.data instanceof Blob || res.data instanceof ArrayBuffer) {
         return res
       }
