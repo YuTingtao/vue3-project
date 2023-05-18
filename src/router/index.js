@@ -6,13 +6,13 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: () => import('@/layout/index.vue'),
+    component: () => import('@/layout/Index.vue'),
   },
   {
     path: '/useCase',
     name: 'useCase',
     redirect: '',
-    component: () => import('@/layout/index.vue'),
+    component: () => import('@/layout/Index.vue'),
     meta: {
       // activePath: '', // 导航高亮
     },
@@ -21,7 +21,7 @@ const routes = [
         path: '/svgIcon',
         name: 'svgIcon',
         redirect: '',
-        component: () => import('@/views/useCase/svgIcon.vue'),
+        component: () => import('@/views/useCase/SvgIcon.vue'),
         meta: {
           // activePath: '', // 导航高亮
         }
@@ -30,7 +30,7 @@ const routes = [
         path: '/wangEditor',
         name: 'wangEditor',
         redirect: '',
-        component: () => import('@/views/useCase/wangEditor.vue'),
+        component: () => import('@/views/useCase/WangEditor.vue'),
         meta: {
           // activePath: '', // 导航高亮
         },
@@ -41,7 +41,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/login/login.vue')
+    component: () => import('@/views/login/Login.vue')
   }
 ]
 
