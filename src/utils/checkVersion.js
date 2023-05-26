@@ -1,38 +1,19 @@
-// 是否检测过
-let isChecked = false
-
 // 获取版本信息
-function getVersion(isCheck = false) {
+export default function() {
   var xhr = new XMLHttpRequest()
   xhr.open('get', './version.json', true)
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var res = JSON.parse(xhr.responseText)
-      if (isCheck) {
-        var version = sessionStorage.appVersion
-        if (res.version != version) {
-          ElMessageBox.alert('检测到版本有更新，请刷新页面', '版本更新提示', {
-            callback: () => {
-              location.reload()
-            }
-          })
-        }
-        isChecked = false // 重置是否检测过
-      } else {
-        sessionStorage.appVersion = res.version
+      if (res.version != sessionStorage.appVersion) {
+        ElMessageBox.alert('检测到版本有更新，请刷新页面', '版本更新提示', {
+          callback: () => {
+            location.reload()
+          }
+        })
       }
+      sessionStorage.appVersion = res.version
     }
   }
   xhr.send()
 }
-getVersion()
-
-// 监听Promise Reject
-window.addEventListener('unhandledrejection', function(e) {
-  if (e.reason.message == 'error loading dynamically imported module') {
-    if (!isChecked) {
-      isChecked = true
-      getVersion(true)
-    }
-  }
-})
