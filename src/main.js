@@ -22,7 +22,8 @@ import checkVersion from './utils/checkVersion.js'
 const app = createApp(App)
 // 处理错误
 app.config.errorHandler = (err, instance, info) => {
-  checkVersion() // 版本检测
+  // 版本检测
+  checkVersion()
 }
 app.use(router)
 app.use(pinia)
