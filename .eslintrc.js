@@ -39,6 +39,6 @@ module.exports = {
     'no-unused-vars': 'off',                              // 未使用变量不报错
     'vue/no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
-    'vue/multi-word-component-names': 'off'
+    'vue/multi-word-component-names': 'on'
   }
 }
