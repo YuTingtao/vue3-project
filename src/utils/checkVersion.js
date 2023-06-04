@@ -27,7 +27,6 @@ function checkVersion() {
     }
   }
   xhr.send()
-  
 }
 
 export default checkVersion
