@@ -1,0 +1,26 @@
+@import './reset.css';
+
+html, body {
+  min-width: 1300px;
+}
+
+#app {
+  height: 100%;
+  background: #fff;
+}
+
+.lazyload, .lazyloading {
+	opacity: 0;
+}
+.lazyloaded {
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+// vue transition
+.v-enter-active, .v-leave-active {
+  transition: opacity 0.3s ease;
+}
+.v-enter-from, .v-leave-to {
+  opacity: 0;
+}
