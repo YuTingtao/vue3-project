@@ -23,8 +23,6 @@ import dayjs from 'dayjs'
 const router = useRouter()
 const route = useRoute()
 const store = useStore()
-
-let show = ref(false)
 </script>
 
 <style lang="scss" scoped>
