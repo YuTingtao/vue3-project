@@ -9,8 +9,8 @@ export default {
     // 当前按钮名称
     const name = binding.value
     // 对应页面所有按钮
-    const pageBtns = store.flatMenuBtns[currentRoute.value.name]
-    if (!pageBtns.some(item => item == name)) {
+    const pageBtns = store.flatMenus[currentRoute.value.name]
+    if (!pageBtns.some(item => item.name == name)) {
       el.parentNode.removeChild(el)
     }
   }

@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { getFlatMenus, getFirstPath } from './utils.js'
 import userMenus from '../router/userMenus.js'
 
 export const useStore = defineStore('store', {
@@ -9,8 +10,8 @@ export const useStore = defineStore('store', {
   }),
   getters: {
     // 扁平菜单路径
-    flatMenuBtns: (state) => {
-      return getFlatMenuBtns(state.userMenus)
+    flatMenus: (state) => {
+      return getFlatMenus(state.userMenus)
     },
     // 首个菜单路径
     firstMenuPath: (state) => {
@@ -42,27 +43,3 @@ export const useStore = defineStore('store', {
     }]
   }
 })
-
-// 获取菜单按钮(多级转为一级)
-function getFlatMenuBtns(menus, obj = {}) {
-  menus.forEach(item => {
-    if (item.name) {
-      obj[item.name] = item.buttons || []
-    }
-    if (item.children && item.children.length > 0) {
-      return getFlatMenuBtns(item.children, obj)
-    }
-  })
-  return obj
-}
-
-// 获取第一个菜单路径
-function getFirstPath(menu, path = '/login') {
-  if (menu) {
-    path = menu.path
-    if (menu.children && menu.children.length > 0) {
-      return getFirstPath(menu.children[0], path)
-    }
-  }
-  return path
-}

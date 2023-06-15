@@ -57,12 +57,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  // store状态
-  const store = useStore()
-  // 所有菜单数组
-  const allMenus = ['login', '404', ...Object.keys(store.flatMenuBtns)]
-  // 首个菜单
-  const firstMenuPath = store.firstMenuPath
+  const store = useStore() // store状态
+  const allMenus = ['login', '404', ...Object.keys(store.flatMenus)] // 所有菜单数组
+  
   // 路由拦截
   if (!store.token && to.path !== '/login') {
     next('/login')
@@ -70,7 +67,7 @@ router.beforeEach((to, from, next) => {
     if (to.path != '/' && to.path != '/404') {
       ElMessage.error('暂无权限访问')
     }
-    next(firstMenuPath)
+    next(store.firstMenuPath)
   } else {
     next()
   }
