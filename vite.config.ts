@@ -9,6 +9,8 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // svg-icon
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import viteCompression from 'vite-plugin-compression'
+// 图片压缩
+import viteImagemin from 'vite-plugin-imagemin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -54,8 +56,9 @@ export default defineConfig({
       customDomId: 'svg__icon__dom'
     }),
     viteCompression({
-      threshold: 51200, // 大于50K的文件进行gzip压缩
+      threshold: 10240, // 大于10K的文件进行gzip压缩
     }),
+    viteImagemin({})
   ],
   server: {
     host: '0.0.0.0',
@@ -71,6 +74,15 @@ export default defineConfig({
   },
   build: {
     outDir: 'docs', // 打包输出目录
-    chunkSizeWarningLimit: 1500,
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          if(id.includes('node_modules')) {
+            return 'vendor'
+          }
+        }
+      }
+    }
   }
 })
