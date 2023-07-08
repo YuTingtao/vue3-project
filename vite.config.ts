@@ -60,18 +60,6 @@ export default defineConfig({
     }),
     viteImagemin({})
   ],
-  server: {
-    host: '0.0.0.0',
-    port: 8083,
-    open: true,
-    proxy: {
-      '/api': {
-        target: 'http://www.example.com',
-        changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
-  },
   build: {
     outDir: 'docs', // 打包输出目录
     chunkSizeWarningLimit: 1000,
@@ -82,6 +70,18 @@ export default defineConfig({
             return 'vendor'
           }
         }
+      }
+    }
+  },
+  server: {
+    host: '0.0.0.0',
+    port: 8080,
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'http://www.example.com',
+        changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   }
