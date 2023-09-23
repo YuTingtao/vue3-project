@@ -18,6 +18,7 @@ import 'lazysizes'
 
 // 版本检测
 import checkVersion from './utils/checkVersion.js'
+checkVersion('init')
 
 const app = createApp(App)
 // 处理错误

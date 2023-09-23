@@ -65,7 +65,7 @@ router.beforeEach((to, from, next) => {
     next('/login')
   } else if (!allMenus.includes(to.name)) {
     if (to.path != '/' && to.path != '/404') {
-      ElMessage.error('暂无权限访问')
+      ElMessage.error('访问地址不存在')
     }
     next(store.firstMenuPath)
   } else {
