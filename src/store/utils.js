@@ -1,8 +1,8 @@
 // 获取菜单按钮(多级转为一级)
 function getFlatMenus(menus, obj = {}) {
   menus.forEach(item => {
-    if (item.name) {
-      obj[item.name] = item.buttons || []
+    if (item.path) {
+      obj[item.path] = item.buttons || []
     }
     if (item.children && item.children.length > 0) {
       return getFlatMenus(item.children, obj)

@@ -58,12 +58,12 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const store = useStore() // store状态
-  const allMenus = ['login', '404', ...Object.keys(store.flatMenus)] // 所有菜单数组
+  const allMenus = ['/login', '/404', ...Object.keys(store.flatMenus)] // 所有菜单数组
   
   // 路由拦截
   if (!store.token && to.path !== '/login') {
     next('/login')
-  } else if (!allMenus.includes(to.name)) {
+  } else if (!allMenus.includes(to.path)) {
     if (to.path != '/' && to.path != '/404') {
       ElMessage.error('访问地址不存在')
     }
