@@ -1,7 +1,7 @@
 <!-- 全局layout -->
 <template>
   <!-- 头部 -->
-  <div class="g-header" :style="`left: ${isCollapse ? '64px' : '220px'};`">
+  <div class="app-head" :style="`left: ${isCollapse ? '64px' : '220px'};`">
     <el-icon class="menu-collapse" @click="toggleCollapse">
       <component :is="isCollapse ? 'Expand' : 'Fold'"></component>
     </el-icon>
@@ -27,7 +27,7 @@
     </el-dropdown>
   </div>
   <!-- 侧边菜单 -->
-  <div class="g-aside">
+  <div class="app-aside">
     <el-scrollbar>
       <el-menu
         :collapse="isCollapse"
@@ -40,9 +40,9 @@
     </el-scrollbar>
   </div>
   <!-- 主体 -->
-  <div class="g-main" :style="`padding-left: ${isCollapse ? '64px':'220px'};`">
+  <div class="app-main" :style="`padding-left: ${isCollapse ? '64px':'220px'};`">
     <!-- 页面主体 -->
-    <router-view class="g-page"></router-view>
+    <router-view class="app-view"></router-view>
   </div>
 </template>
 
@@ -82,7 +82,7 @@ function handleLogout() {
 
 <style lang="scss">
 // 头部
-.g-header {
+.app-head {
   position: fixed;
   top: 0;
   left: 220px;
@@ -119,7 +119,7 @@ function handleLogout() {
 }
 
 // 侧边菜单
-.g-aside {
+.app-aside {
   position: fixed;
   top: 0;
   left: 0;
@@ -136,7 +136,7 @@ function handleLogout() {
 }
 
 // 主体
-.g-main {
+.app-main {
   box-sizing: border-box;
   padding-left: 220px;
   padding-top: 56px;
@@ -145,7 +145,7 @@ function handleLogout() {
   transition: padding-left var(--el-transition-duration) ease-in-out;
 }
 
-.g-page {
+.app-view {
   box-sizing: border-box;
   min-height: 100%;
   margin: 20px;
