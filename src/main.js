@@ -29,7 +29,7 @@ app.config.errorHandler = (err, instance, info) => {
 app.use(router)
 app.use(pinia)
 
-// 导入自定义指令
+// 自定义指令
 importDirectives(app)
 
 // 注册el-icon组件

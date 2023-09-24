@@ -35,7 +35,7 @@
         :default-active="$route.meta.activePath || $route.path"
         text-color="#fff"
         background-color="#424548">
-        <MenuItem :menus="userMenus"></MenuItem>
+        <MenuItem v-for="item in userMenus" :key="item.name" :item="item"></MenuItem>
       </el-menu>
     </el-scrollbar>
   </div>

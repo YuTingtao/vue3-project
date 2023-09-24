@@ -69,12 +69,12 @@ async function submitForm() {
 }
 
 // 登录
-function handleLogin() {
+async function handleLogin() {
   store.setLogin({
     token: 'Token-123456789',
     userInfo: { name: 'admin', avatar: '' }
   })
-  store.getUserMenus()
+  await store.getUserMenus()
   if (route.query.redirect) {
     router.replace(route.query.redirect)
   } else {
