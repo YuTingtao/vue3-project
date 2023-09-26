@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build && node ./version.js",
+    "build": "node ./version.js && vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint:fix": "eslint --fix --ext .js,.ts,.vue src"
   },
