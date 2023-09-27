@@ -14,6 +14,7 @@ import viteImagemin from 'vite-plugin-imagemin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './', // 公共基础路径
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
@@ -26,7 +27,6 @@ export default defineConfig({
       }
     }
   },
-  base: './', // 公共基础路径
   plugins: [
     vue(),
     AutoImport({
