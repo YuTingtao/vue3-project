@@ -8,9 +8,9 @@ function initVersion() {
   })
   fs.writeFile(path.join(__dirname, '/public/version.json'), data, err => {
     if (err) {
-      console.log('生成version文件失败:', err)
+      console.log(err)
     } else {
-      console.log('生成version文件成功:', data)
+      console.log(data)
     }
   })
 }
