@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router/index.js'
 import pinia from './store/pinia.js'
 
-import './assets/style/base/main.scss'
+import './assets/style/main.scss'
 import * as ElIcons from '@element-plus/icons-vue'
 
 // svg icon
