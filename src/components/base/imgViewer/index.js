@@ -9,9 +9,12 @@ function viewImg(urls) {
   const app = createApp(ImgViewer, {
     modelValue: true,
     urlList: urls,
-    'onUpdate:modelValue': () => {
-      app.unmount(div)
-      div.remove()
+    'onUpdate:modelValue': (val) => {
+      // console.log(val)
+      if (!val) {
+        app.unmount(div)
+        div.remove()
+      }
     }
   })
   app.mount(div)
