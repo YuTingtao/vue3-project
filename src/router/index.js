@@ -19,10 +19,10 @@ const routes = [
     },
     children: [
       {
-        path: '/svgIcon',
-        name: 'svgIcon',
+        path: '/baseCase',
+        name: 'baseCase',
         redirect: '',
-        component: () => import('@/views/useCase/SvgIcon.vue'),
+        component: () => import('@/views/useCase/BaseCase.vue'),
         meta: {
           // activePath: '', // 导航高亮
         }

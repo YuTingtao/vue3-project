@@ -10,10 +10,10 @@ export default [
     buttons: [], // 按钮权限
     children: [
       {
-        path: '/svgIcon',
-        name: 'svgIcon',
+        path: '/baseCase',
+        name: 'baseCase',
         redirect: '',
-        title: 'svg图标',
+        title: '基础案例',
         icon: '',
         hidden: 0,
         buttons: [ // 按钮权限
