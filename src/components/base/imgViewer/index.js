@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import ImgViewer from './ImgViewer.vue'
 
-function showImgViewer(urls) {
+function viewImg(urls) {
   const div = document.createElement('div')
   div.classList.add('img-viewer-box')
   document.body.append(div)
@@ -17,4 +17,4 @@ function showImgViewer(urls) {
   app.mount(div)
 }
 
-export default showImgViewer
+export default viewImg

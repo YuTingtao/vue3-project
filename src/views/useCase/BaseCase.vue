@@ -25,7 +25,7 @@
 
     <div class="row-box">
       <span>图片预览：</span>
-      <el-button type="primary" @click="showImgViewer(urlList)">预览</el-button>
+      <el-button type="primary" @click="viewImg(urlList)">预览</el-button>
     </div>
   </div>
 </template>
@@ -35,7 +35,7 @@ import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
 import dayjs from 'dayjs'
-import showImgViewer from '@/components/base/imgViewer/index.js'
+import viewImg from '@/components/base/imgViewer/index.js'
 import bgImg from '@/assets/img/login/bg.jpg'
 import logoImg from '@/assets/img/logo.png'
 
