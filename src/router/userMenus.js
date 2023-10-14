@@ -4,7 +4,7 @@ export default [
     path: '/useCase',
     name: 'useCase',
     redirect: '',
-    title: '组件案例',
+    title: '使用案例',
     icon: 'document',
     hidden: 0,
     buttons: [], // 按钮权限
