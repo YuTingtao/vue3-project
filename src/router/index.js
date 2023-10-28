@@ -7,7 +7,7 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: () => import('@/layout/Index.vue'),
+    component: () => import('@/layout/index.vue'),
   },
   {
     path: '/useCase',
