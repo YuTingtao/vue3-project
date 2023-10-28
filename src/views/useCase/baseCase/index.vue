@@ -45,6 +45,7 @@ const store = useStore()
 
 // 图片地址
 const urlList = [bgImg, logoImg]
+
 </script>
 
 <style lang="scss" scoped>

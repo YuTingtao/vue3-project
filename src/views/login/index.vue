@@ -85,6 +85,7 @@ async function handleLogin() {
 
 <style lang="scss" scoped>
 .login-bg {
+  position: relative;
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -97,8 +98,8 @@ async function handleLogin() {
     position: absolute;
     left: 0;
     top: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     background: url('@/assets/img/login/bg.jpg') no-repeat 50% 50%;
     background-size: cover;
     filter: brightness(0.6);

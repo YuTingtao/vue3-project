@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import { useStore } from '@/store'
 import checkVersion from '../utils/checkVersion.js'
 
@@ -22,7 +22,7 @@ const routes = [
         path: '/baseCase',
         name: 'baseCase',
         redirect: '',
-        component: () => import('@/views/useCase/BaseCase.vue'),
+        component: () => import('@/views/useCase/baseCase/index.vue'),
         meta: {
           // activePath: '', // 导航高亮
         }
@@ -31,7 +31,7 @@ const routes = [
         path: '/wangEditor',
         name: 'wangEditor',
         redirect: '',
-        component: () => import('@/views/useCase/WangEditor.vue'),
+        component: () => import('@/views/useCase/wangEditor/index.vue'),
         meta: {
           // activePath: '', // 导航高亮
         },
@@ -42,7 +42,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/login/Login.vue')
+    component: () => import('@/views/login/index.vue')
   }
 ]
 
