@@ -1,5 +1,5 @@
 // 防抖函数
-function debounce(fn, wait) {
+function debounce(fn, wait = 500) {
   var timer
   return function() {
     var context = this, args = arguments

@@ -13,7 +13,7 @@ const routes = [
     path: '/useCase',
     name: 'useCase',
     redirect: '',
-    component: () => import('@/layout/Index.vue'),
+    component: () => import('@/layout/index.vue'),
     meta: {
       // activePath: '', // 导航高亮
     },

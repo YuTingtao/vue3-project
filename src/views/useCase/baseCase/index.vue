@@ -1,6 +1,5 @@
 <template>
   <div class="page-svg">
-    <div class="row-box">时间：{{ dayjs().format('YYYY-MM-DD HH:mm:ss') }}</div>
 
     <div class="row-box">
       <span>svg-icon：</span>
@@ -27,6 +26,7 @@
       <span>图片预览：</span>
       <el-button type="primary" @click="viewImg(urlList)">预览</el-button>
     </div>
+
   </div>
 </template>
 
@@ -34,18 +34,17 @@
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
-import dayjs from 'dayjs'
 import viewImg from '@/components/base/imgViewer/index.js'
-import bgImg from '@/assets/img/login/bg.jpg'
-import logoImg from '@/assets/img/logo.png'
 
 const router = useRouter()
 const route = useRoute()
 const store = useStore()
 
 // 图片地址
-const urlList = [bgImg, logoImg]
-
+const urlList = [
+  new URL('@/assets/img/login/bg.jpg', import.meta.url).href,
+  new URL('@/assets/img/logo.png', import.meta.url).href
+]
 </script>
 
 <style lang="scss" scoped>

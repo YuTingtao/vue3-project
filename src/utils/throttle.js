@@ -1,5 +1,5 @@
 // 节流函数
-function throttle(fn, wait) {
+function throttle(fn, wait = 500) {
   var timer
   return function() {
     var context = this, args = arguments
