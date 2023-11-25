@@ -1,17 +1,15 @@
 // 深拷贝
 function deepClone(obj) {
-  if (typeof obj !== 'object' || obj == null) return obj
-  let res = Array.isArray(obj) ? [] : {}
+  if (typeof obj !== 'object' || obj == null) {
+    return obj;
+  }
+  let clone = Array.isArray(obj) ? [] : {};
   for (let key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      if (typeof obj[key] === 'object' && obj[key] != null) {
-        res[key] = deepClone(obj[key])
-      } else {
-        res[key] = obj[key]
-      }
+    if (obj.hasOwnProperty(key)) {
+      clone[key] = deepClone(obj[key]);
     }
   }
-  return res
+  return clone;
 }
 
 export default deepClone
