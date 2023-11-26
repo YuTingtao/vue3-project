@@ -88,6 +88,16 @@ export default defineConfig({
           if(id.includes('node_modules')) {
             return 'vendor'
           }
+        },
+        // 防止_plugin-vue_export-helper.js报404
+        sanitizeFileName(name) {
+          const match = /^[a-z]:/i.exec(name)
+          const driveLetter = match ? match[0] : ''
+          // eslint-disable-next-line no-control-regex
+          const reg = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g
+          return (
+            driveLetter + name.slice(driveLetter.length).replace(reg, '_').replace(/^_/, '')
+          )
         }
       }
     }
