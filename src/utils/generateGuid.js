@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 // 生成guid
 export default function() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

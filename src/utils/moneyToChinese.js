@@ -1,3 +1,5 @@
+/* eslint-disable semi */
+/* eslint-disable @typescript-eslint/no-loss-of-precision */
 // 金额转大写
 function moneyToChinese(money) {
   // 汉字的数字

@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 // 根据id获取树路径
 function getTreePath(tree, value, props = { key: 'id', children: 'children' }, path = []) {
   let tempPath = path;

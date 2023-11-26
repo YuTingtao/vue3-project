@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 /* 
  * 数据流保存为文件
  * @param response: 服务端返回数据

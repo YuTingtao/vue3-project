@@ -1,3 +1,5 @@
+/* eslint-disable semi */
+/* eslint-disable no-prototype-builtins */
 // 深拷贝
 function deepClone(obj) {
   if (typeof obj !== 'object' || obj == null) {

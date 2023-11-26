@@ -1,3 +1,5 @@
+/* eslint-disable semi */
+/* eslint-disable @typescript-eslint/no-this-alias */
 // 节流函数
 function throttle(fn, wait = 500) {
   var timer;

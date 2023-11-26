@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 // 文件大小转换(KB、MB、G、T)
 function formatFileSize(size) {
   if (!size) {
