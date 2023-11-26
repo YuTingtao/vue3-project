@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "node ./version.js && vue-tsc --noEmit && vite build",
-    "preview": "vite preview",
-    "lint:fix": "eslint --fix --ext .js,.ts,.vue src"
+    "build:prod": "node ./version.js && vue-tsc --noEmit && vite build -m prod",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",

@@ -42,3 +42,6 @@ app.component('svg-icon', SvgIcon)
 
 // 挂载
 app.mount('#app')
+
+console.log('node_env:', process.env.NODE_ENV)
+console.log('vite_env:', import.meta.env)
