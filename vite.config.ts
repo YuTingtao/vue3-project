@@ -1,4 +1,6 @@
 /* eslint-disable new-cap */
+/* eslint-disable @typescript-eslint/no-var-requires */
+const fs = require('node:fs')
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
@@ -12,9 +14,35 @@ import viteCompression from 'vite-plugin-compression'
 // 图片压缩
 import viteImagemin from 'vite-plugin-imagemin'
 
+// 生成版本JSON文件
+if (process.env.NODE_ENV === 'production') {
+  const version = JSON.stringify({
+    version: 'v_' +  Date.now()
+  })
+  fs.writeFile(resolve(__dirname, 'public/version.json'), version, err => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log('版本信息:', version)
+    }
+  })
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
   base: './', // 公共基础路径
+  server: {
+    host: '0.0.0.0',
+    port: 8080,
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'https://www.example.com',
+        changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
@@ -99,18 +127,6 @@ export default defineConfig({
             driveLetter + name.slice(driveLetter.length).replace(reg, '_').replace(/^_/, '')
           )
         }
-      }
-    }
-  },
-  server: {
-    host: '0.0.0.0',
-    port: 8080,
-    open: true,
-    proxy: {
-      '/api': {
-        target: 'https://www.example.com',
-        changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   }

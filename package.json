@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "node ./version.js && vue-tsc --noEmit && vite build",
-    "build:prod": "node ./version.js && vue-tsc --noEmit && vite build -m prod",
+    "build": "vue-tsc --noEmit && vite build",
+    "build:test": "vue-tsc --noEmit && vite build -m test",
     "preview": "vite preview"
   },
   "dependencies": {
