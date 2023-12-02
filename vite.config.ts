@@ -117,7 +117,7 @@ export default defineConfig({
             return 'vendor'
           }
         },
-        // 防止_plugin-vue_export-helper.js报404
+        // 解决github: _plugin-vue_export-helper.js报404
         sanitizeFileName(name) {
           const match = /^[a-z]:/i.exec(name)
           const driveLetter = match ? match[0] : ''
