@@ -1,18 +1,11 @@
 // 路由
 const routes = [
   {
-    path: '/',
-    name: 'index',
-    component: () => import('@/layout/index.vue'),
-  },
-  {
     path: '/useCase',
     name: 'useCase',
     redirect: '',
     component: () => import('@/layout/index.vue'),
-    meta: {
-      // activePath: '', // 导航高亮
-    },
+    meta: {},
     children: [
       {
         path: '/baseCase',

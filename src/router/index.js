@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import { useStore } from '@/store'
-import routes from './routes.js'
+import routes from './modules/index.js'
 import checkVersion from '../utils/checkVersion.js'
 
 const allRoutes = [
