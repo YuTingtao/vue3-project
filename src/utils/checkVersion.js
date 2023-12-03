@@ -1,19 +1,17 @@
 // 检测版本，提示更新
-let flag
+let loading = false
 
 function checkVersion(init) {
   // 1秒内执行一次
-  if (flag) {
+  if (loading) {
     return
   }
-  flag = true
-  setTimeout(() => {
-    flag = false
-  }, 1000)
+  loading = true
   // 核心代码
   var xhr = new XMLHttpRequest()
-  xhr.open('get', './version.json', true)
+  xhr.open('get', './version.json?timestamp=' + Date.now(), true)
   xhr.onreadystatechange = function() {
+    loading = false
     if (xhr.readyState == 4 && xhr.status == 200) {
       var res = JSON.parse(xhr.responseText)
       if (!init && res.version != sessionStorage.appVersion) {

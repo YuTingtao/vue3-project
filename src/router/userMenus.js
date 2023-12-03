@@ -1,9 +1,8 @@
 // 用户菜单，模拟接口返回
 export default [
   {
-    path: '/useCase',
-    name: 'useCase',
-    redirect: '',
+    path: '',
+    name: '',
     title: '使用案例',
     icon: 'document',
     hidden: 0,
@@ -12,7 +11,6 @@ export default [
       {
         path: '/baseCase',
         name: 'baseCase',
-        redirect: '',
         title: '基础案例',
         icon: '',
         hidden: 0,
@@ -25,8 +23,7 @@ export default [
       {
         path: '/wangEditor',
         name: 'wangEditor',
-        redirect: '',
-        title: '富文本编辑器',
+        title: '富文本编辑',
         icon: '',
         hidden: 0,
         buttons: [ // 按钮权限

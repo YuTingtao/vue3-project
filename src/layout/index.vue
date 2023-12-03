@@ -5,6 +5,7 @@
     <el-icon class="menu-collapse" @click="toggleCollapse">
       <component :is="isCollapse ? 'Expand' : 'Fold'"></component>
     </el-icon>
+    
     <el-dropdown trigger="hover">
       <div>
         <el-avatar
@@ -15,10 +16,9 @@
           fit="cover">
         </el-avatar>
         <span>{{ userInfo.name }}</span>
-        <el-icon>
-          <arrow-down />
-        </el-icon>
+        <el-icon><arrow-down /></el-icon>
       </div>
+
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item @click="handleLogout">退出</el-dropdown-item>
@@ -26,6 +26,7 @@
       </template>
     </el-dropdown>
   </div>
+
   <!-- 侧边菜单 -->
   <div class="app-aside">
     <el-scrollbar>
@@ -39,6 +40,7 @@
       </el-menu>
     </el-scrollbar>
   </div>
+
   <!-- 主体 -->
   <div class="app-main" :style="`padding-left: ${isCollapse ? '64px':'220px'};`">
     <!-- 页面主体 -->

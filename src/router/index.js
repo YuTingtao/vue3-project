@@ -1,43 +1,10 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import { useStore } from '@/store'
+import routes from './routes.js'
 import checkVersion from '../utils/checkVersion.js'
 
-// 路由
-const routes = [
-  {
-    path: '/',
-    name: 'index',
-    component: () => import('@/layout/index.vue'),
-  },
-  {
-    path: '/useCase',
-    name: 'useCase',
-    redirect: '',
-    component: () => import('@/layout/index.vue'),
-    meta: {
-      // activePath: '', // 导航高亮
-    },
-    children: [
-      {
-        path: '/baseCase',
-        name: 'baseCase',
-        redirect: '',
-        component: () => import('@/views/useCase/baseCase/index.vue'),
-        meta: {
-          // activePath: '', // 导航高亮
-        }
-      },
-      {
-        path: '/wangEditor',
-        name: 'wangEditor',
-        redirect: '',
-        component: () => import('@/views/useCase/wangEditor/index.vue'),
-        meta: {
-          // activePath: '', // 导航高亮
-        },
-      }
-    ]
-  },
+const allRoutes = [
+  ...routes,
   // 登录
   {
     path: '/login',
@@ -45,10 +12,9 @@ const routes = [
     component: () => import('@/views/login/index.vue')
   }
 ]
-
 const router = createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes: allRoutes,
   scrollBehavior(to, from, savedPosition) {
     return {
       top: 0
@@ -57,7 +23,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const store = useStore() // store状态
+  const store = useStore()
   const allMenus = ['/login', '/404', ...Object.keys(store.flatMenus)] // 所有菜单数组
   
   // 路由拦截

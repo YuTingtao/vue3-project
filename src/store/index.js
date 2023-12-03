@@ -39,7 +39,7 @@ export const useStore = defineStore('store', {
     enabled: true,
     strategies: [{
       key: 'store',
-      storage: sessionStorage, // 默认 sessionStorage
+      storage: sessionStorage
     }]
   }
 })
