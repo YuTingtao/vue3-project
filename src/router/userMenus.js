@@ -1,4 +1,4 @@
-// 用户菜单，模拟后端返回
+// 用户菜单，模拟接口返回
 export default [
   {
     path: '/useCase',
@@ -17,9 +17,9 @@ export default [
         icon: '',
         hidden: 0,
         buttons: [ // 按钮权限
-          { name: 'add' },
-          { name: 'edit' },
-          { name: 'delete' }
+          { name: 'add', title: '新增' },
+          { name: 'edit', title: '编辑' },
+          { name: 'delete', title: '删除' }
         ]
       },
       {
@@ -30,9 +30,9 @@ export default [
         icon: '',
         hidden: 0,
         buttons: [ // 按钮权限
-          { name: 'add' },
-          { name: 'edit' },
-          { name: 'delete' }
+          { name: 'add', title: '新增' },
+          { name: 'edit', title: '编辑' },
+          { name: 'delete', title: '删除' }
         ]
       }
     ]
