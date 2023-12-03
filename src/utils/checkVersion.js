@@ -2,7 +2,6 @@
 let loading = false
 
 function checkVersion(init) {
-  // 1秒内执行一次
   if (loading) {
     return
   }
