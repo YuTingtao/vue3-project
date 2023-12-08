@@ -9,7 +9,7 @@ export const useStore = defineStore('store', {
     userMenus: [] // 用户菜单树
   }),
   getters: {
-    // 菜单对象: key为path, value为{ buttons: [] }
+    // 菜单对象: key为path, value为{ name: '', buttons: [] }
     menuObj: (state) => {
       return getMenuObj(state.userMenus)
     },
