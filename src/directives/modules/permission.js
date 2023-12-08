@@ -11,20 +11,20 @@ export default {
       const { path, btn } = binding.value
       if (!btn) {
         // 菜单权限
-        if (!store.flatMenus[path]) {
+        if (!store.menuObj[path]) {
           el.parentNode.removeChild(el)
         }
       } else {
         // 按钮权限
-        const btns = store.flatMenus[path]
-        if (!btns || !btns.some(item => item.name == btn)) {
+        const { buttons } = store.menuObj[path]
+        if (!buttons || !buttons.some(item => item.name === btn)) {
           el.parentNode.removeChild(el)
         }
       }
     } else {
       // 当前路由对应页面按钮权限
-      const btns = store.flatMenus[currentRoute.value.path]
-      if (!btns.some(item => item.name == binding.value)) {
+      const { buttons } = store.menuObj[currentRoute.value.path]
+      if (!buttons.some(item => item.name === binding.value)) {
         el.parentNode.removeChild(el)
       }
     }

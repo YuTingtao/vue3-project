@@ -1,16 +1,20 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import { useStore } from '@/store'
 import routes from './modules/index.js'
-import checkVersion from '../utils/checkVersion.js'
+import checkVersion from '@/utils/checkVersion.js'
 
 const allRoutes = [
-  ...routes,
-  // 登录
+  {
+    path: '/',
+    name: 'layout',
+    component: () => import('@/layout/index.vue')
+  },
   {
     path: '/login',
     name: 'login',
     component: () => import('@/views/login/index.vue')
-  }
+  },
+  ...routes,
 ]
 const router = createRouter({
   history: createWebHashHistory(),
@@ -24,16 +28,17 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const store = useStore()
-  const allMenus = ['/login', '/404', ...Object.keys(store.flatMenus)] // 所有菜单数组
+  // 所有菜单path数组
+  const allPaths = ['/login', '/404', ...Object.keys(store.menuObj)]
   
   // 路由拦截
   if (!store.token && to.path !== '/login') {
     next('/login')
-  } else if (!allMenus.includes(to.path)) {
+  } else if (!allPaths.includes(to.path)) {
     if (to.path != '/' && to.path != '/404') {
       ElMessage.error('访问地址不存在')
     }
-    next(store.firstMenuPath)
+    next(store.firstPath)
   } else {
     next()
   }

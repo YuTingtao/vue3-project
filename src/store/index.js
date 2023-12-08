@@ -1,20 +1,20 @@
 import { defineStore } from 'pinia'
-import { getFlatMenus, getFirstPath } from './utils.js'
+import { getMenuObj, getFirstPath } from './utils.js'
 import userMenus from '../router/userMenus.js'
 
 export const useStore = defineStore('store', {
   state: () => ({
     token: '',
     userInfo: {}, // 用户信息
-    userMenus: [] // 用户菜单
+    userMenus: [] // 用户菜单树
   }),
   getters: {
-    // 扁平菜单路径
-    flatMenus: (state) => {
-      return getFlatMenus(state.userMenus)
+    // 菜单对象: key为path, value为{ buttons: [] }
+    menuObj: (state) => {
+      return getMenuObj(state.userMenus)
     },
-    // 首个菜单路径
-    firstMenuPath: (state) => {
+    // 首个路径
+    firstPath: (state) => {
       return getFirstPath(state.userMenus[0])
     }
   },
