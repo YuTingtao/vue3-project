@@ -8,6 +8,4 @@ for (const key of Object.keys(contexts)) {
   }
 }
 
-export default {
-  ...utils
-}
+export default utils
