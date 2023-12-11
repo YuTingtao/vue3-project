@@ -4,7 +4,7 @@ function copyText(text) {
   if (navigator.clipboard && navigator.permissions) {
     navigator.clipboard.writeText(text);
   } else {
-    var dom = document.createElement('dom');
+    var dom = document.createElement('textarea');
     dom.value = text;
     dom.style.width = 0;
     dom.style.position = 'fixed';
