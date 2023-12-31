@@ -16,7 +16,7 @@
     "axios": "^1.6.0",
     "bignumber.js": "^9.1.2",
     "dayjs": "^1.11.10",
-    "element-plus": "^2.4.1",
+    "element-plus": "^2.4.4",
     "js-base64": "^3.7.5",
     "lazysizes": "^5.3.2",
     "lodash-es": "^4.17.21",
