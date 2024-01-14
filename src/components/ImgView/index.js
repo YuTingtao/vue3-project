@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import ImgView from './index.vue'
+import ImgView from '../ImgView/index.vue'
 
 function viewImg(urls) {
   const div = document.createElement('div')
