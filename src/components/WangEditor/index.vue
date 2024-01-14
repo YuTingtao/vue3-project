@@ -16,6 +16,10 @@ import '@wangeditor/editor/dist/css/style.css'
 import { onBeforeUnmount, ref, shallowRef, watch } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 
+defineOptions({
+  name: 'WangEditor'
+})
+
 const props = defineProps({
   modelValue: {
     Type: String,

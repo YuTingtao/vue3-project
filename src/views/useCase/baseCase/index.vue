@@ -34,7 +34,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
-import viewImg from '@/components/base/imgViewer/index.js'
+import viewImg from '@/components/imgView/index.js'
 
 const router = useRouter()
 const route = useRoute()

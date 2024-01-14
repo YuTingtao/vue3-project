@@ -9,7 +9,7 @@ export default [
     buttons: [], // 按钮权限
     children: [
       {
-        path: '/baseCase',
+        path: '/useCase/baseCase',
         name: 'baseCase',
         title: '基础案例',
         icon: '',
@@ -21,7 +21,7 @@ export default [
         ]
       },
       {
-        path: '/wangEditor',
+        path: '/useCase/wangEditor',
         name: 'wangEditor',
         title: '富文本编辑',
         icon: '',

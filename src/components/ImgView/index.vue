@@ -10,6 +10,10 @@
 <script setup>
 import { ref } from 'vue'
 
+defineOptions({
+  name: 'ImgView'
+})
+
 const props = defineProps({
   modelValue: {
     type: Boolean,

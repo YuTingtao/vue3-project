@@ -8,7 +8,7 @@ const routes = [
     meta: {},
     children: [
       {
-        path: '/baseCase',
+        path: 'baseCase',
         name: 'baseCase',
         redirect: '',
         component: () => import('@/views/useCase/baseCase/index.vue'),
@@ -17,7 +17,7 @@ const routes = [
         }
       },
       {
-        path: '/wangEditor',
+        path: 'wangEditor',
         name: 'wangEditor',
         redirect: '',
         component: () => import('@/views/useCase/wangEditor/index.vue'),

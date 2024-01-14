@@ -1,12 +1,12 @@
 import { createApp } from 'vue'
-import ImgViewer from './ImgViewer.vue'
+import ImgView from './index.vue'
 
 function viewImg(urls) {
   const div = document.createElement('div')
   div.classList.add('img-viewer-box')
   document.body.append(div)
 
-  const app = createApp(ImgViewer, {
+  const app = createApp(ImgView, {
     modelValue: true,
     urlList: urls,
     'onUpdate:modelValue': (val) => {

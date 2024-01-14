@@ -6,6 +6,9 @@
 
 <script setup>
 import { computed } from 'vue'
+defineOptions({
+  name: 'SvgIcon'
+})
 
 const props = defineProps({
   name: {
