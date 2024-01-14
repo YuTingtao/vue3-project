@@ -1,6 +1,4 @@
-/* eslint-disable new-cap */
-/* eslint-disable @typescript-eslint/no-var-requires */
-const fs = require('node:fs')
+import { writeFile } from 'node:fs'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
@@ -19,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
   const version = JSON.stringify({
     version: 'v_' +  Date.now()
   })
-  fs.writeFile(resolve(__dirname, 'public/version.json'), version, err => {
+  writeFile(resolve(__dirname, 'public/version.json'), version, err => {
     if (err) {
       console.log(err)
     } else {
@@ -121,7 +119,6 @@ export default defineConfig({
         sanitizeFileName(name) {
           const match = /^[a-z]:/i.exec(name)
           const driveLetter = match ? match[0] : ''
-          // eslint-disable-next-line no-control-regex
           const reg = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g
           return (
             driveLetter + name.slice(driveLetter.length).replace(reg, '_').replace(/^_/, '')
