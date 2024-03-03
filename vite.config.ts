@@ -11,6 +11,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import viteCompression from 'vite-plugin-compression'
 // 图片压缩
 import viteImagemin from 'vite-plugin-imagemin'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 // 生成版本JSON文件
 if (process.env.NODE_ENV === 'production') {
@@ -103,7 +104,11 @@ export default defineConfig({
         optimizationLevel: 7,
         interlaced: false
       }
-    })
+    }),
+    // 打包分析
+    // visualizer({
+    //   open: true
+    // })
   ],
   build: {
     outDir: 'docs', // 打包输出目录
