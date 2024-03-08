@@ -16,15 +16,15 @@ import importDirectives from './directives'
 // 图片懒加载: <img class="lazyload" data-src="" />
 import 'lazysizes'
 
-// 版本检测
-import checkVersion from './utils/checkVersion.js'
-checkVersion('init')
+// 检测更新
+import { checkUpdate, autoCheckUpdate } from '@/utils/checkUpdate.js'
+
+// 自动检测更新
+autoCheckUpdate()
 
 const app = createApp(App)
-// 处理错误
 app.config.errorHandler = (err, instance, info) => {
-  // 版本检测
-  checkVersion()
+  checkUpdate() // 检测更新
 }
 app.use(router)
 app.use(pinia)

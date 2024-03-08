@@ -1,4 +1,4 @@
-import { writeFile } from 'node:fs'
+import { writeFileSync } from 'node:fs'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
@@ -14,17 +14,13 @@ import viteImagemin from 'vite-plugin-imagemin'
 import { visualizer } from 'rollup-plugin-visualizer'
 
 // 生成版本JSON文件
-if (process.env.NODE_ENV === 'production') {
-  const version = JSON.stringify({
+try {
+  writeFileSync(resolve(__dirname, 'public/version.json'), JSON.stringify({
     version: 'v_' +  Date.now()
-  })
-  writeFile(resolve(__dirname, 'public/version.json'), version, err => {
-    if (err) {
-      console.log(err)
-    } else {
-      console.log('版本信息:', version)
-    }
-  })
+  }))
+  console.log('JSON文件写入成功')
+} catch (err) {
+  console.log('JSON文件写入失败:', err)
 }
 
 // https://vitejs.dev/config/

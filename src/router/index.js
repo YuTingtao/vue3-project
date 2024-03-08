@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import { useStore } from '@/store'
 import routes from './modules/index.js'
-import checkVersion from '@/utils/checkVersion.js'
+import { checkUpdate } from '@/utils/checkUpdate.js'
 
 const allRoutes = [
   {
@@ -45,7 +45,7 @@ router.beforeEach((to, from, next) => {
 })
 
 router.onError((error) => {
-  checkVersion() // 版本检测
+  checkUpdate() // 检测更新
 })
 
 export default router
