@@ -25,6 +25,7 @@ export function checkUpdate() {
 
 // 自动检测更新
 export function autoCheckUpdate() {
+  checkUpdate()
   setInterval(() => {
     checkUpdate()
   }, 300000)
