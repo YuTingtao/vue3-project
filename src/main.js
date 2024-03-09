@@ -24,7 +24,6 @@ autoCheckUpdate()
 
 const app = createApp(App)
 app.config.errorHandler = (err, instance, info) => {
-  console.log(err, instance, info)
   checkUpdate() // 检测更新
 }
 app.use(router)
