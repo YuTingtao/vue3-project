@@ -8,9 +8,11 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // svg-icon
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+// gzip压缩
 import viteCompression from 'vite-plugin-compression'
 // 图片压缩
 import viteImagemin from 'vite-plugin-imagemin'
+// 打包分析
 import { visualizer } from 'rollup-plugin-visualizer'
 
 // 生成版本JSON文件
