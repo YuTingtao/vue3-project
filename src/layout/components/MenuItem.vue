@@ -26,7 +26,7 @@
 <script setup>
 const props = defineProps({
   item: {
-    type: Array,
+    type: Object,
     default: () => {}
   }
 })

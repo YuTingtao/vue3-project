@@ -2,7 +2,7 @@
 export default [
   {
     path: '',
-    name: '',
+    name: 'useCase',
     title: '使用案例',
     icon: 'document',
     hidden: 0,

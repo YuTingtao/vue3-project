@@ -26,21 +26,19 @@ const router = createRouter({
   }
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
   const store = useStore()
-  // 所有菜单path数组
-  const allPaths = ['/login', '/404', ...Object.keys(store.menuObj)]
+  // 所有菜单name数组
+  const allNames = ['login', '404', ...Object.keys(store.menuObj)]
   
   // 路由拦截
   if (!store.token && to.path !== '/login') {
-    next('/login')
-  } else if (!allPaths.includes(to.path)) {
+    return '/login'
+  } else if (!allNames.includes(to.name)) {
     if (to.path != '/' && to.path != '/404') {
       ElMessage.error('访问地址不存在')
     }
-    next(store.firstPath)
-  } else {
-    next()
+    return { name: store.firstMenuName }
   }
 })
 

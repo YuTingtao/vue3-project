@@ -8,7 +8,7 @@
 
     <div class="row-box">
       <span>菜单权限：</span>
-      <el-button v-permission="{ path: '/baseCase' }" type="primary">基础案例菜单</el-button>
+      <el-button v-permission="{ name: 'baseCase' }" type="primary">基础案例菜单</el-button>
     </div>
     
     <div class="row-box">
@@ -17,7 +17,7 @@
       <el-button v-permission="'add'" type="primary">新增</el-button>
       <el-button v-permission="'edit'" type="primary">编辑</el-button>
       <!-- 高级用法 -->
-      <el-button v-permission="{ path: '/baseCase', btn: 'delete' }" type="primary">删除</el-button>
+      <el-button v-permission="{ name: 'baseCase', btn: 'delete' }" type="primary">删除</el-button>
       <!-- 无权限 -->
       <el-button v-permission="'export'" type="primary">导出</el-button>
     </div>
