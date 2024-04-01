@@ -92,7 +92,7 @@ export default defineConfig({
         optimizationLevel: 7
       },
       pngquant: {
-        quality: [0.65, 0.90],
+        quality: [0.8, 0.9],
         speed: 4
       },
       webp: {
