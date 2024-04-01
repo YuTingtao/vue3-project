@@ -13,7 +13,8 @@
 
 <script setup>
 import '@wangeditor/editor/dist/css/style.css'
-import { onBeforeUnmount, ref, shallowRef, watch } from 'vue'
+import { ref, shallowRef, watch, onBeforeUnmount } from 'vue'
+import { DomEditor } from '@wangeditor/editor'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 
 defineOptions({
@@ -35,7 +36,7 @@ const props = defineProps({
   },
   mode: {
     Type: String,
-    default: 'simple' // default,simple
+    default: 'default' // default, simple
   }
 })
 const emit = defineEmits(['update:modelValue'])
@@ -45,12 +46,56 @@ const richText = ref(props.modelValue)
 watch(() => props.modelValue, (val) => {
   richText.value = val
 })
+
 // 编辑器ref
 const editorRef = shallowRef()
 
+// 工具栏配置
 const toolbarConfig = ref({
-  modalAppendToBody: true
+  modalAppendToBody: true,
+  toolbarKeys: [
+    "blockquote",
+    "header1",
+    "header2",
+    "header3",
+    "|",
+    "bold",
+    "underline",
+    "italic",
+    "through",
+    "color",
+    "bgColor",
+    "clearStyle",
+    "|",
+    "bulletedList",
+    "numberedList",
+    "todo",
+    "justifyLeft",
+    "justifyRight",
+    "justifyCenter",
+    "|",
+    "insertLink",
+    {
+      "key": "group-image",
+      "title": "图片",
+      "iconSvg": "<svg viewBox=\"0 0 1024 1024\"><path d=\"M959.877 128l0.123 0.123v767.775l-0.123 0.122H64.102l-0.122-0.122V128.123l0.122-0.123h895.775zM960 64H64C28.795 64 0 92.795 0 128v768c0 35.205 28.795 64 64 64h896c35.205 0 64-28.795 64-64V128c0-35.205-28.795-64-64-64zM832 288.01c0 53.023-42.988 96.01-96.01 96.01s-96.01-42.987-96.01-96.01S682.967 192 735.99 192 832 234.988 832 288.01zM896 832H128V704l224.01-384 256 320h64l224.01-192z\"></path></svg>",
+      "menuKeys": [
+        "insertImage",
+        "uploadImage"
+      ]
+    },
+    "insertVideo",
+    "insertTable",
+    "codeBlock", // 代码块
+    "|",
+    "undo",
+    "redo",
+    "|",
+    "fullScreen"
+  ]
 })
+
+// 编辑器配置
 const editorConfig = ref({
   placeholder: props.placeholder,
   maxLength: props.maxLength,
@@ -82,11 +127,15 @@ onBeforeUnmount(() => {
   editor.destroy()
 })
 
+// 创建时
 function handleCreated(editor) {
   editorRef.value = editor // 记录 editor 实例，重要！
 }
 
 function handleChange(editor) {
+  // 获取toolbar config
+  // const toolbar = DomEditor.getToolbar(editor)
+  // console.log('toolbarKeys:', toolbar.getConfig().toolbarKeys)
   emit('update:modelValue', editor.getHtml())
 }
 
@@ -145,7 +194,7 @@ defineExpose({
     }
   }
   .w-e-scroll > div {
-    min-height: 150px;
+    min-height: 300px;
   }
   .w-e-text-placeholder {
     top: 12px;
