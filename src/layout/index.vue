@@ -10,7 +10,7 @@
       <div>
         <el-avatar
           :src="userInfo.avatar"
-          :size="28"
+          :size="32"
           icon="UserFilled"
           shape="circle"
           fit="cover">
