@@ -10,7 +10,7 @@
       <div>
         <el-avatar
           :src="userInfo.avatar"
-          :size="32"
+          :size="28"
           icon="UserFilled"
           shape="circle"
           fit="cover">
@@ -33,9 +33,7 @@
       <el-menu
         :collapse="isCollapse"
         router
-        :default-active="$route.meta.activePath || $route.path"
-        text-color="#fff"
-        background-color="#424548">
+        :default-active="$route.meta.activePath || $route.path">
         <MenuItem v-for="item in userMenus" :key="item.name" :item="item"></MenuItem>
       </el-menu>
     </el-scrollbar>
@@ -65,6 +63,7 @@ const userInfo = computed(() => store.userInfo)
 // 用户菜单
 const userMenus = computed(() => store.userMenus)
 
+// 菜单展开收起
 const isCollapse = ref(false)
 function toggleCollapse() {
   isCollapse.value = !isCollapse.value
@@ -127,13 +126,16 @@ function handleLogout() {
   left: 0;
   bottom: 0;
   z-index: 110;
-  color: #fff;
-  background: #424548;
+  background: #f9fafb;
+  border-right: 1px solid var(--el-border-color-lighter);
   .el-menu--vertical {
     border-right: none;
     &:not(.el-menu--collapse) {
-      width: 220px;
+      width: 219px;
     }
+  }
+  .el-menu {
+    background-color: transparent;
   }
 }
 
