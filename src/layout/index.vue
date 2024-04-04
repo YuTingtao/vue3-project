@@ -31,8 +31,10 @@
   <div class="app-aside">
     <el-scrollbar>
       <el-menu
-        :collapse="isCollapse"
         router
+        :collapse="isCollapse"
+        text-color="#fff"
+        background-color="#565a5e"
         :default-active="$route.meta.activePath || $route.path">
         <MenuItem v-for="item in userMenus" :key="item.name" :item="item"></MenuItem>
       </el-menu>
@@ -126,15 +128,16 @@ function handleLogout() {
   left: 0;
   bottom: 0;
   z-index: 110;
-  background: #f9fafb;
-  border-right: 1px solid var(--el-border-color-lighter);
+  background: #565a5e;
   .el-menu--vertical {
     border-right: none;
     &:not(.el-menu--collapse) {
-      width: 219px;
+      width: 220px;
     }
   }
   .el-menu {
+    --text-color: #fff;
+    --bg-color: #565a5e;
     background-color: transparent;
   }
 }
