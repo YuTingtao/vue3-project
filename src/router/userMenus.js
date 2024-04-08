@@ -4,7 +4,7 @@ export default [
     path: '',
     name: '',
     title: '使用案例',
-    icon: 'document',
+    icon: 'Document',
     hidden: 0,
     buttons: [], // 按钮权限
     children: [
