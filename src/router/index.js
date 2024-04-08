@@ -7,14 +7,16 @@ const allRoutes = [
   {
     path: '/',
     name: 'layout',
-    component: () => import('@/layout/index.vue')
+    component: () => import('@/layout/index.vue'),
+    children: [
+      ...routes,
+    ]
   },
   {
     path: '/login',
     name: 'login',
     component: () => import('@/views/login/index.vue')
   },
-  ...routes,
 ]
 const router = createRouter({
   history: createWebHashHistory(),
@@ -29,13 +31,13 @@ const router = createRouter({
 router.beforeEach((to, from) => {
   const store = useStore()
   // 所有菜单name数组
-  const allNames = ['login', '404', ...Object.keys(store.menuObj)]
+  const allNames = ['login', ...Object.keys(store.menuObj)]
   
   // 路由拦截
   if (!store.token && to.path !== '/login') {
     return '/login'
   } else if (!allNames.includes(to.name)) {
-    if (to.path != '/' && to.path != '/404') {
+    if (to.path != '/') {
       ElMessage.error('访问地址不存在')
     }
     return { name: store.firstMenuName }

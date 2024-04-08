@@ -16,13 +16,15 @@ import viteImagemin from 'vite-plugin-imagemin'
 import { visualizer } from 'rollup-plugin-visualizer'
 
 // 生成版本JSON文件
-try {
-  writeFileSync(resolve(__dirname, 'public/version.json'), JSON.stringify({
-    version: 'v_' +  Date.now()
-  }))
-  console.log('JSON文件写入成功')
-} catch (err) {
-  console.log('JSON文件写入失败:', err)
+if (process.env.NODE_ENV !== 'development') {
+  try {
+    writeFileSync(resolve(__dirname, 'public/version.json'), JSON.stringify({
+      version: 'v_' +  Date.now()
+    }))
+    console.log('JSON文件写入成功')
+  } catch (err) {
+    console.log('JSON文件写入失败:', err)
+  }
 }
 
 // https://vitejs.dev/config/

@@ -31,11 +31,10 @@
   <div class="app-aside">
     <el-scrollbar>
       <el-menu
-        router
         :collapse="isCollapse"
         text-color="#fff"
         background-color="#565a5e"
-        :default-active="$route.meta.activePath || $route.path">
+        :default-active="$route.meta.active || $route.path || $route.name">
         <MenuItem v-for="item in userMenus" :key="item.name" :item="item"></MenuItem>
       </el-menu>
     </el-scrollbar>

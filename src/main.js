@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
 import pinia from './store/pinia.js'
+import { useStore } from './store/index.js'
 
 import './assets/style/main.scss'
 import * as ElIcons from '@element-plus/icons-vue'
@@ -39,6 +40,12 @@ for (let key in ElIcons) {
 
 // 注册svg-icon组件
 app.component('svg-icon', SvgIcon)
+
+const store = useStore()
+// 登录状态，获取用户菜单
+if (store.token) {
+  store.getUserMenus()
+}
 
 // 挂载
 app.mount('#app')

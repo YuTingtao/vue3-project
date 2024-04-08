@@ -1,5 +1,6 @@
 <template>
   <template v-if="!item.hidden">
+    <!-- 多层菜单 -->
     <el-sub-menu
       v-if="item.children && item.children.filter(item => !item.hidden).length"
       :index="item.title">
@@ -14,7 +15,8 @@
         :item="item2">
       </MenuItem>
     </el-sub-menu>
-    <el-menu-item v-else :index="item.path || item.redirect">
+    <!-- 一层菜单 -->
+    <el-menu-item v-else :index="item.path" @click="routerTo(item.path)">
       <el-icon v-if="item.icon">
         <component :is="item.icon"></component>
       </el-icon>
@@ -24,12 +26,20 @@
 </template>
 
 <script setup>
+import { useRoute, useRouter } from 'vue-router'
+
+const router = useRouter()
 const props = defineProps({
   item: {
     type: Object,
     default: () => {}
   }
 })
+
+// 路由跳转
+function routerTo(path) {
+  router.push(path)
+}
 </script>
 
 <style lang="scss" scoped>

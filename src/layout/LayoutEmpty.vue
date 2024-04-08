@@ -1,4 +1,4 @@
-<!-- 2层以上路由嵌套使用 -->
+<!-- 空模块layout -->
 <template>
   <router-view></router-view>
 </template>

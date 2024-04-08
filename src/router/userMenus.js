@@ -2,14 +2,14 @@
 export default [
   {
     path: '',
-    name: 'useCase',
+    name: '',
     title: '使用案例',
     icon: 'document',
     hidden: 0,
     buttons: [], // 按钮权限
     children: [
       {
-        path: '/useCase/baseCase',
+        path: '/baseCase',
         name: 'baseCase',
         title: '基础案例',
         icon: '',
@@ -21,7 +21,7 @@ export default [
         ]
       },
       {
-        path: '/useCase/wangEditor',
+        path: '/wangEditor',
         name: 'wangEditor',
         title: '富文本编辑',
         icon: '',
