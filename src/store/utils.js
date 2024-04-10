@@ -1,9 +1,9 @@
 // 菜单树转对象: name为key
 function getMenuObj(menus, obj = {}) {
   menus.forEach(item => {
-    if (item.name) {
-      obj[item.name] = {
-        path: item.path,
+    if (item.path) {
+      obj[item.path] = {
+        name: item.name,
         buttons: item.buttons || []
       }
     }
@@ -15,15 +15,15 @@ function getMenuObj(menus, obj = {}) {
 }
 
 // 获取第一个菜单name
-function getFirstMenuName(menu) {
-  let name = menu?.name || 'login'
+function getFirstMenu(menu) {
   if (Array.isArray(menu.children)) {
-    name = getFirstMenuName(menu.children[0])
+    return getFirstMenu(menu.children[0])
+  } else {
+    return menu.name || 'login'
   }
-  return name
 }
 
 export {
   getMenuObj,
-  getFirstMenuName
+  getFirstMenu
 }

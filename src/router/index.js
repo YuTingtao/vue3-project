@@ -30,17 +30,17 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
   const store = useStore()
-  // 所有菜单name数组
-  const allNames = ['login', ...Object.keys(store.menuObj)]
+  // 所有菜单数组
+  const allMenus = ['/login', ...Object.keys(store.menuObj)]
   
   // 路由拦截
   if (!store.token && to.path !== '/login') {
     return '/login'
-  } else if (!allNames.includes(to.name)) {
+  } else if (!allMenus.includes(to.path)) {
     if (to.path != '/') {
       ElMessage.error('访问地址不存在')
     }
-    return { name: store.firstMenuName }
+    return { path: store.firstMenu }
   }
 })
 

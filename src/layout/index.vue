@@ -72,10 +72,7 @@ function toggleCollapse() {
 
 // 退出登录
 function handleLogout() {
-  loginApi.logout().then(res => {
-    store.setLogout()
-    router.replace('/login')
-  }).catch(err => {
+  loginApi.logout().finally(() => {
     store.setLogout()
     router.replace('/login')
   })

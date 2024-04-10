@@ -23,7 +23,7 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button class="row-btn" type="primary" @click="submitForm">登 录</el-button>
+          <el-button class="row-btn" type="primary" :loading="loading" @click="submitForm">登 录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -54,14 +54,18 @@ const rules = reactive({
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 })
 
+const loading = ref(false)
 // 提交表单
 async function submitForm() {
   if (!formRef.value) return
   await formRef.value.validate(valid => {
     if (valid) {
+      loading.value = true
       loginApi.login(loginForm.value).then(() => {
+        loading.value = false
         handleLogin()
       }).catch(() => {
+        loading.value = false
         handleLogin()
       })
     }
