@@ -33,7 +33,7 @@
       <el-menu
         :collapse="isCollapse"
         text-color="#fff"
-        background-color="#565a5e"
+        background-color="#4c5055"
         :default-active="$route.meta.active || $route.path || $route.name">
         <MenuItem v-for="item in userMenus" :key="item.name" :item="item"></MenuItem>
       </el-menu>
@@ -124,7 +124,7 @@ function handleLogout() {
   left: 0;
   bottom: 0;
   z-index: 110;
-  background: #565a5e;
+  background: #4c5055;
   .el-menu--vertical {
     border-right: none;
     &:not(.el-menu--collapse) {
@@ -132,8 +132,6 @@ function handleLogout() {
     }
   }
   .el-menu {
-    --text-color: #fff;
-    --bg-color: #565a5e;
     background-color: transparent;
   }
 }
