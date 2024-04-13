@@ -4,6 +4,7 @@ function getMenuObj(menus, obj = {}) {
     if (item.path) {
       obj[item.path] = {
         name: item.name,
+        title: item.title,
         buttons: item.buttons || []
       }
     }
@@ -19,7 +20,7 @@ function getFirstMenu(menu) {
   if (Array.isArray(menu.children)) {
     return getFirstMenu(menu.children[0])
   } else {
-    return menu.name || 'login'
+    return menu.path || '/login'
   }
 }
 
