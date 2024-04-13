@@ -6,7 +6,7 @@ const routes = [
     redirect: '',
     component: () => import('@/views/useCase/baseCase/index.vue'),
     meta: {
-      active: '', // 建议隐藏的菜单设置高亮的菜单
+      active: '', // 设置高亮菜单路径，例如详情页设置列表页高亮
     }
   },
   {
@@ -15,7 +15,7 @@ const routes = [
     redirect: '',
     component: () => import('@/views/useCase/wangEditor/index.vue'),
     meta: {
-      active: '', // 建议隐藏的菜单设置高亮的菜单
+      active: '', // 设置高亮菜单路径，例如详情页设置列表页高亮
     },
   }
 ]
