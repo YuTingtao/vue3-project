@@ -1,7 +1,7 @@
 <!-- 全局layout -->
 <template>
   <!-- 头部 -->
-  <div class="app-head" :style="`left: ${isCollapse ? '64px' : '220px'};`">
+  <div class="app-head" :style="`left: ${isCollapse ? '64px' : '200px'};`">
     <el-icon class="menu-collapse" @click="toggleCollapse">
       <component :is="isCollapse ? 'Expand' : 'Fold'"></component>
     </el-icon>
@@ -33,7 +33,7 @@
       <el-menu
         :collapse="isCollapse"
         text-color="#fff"
-        background-color="#4c5055"
+        background-color="#3c4f60"
         :default-active="$route.meta.active || $route.path || $route.name">
         <MenuItem v-for="item in userMenus" :key="item.name" :item="item"></MenuItem>
       </el-menu>
@@ -41,7 +41,7 @@
   </div>
 
   <!-- 主体 -->
-  <div class="app-main" :style="`padding-left: ${isCollapse ? '64px':'220px'};`">
+  <div class="app-main" :style="`padding-left: ${isCollapse ? '64px':'200px'};`">
     <!-- 页面主体 -->
     <router-view class="app-view"></router-view>
   </div>
@@ -84,7 +84,7 @@ function handleLogout() {
 .app-head {
   position: fixed;
   top: 0;
-  left: 220px;
+  left: 200px;
   right: 0;
   z-index: 100;
   display: flex;
@@ -124,22 +124,19 @@ function handleLogout() {
   left: 0;
   bottom: 0;
   z-index: 110;
-  background: #4c5055;
+  background: #3c4f60;
   .el-menu--vertical {
     border-right: none;
     &:not(.el-menu--collapse) {
-      width: 220px;
+      width: 200px;
     }
-  }
-  .el-menu {
-    background-color: transparent;
   }
 }
 
 // 主体
 .app-main {
   box-sizing: border-box;
-  padding-left: 220px;
+  padding-left: 200px;
   padding-top: 56px;
   min-height: 100%;
   background: #fff;
