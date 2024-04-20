@@ -5,6 +5,13 @@
     <el-icon class="menu-collapse" @click="toggleCollapse">
       <component :is="isCollapse ? 'Expand' : 'Fold'"></component>
     </el-icon>
+
+    <!-- 面包屑 -->
+    <el-breadcrumb v-if="breadcrumbs.length > 0">
+      <el-breadcrumb-item v-for="(item, index) in breadcrumbs" :key="item.path + index" :to="item.path">
+        {{ item.title }}
+      </el-breadcrumb-item>
+    </el-breadcrumb>
     
     <el-dropdown trigger="hover">
       <div>
@@ -34,7 +41,7 @@
         :collapse="isCollapse"
         text-color="#fff"
         background-color="#3c4f60"
-        :default-active="$route.meta.active || $route.path || $route.name">
+        :default-active="$route.meta.activePath || $route.path || $route.name">
         <MenuItem v-for="item in userMenus" :key="item.name" :item="item"></MenuItem>
       </el-menu>
     </el-scrollbar>
@@ -48,7 +55,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
 import MenuItem from './components/MenuItem.vue'
@@ -57,6 +64,44 @@ import loginApi from '@/api/user/login.js'
 const router = useRouter()
 const route = useRoute()
 const store = useStore()
+
+// 面包屑
+const breadcrumbs = ref([])
+// 所有路由
+const routes = router.getRoutes()
+// console.log(routes)
+// 获取面包屑
+function getBreadcrumbs() {
+  breadcrumbs.value = []
+  const parentPath = route.meta?.parentPath || null
+  if (parentPath) {
+    breadcrumbs.value = getParentsBread(parentPath)
+    breadcrumbs.value.push({
+      path: '',
+      title: route.meta.title
+    })
+  }
+}
+// 递归获取父级面包屑
+function getParentsBread(path, arr = []) {
+  const parent = routes.find(item => item.path == path)
+  if (parent) {
+    arr.unshift({
+      path: parent.meta.type == 0 ? '' : parent.path,
+      title: parent.meta.title
+    })
+  }
+  if (parent.meta.parentPath) {
+    return getParentsBread(parent.meta.parentPath, arr)
+  } else {
+    return arr
+  }
+}
+watch(() => route.path, () => {
+  getBreadcrumbs()
+}, {
+  immediate: true
+})
 
 // 用户信息
 const userInfo = computed(() => store.userInfo)
@@ -89,7 +134,6 @@ function handleLogout() {
   z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   box-sizing: border-box;
   height: 56px;
   padding: 0 20px;
@@ -103,7 +147,12 @@ function handleLogout() {
     color: #333;
     cursor: pointer;
   }
+  .el-breadcrumb {
+    margin-left: 12px;
+    margin-right: 20px;
+  }
   .el-dropdown {
+    margin-left: auto;
     display: flex;
     align-items: center;
     .el-avatar {

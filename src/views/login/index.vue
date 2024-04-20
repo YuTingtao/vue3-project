@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="Login">
 import { ref, reactive, toRaw } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'

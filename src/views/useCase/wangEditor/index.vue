@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="WangEditor">
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'

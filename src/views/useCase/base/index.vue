@@ -3,21 +3,14 @@
 
     <div class="row-box">
       <span>svg-icon：</span>
-      <svg-icon name="case" size="16px"></svg-icon>
-    </div>
-
-    <div class="row-box">
-      <span>菜单权限：</span>
-      <el-button v-permission="{ name: 'baseCase' }" type="primary">基础案例菜单</el-button>
+      <svg-icon name="pie-chart" size="16px"></svg-icon>
     </div>
     
     <div class="row-box">
       <span>按钮权限：</span>
-      <!-- 简单用法 -->
-      <el-button v-permission="'add'" type="primary">新增</el-button>
-      <el-button v-permission="'edit'" type="primary">编辑</el-button>
-      <!-- 高级用法 -->
-      <el-button v-permission="{ name: 'baseCase', btn: 'delete' }" type="primary">删除</el-button>
+      <el-button v-permission="'add'" type="primary" @click="router.push('/useCase/baseAdd')">新增</el-button>
+      <el-button v-permission="'edit'" type="primary" @click="router.push('/useCase/baseAdd')">编辑</el-button>
+      <el-button v-permission="'delete'" type="primary">删除</el-button>
       <!-- 无权限 -->
       <el-button v-permission="'export'" type="primary">导出</el-button>
     </div>
@@ -30,7 +23,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="BaseCase">
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'

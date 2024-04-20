@@ -6,6 +6,7 @@ import { resolve } from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 // svg-icon
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 // gzip压缩
@@ -76,6 +77,7 @@ export default defineConfig({
         })
       ]
     }),
+    vueSetupExtend(),
     createSvgIconsPlugin({
       iconDirs: [resolve(process.cwd(), 'src/assets/icon')],
       symbolId: 'icon-[dir]-[name]',

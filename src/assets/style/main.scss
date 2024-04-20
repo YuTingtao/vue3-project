@@ -24,3 +24,9 @@ html, body {
 .v-fade-enter-from, .v-fade-leave-to {
   opacity: 0;
 }
+
+body {
+  .el-breadcrumb__inner.is-link, .el-breadcrumb__inner a {
+    font-weight: normal;
+  }
+}

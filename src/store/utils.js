@@ -2,11 +2,7 @@
 function getMenuObj(menus, obj = {}) {
   menus.forEach(item => {
     if (item.path) {
-      obj[item.path] = {
-        name: item.name,
-        title: item.title,
-        buttons: item.buttons || []
-      }
+      obj[item.path] = item
     }
     if (Array.isArray(item.children)) {
       return getMenuObj(item.children, obj)

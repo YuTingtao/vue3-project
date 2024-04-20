@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { getMenuObj, getFirstMenu } from './utils.js'
-import userMenus from '../router/userMenus.js'
+import routes from '@/router/modules/index.js'
 
 export const useStore = defineStore('store', {
   state: () => ({
@@ -34,7 +34,7 @@ export const useStore = defineStore('store', {
     },
     // 获取菜单
     getUserMenus() {
-      this.userMenus = userMenus
+      this.userMenus = routes
     }
   },
   // 状态持久化
