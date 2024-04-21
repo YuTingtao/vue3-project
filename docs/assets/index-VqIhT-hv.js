@@ -1,1 +1,0 @@
-import{p as e,A as s,o as t,k as o,R as a}from"./vendor-cw4o4j6p.js";import{u as n}from"./index-GoTHgQ-r.js";const r={class:""},c=a({name:"SystemMenu"}),f=Object.assign(c,{setup(u){return e(),s(),n(),(_,m)=>(t(),o("div",r))}});export{f as default};

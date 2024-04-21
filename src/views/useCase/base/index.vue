@@ -3,7 +3,7 @@
 
     <div class="row-box">
       <span>svg-icon：</span>
-      <svg-icon name="pie-chart" size="16px"></svg-icon>
+      <svg-icon name="edit"></svg-icon>
     </div>
     
     <div class="row-box">
