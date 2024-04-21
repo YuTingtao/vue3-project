@@ -2,7 +2,7 @@
 export default [
   {
     path: '/useCase',
-    component: () => import('@/layout/ModelLayout.vue'),
+    component: () => import('@/layout/ModuleLayout.vue'),
     meta: {
       type: 0, // 类型 0:模块，1:菜单
       title: '使用案例', // 标题
@@ -56,7 +56,7 @@ export default [
   },
   {
     path: '/system',
-    component: () => import('@/layout/ModelLayout.vue'),
+    component: () => import('@/layout/ModuleLayout.vue'),
     meta: {
       type: 0,
       title: '系统设置',

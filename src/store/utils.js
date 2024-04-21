@@ -1,4 +1,4 @@
-// 菜单树转对象: name为key
+// 菜单树转对象: key为path
 function getMenuObj(menus, obj = {}) {
   menus.forEach(item => {
     if (item.path) {
@@ -11,7 +11,7 @@ function getMenuObj(menus, obj = {}) {
   return obj
 }
 
-// 获取第一个菜单name
+// 获取第一个菜单
 function getFirstMenu(menu) {
   if (Array.isArray(menu.children)) {
     return getFirstMenu(menu.children[0])
