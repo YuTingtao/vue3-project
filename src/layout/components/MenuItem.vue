@@ -3,7 +3,7 @@
     <!-- 多层菜单 -->
     <el-sub-menu
       v-if="item.children && item.children.filter(item => !item.meta.hidden).length > 0"
-      :index="item.path|| item.meta.title">
+      :index="item.path || item.meta.title">
       <template #title>
         <el-icon v-if="item.meta.icon">
           <svg-icon :name="item.meta.icon"></svg-icon>
