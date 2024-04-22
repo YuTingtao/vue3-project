@@ -7,7 +7,7 @@ export default [
       type: 0, // 类型 0:模块，1:菜单
       title: '使用案例', // 标题
       icon: 'document', // 图标
-      hidden: 0, // 是否隐藏
+      visible: 1, // 是否可见
       buttons: [], // 按钮权限
       activePath: '', // 设置高亮菜单路径，例如详情页设置列表页高亮
       parentPath: '', // 设置面包屑父级路径
@@ -20,7 +20,7 @@ export default [
           type: 1,
           title: '基础案例',
           icon: '',
-          hidden: 0,
+          visible: 1,
           buttons: ['add', 'edit', 'delete'], // 按钮权限
           activePath: '',
           parentPath: '',
@@ -33,7 +33,7 @@ export default [
           type: 1,
           title: '新增',
           icon: '',
-          hidden: 1,
+          visible: 0,
           buttons: [], // 按钮权限
           activePath: '/useCase/base', // 设置高亮菜单路径，例如详情页设置列表页高亮
           parentPath: '/useCase/base', // 父级路径，配置父级面包屑
@@ -46,7 +46,7 @@ export default [
           type: 0,
           title: '富文本编辑',
           icon: '',
-          hidden: 0,
+          visible: 1,
           buttons: [],
           activePath: '',
           parentPath: '',
@@ -61,7 +61,7 @@ export default [
       type: 0,
       title: '系统设置',
       icon: 'setting',
-      hidden: 0,
+      visible: 1,
       buttons: [],
       activePath: '',
       parentPath: '',
@@ -74,7 +74,7 @@ export default [
           type: 1,
           title: '菜单设置',
           icon: '',
-          hidden: 0,
+          visible: 1,
           buttons: [],
           activePath: '',
           parentPath: '',

@@ -1,1 +1,0 @@
-import{p as e,A as s,o as t,k as o,R as a}from"./vendor-cgNHoGo7.js";import{u as n}from"./index-ZeYj-ZYp.js";const r={class:"page-svg"},c=a({name:"BaseCase"}),f=Object.assign(c,{setup(_){return e(),s(),n(),(u,p)=>(t(),o("div",r," 新增 "))}});export{f as default};
