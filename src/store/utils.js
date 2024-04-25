@@ -1,11 +1,15 @@
-// 菜单树转对象: key为path
-function getMenuObj(menus, obj = {}) {
+// 数组转对象: key为path
+function getMenuObj(menus) {
+  const obj = {}
   menus.forEach(item => {
     if (item.path) {
       obj[item.path] = item
     }
     if (Array.isArray(item.children)) {
-      return getMenuObj(item.children, obj)
+      const children = getMenuObj(item.children)
+      Object.keys(children).forEach(key => {
+        obj[key] = children[key]
+      })
     }
   })
   return obj

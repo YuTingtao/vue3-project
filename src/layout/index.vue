@@ -38,7 +38,7 @@
         text-color="#fff"
         background-color="#3c4f60"
         :default-active="$route.meta.activePath || $route.path || $route.name">
-        <MenuItem v-for="item in userMenus" :key="item.name" :item="item"></MenuItem>
+        <MenuItem v-for="item in userMenus" :key="item.path" :item="item"></MenuItem>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -50,7 +50,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="Layout">
 import { ref, reactive, computed, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'

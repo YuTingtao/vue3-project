@@ -11,7 +11,7 @@
         <span>{{ item.meta.title }}</span>
       </template>
       <MenuItem
-        v-for="item2 in item.children" :key="item2.path + item2.title"
+        v-for="item2 in item.children" :key="item2.path"
         :item="item2">
       </MenuItem>
     </el-sub-menu>

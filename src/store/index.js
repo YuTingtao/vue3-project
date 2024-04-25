@@ -10,11 +10,11 @@ export const useStore = defineStore('store', {
   }),
   getters: {
     // 菜单对象: key为path
-    menuObj: (state) => {
+    menuObj(state) {
       return getMenuObj(state.userMenus)
     },
     // 首个菜单
-    firstMenu: (state) => {
+    firstMenu(state) {
       if (state.userMenus.length < 1) {
         return '/login'
       }
