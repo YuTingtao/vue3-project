@@ -34,7 +34,11 @@ export const useStore = defineStore('store', {
     },
     // 获取菜单
     getUserMenus() {
-      this.userMenus = routes
+      return new Promise((resolve, reject) => {
+        // 执行完异步后resolve
+        this.userMenus = routes
+        resolve()
+      })
     }
   },
   // 状态持久化
