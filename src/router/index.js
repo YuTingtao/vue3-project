@@ -40,11 +40,12 @@ router.beforeEach((to, from) => {
     if (to.path != '/') {
       ElMessage.error('访问地址不存在')
     }
-    return { path: store.firstMenu }
+    return store.firstMenu
   }
 })
 
 router.onError((error) => {
+  console.error(error)
   checkUpdate() // 检测更新
 })
 
