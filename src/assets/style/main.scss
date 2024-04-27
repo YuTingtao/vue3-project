@@ -14,12 +14,12 @@ html, body {
 }
 .lazyloaded {
 	opacity: 1;
-	transition: opacity 0.3s;
+	transition: opacity 0.2s;
 }
 
 // vue transition
 .v-fade-enter-active, .v-fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 .v-fade-enter-from, .v-fade-leave-to {
   opacity: 0;
@@ -28,5 +28,9 @@ html, body {
 body {
   .el-breadcrumb__inner.is-link, .el-breadcrumb__inner a {
     font-weight: normal;
+  }
+  .el-table {
+    --el-table-header-bg-color: var(--el-fill-color-light);
+    --el-table-header-text-color: var(--el-text-color-regular);
   }
 }
