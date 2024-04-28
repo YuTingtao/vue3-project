@@ -13,8 +13,8 @@ function hasPerm(str, path) {
   if (!path) {
     path = currentRoute.value.path
   }
-  const { permissionList } = store.menuObj[path]
-  if (permissionList.some(item => item.perms.includes(str))) {
+  const { buttons } = store.menuObj[path]
+  if (buttons.some(item => item.name == str)) {
     return true
   } else {
     return false
