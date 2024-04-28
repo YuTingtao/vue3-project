@@ -8,11 +8,11 @@
     
     <div class="row-box">
       <span>按钮权限：</span>
-      <el-button v-permission="'add'" type="primary" @click="router.push('/useCase/baseAdd')">新增</el-button>
-      <el-button v-permission="'edit'" type="primary" @click="router.push('/useCase/baseAdd')">编辑</el-button>
-      <el-button v-permission="'delete'" type="primary">删除</el-button>
+      <el-button v-perm="'add'" type="primary" @click="router.push('/useCase/baseAdd')">新增</el-button>
+      <el-button v-perm="'edit'" type="primary" @click="router.push('/useCase/baseAdd')">编辑</el-button>
+      <el-button v-perm="'delete'" type="primary">删除</el-button>
       <!-- 无权限 -->
-      <el-button v-permission="'export'" type="primary">导出</el-button>
+      <el-button v-perm="'export'" type="primary">导出</el-button>
     </div>
 
     <div class="row-box">
