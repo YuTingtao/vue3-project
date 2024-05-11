@@ -11,8 +11,6 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 // gzip压缩
 import viteCompression from 'vite-plugin-compression'
-// 图片压缩
-import viteImagemin from 'vite-plugin-imagemin'
 // 打包分析
 import { visualizer } from 'rollup-plugin-visualizer'
 
@@ -86,26 +84,6 @@ export default defineConfig({
     }),
     viteCompression({
       threshold: 10240, // 大于10K的文件进行gzip压缩
-    }),
-    // 图片压缩
-    viteImagemin({
-      mozjpeg: {
-        quality: 80
-      },
-      optipng: {
-        optimizationLevel: 7
-      },
-      pngquant: {
-        quality: [0.8, 0.9],
-        speed: 4
-      },
-      webp: {
-        quality: 75
-      },
-      gifsicle: {
-        optimizationLevel: 7,
-        interlaced: false
-      }
     }),
     // 打包分析
     // visualizer({
