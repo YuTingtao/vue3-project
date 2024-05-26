@@ -33,6 +33,10 @@
   <!-- 侧边菜单 -->
   <div class="app-aside">
     <el-scrollbar>
+      <div class="app-logo" :class="isCollapse ? 'collapsed' : ''">
+        <img class="app-logo-img" src="@/assets/img/logo.png" alt="">
+        <span>VUE3后台模板</span>
+      </div>
       <el-menu
         :collapse="isCollapse"
         text-color="#fff"
@@ -139,6 +143,28 @@ function handleLogout() {
       width: 200px;
     }
   }
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 200px;
+  padding: 15px 0;
+  color: #fff;
+  font-size: 18px;
+  white-space: nowrap;
+  transition: width 0.3s ease-in-out;
+  &.collapsed {
+    width: 57px;
+  }
+}
+
+.app-logo-img {
+  width: 30px;
+  height: 30px;
+  margin-left: 17px;
+  margin-right: 10px;
 }
 
 // 主体
