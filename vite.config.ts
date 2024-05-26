@@ -11,8 +11,6 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 // gzip压缩
 import viteCompression from 'vite-plugin-compression'
-// node require语法转化
-import requireTransform from 'vite-plugin-require-transform'
 // 打包分析
 import { visualizer } from 'rollup-plugin-visualizer'
 
@@ -86,9 +84,6 @@ export default defineConfig({
     }),
     viteCompression({
       threshold: 10240, // 大于10K的文件进行gzip压缩
-    }),
-    requireTransform({
-      fileRegex: /.js$|.vue$/,
     }),
     // 打包分析
     // visualizer({
