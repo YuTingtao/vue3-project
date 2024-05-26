@@ -33,4 +33,7 @@ body {
     --el-table-header-bg-color: var(--el-fill-color-light);
     --el-table-header-text-color: var(--el-text-color-regular);
   }
+  .el-button:focus-visible {
+    outline: none;
+  }
 }

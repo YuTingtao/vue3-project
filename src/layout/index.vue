@@ -152,18 +152,18 @@ function handleLogout() {
   width: 200px;
   padding: 15px 0;
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   white-space: nowrap;
   transition: width 0.3s ease-in-out;
   &.collapsed {
-    width: 57px;
+    width: 54px;
   }
 }
 
 .app-logo-img {
-  width: 30px;
-  height: 30px;
-  margin-left: 17px;
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
   margin-right: 10px;
 }
 
