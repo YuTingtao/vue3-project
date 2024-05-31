@@ -37,9 +37,6 @@ router.beforeEach((to, from) => {
   if (!store.token && to.path !== '/login') {
     return '/login'
   } else if (!allMenus.includes(to.path)) {
-    if (to.path != '/') {
-      ElMessage.error('访问地址不存在')
-    }
     return store.firstMenu
   }
 })

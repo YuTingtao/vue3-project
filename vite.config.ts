@@ -6,11 +6,11 @@ import { resolve } from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import vueSetupExtend from 'vite-plugin-vue-setup-extend'
+
+import VueSetupExtend from 'vite-plugin-vue-setup-extend'
+import ViteCompression from 'vite-plugin-compression'
 // svg-icon
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-// gzip压缩
-import viteCompression from 'vite-plugin-compression'
 // 打包分析
 import { visualizer } from 'rollup-plugin-visualizer'
 
@@ -75,14 +75,14 @@ export default defineConfig({
         })
       ]
     }),
-    vueSetupExtend(),
+    VueSetupExtend(),
     createSvgIconsPlugin({
       iconDirs: [resolve(process.cwd(), 'src/assets/icon')],
       symbolId: 'icon-[dir]-[name]',
       inject: 'body-last',
       customDomId: 'svg__icon__dom'
     }),
-    viteCompression({
+    ViteCompression({
       threshold: 10240, // 大于10K的文件进行gzip压缩
     }),
     // 打包分析
@@ -97,7 +97,7 @@ export default defineConfig({
       output: {
         manualChunks: (id) => {
           if(id.includes('node_modules')) {
-            return 'vendor'
+            return id.toString().split('node_modules/')[1].split('/')[0].toString()
           }
         },
         // 解决github: _plugin-vue_export-helper.js报404

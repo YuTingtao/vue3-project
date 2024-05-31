@@ -35,7 +35,7 @@
     <el-scrollbar>
       <div class="app-logo" :class="isCollapse ? 'collapsed' : ''">
         <img class="app-logo-img" src="@/assets/img/logo.png" alt="">
-        <span>VUE3后台模板</span>
+        <span>Vue3管理后台</span>
       </div>
       <el-menu
         :collapse="isCollapse"
@@ -153,6 +153,7 @@ function handleLogout() {
   padding: 15px 0;
   color: #fff;
   font-size: 16px;
+  font-weight: bolder;
   white-space: nowrap;
   transition: width 0.3s ease-in-out;
   &.collapsed {

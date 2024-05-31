@@ -6,7 +6,7 @@ export const useStore = defineStore('store', {
   state: () => ({
     token: '',
     userInfo: {}, // 用户信息
-    userMenus: [] // 用户菜单树
+    userMenus: [], // 用户菜单
   }),
   getters: {
     // 菜单对象: key为path
