@@ -8,18 +8,17 @@
     
     <div class="row-box">
       <span>按钮权限：</span>
-      <el-button v-perm="'add'" type="primary" @click="router.push('/useCase/baseAdd')">新增</el-button>
-      <el-button v-perm="'edit'" type="primary" @click="router.push('/useCase/baseAdd')">编辑</el-button>
-      <el-button v-perm="'delete'" type="primary">删除</el-button>
+      <el-button v-if="hasPerm('add')" type="primary" @click="router.push('/useCase/baseAdd')">新增</el-button>
+      <el-button v-if="hasPerm('edit')" type="primary">编辑</el-button>
+      <el-button v-if="hasPerm('delete')" type="primary">删除</el-button>
       <!-- 无权限 -->
-      <el-button v-perm="'export'" type="primary">导出</el-button>
+      <el-button v-if="hasPerm('export')" type="primary">导出</el-button>
     </div>
 
     <div class="row-box">
       <span>图片预览：</span>
       <el-button type="primary" @click="viewImg(urlList)">预览</el-button>
     </div>
-
   </div>
 </template>
 
@@ -27,6 +26,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
+import hasPerm from '@/utils/permission.js'
 import viewImg from '@/components/imgView/index.js'
 
 const router = useRouter()
@@ -35,8 +35,8 @@ const store = useStore()
 
 // 图片地址
 const urlList = [
-  new URL('@/assets/img/login/bg.jpg', import.meta.url).href,
-  new URL('@/assets/img/logo.png', import.meta.url).href
+  'https://img2.baidu.com/it/u=2193238619,3962578777&fm=253&fmt=auto&app=120&f=JPEG?w=1067&h=800',
+  'https://img0.baidu.com/it/u=2099628,2438611947&fm=253&fmt=auto&app=138&f=JPEG?w=755&h=500'
 ]
 </script>
 
