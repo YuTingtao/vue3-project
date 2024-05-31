@@ -4,7 +4,7 @@ const obj = {}
 
 for (const path in modules) {
   // console.log(path, modules[path].default)
-  const key = path.replace(/(.*\/)*([^.]+).*/ig, '$2')
+  const key = path.replace(/(.*\/)*([^.]+).*/gi, '$2')
   obj[key] = modules[path].default
 }
 
