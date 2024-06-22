@@ -34,7 +34,7 @@
 import { ref, reactive, toRaw } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
-import loginApi from '@/api/user/login.js'
+import loginApi from '@/api/login/loginApi.js'
 
 const router = useRouter()
 const route = useRoute()

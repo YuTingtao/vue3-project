@@ -60,7 +60,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
 import MenuItem from './components/MenuItem.vue'
 import BreadCrumb from './components/BreadCrumb.vue'
-import loginApi from '@/api/user/login.js'
+import loginApi from '@/api/login/loginApi.js'
 
 const router = useRouter()
 const route = useRoute()

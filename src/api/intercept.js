@@ -23,7 +23,7 @@ function toLogin() {
 
 const axios = Axios.create({
   // baseURL: '',
-  timeout: 10000 // 请求超时 10s
+  // timeout: 10000 // 请求超时 10s
 })
 
 // 请求拦截
@@ -38,7 +38,7 @@ axios.interceptors.request.use(
     return config
   },
   error => {
-    return Promise.error(error)
+    return Promise.reject(error)
   }
 )
 
@@ -46,12 +46,12 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   res => {
     const store = useStore()
-    if (res.status >= 200 & res.status < 300) {
+    if (res.status >= 200 && res.status < 300) {
       if (res.data instanceof Blob || res.data instanceof ArrayBuffer) {
         return res
       }
       // 请求不成功，提示错误信息
-      if (res.data.code != '000000') {
+      if (res.data.code != '200') {
         toast(res.data.msg)
       }
       // 需要登录
