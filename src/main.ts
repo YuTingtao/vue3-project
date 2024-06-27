@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.js'

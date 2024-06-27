@@ -21,7 +21,7 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint'],
   rules: {
     'indent': ['error', 2, { 'SwitchCase': 1 }],          // 缩进2个空格
-    'vue/html-indent': ['error', 2],
+    'vue/html-indent': ['error', 2, { 'alignAttributesVertically': false }],
     'semi': ['error', 'never'],                           // js结尾不加分号
     'quotes': ['error', 'single', { 'allowTemplateLiterals': true }], // js定义字符串使用单引号
     'camelcase': 'error',                                 // 驼峰命名
@@ -30,7 +30,7 @@ module.exports = {
     'comma-style': ['error', 'last'],                     // 逗号放置在当前行末尾
     'func-call-spacing': ['error', 'never'],              // 函数调用时括号前不带空格
     'func-style': ['error', 'declaration', { 'allowArrowFunctions': true }], // 使用函数声明定义函数
-    'max-len': ['error', { 'code': 120, 'tabWidth': 2 }], // 一行最大120长度
+    'max-len': ['error', { 'code': 160, 'tabWidth': 2 }], // 一行最大120长度
     'new-cap': ['error', { 'capIsNew': true }],           // 构造函数名首字母大写
     'spaced-comment': ['error', 'always'],                // 注释斜杠后面加空格
     'object-curly-spacing': ['error', 'always'],          // 对象括号内带空格
