@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
@@ -41,7 +40,6 @@ app.component('svg-icon', SvgIcon)
 const store = useStore()
 // 登录状态，获取用户菜单
 if (store.token) {
-  // @ts-ignore
   store.getUserMenus()
 }
 
