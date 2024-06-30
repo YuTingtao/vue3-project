@@ -173,7 +173,9 @@ function handleLogout() {
   box-sizing: border-box;
   padding-left: 200px;
   padding-top: 56px;
-  min-height: 100%;
+  height: 100%;
+  min-width: 1300px;
+  overflow: auto;
   background: #fff;
   transition: padding-left var(--el-transition-duration) ease-in-out;
 }
@@ -181,6 +183,6 @@ function handleLogout() {
 .app-view {
   box-sizing: border-box;
   min-height: 100%;
-  margin: 20px;
+  padding: 20px;
 }
 </style>

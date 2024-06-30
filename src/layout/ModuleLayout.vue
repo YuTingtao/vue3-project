@@ -1,4 +1,4 @@
-<!-- 菜单模块需要嵌套多一层router-view -->
+<!-- 菜单模块layout -->
 <template>
   <router-view></router-view>
 </template>

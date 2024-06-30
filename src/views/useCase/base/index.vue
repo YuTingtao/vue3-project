@@ -1,6 +1,5 @@
 <template>
   <div class="page-svg">
-
     <div class="row-box">
       <span>svg-icon：</span>
       <svg-icon name="edit"></svg-icon>
@@ -8,7 +7,7 @@
     
     <div class="row-box">
       <span>按钮权限：</span>
-      <el-button v-if="hasPerm('add')" type="primary" @click="router.push('/useCase/baseAdd')">新增</el-button>
+      <el-button v-if="hasPerm('add')" type="primary">新增</el-button>
       <el-button v-if="hasPerm('edit')" type="primary">编辑</el-button>
       <el-button v-if="hasPerm('delete')" type="primary">删除</el-button>
       <!-- 无权限 -->
@@ -16,9 +15,10 @@
     </div>
 
     <div class="row-box">
-      <span>图片预览：</span>
-      <el-button type="primary" @click="viewImg(urlList)">预览</el-button>
+      <span>公共组件：</span>
+      <el-button type="primary" @click="viewImg(urlList)">图片预览</el-button>
     </div>
+
   </div>
 </template>
 
