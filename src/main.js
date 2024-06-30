@@ -33,7 +33,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 
 // 注册svg-icon组件
-import SvgIcon from './components/SvgIcon/SvgIcon.vue'
+import SvgIcon from './components/svgIcon/SvgIcon.vue'
 import 'virtual:svg-icons-register'
 app.component('svg-icon', SvgIcon)
 

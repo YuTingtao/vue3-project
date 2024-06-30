@@ -26,10 +26,10 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
-    ImgView: typeof import('./src/components/ImgView/ImgView.vue')['default']
+    ImgView: typeof import('./src/components/imgView/ImgView.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SvgIcon: typeof import('./src/components/SvgIcon/SvgIcon.vue')['default']
-    WangEditor: typeof import('./src/components/RichEditor/WangEditor.vue')['default']
+    SvgIcon: typeof import('./src/components/svgIcon/SvgIcon.vue')['default']
+    WangEditor: typeof import('./src/components/richEditor/WangEditor.vue')['default']
   }
 }

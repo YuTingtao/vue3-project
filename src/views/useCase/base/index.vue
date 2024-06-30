@@ -27,7 +27,7 @@ import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
 import hasPerm from '@/utils/permission.js'
-import viewImg from '@/components/ImgView/index.js'
+import viewImg from '@/components/imgView'
 
 const router = useRouter()
 const route = useRoute()
