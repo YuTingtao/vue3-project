@@ -1,9 +1,9 @@
-import ajax from '../intercept.js'
+import axios from '../intercept.js'
 
 export default {
   // 登录
   login(data) {
-    return ajax.request({
+    return axios.request({
       url: '/api/login',
       method: 'post',
       data,
@@ -12,7 +12,7 @@ export default {
   },
   // 退出登录
   logout() {
-    return ajax.request({
+    return axios.request({
       url: '/api/logout',
       method: 'get'
     })

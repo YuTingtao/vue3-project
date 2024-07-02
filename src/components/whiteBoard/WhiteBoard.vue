@@ -1,14 +1,41 @@
 <template>
   <div class="whiteboard-box">
     <div class="whiteboard-btns">
-      <el-button :type="drawType == 'paint'? 'primary' : ''" @click="setDrawType('paint')">画笔</el-button>
-      <el-button :type="drawType == 'rect'? 'primary' : ''" @click="setDrawType('rect')">矩形</el-button>
-      <el-button :type="drawType == 'ellipse'? 'primary' : ''" @click="setDrawType('ellipse')">椭圆</el-button>
-      <el-button :type="drawType == 'arrow'? 'primary' : ''" @click="setDrawType('arrow')">箭头</el-button>
+      <el-button
+        :type="drawType == 'paint'? 'primary' : ''" 
+        @click="setDrawType('paint')">
+        画笔
+      </el-button>
+
+      <el-button
+        :type="drawType == 'rect'? 'primary' : ''"
+        @click="setDrawType('rect')">
+        矩形
+      </el-button>
+
+      <el-button
+        :type="drawType == 'ellipse'? 'primary' : ''"
+        @click="setDrawType('ellipse')">
+        椭圆
+      </el-button>
+
+      <el-button
+        :type="drawType == 'arrow'? 'primary' : ''"
+        @click="setDrawType('arrow')">
+        箭头
+      </el-button>
+
       <el-color-picker v-model="config.color" :predefine="predefine" />
-      <el-button :type="drawType == 'eraser'? 'primary' : ''" @click="setDrawType('eraser')">橡皮擦</el-button>
+
+      <el-button 
+        :type="drawType == 'eraser'? 'primary' : ''"
+        @click="setDrawType('eraser')">
+        橡皮擦
+      </el-button>
+
       <el-button type="" @click="clearCanvas">清空</el-button>
     </div>
+
     <div ref="boardEl" class="whiteboard">
       <canvas
         ref="canvas"
@@ -19,9 +46,11 @@
         @mouseup="onEnd"
         @mouseleave="onEnd">
       </canvas>
+
       <canvas
+        v-show="['rect', 'ellipse', 'arrow'].includes(drawType)"
         ref="canvasTemp"
-        class="whiteboard-temp" style="display: none;"
+        class="whiteboard-temp"
         width="" height=""
         @mousedown="onStart"
         @mousemove="onDrawing"
@@ -53,11 +82,6 @@ const drawType = ref('paint')
  */
 function setDrawType(type) {
   drawType.value = type
-  if (['rect', 'ellipse', 'arrow'].includes(type)) {
-    canvasTemp.value.style.display = 'block'
-  } else {
-    canvasTemp.value.style.display = 'none'
-  }
 }
 
 // 配置
