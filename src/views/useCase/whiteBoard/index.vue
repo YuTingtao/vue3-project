@@ -2,38 +2,44 @@
   <div class="whiteboard-box">
     <div class="whiteboard-btns">
       <el-button
-        :type="drawType == 'paint'? 'primary' : ''" 
+        :type="config.drawType == 'paint'? 'primary' : ''" 
         @click="setDrawType('paint')">
         画笔
       </el-button>
 
       <el-button
-        :type="drawType == 'rect'? 'primary' : ''"
+        :type="config.drawType == 'rect'? 'primary' : ''"
         @click="setDrawType('rect')">
         矩形
       </el-button>
 
       <el-button
-        :type="drawType == 'ellipse'? 'primary' : ''"
+        :type="config.drawType == 'ellipse'? 'primary' : ''"
         @click="setDrawType('ellipse')">
         椭圆
       </el-button>
 
       <el-button
-        :type="drawType == 'arrow'? 'primary' : ''"
+        :type="config.drawType == 'arrow'? 'primary' : ''"
         @click="setDrawType('arrow')">
         箭头
       </el-button>
 
+      <el-button
+        :type="config.drawType == 'text'? 'primary' : ''"
+        @click="setDrawType('text')">
+        文本
+      </el-button>
+
       <el-color-picker v-model="config.color" :predefine="predefine" />
 
-      <el-button 
-        :type="drawType == 'eraser'? 'primary' : ''"
+      <el-button
+        :type="config.drawType == 'eraser'? 'primary' : ''"
         @click="setDrawType('eraser')">
         橡皮擦
       </el-button>
 
-      <el-button type="" @click="clearCanvas">清空</el-button>
+      <el-button style="margin-left: 36px;" type="" @click="clearCanvas">清空</el-button>
     </div>
 
     <div class="whiteboard">
@@ -48,7 +54,7 @@
       </canvas>
 
       <canvas
-        v-show="['rect', 'ellipse', 'arrow'].includes(drawType)"
+        v-show="['rect', 'ellipse', 'arrow'].includes(config.drawType)"
         ref="canvasTemp"
         class="whiteboard-temp"
         width="" height=""
@@ -57,38 +63,43 @@
         @mouseup="onEnd"
         @mouseleave="onEnd">
       </canvas>
+
+      
+      <div ref="inputRef"
+        v-show="config.drawType == 'text' && isInput"
+        class="whiteboard-input" contenteditable="true"
+        :style="{ 'color': config.color, 'left': startX + 'px', 'top': (startY - 16) + 'px' }"
+        @blur="drawText">
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
-const props = defineProps({
-  
-})
 
 const canvas = ref()
 const canvasTemp = ref()
 const ctx = ref()
 const ctxTemp = ref()
 
-// 绘制类型
-const drawType = ref('paint')
+// 配置
+const config = reactive({
+  drawType: 'paint', // 绘制类型
+  lineWidth: 1.5,    // 线条粗细
+  color: '#ff0000',  // 线条颜色
+  eraserWidth: 20,   // 橡皮擦大小
+})
 
 /**
  * 设置绘制类型
  * @param type paint画笔，rect矩形，ellipse椭圆，arrow箭头，eraser橡皮
  */
 function setDrawType(type) {
-  drawType.value = type
+  config.drawType = type
 }
 
-// 配置
-const config = reactive({
-  lineWidth: 1.5, // 线条粗细
-  color: '#ff0000', // 线条颜色
-  eraserWidth: 20, // 橡皮擦大小
-})
+// color-picker 预置颜色
 const predefine = ref([
   '#ff0000',
   '#0000ff'
@@ -122,24 +133,38 @@ const startX = ref(0)
 const startY = ref(0)
 // 是否在绘制
 const isDrawing = ref(false)
+// 是否在输入文本
+const isInput = ref(false)
+const inputRef = ref()
 
 // 开始绘制
 function onStart(e) {
-  isDrawing.value = true
-  startX.value = e.offsetX
-  startY.value = e.offsetY
+  if (config.drawType != 'text') {
+    isDrawing.value = true
+    startX.value = e.offsetX
+    startY.value = e.offsetY
+  } else {
+    if (!isInput.value) {
+      isInput.value = true
+      startX.value = e.offsetX
+      startY.value = e.offsetY
+      setTimeout(() => {
+        inputRef.value.focus()
+      }, 20)
+    }
+  }
 }
 
 // 绘制
 function onDrawing(e) {
   if (isDrawing.value) {
     // 画笔
-    if (drawType.value == 'paint') {
+    if (config.drawType == 'paint') {
       drawPaint(startX.value, startY.value, e.offsetX, e.offsetY)
       startX.value = e.offsetX
       startY.value = e.offsetY
     // 橡皮擦
-    } else if (drawType.value == 'eraser') {
+    } else if (config.drawType == 'eraser') {
       ctx.value.clearRect(
         e.offsetX - 0.5 * config.eraserWidth,
         e.offsetY - 0.5 * config.eraserWidth,
@@ -147,13 +172,13 @@ function onDrawing(e) {
         config.eraserWidth
       )
     // 矩形
-    } else if (drawType.value == 'rect') {
+    } else if (config.drawType == 'rect') {
       drawRect(startX.value, startY.value, e.offsetX - startX.value, e.offsetY - startY.value)
     // 椭圆
-    } else if (drawType.value == 'ellipse') {
+    } else if (config.drawType == 'ellipse') {
       drawEllipse(startX.value, startY.value, e.offsetX, e.offsetY)
     // 箭头
-    } else if (drawType.value == 'arrow') {
+    } else if (config.drawType == 'arrow') {
       drawArrow(startX.value, startY.value, e.offsetX, e.offsetY)
     }
   }
@@ -161,7 +186,7 @@ function onDrawing(e) {
 
 // 结束绘制
 function onEnd() {
-  if (['rect', 'ellipse', 'arrow'].includes(drawType.value)) {
+  if (['rect', 'ellipse', 'arrow'].includes(config.drawType)) {
     mergeCanvas()
   }
   isDrawing.value = false
@@ -228,10 +253,25 @@ function mergeCanvas() {
   ctxTemp.value.clearRect(0, 0, canvasTemp.value.width, canvasTemp.value.height)
 }
 
+// 绘制文本
+function drawText(e) {
+  console.log(e)
+  let textArr = e.target.innerText.split(/\n\r|\n/)
+  textArr.forEach((item, index) => {
+    ctx.value.fillStyle = config.color
+    ctx.value.font = '14px "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif'
+    let x = startX.value + 9
+    let y = startY.value - 15 + (index + 1) * 20
+    ctx.value.fillText(item, x, y)
+  })
+  e.target.innerText = ''
+  isInput.value = false
+}
+
 // 清空
 function clearCanvas() {
   ctx.value.clearRect(0, 0, canvas.value.width, canvas.value.height)
-  if (drawType.value == 'eraser') {
+  if (config.drawType == 'eraser') {
     setDrawType('paint')
   }
 }
@@ -259,16 +299,35 @@ function clearCanvas() {
   flex: 1;
   border: 1px solid var(--el-border-color-light);
 }
+
 .whiteboard-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
   display: block;
   cursor: grabbing;
 }
+
 .whiteboard-temp {
-  display: none;
   position: absolute;
   left: 0;
   top: 0;
   display: block;
   cursor: crosshair;
+}
+
+.whiteboard-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  display: block;
+  box-sizing: border-box;
+  min-width: 100px;
+  max-width: 100%;
+  padding: 6px 8px;
+  line-height: 20px;
+  border: 1px solid var(--el-border-color);
+  border-radius: 4px;
 }
 </style>
