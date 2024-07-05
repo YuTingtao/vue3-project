@@ -64,11 +64,10 @@
         @mouseleave="onEnd">
       </canvas>
 
-      
       <div ref="inputRef"
         v-show="config.drawType == 'text' && isInput"
         class="whiteboard-input" contenteditable="true"
-        :style="{ 'color': config.color, 'left': startX + 'px', 'top': (startY - 16) + 'px' }"
+        :style="{ 'color': config.color, 'left': pageX + 'px', 'top': (pageY - 16) + 'px' }"
         @blur="drawText">
       </div>
     </div>
@@ -131,6 +130,8 @@ onMounted(() => {
 // 开始坐标位置
 const startX = ref(0)
 const startY = ref(0)
+const pageX = ref(0)
+const pageY = ref(0)
 // 是否在绘制
 const isDrawing = ref(false)
 // 是否在输入文本
@@ -148,6 +149,8 @@ function onStart(e) {
       isInput.value = true
       startX.value = e.offsetX
       startY.value = e.offsetY
+      pageX.value = e.pageX
+      pageY.value = e.pageY
       setTimeout(() => {
         inputRef.value.focus()
       }, 20)
@@ -255,13 +258,12 @@ function mergeCanvas() {
 
 // 绘制文本
 function drawText(e) {
-  console.log(e)
   let textArr = e.target.innerText.split(/\n\r|\n/)
   textArr.forEach((item, index) => {
     ctx.value.fillStyle = config.color
     ctx.value.font = '14px "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif'
     let x = startX.value + 9
-    let y = startY.value - 15 + (index + 1) * 20
+    let y = startY.value - 14 + (index + 1) * 20
     ctx.value.fillText(item, x, y)
   })
   e.target.innerText = ''
@@ -279,13 +281,11 @@ function clearCanvas() {
 
 <style lang="scss">
 .whiteboard-box {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
   height: 100%;
 }
 
 .whiteboard-btns {
-  flex-shrink: 0;
   margin-bottom: 12px;
   .el-color-picker {
     margin: 0 12px;
@@ -296,7 +296,8 @@ function clearCanvas() {
 .whiteboard {
   position: relative;
   overflow: hidden;
-  flex: 1;
+  width: 100%;
+  height: calc(100% - 32px - 12px);
   border: 1px solid var(--el-border-color-light);
 }
 
@@ -304,7 +305,9 @@ function clearCanvas() {
   position: absolute;
   left: 0;
   top: 0;
-  display: block;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
   cursor: grabbing;
 }
 
@@ -312,21 +315,22 @@ function clearCanvas() {
   position: absolute;
   left: 0;
   top: 0;
-  display: block;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
   cursor: crosshair;
 }
 
 .whiteboard-input {
-  position: absolute;
-  left: 0;
-  top: 0;
+  position: fixed;
+  z-index: 3;
   overflow: hidden;
-  display: block;
   box-sizing: border-box;
-  min-width: 100px;
+  min-width: 60px;
   max-width: 100%;
   padding: 6px 8px;
   line-height: 20px;
+  white-space: nowrap;
   border: 1px solid var(--el-border-color);
   border-radius: 4px;
 }
