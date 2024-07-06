@@ -9,8 +9,11 @@ module.exports = {
     'eslint:recommended',
     'plugin:vue/vue3-essential',
     'plugin:@typescript-eslint/recommended',
-    './.eslintrc-auto-import.json'
   ],
+  globals: {
+    ElMessageBox: true,
+    ElMessage: true
+  },
   overrides: [],
   parser: 'vue-eslint-parser',
   parserOptions: {
