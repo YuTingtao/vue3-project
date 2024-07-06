@@ -61,12 +61,6 @@ export default defineConfig({
           importStyle: 'sass'
         })
       ],
-      // 解决eslint报错
-      eslintrc: {
-        enabled: true,
-        filepath: './.eslintrc-auto-import.json',
-        globalsPropValue: true
-      }
     }),
     Components({
       resolvers: [

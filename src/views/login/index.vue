@@ -1,7 +1,7 @@
 <template>
-  <div class="login-bg">
+  <div class="login-page">
     <div class="login-box">
-      <h3 class="title">登录系统</h3>
+      <h3 class="title">欢迎登录</h3>
 
       <!-- 表单 -->
       <el-form :model="loginForm" ref="formRef" :rules="rules" size="large">
@@ -88,34 +88,35 @@ async function handleLogin() {
 </script>
 
 <style lang="scss" scoped>
-.login-bg {
+.login-page {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   overflow-y: auto;
-  background: #f2f6fa;
+  background: url('@/assets/img/login-bg.jpg') no-repeat;
+  background-size: cover;
 }
 
 .login-box {
-  position: relative;
-  z-index: 1;
-  width: 500px;
   box-sizing: border-box;
+  width: 480px;
   padding: 30px;
+  margin: 0 12%;
   background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, .15);
   .title {
     text-align: center;
     font-size: 24px;
     font-weight: normal;
-    margin: 10px 0 40px 0;
+    margin-bottom: 40px;
   }
   .el-form-item {
     &:last-child {
-      margin-top: 30px;
+      margin-top: 40px;
+      margin-bottom: 0;
     }
   }
   :deep(.el-icon) {
@@ -130,5 +131,11 @@ async function handleLogin() {
 .row-btn {
   width: 100%;
   font-size: 16px;
+}
+
+@media screen and (max-width: 950px) {
+  .login-box {
+    margin: 0 8%;
+  }
 }
 </style>
