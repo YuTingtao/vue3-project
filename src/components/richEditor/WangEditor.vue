@@ -1,13 +1,18 @@
 <template>
   <div class="wang-editor">
-    <Toolbar :editor="editorRef" :defaultConfig="toolbarConfig" :mode="mode" />
+    <Toolbar
+      :editor="editorRef"
+      :defaultConfig="toolbarConfig"
+      :mode="mode"
+    />
     <Editor
       style="overflow-y: hidden"
       v-model="richText"
       :defaultConfig="editorConfig"
       :mode="mode"
       @onCreated="handleCreated"
-      @onChange="handleChange" />
+      @onChange="handleChange"
+    />
   </div>
 </template>
 
@@ -86,7 +91,7 @@ const toolbarConfig = ref({
       ]
     },
     'insertVideo',
-    'insertTable',
+    /* 'insertTable', */
     'codeBlock', // 代码块
     '|',
     'undo',
@@ -103,19 +108,19 @@ const editorConfig = ref({
   autoFocus: false,
   MENU_CONF: {
     uploadImage: {
-      server: '/api/upload'
+      server: '/api/upload',
       // 自定义上传
       // async customUpload(file, insertFn) {
-      //     let url = '';
-      //     insertFn(url)
+      //   let url = ''
+      //   insertFn(url)
       // }
     },
     uploadVideo: {
-      server: '/api/upload'
+      server: '/api/upload',
       // 自定义上传
       // async customUpload(file, insertFn) {
-      //     let url = '';
-      //     insertFn(url)
+      //   let url = ''
+      //   insertFn(url)
       // }
     }
   }

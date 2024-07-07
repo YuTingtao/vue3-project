@@ -108,10 +108,11 @@ async function handleLogin() {
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(0, 0, 0, .15);
   .title {
+    margin-bottom: 40px;
     text-align: center;
     font-size: 24px;
     font-weight: normal;
-    margin-bottom: 40px;
+    color: var(--el-color-primary);
   }
   .el-form-item {
     &:last-child {
