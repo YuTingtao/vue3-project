@@ -189,10 +189,12 @@ function onDrawing(e) {
 
 // 结束绘制
 function onEnd() {
-  if (['rect', 'ellipse', 'arrow'].includes(config.drawType)) {
-    mergeCanvas()
+  if (isDrawing.value) {
+    if (['rect', 'ellipse', 'arrow'].includes(config.drawType)) {
+      mergeCanvas()
+    }
+    isDrawing.value = false
   }
-  isDrawing.value = false
 }
 
 // 绘制画笔
