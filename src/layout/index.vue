@@ -1,9 +1,9 @@
 <!-- 全局layout -->
 <template>
   <!-- 头部 -->
-  <div class="app-head" :style="`left: ${isCollapse ? '64px' : '200px'};`">
+  <div class="app-head" :style="`left: ${appStore.menu.isExpand ? '200px' : '64px'};`">
     <el-icon class="menu-collapse" @click="toggleCollapse">
-      <component :is="isCollapse ? 'Expand' : 'Fold'"></component>
+      <component :is="appStore.menu.isExpand ? 'Fold' : 'Expand'"></component>
     </el-icon>
 
     <!-- 面包屑 -->
@@ -33,12 +33,12 @@
   <!-- 侧边菜单 -->
   <div class="app-aside">
     <el-scrollbar>
-      <div class="app-logo" :class="isCollapse ? 'collapsed' : ''">
+      <div class="app-logo" :class="appStore.menu.isExpand ? '' : 'collapsed'">
         <img class="app-logo-img" src="@/assets/img/logo.png" alt="">
         <span>Vue3管理后台</span>
       </div>
       <el-menu
-        :collapse="isCollapse"
+        :collapse="!appStore.menu.isExpand"
         text-color="#fff"
         background-color="#3c4f60"
         :default-active="$route.meta.activePath || $route.path || $route.name">
@@ -48,7 +48,7 @@
   </div>
 
   <!-- 主体 -->
-  <div class="app-main" :style="`padding-left: ${isCollapse ? '64px':'200px'};`">
+  <div class="app-main" :style="`padding-left: ${appStore.menu.isExpand ? '200px':'64px'};`">
     <!-- 页面主体 -->
     <router-view class="app-view"></router-view>
   </div>
@@ -58,6 +58,7 @@
 import { ref, reactive, computed, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
+import { useAppStore } from '@/store/app.js'
 import MenuItem from './components/MenuItem.vue'
 import BreadCrumb from './components/BreadCrumb.vue'
 import loginApi from '@/api/login/loginApi.js'
@@ -65,6 +66,7 @@ import loginApi from '@/api/login/loginApi.js'
 const router = useRouter()
 const route = useRoute()
 const store = useStore()
+const appStore = useAppStore()
 
 // 用户信息
 const userInfo = computed(() => store.userInfo)
@@ -73,9 +75,8 @@ const userInfo = computed(() => store.userInfo)
 const userMenus = computed(() => store.userMenus)
 
 // 菜单展开收起
-const isCollapse = ref(false)
 function toggleCollapse() {
-  isCollapse.value = !isCollapse.value
+  appStore.menu.isExpand = !appStore.menu.isExpand
 }
 
 // 退出登录
