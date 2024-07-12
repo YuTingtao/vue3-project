@@ -1,3 +1,4 @@
+/* eslint-disable no-control-regex */
 import { writeFileSync } from 'node:fs'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
