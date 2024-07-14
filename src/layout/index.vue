@@ -61,7 +61,7 @@ import { useStore } from '@/store'
 import { useAppStore } from '@/store/app.js'
 import MenuItem from './components/MenuItem.vue'
 import BreadCrumb from './components/BreadCrumb.vue'
-import loginApi from '@/api/login/loginApi.js'
+import loginApi from '@/api/login/index.js'
 
 const router = useRouter()
 const route = useRoute()
@@ -175,8 +175,6 @@ function handleLogout() {
   padding-left: 200px;
   padding-top: 56px;
   height: 100%;
-  min-width: 1300px;
-  overflow: auto;
   background: #fff;
   transition: padding-left var(--el-transition-duration) ease-in-out;
 }
