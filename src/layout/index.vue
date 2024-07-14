@@ -83,7 +83,7 @@ function toggleCollapse() {
 function handleLogout() {
   loginApi.logout().finally(() => {
     store.setLogout()
-    router.replace('/login')
+    router.push('/login')
   })
 }
 </script>

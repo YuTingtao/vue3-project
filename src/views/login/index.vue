@@ -57,23 +57,22 @@ const rules = reactive({
 const loading = ref(false)
 // 提交表单
 async function submitForm() {
-  if (!formRef.value) return
-  await formRef.value.validate(valid => {
-    if (valid) {
-      loading.value = true
-      loginApi.login(loginForm.value).then(() => {
-        loading.value = false
-        handleLogin()
-      }).catch(() => {
-        loading.value = false
-        handleLogin()
-      })
-    }
+  await formRef.value?.validate(valid => {
+    if (loading.value) return
+    if (!valid) return
+    loading.value = true
+    loginApi.login(loginForm.value).then(() => {
+      loading.value = false
+      loginSuccess()
+    }).catch(() => {
+      loading.value = false
+      loginSuccess()
+    })
   })
 }
 
-// 登录
-async function handleLogin() {
+// 登录成功
+async function loginSuccess() {
   store.setLogin({
     token: 'Token-123456789',
     userInfo: { name: 'admin', avatar: '' }

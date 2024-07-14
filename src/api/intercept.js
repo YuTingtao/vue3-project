@@ -30,14 +30,14 @@ const axios = Axios.create({
 axios.interceptors.request.use(
   config => {
     const store = useStore()
-    config.headers['Content-Type'] = 'application/json'
-    // application/x-www-form-urlencoded 或 multipart/form-data
+    config.headers['Content-Type'] = 'application/json' // application/x-www-form-urlencoded、multipart/form-data
     if (store.token) {
       config.headers['token'] = store.token
     }
     return config
   },
   error => {
+    console.log(error)
     return Promise.reject(error)
   }
 )
@@ -50,16 +50,16 @@ axios.interceptors.response.use(
       if (res.data instanceof Blob || res.data instanceof ArrayBuffer) {
         return res
       }
-      // 请求不成功，提示错误信息
-      if (res.data.code != '200') {
+      if (res.data.code == '200') { // 成功
+        return res.data
+      } else if (res.data.code == '000001') { // 需要登录
         toast(res.data.msg)
-      }
-      // 需要登录
-      if (res.data.code == '000001') {
         store.setLogout()
         toLogin()
+      } else { // 失败
+        toast(res.data.msg || '网络异常')
+        return Promise.reject(res.data)
       }
-      return res.data
     } else {
       return Promise.reject(res)
     }
@@ -71,12 +71,12 @@ axios.interceptors.response.use(
           toast('网络请求不存在')
           break
         default: // 其他错误
-          toast('网络请求错误')
+          toast('网络异常')
       }
       return Promise.reject(error)
     } else {
       if (!navigator.onLine) {
-        toast('网络已断开，请检查网络')
+        toast('设备已断开网络')
       }
     }
   }
