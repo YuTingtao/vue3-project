@@ -112,6 +112,7 @@ function handleLogout() {
     cursor: pointer;
   }
   .el-breadcrumb {
+    flex-shrink: 0;
     margin-left: 12px;
     margin-right: 20px;
   }

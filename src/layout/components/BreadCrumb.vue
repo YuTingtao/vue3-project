@@ -1,5 +1,5 @@
+<!-- 面包屑组件 -->
 <template>
-  <!-- 面包屑 -->
   <el-breadcrumb>
     <el-breadcrumb-item v-for="(item, index) in breadcrumbs" :key="item.path + index" :to="item.path">
       {{ item.title }}
@@ -28,7 +28,7 @@ function getBreadcrumbs() {
     matched = matched.slice(1)
   }
   // console.log(matched)
-  if (matched.length > 1 || matched[0].meta.parentPath) {
+  if (matched.length > 0) {
     for (let i = matched.length - 1; i >= 0; i--) {
       const item = matched[i]
       let path = item.path
