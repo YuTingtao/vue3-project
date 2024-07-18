@@ -39,8 +39,7 @@
       </div>
       <el-menu
         :collapse="!appStore.menu.isExpand"
-        text-color="#fff"
-        background-color="#3c4f60"
+        :unique-opened="true"
         :default-active="$route.meta.activePath || $route.path || $route.name">
         <MenuItem v-for="item in userMenus" :key="item.path" :item="item"></MenuItem>
       </el-menu>
@@ -140,6 +139,9 @@ function handleLogout() {
   z-index: 110;
   background: #3c4f60;
   .el-menu--vertical {
+    --el-menu-text-color: #fff;
+    --el-menu-bg-color: #3c4f60;
+    --el-menu-hover-bg-color: #303f4d;
     border-right: none;
     &:not(.el-menu--collapse) {
       width: 200px;

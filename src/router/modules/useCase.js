@@ -27,6 +27,20 @@ export default [
           parentPath: '',
         }
       },
+      // 画板/白板
+      {
+        path: '/useCase/whiteBoard',
+        component: () => import('@/views/useCase/whiteBoard/index.vue'),
+        meta: {
+          type: 1,
+          title: '画板/白板',
+          icon: '',
+          visible: 1,
+          buttons: [],
+          activePath: '',
+          parentPath: '',
+        },
+      },
       // 富文本编辑
       {
         path: '/useCase/wangEditor',
@@ -41,20 +55,6 @@ export default [
           parentPath: '',
         },
       },
-      // 画板/白板
-      {
-        path: '/useCase/whiteBoard',
-        component: () => import('@/views/useCase/whiteBoard/index.vue'),
-        meta: {
-          type: 1,
-          title: '画板/白板',
-          icon: '',
-          visible: 1,
-          buttons: [],
-          activePath: '',
-          parentPath: '',
-        },
-      }
     ]
   }
 ]
