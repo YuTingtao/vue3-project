@@ -24,7 +24,6 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint'],
   rules: {
     'indent': ['error', 2, { 'SwitchCase': 1 }],          // 缩进2个空格
-    'vue/html-indent': ['error', 2, { 'alignAttributesVertically': false }],
     'semi': ['error', 'never'],                           // js结尾不加分号
     'quotes': ['error', 'single', { 'allowTemplateLiterals': true }], // js定义字符串使用单引号
     'camelcase': 'error',                                 // 驼峰命名
@@ -40,9 +39,10 @@ module.exports = {
     'no-multiple-empty-lines': ['error', { 'max': 2 }],   // 最大2空行
     'no-undef': ['error', { 'typeof': true }],            // 禁用未声明的变量
     'no-unused-vars': 'off',                              // 未使用变量不报错
-    'vue/no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-explicit-any':'off',
-    'vue/multi-word-component-names': 'off'
+    'vue/html-indent': ['error', 2, { 'alignAttributesVertically': false }],
+    'vue/multi-word-component-names': 'off',
+    'vue/no-unused-vars': 'off',
   }
 }
