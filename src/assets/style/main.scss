@@ -7,11 +7,11 @@
 }
 
 .lazyload, .lazyloading {
-	opacity: 0;
+  opacity: 0;
 }
 .lazyloaded {
-	opacity: 1;
-	transition: opacity 0.2s;
+  opacity: 1;
+  transition: opacity 0.2s;
 }
 
 // vue transition
@@ -52,7 +52,7 @@ body {
       margin-right: 0;
     }
   }
-  .el-select {
+  .el-input, .el-select {
     width: 190px;
   }
 }
