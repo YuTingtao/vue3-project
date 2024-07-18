@@ -57,7 +57,7 @@
       layout="total, sizes, prev, pager, next, jumper"
       :background="true"
       :total="total"
-      @size-change="getList"
+      @size-change="handleSearch"
       @current-change="getList">
     </el-pagination>
   </div>
