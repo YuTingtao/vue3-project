@@ -15,8 +15,8 @@
     </div>
 
     <div class="row-box">
-      <span>公共组件：</span>
-      <el-button type="primary" @click="viewImg(urlList)">图片预览</el-button>
+      <span>图片预览：</span>
+      <el-button type="primary" @click="viewImg(urlList)">预览</el-button>
     </div>
 
   </div>
