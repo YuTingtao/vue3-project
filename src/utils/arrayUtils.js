@@ -24,7 +24,7 @@ function treeToList(tree, props = { children: 'children' }) {
 
 /**
  * 数组：平铺转树形结构
- * @param {*} list 
+ * @param {*} list 扁平数组
  * @returns Array
  */
 function listToTree(list) {
