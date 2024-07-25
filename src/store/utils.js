@@ -13,11 +13,16 @@ function getMenuObj(tree) {
 
 // 获取第一个菜单
 function getFirstMenu(menu) {
-  if (Array.isArray(menu.children)) {
-    return getFirstMenu(menu.children[0])
-  } else {
-    return menu.path || '/login'
+  let result
+  function handle(node) {
+    if (node.children && node.children.length > 0) {
+      handle(node.children[0])
+    } else {
+      result = node.path
+    }
   }
+  handle(menu)
+  return result || '/login'
 }
 
 export {
