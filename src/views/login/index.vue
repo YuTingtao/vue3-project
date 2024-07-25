@@ -61,9 +61,11 @@ async function submitForm() {
     if (loading.value) return
     if (!valid) return
     loading.value = true
-    loginApi.login(loginForm.value).then(() => {
-      loading.value = false
-      loginSuccess()
+    loginApi.login(loginForm.value).then((res) => {
+      if (res.code == '200') {
+        loading.value = false
+        loginSuccess()
+      }
     }).catch(() => {
       loading.value = false
       loginSuccess()

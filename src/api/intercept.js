@@ -46,22 +46,20 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   res => {
     const store = useStore()
-    if (res.status >= 200 && res.status < 300) {
+    if (res.status == 200) {
       if (res.data instanceof Blob || res.data instanceof ArrayBuffer) {
         return res
       }
-      if (res.data.code == '200') { // 成功
-        return res.data
-      } else if (res.data.code == '000001') { // 需要登录
+      if (res.data.code != '200') {
         toast(res.data.msg)
+      }
+      if (res.data.code == '000001') { // 需要登录
         store.setLogout()
         toLogin()
-      } else { // 失败
-        toast(res.data.msg || '网络异常')
-        return Promise.reject(res.data)
       }
+      return res.data
     } else {
-      return Promise.reject(res)
+      return Promise.reject(res.data)
     }
   },
   error => {
