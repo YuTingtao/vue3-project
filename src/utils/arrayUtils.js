@@ -10,15 +10,15 @@ function treeToList(tree, props = { children: 'children' }) {
   let result = [];
   let children = props.children
   // 处理函数
-  function handleFlat(node) {
+  function handle(node) {
     result.push(node);
     if (node[children] && node[children].length) {
       // 递归处理子节点
-      node[children].forEach(item => handleFlat(item));
+      node[children].forEach(item => handle(item));
     }
   }
   // 处理根节点
-  tree.forEach(item => handleFlat(item));
+  tree.forEach(item => handle(item));
   return result;
 }
 

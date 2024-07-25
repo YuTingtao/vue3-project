@@ -1,18 +1,14 @@
 // 数组转对象: key为path
-function getMenuObj(menus) {
-  const obj = {}
-  menus.forEach(item => {
-    if (item.path) {
-      obj[item.path] = item
+function getMenuObj(tree) {
+  const result = {}
+  function handle(node) {
+    result[node.path] = node
+    if (Array.isArray(node.children)) {
+      node.children.forEach(item => handle(item))
     }
-    if (Array.isArray(item.children)) {
-      const children = getMenuObj(item.children)
-      Object.keys(children).forEach(key => {
-        obj[key] = children[key]
-      })
-    }
-  })
-  return obj
+  }
+  tree.forEach(item => handle(item))
+  return result
 }
 
 // 获取第一个菜单
