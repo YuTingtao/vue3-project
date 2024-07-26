@@ -23,7 +23,7 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button class="row-btn" type="primary" :loading="loading" @click="submitForm">登 录</el-button>
+          <el-button class="row-btn" type="primary" :loading="loading" @click="onSubmit">登 录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -56,7 +56,7 @@ const rules = reactive({
 
 const loading = ref(false)
 // 提交表单
-async function submitForm() {
+async function onSubmit() {
   await formRef.value?.validate(valid => {
     if (loading.value) return
     if (!valid) return
@@ -96,7 +96,7 @@ async function loginSuccess() {
   justify-content: flex-end;
   align-items: center;
   overflow-y: auto;
-  background: url('@/assets/img/login-bg.jpg') no-repeat;
+  background: url('@/assets/img/login/login-bg.jpg') no-repeat;
   background-size: cover;
 }
 
