@@ -104,7 +104,7 @@ async function loginSuccess() {
   box-sizing: border-box;
   width: 480px;
   padding: 30px;
-  margin: 0 12%;
+  margin: 0 14%;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(0, 0, 0, .15);

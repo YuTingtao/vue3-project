@@ -1,7 +1,7 @@
 <!-- 全局layout -->
 <template>
   <!-- 头部 -->
-  <div class="app-head" :style="`left: ${appStore.menu.isExpand ? '200px' : '64px'};`">
+  <div class="app-head" :style="`left: ${appStore.menu.isExpand ? '210px' : '64px'};`">
     <el-icon class="menu-collapse" @click="toggleCollapse">
       <component :is="appStore.menu.isExpand ? 'Fold' : 'Expand'"></component>
     </el-icon>
@@ -47,7 +47,7 @@
   </div>
 
   <!-- 主体 -->
-  <div class="app-main" :style="`padding-left: ${appStore.menu.isExpand ? '200px':'64px'};`">
+  <div class="app-main" :style="`padding-left: ${appStore.menu.isExpand ? '210px':'64px'};`">
     <!-- 页面主体 -->
     <router-view class="app-view"></router-view>
   </div>
@@ -92,7 +92,7 @@ function handleLogout() {
 .app-head {
   position: fixed;
   top: 0;
-  left: 200px;
+  left: 210px;
   right: 0;
   z-index: 100;
   display: flex;
@@ -144,7 +144,7 @@ function handleLogout() {
     --el-menu-hover-bg-color: #303f4d;
     border-right: none;
     &:not(.el-menu--collapse) {
-      width: 200px;
+      width: 210px;
     }
   }
   .el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item {
@@ -156,7 +156,7 @@ function handleLogout() {
   display: flex;
   align-items: center;
   overflow: hidden;
-  width: 200px;
+  width: 210px;
   padding: 15px 0;
   color: #fff;
   font-size: 16px;
@@ -178,7 +178,7 @@ function handleLogout() {
 // 主体
 .app-main {
   box-sizing: border-box;
-  padding-left: 200px;
+  padding-left: 210px;
   padding-top: 56px;
   height: 100%;
   background: #fff;

@@ -18,7 +18,6 @@
       <span>图片预览：</span>
       <el-button type="primary" @click="viewImg(urlList)">预览</el-button>
     </div>
-
   </div>
 </template>
 
