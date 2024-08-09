@@ -7,8 +7,10 @@ function deepClone(obj) {
   }
   let clone = Array.isArray(obj) ? [] : {};
   for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
+    if (typeof obj === obj[key] && obj !== null) {
       clone[key] = deepClone(obj[key]);
+    } else {
+      clone[key] = obj[key];
     }
   }
   return clone;

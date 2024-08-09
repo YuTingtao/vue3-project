@@ -135,9 +135,12 @@ async function loginSuccess() {
   font-size: 16px;
 }
 
-@media screen and (max-width: 950px) {
+@media (max-width: 950px) {
+  .login-page {
+    justify-content: center;
+  }
   .login-box {
-    margin: 0 8%;
+    margin: 0 4%;
   }
 }
 </style>
