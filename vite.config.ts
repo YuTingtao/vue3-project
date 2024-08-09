@@ -87,7 +87,7 @@ export default defineConfig({
   ],
   build: {
     outDir: 'docs', // 打包输出目录
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 1024 * 500,
     rollupOptions: {
       output: {
         manualChunks: (id) => {
