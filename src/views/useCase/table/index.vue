@@ -1,10 +1,10 @@
-<!-- 菜单权限 -->
+<!-- 表格案例 -->
 <template>
   <div class="">
     <!-- 筛选条件 -->
     <el-form class="app-filter" :model="filter" label-width="">
       <el-form-item label="关键词">
-        <el-input v-model.trim="filter.keyword" placeholder="请输入菜单名称"></el-input>
+        <el-input v-model.trim="filter.keyword" placeholder="请输入名称"></el-input>
       </el-form-item>
 
       <el-form-item label="状态">
@@ -25,26 +25,17 @@
     </el-form>
     
     <!-- 表格 -->
-    <el-table :data="tableData" border row-key="path" default-expand-all>
-      <el-table-column prop="meta.title" label="菜单" min-width="150">
+    <el-table :data="tableData" border row-key="id">
+      <el-table-column prop="name" label="姓名" min-width="150" show-overflow-tooltip></el-table-column>
+      <el-table-column prop="性别" label="年龄" min-width="150" show-overflow-tooltip>
         <template #default="scope">
-          <svg-icon v-if="scope.row.meta.icon" :name="scope.row.meta.icon"></svg-icon>
-          <span class="item-name">{{ scope.row.meta.title }}</span>
+          {{ scope.row.sex == 0 ? '男' : scope.row.sex == 1 ? '女' : '' }}
         </template>
       </el-table-column>
-      <el-table-column prop="meta.type" label="类型" min-width="150">
-        <template #default="scope">
-          {{ scope.row.meta.type == 0 ? '模块' : '菜单' }}
-        </template>
-      </el-table-column>
-      <el-table-column prop="meta.visible" label="是否显示" min-width="150">
-        <template #default="scope">
-          {{ scope.row.meta.visible ? '是' : '否' }}
-        </template>
-      </el-table-column>
+      <el-table-column prop="age" label="年龄" min-width="150" show-overflow-tooltip></el-table-column>
+      
       <el-table-column prop="" label="操作" min-width="150">
         <template #default="scope">
-          <el-button v-if="scope.row.meta.type == 0" type="primary" link>新增</el-button>
           <el-button type="primary" link>编辑</el-button>
           <el-button type="primary" link>删除</el-button>
         </template>
@@ -64,11 +55,11 @@
   </div>
 </template>
 
-<script setup name="SystemMenu">
+<script setup name="TableCase">
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
-import routes from '@/router/modules/index'
+import commonApi from '@/api/common/index.js'
 
 const router = useRouter()
 const route = useRoute()
@@ -88,8 +79,13 @@ const total = ref(0)
 
 // 获取列表
 function getList() {
-  tableData.value = routes
-  total.value = 100
+  commonApi.getList().then(res => {
+    if (res.data.code == 200) {
+      tableData.value = res?.data?.list || []
+      total.value = res?.data?.total || 0
+    }
+  })
+  
 }
 getList()
 

@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 export default {
-  // 配置
-  config(data = {}) {
+  // 列表
+  getList(data = {}) {
     return axios.request({
-      url: '/api/config',
+      url: '/api/getList',
       method: 'post',
       data,
     })

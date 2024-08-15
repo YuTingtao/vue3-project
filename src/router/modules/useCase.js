@@ -13,13 +13,27 @@ export default [
       parentPath: '', // 设置面包屑父级路径
     },
     children: [
-    // 基础案例
+      // 基础案例
       {
         path: '/useCase/base',
         component: () => import('@/views/useCase/base/index.vue'),
         meta: {
           type: 1,
           title: '基础案例',
+          icon: '',
+          visible: 1,
+          buttons: ['add', 'edit', 'delete'], // 按钮权限
+          activePath: '',
+          parentPath: '',
+        }
+      },
+      // 表格
+      {
+        path: '/useCase/table',
+        component: () => import('@/views/useCase/table/index.vue'),
+        meta: {
+          type: 1,
+          title: '表格案例',
           icon: '',
           visible: 1,
           buttons: ['add', 'edit', 'delete'], // 按钮权限

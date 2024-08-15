@@ -3,6 +3,7 @@ import { writeFileSync } from 'node:fs'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
+
 // Element Plus按需自动导入
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -10,7 +11,6 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 import ViteCompression from 'vite-plugin-compression'
-// svg-icon
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 // 打包分析
 import { visualizer } from 'rollup-plugin-visualizer'

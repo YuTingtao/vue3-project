@@ -1,3 +1,4 @@
+<!-- wangEdit富文本 -->
 <template>
   <div class="page-editor">
     <WangEditor ref="editorRef" v-model="richText" :maxLength="1000"></WangEditor>

@@ -21,7 +21,7 @@
     "js-base64": "^3.7.7",
     "lazysizes": "^5.3.2",
     "lodash-es": "^4.17.21",
-    "mitt": "^3.0.1",
+    "mockjs": "^1.1.0",
     "node-fetch": "^3.3.2",
     "pinia": "^2.1.7",
     "pinia-plugin-persist": "^1.0.0",

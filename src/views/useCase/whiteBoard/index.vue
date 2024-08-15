@@ -1,3 +1,4 @@
+<!-- canvas白板 -->
 <template>
   <div class="whiteboard-box">
     <div class="whiteboard-btns">
