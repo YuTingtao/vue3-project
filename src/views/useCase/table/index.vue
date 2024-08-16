@@ -26,13 +26,16 @@
     
     <!-- 表格 -->
     <el-table :data="tableData" border row-key="id">
+      <el-table-column type="index" label="序号" align="center" width="55"></el-table-column>
       <el-table-column prop="name" label="姓名" min-width="150" show-overflow-tooltip></el-table-column>
-      <el-table-column prop="性别" label="年龄" min-width="150" show-overflow-tooltip>
+      <el-table-column prop="sex" label="性别" min-width="150" show-overflow-tooltip>
         <template #default="scope">
           {{ scope.row.sex == 0 ? '男' : scope.row.sex == 1 ? '女' : '' }}
         </template>
       </el-table-column>
       <el-table-column prop="age" label="年龄" min-width="150" show-overflow-tooltip></el-table-column>
+      <el-table-column prop="city" label="城市" min-width="150" show-overflow-tooltip></el-table-column>
+      <el-table-column prop="email" label="邮箱" min-width="150" show-overflow-tooltip></el-table-column>
       
       <el-table-column prop="" label="操作" min-width="150">
         <template #default="scope">
@@ -59,7 +62,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
-import commonApi from '@/api/common/index.js'
+import baseApi from '@/api/base/index.js'
 
 const router = useRouter()
 const route = useRoute()
@@ -79,13 +82,13 @@ const total = ref(0)
 
 // 获取列表
 function getList() {
-  commonApi.getList().then(res => {
-    if (res.data.code == 200) {
+  baseApi.getList(filter.value).then(res => {
+    res = res.data
+    if (res.code === '200') {
       tableData.value = res?.data?.list || []
       total.value = res?.data?.total || 0
     }
   })
-  
 }
 getList()
 

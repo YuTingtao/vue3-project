@@ -14,6 +14,9 @@ import 'lazysizes'
 import { checkUpdate, autoCheckUpdate } from '@/utils/checkUpdate.js'
 autoCheckUpdate()
 
+// 模拟数据
+import './mock'
+
 const app = createApp(App)
 app.config.errorHandler = (err, instance, info) => {
   console.error(err, instance, info)
