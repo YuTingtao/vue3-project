@@ -22,7 +22,7 @@ function toLogin() {
 }
 
 const axios = Axios.create({
-  // baseURL: '',
+  baseURL: '',
   // timeout: 10000 // 请求超时 10s
 })
 
@@ -30,7 +30,8 @@ const axios = Axios.create({
 axios.interceptors.request.use(
   config => {
     const store = useStore()
-    config.headers['Content-Type'] = 'application/json' // application/x-www-form-urlencoded、multipart/form-data
+    // Content-Type: application/json、application/x-www-form-urlencoded、multipart/form-data
+    config.headers['Content-Type'] = 'application/json'
     if (store.token) {
       config.headers['token'] = store.token
     }
@@ -64,18 +65,23 @@ axios.interceptors.response.use(
   error => {
     if (error.response) {
       switch (error.response.status) {
+        case 401:
+          toast('请先登录')
+          store.setLogout()
+          toLogin()
+          break
         case 404:
           toast('网络请求不存在')
           break
         default: // 其他错误
           toast('网络异常')
       }
-      return Promise.reject(error)
     } else {
       if (!navigator.onLine) {
         toast('设备已断开网络')
       }
     }
+    return Promise.reject(error)
   }
 )
 
