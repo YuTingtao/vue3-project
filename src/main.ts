@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
-import pinia from './store/pinia.js'
+import piniaInstall from './store/piniaInstall.js'
 import { useStore } from './store/index.js'
 
 // 公共样式
@@ -15,7 +15,7 @@ import { checkUpdate, autoCheckUpdate } from '@/utils/checkUpdate.js'
 autoCheckUpdate()
 
 // 模拟数据
-import './mock'
+import './mock/index.js'
 
 const app = createApp(App)
 app.config.errorHandler = (err, instance, info) => {
@@ -23,10 +23,10 @@ app.config.errorHandler = (err, instance, info) => {
   checkUpdate() // 检测更新
 }
 app.use(router)
-app.use(pinia)
+app.use(piniaInstall)
 
 // 自定义指令
-import importDirectives from './directives'
+import importDirectives from './directives/index.js'
 importDirectives(app)
 
 // 注册el-icon组件

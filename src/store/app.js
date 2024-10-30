@@ -15,10 +15,7 @@ export const useAppStore = defineStore('appStore', {
   },
   // 状态持久化
   persist: {
-    enabled: true,
-    strategies: [{
-      key: 'appStore',
-      storage: localStorage
-    }]
+    key: 'appStore',
+    storage: localStorage
   }
 })
