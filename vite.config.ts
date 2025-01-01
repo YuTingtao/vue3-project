@@ -90,12 +90,12 @@ export default defineConfig({
     chunkSizeWarningLimit: 1024 * 500,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if(id.includes('node_modules')) {
-            // return id.toString().split('node_modules/')[1].split('/')[0].toString()
-            return 'vender'
-          }
-        },
+        // manualChunks: (id) => {
+        //   if(id.includes('node_modules')) {
+        //     // return id.toString().split('node_modules/')[1].split('/')[0].toString()
+        //     return 'vender'
+        //   }
+        // },
         // 解决github: _plugin-vue_export-helper.js报404
         sanitizeFileName(name) {
           const match = /^[a-z]:/i.exec(name)
