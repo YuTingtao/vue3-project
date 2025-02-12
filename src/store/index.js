@@ -34,7 +34,9 @@ export const useStore = defineStore('store', {
     },
     // 获取菜单
     getUserMenus() {
-      this.userMenus = routes
+      setTimeout(() => {
+        this.userMenus = routes
+      }, 100)
     }
   },
   // 状态持久化
