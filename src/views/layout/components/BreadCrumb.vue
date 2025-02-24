@@ -27,7 +27,7 @@ function getBreadcrumbs() {
   if (matched[0].name == 'layout') {
     matched = matched.slice(1)
   }
-  console.log(matched)
+  // console.log(matched)
   if (matched.length > 0) {
     for (let i = matched.length - 1; i >= 0; i--) {
       const item = matched[i]
