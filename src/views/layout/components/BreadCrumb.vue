@@ -27,13 +27,13 @@ function getBreadcrumbs() {
   if (matched[0].name == 'layout') {
     matched = matched.slice(1)
   }
-  // console.log(matched)
+  console.log(matched)
   if (matched.length > 0) {
     for (let i = matched.length - 1; i >= 0; i--) {
       const item = matched[i]
       let path = item.path
-      // 最后一层或者菜单模块的path为空
-      if ((i == matched.length - 1) || item.meta.type == 0) {
+      // 最后一层或者有嵌套路由
+      if (i == matched.length - 1 || item.children.length > 0) {
         path = ''
       }
       breadcrumbs.value.unshift({
@@ -54,7 +54,7 @@ function getParentsBread(path, arr = []) {
   const parent = routes.find(item => item.path == path)
   if (parent) {
     arr.unshift({
-      path: parent.meta.type == 0 ? '' : parent.path,
+      path: parent.path || '',
       title: parent.meta.title
     })
   }

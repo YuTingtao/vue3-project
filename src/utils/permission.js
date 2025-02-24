@@ -6,14 +6,14 @@ const store = useStore()
 /**
  * 判断是否有按钮权限
  * @param {String} str 权限标识
- * @param {String} path 菜单path
+ * @param {String} name 菜单name
  * @returns {Boolean}
  */
-function hasPerm(str, path) {
-  if (!path) {
-    path = currentRoute.value.path
+function hasPerm(str, name) {
+  if (!name) {
+    name = currentRoute.value.name
   }
-  const buttons = store.menuObj[path]?.meta?.buttons || []
+  const buttons = store.menuObj[name]?.meta?.buttons || []
   if (buttons.some(item => item == str)) {
     return true
   } else {

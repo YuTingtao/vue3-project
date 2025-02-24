@@ -153,11 +153,15 @@ function handleLogout() {
 }
 
 .app-logo {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   overflow: hidden;
   width: 210px;
   padding: 15px 0;
+  background: #3c4f60;
   color: #fff;
   font-size: 16px;
   font-weight: bolder;

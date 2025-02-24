@@ -2,9 +2,9 @@
 export default [
   {
     path: '/system',
-    component: () => import('@/layout/ModuleLayout.vue'),
+    name: 'system',
+    component: () => import('@/views/layout/ModuleLayout.vue'),
     meta: {
-      type: 0,
       title: '系统设置',
       icon: 'setting',
       visible: 1,
@@ -16,9 +16,9 @@ export default [
       // 菜单设置
       {
         path: '/system/menu',
+        name: 'systemMenu',
         component: () => import('@/views/system/menu/index.vue'),
         meta: {
-          type: 1,
           title: '菜单设置',
           icon: '',
           visible: 1,
