@@ -1,10 +1,9 @@
-/* eslint-disable semi */
 // 文件大小转换(KB、MB、G、T)
 function formatFileSize(size) {
   if (!size) {
     return '';
   }
-  var num = 1024.00;
+  var num = 1024.0;
   if (size < num) {
     return size + 'B';
   }
@@ -20,4 +19,4 @@ function formatFileSize(size) {
   return (size / Math.pow(num, 4)).toFixed(2) + 'T';
 }
 
-export default formatFileSize
+export default formatFileSize;

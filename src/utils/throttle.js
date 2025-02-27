@@ -1,4 +1,3 @@
-/* eslint-disable semi */
 /* eslint-disable @typescript-eslint/no-this-alias */
 // 节流函数
 function throttle(fn, wait = 500) {
@@ -9,9 +8,9 @@ function throttle(fn, wait = 500) {
       timer = setTimeout(function() {
         timer = null;
         fn.apply(context, args);
-      }, wait)
+      }, wait);
     }
-  }
+  };
 }
 
-export default throttle
+export default throttle;

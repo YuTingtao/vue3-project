@@ -1,4 +1,3 @@
-/* eslint-disable semi */
 // 复制文本
 function copyText(text) {
   if (navigator.clipboard && navigator.permissions) {
@@ -18,4 +17,4 @@ function copyText(text) {
   }
 }
 
-export default copyText
+export default copyText;

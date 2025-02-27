@@ -1,7 +1,7 @@
-import router from '@/router'
-import { useStore } from '@/store'
-const currentRoute = router.currentRoute
-const store = useStore()
+import router from '@/router';
+import { useStore } from '@/store';
+const currentRoute = router.currentRoute;
+const store = useStore();
 
 /**
  * 判断是否有按钮权限
@@ -11,14 +11,14 @@ const store = useStore()
  */
 function hasPerm(str, name) {
   if (!name) {
-    name = currentRoute.value.name
+    name = currentRoute.value.name;
   }
-  const buttons = store.menuObj[name]?.meta?.buttons || []
+  const buttons = store.menuObj[name]?.meta?.buttons || [];
   if (buttons.some(item => item == str)) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
 }
 
-export default hasPerm
+export default hasPerm;

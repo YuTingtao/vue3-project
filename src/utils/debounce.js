@@ -1,4 +1,3 @@
-/* eslint-disable semi */
 /* eslint-disable @typescript-eslint/no-this-alias */
 // 防抖函数
 function debounce(fn, wait = 500) {
@@ -10,8 +9,8 @@ function debounce(fn, wait = 500) {
     }
     timer = setTimeout(function() {
       fn.apply(context, args);
-    }, wait)
-  }
+    }, wait);
+  };
 }
 
-export default debounce
+export default debounce;

@@ -3,7 +3,7 @@ export default [
   {
     path: '/system',
     name: 'system',
-    component: () => import('@/views/layout/ModuleLayout.vue'),
+    component: () => import('@/views/layout/RouteView.vue'),
     meta: {
       title: '系统设置',
       icon: 'setting',
@@ -29,4 +29,4 @@ export default [
       },
     ]
   }
-]
+];

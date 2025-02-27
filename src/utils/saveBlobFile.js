@@ -1,4 +1,3 @@
-/* eslint-disable semi */
 /**
  * 数据流保存为文件
  * @param res: 服务端返回数据
@@ -9,13 +8,13 @@ function saveBlobFile(res, fileName) {
     if (res.headers['content-disposition']) {
       fileName = res.headers['content-disposition'].match(/filename=(.*)/)[1];
     } else {
-      fileName = Date.now()
+      fileName = Date.now();
     }
   }
   // 将二进制流转为blob
   const blob = new Blob([res.data], {
     type: res.headers['content-type'] || 'application/octet-stream'
-  })
+  });
   // 兼容IE：window.navigator.msSaveBlob以本地方式保存文件
   if (typeof window.navigator.msSaveBlob !== 'undefined') {
     window.navigator.msSaveBlob(blob, decodeURI(fileName));
@@ -37,4 +36,4 @@ function saveBlobFile(res, fileName) {
   }
 }
 
-export default saveBlobFile
+export default saveBlobFile;

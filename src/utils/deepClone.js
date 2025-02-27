@@ -1,4 +1,3 @@
-/* eslint-disable semi */
 /* eslint-disable no-prototype-builtins */
 // 深拷贝
 function deepClone(obj) {
@@ -16,4 +15,4 @@ function deepClone(obj) {
   return clone;
 }
 
-export default deepClone
+export default deepClone;

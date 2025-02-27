@@ -1,3 +1,3 @@
-import baseMock from './base'
+import baseMock from './base';
 
-baseMock()
+baseMock();

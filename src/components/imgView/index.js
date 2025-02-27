@@ -1,10 +1,10 @@
-import { createApp } from 'vue'
-import ImgView from '../imgView/ImgView.vue'
+import { createApp } from 'vue';
+import ImgView from '../imgView/ImgView.vue';
 
 function viewImg(urls) {
-  const div = document.createElement('div')
-  div.classList.add('img-viewer-box')
-  document.body.append(div)
+  const div = document.createElement('div');
+  div.classList.add('img-viewer-box');
+  document.body.append(div);
 
   const app = createApp(ImgView, {
     modelValue: true,
@@ -12,12 +12,12 @@ function viewImg(urls) {
     'onUpdate:modelValue': (val) => {
       // console.log(val)
       if (!val) {
-        app.unmount(div)
-        div.remove()
+        app.unmount(div);
+        div.remove();
       }
     }
-  })
-  app.mount(div)
+  });
+  app.mount(div);
 }
 
-export default viewImg
+export default viewImg;

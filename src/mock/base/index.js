@@ -1,9 +1,9 @@
-import Mock, { Random } from 'mockjs'
+import Mock, { Random } from 'mockjs';
 
 export default function() {
   Mock.mock('/api/getList', 'post', req => {
-    const body = JSON.parse(req.body)
-    const list = []
+    const body = JSON.parse(req.body);
+    const list = [];
     for (let i = 0; i < (body.pageSize || 10); i++) {
       list.push(Mock.mock({
         'name': '@cname',
@@ -11,7 +11,7 @@ export default function() {
         'sex|0-1': 0,
         'email': '@email',
         'city': '@city'
-      }))
+      }));
     }
     return {
       code: '200',
@@ -20,6 +20,6 @@ export default function() {
         list: list,
         total: 100
       }
-    }
-  })
+    };
+  });
 }

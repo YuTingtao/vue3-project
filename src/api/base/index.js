@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   // 列表
@@ -7,6 +7,6 @@ export default {
       url: '/api/getList',
       method: 'post',
       data,
-    })
+    });
   },
-}
+};

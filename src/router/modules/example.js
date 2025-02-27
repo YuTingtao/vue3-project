@@ -1,9 +1,9 @@
 // 使用案例
 export default [
   {
-    path: '/useCase',
-    name: 'useCase',
-    component: () => import('@/views/layout/ModuleLayout.vue'),
+    path: '/example',
+    name: 'example',
+    component: () => import('@/views/layout/RouteView.vue'),
     meta: {
       title: '使用案例', // 标题
       icon: 'document', // 图标
@@ -15,9 +15,9 @@ export default [
     children: [
       // 基础案例
       {
-        path: '/useCase/base',
-        name: 'useCaseBase',
-        component: () => import('@/views/useCase/base/index.vue'),
+        path: '/example/base',
+        name: 'exampleBase',
+        component: () => import('@/views/example/base/index.vue'),
         meta: {
           title: '基础案例',
           icon: '',
@@ -29,9 +29,9 @@ export default [
       },
       // 表格
       {
-        path: '/useCase/table',
-        name: 'useCaseTable',
-        component: () => import('@/views/useCase/table/index.vue'),
+        path: '/example/table',
+        name: 'exampleTable',
+        component: () => import('@/views/example/table/index.vue'),
         meta: {
           title: '表格案例',
           icon: '',
@@ -43,9 +43,9 @@ export default [
       },
       // 画板/白板
       {
-        path: '/useCase/whiteBoard',
-        name: 'useCaseWhiteBoard',
-        component: () => import('@/views/useCase/whiteBoard/index.vue'),
+        path: '/example/whiteBoard',
+        name: 'exampleWhiteBoard',
+        component: () => import('@/views/example/whiteBoard/index.vue'),
         meta: {
           title: '画板/白板',
           icon: '',
@@ -57,9 +57,9 @@ export default [
       },
       // 富文本编辑
       {
-        path: '/useCase/wangEditor',
-        name: 'useCaseWangEditor',
-        component: () => import('@/views/useCase/wangEditor/index.vue'),
+        path: '/example/wangEditor',
+        name: 'exampleWangEditor',
+        component: () => import('@/views/example/wangEditor/index.vue'),
         meta: {
           title: '富文本编辑',
           icon: '',
@@ -71,4 +71,4 @@ export default [
       },
     ]
   }
-]
+];

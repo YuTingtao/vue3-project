@@ -5,16 +5,16 @@
  * @returns File
  */
 function base64ToFile(base64, fileName = Date.now()) {
-  let arr = base64.split(',')
-  let mime = arr[0].match(/:(.*?);/)[1]
-  let bstr = atob(arr[1])
-  let n = bstr.length
-  let u8arr = new Uint8Array(n)
+  let arr = base64.split(',');
+  let mime = arr[0].match(/:(.*?);/)[1];
+  let bstr = atob(arr[1]);
+  let n = bstr.length;
+  let u8arr = new Uint8Array(n);
   while (n--) {
-    u8arr[n] = bstr.charCodeAt(n)
+    u8arr[n] = bstr.charCodeAt(n);
   }
-  fileName = fileName + '.' + mime.split('/')[1]
-  return new File([u8arr], fileName, { type: mime })
+  fileName = fileName + '.' + mime.split('/')[1];
+  return new File([u8arr], fileName, { type: mime });
 }
 
-export default base64ToFile
+export default base64ToFile;

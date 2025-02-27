@@ -24,7 +24,7 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint'],
   rules: {
     'indent': ['error', 2, { 'SwitchCase': 1 }],          // 缩进2个空格
-    'semi': ['error', 'never'],                           // js结尾不加分号
+    'semi': ['error', 'always', { 'omitLastInOneLineBlock': true }], // 结尾分号
     'quotes': ['error', 'single', { 'allowTemplateLiterals': true }], // js定义字符串使用单引号
     'camelcase': 'error',                                 // 驼峰命名
     'comma-dangle': ['error', 'only-multiline'],          // 多行允许使用末尾逗号

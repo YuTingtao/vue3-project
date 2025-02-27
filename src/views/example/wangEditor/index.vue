@@ -12,34 +12,32 @@
 </template>
 
 <script setup name="WangEditor">
-import { ref, reactive } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useStore } from '@/store'
+import { ref, reactive } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { useStore } from '@/store';
 
-const router = useRouter()
-const route = useRoute()
-const store = useStore()
+const router = useRouter();
+const route = useRoute();
+const store = useStore();
 
 // 编辑器ref
-const editorRef = ref()
+const editorRef = ref();
 
-let richText = ref('<p>老王编辑器</p>')
+let richText = ref('<p>老王编辑器</p>');
 
 function setHtml() {
-  editorRef.value.setHtml(`<p>当前时间戳：${Date.now()}</p>`)
+  editorRef.value.setHtml(`<p>当前时间戳：${Date.now()}</p>`);
 }
 
 function getHtml() {
   ElMessageBox.alert(editorRef.value.getHtml(), '富文本', {
     confirmButtonText: '确定'
-  })
+  });
 }
 
 function insertText() {
-  editorRef.value.insertText(`纯文本${Math.random()}`)
+  editorRef.value.insertText(`纯文本${Math.random()}`);
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
