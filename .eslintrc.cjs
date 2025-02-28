@@ -41,6 +41,7 @@ module.exports = {
     'no-unused-vars': 'off',                              // 未使用变量不报错
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-explicit-any':'off',
+    'typescript/triple-slash-reference': 'off',           // 关闭三斜线指令的报错
     'vue/html-indent': ['error', 2, { 'alignAttributesVertically': false }],
     'vue/multi-word-component-names': 'off',
     'vue/no-unused-vars': 'off',
