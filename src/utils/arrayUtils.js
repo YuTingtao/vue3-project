@@ -30,7 +30,7 @@ export function arrayToTree(arr) {
 
 /**
  * 树转数组
- * @param {array} tree 
+ * @param {array} tree 树
  * @returns 
  */
 export function treeToArray(tree) {
