@@ -1,18 +1,29 @@
 /* eslint-disable no-prototype-builtins */
-// 深拷贝
-function deepClone(obj) {
-  if (typeof obj !== 'object' || obj == null) {
+/**
+ * 深拷贝
+ * @param obj 原始数据
+ * @returns 拷贝后的数据
+ */
+export default function deepCopy(obj, hash = new WeakMap()) {
+  if (obj === null || typeof obj !== 'object') {
     return obj;
   }
-  let clone = Array.isArray(obj) ? [] : {};
+  if (hash.has(obj)) {
+    return hash.get(obj);
+  }
+  let copy;
+  if (obj instanceof Date) {
+    copy = new Date(obj);
+  } else if (obj instanceof RegExp) {
+    copy = new RegExp(obj);
+  } else {
+    copy = Array.isArray(obj) ? [] : {};
+  }
+  hash.set(obj, copy);
   for (let key in obj) {
-    if (typeof obj === obj[key] && obj !== null) {
-      clone[key] = deepClone(obj[key]);
-    } else {
-      clone[key] = obj[key];
+    if (obj.hasOwnProperty(key)) {
+      copy[key] = deepCopy(obj[key], hash);
     }
   }
-  return clone;
+  return copy;
 }
-
-export default deepClone;
