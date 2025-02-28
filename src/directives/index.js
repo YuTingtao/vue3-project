@@ -10,10 +10,8 @@ for (const path in modules) {
 
 
 // 注册自定义指令
-function importDirectives(app) {
+export default function registerDirectives(app) {
   for (const key in obj) {
     app.directive(key, obj[key]);
   }
 }
-
-export default importDirectives;

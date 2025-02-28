@@ -25,9 +25,9 @@ app.config.errorHandler = (err, instance, info) => {
 app.use(router);
 app.use(piniaInstall);
 
-// 自定义指令
-import importDirectives from './directives/index.js';
-importDirectives(app);
+// 注册自定义指令
+import registerDirectives from './directives/index.js';
+registerDirectives(app);
 
 // 注册el-icon组件
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
