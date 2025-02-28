@@ -8,11 +8,11 @@
     
     <div class="row-box">
       <span>按钮权限：</span>
-      <el-button v-if="hasPerm('add')" type="primary">新增</el-button>
-      <el-button v-if="hasPerm('edit')" type="primary">编辑</el-button>
-      <el-button v-if="hasPerm('delete')" type="primary">删除</el-button>
+      <el-button v-if="hasPermission('add')" type="primary">新增</el-button>
+      <el-button v-if="hasPermission('edit')" type="primary">编辑</el-button>
+      <el-button v-if="hasPermission('delete')" type="primary">删除</el-button>
       <!-- 无权限 -->
-      <el-button v-if="hasPerm('export')" type="primary">导出</el-button>
+      <el-button v-if="hasPermission('export')" type="primary">导出</el-button>
     </div>
 
     <div class="row-box">
@@ -26,7 +26,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
-import hasPerm from '@/utils/permission.js'
+import hasPermission from '@/utils/permission.js'
 import viewImg from '@/components/imgView'
 
 const router = useRouter()

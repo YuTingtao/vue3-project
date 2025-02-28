@@ -9,7 +9,7 @@ const store = useStore();
  * @param {String} name 菜单name
  * @returns {Boolean}
  */
-function hasPerm(str, name) {
+export default function hasPermission(str, name) {
   if (!name) {
     name = currentRoute.value.name;
   }
@@ -20,5 +20,3 @@ function hasPerm(str, name) {
     return false;
   }
 }
-
-export default hasPerm;

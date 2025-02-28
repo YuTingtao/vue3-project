@@ -1,5 +1,9 @@
-// 文件大小转换(KB、MB、G、T)
-function formatFileSize(size) {
+/**
+ * 格式化文件大小(KB、MB、G、T)
+ * @param {number} size 文件大小
+ * @returns string
+ */
+export default function formatFileSize(size) {
   if (!size) {
     return '';
   }
@@ -18,5 +22,3 @@ function formatFileSize(size) {
   }
   return (size / Math.pow(num, 4)).toFixed(2) + 'T';
 }
-
-export default formatFileSize;

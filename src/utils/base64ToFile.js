@@ -4,7 +4,7 @@
  * @param {*} fileName 文件名（不带格式后缀）
  * @returns File
  */
-function base64ToFile(base64, fileName = Date.now()) {
+export default function base64ToFile(base64, fileName = Date.now()) {
   let arr = base64.split(',');
   let mime = arr[0].match(/:(.*?);/)[1];
   let bstr = atob(arr[1]);
@@ -16,5 +16,3 @@ function base64ToFile(base64, fileName = Date.now()) {
   fileName = fileName + '.' + mime.split('/')[1];
   return new File([u8arr], fileName, { type: mime });
 }
-
-export default base64ToFile;

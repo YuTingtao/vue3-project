@@ -3,7 +3,7 @@
  * @param res: 服务端返回数据
  * @param fileName: 自定义文件名，选填
  */
-function saveBlobFile(res, fileName) {
+export default function saveBlobFile(res, fileName) {
   if (!fileName) {
     if (res.headers['content-disposition']) {
       fileName = res.headers['content-disposition'].match(/filename=(.*)/)[1];
@@ -35,5 +35,3 @@ function saveBlobFile(res, fileName) {
     window.URL.revokeObjectURL(blobURL);
   }
 }
-
-export default saveBlobFile;

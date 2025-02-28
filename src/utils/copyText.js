@@ -1,5 +1,8 @@
-// 复制文本
-function copyText(text) {
+/**
+ * 复制文本
+ * @param {stirng} text文本 
+ */
+export default function copyText(text) {
   if (navigator.clipboard && navigator.permissions) {
     navigator.clipboard.writeText(text);
   } else {
@@ -16,5 +19,3 @@ function copyText(text) {
     document.body.removeChild(dom);
   }
 }
-
-export default copyText;
