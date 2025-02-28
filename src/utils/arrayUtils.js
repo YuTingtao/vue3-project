@@ -1,53 +1,50 @@
 /* eslint-disable semi */
 
 /**
- * 数组：树形结构转平铺
- * @param {*} tree 树形结构数组
- * @param {*} props { children: 'children' } 自定义children字段
- * @returns Array
+ * 数组转树
+ * @param {array} arr 数组
+ * @returns 
  */
-function treeToList(tree, props = { children: 'children' }) {
-  let result = [];
-  let children = props.children
-  // 处理函数
-  function handle(node) {
-    result.push(node);
-    if (node[children] && node[children].length) {
-      // 递归处理子节点
-      node[children].forEach(item => handle(item));
+export function arrayToTree(arr) {
+  const map = {};
+  const result = [];
+
+  // 将数组中的每个对象放入map中，键为id
+  arr.forEach(item => {
+    map[item.id] = { ...item, children: [] };
+  });
+
+  // 遍历数组，将每个对象添加到其父对象的children数组中
+  arr.forEach(item => {
+    if (item.parentId === null) {
+      result.push(map[item.id]);
+    } else {
+      if (map[item.parentId]) {
+        map[item.parentId].children.push(map[item.id]);
+      }
     }
-  }
-  // 处理根节点
-  tree.forEach(item => handle(item));
+  });
+
   return result;
 }
 
 /**
- * 数组：平铺转树形结构
- * @param {*} list 扁平数组
- * @returns Array
+ * 树转数组
+ * @param {array} tree 
+ * @returns 
  */
-function listToTree(list) {
-  const idMap = list.reduce((res, item, index) => {
-    res[item.id] = index;
-    return res;
-  }, {});
+export function treeToArray(tree) {
+  const result = [];
 
-  let result = [];
-  list.forEach(item => {
-    // 添加根元素
-    if (item.parentId === undefined || !list.some(item2 => item2.id === item.parentId)) {
-      result.push(item);
-      return;
+  function traverse(node) {
+    if (!node) return;
+    result.push(node);
+    if (node.children && node.children.length > 0) {
+      node.children.forEach(child => traverse(child));
     }
-    // 如果parentId存在，在其父元素的children中添加当前元素
-    const parent = list[idMap[item.parentId]];
-    parent.children = [...(parent.children || []), item];
-  });
-  return result;
-}
+  }
 
-export {
-  treeToList,
-  listToTree,
+  tree.forEach(rootNode => traverse(rootNode));
+
+  return result;
 }
