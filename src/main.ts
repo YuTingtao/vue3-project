@@ -11,7 +11,7 @@ import './assets/style/main.scss';
 import 'lazysizes';
 
 // 检测更新
-import { checkUpdate, autoCheckUpdate } from '@/utils/checkUpdate.js';
+import { checkUpdate, autoCheckUpdate } from '@/common/utils/checkUpdate.js';
 autoCheckUpdate();
 
 // 模拟数据
@@ -26,7 +26,7 @@ app.use(router);
 app.use(piniaInstall);
 
 // 注册自定义指令
-import registerDirectives from './directives/index.js';
+import registerDirectives from './common/directives/index.js';
 registerDirectives(app);
 
 // 注册el-icon组件
