@@ -1,5 +1,5 @@
 // 数组转对象: key为name
-function getMenuObj(tree) {
+function arrayToObj(tree) {
   const result = {};
   function handle(node) {
     result[node.name] = node;
@@ -11,8 +11,8 @@ function getMenuObj(tree) {
   return result;
 }
 
-// 获取第一个菜单
-function getFirstMenu(menu) {
+// 第一个菜单
+function calcFirstMenu(menu) {
   let result;
   function handle(node) {
     if (node.children && node.children.length > 0) {
@@ -26,6 +26,6 @@ function getFirstMenu(menu) {
 }
 
 export {
-  getMenuObj,
-  getFirstMenu,
+  arrayToObj,
+  calcFirstMenu,
 };

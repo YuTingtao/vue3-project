@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { getMenuObj, getFirstMenu } from './utils.js';
+import { arrayToObj, calcFirstMenu } from './utils.js';
 import routes from '@/router/modules/index.js';
 
 export const useStore = defineStore('store', {
@@ -11,14 +11,14 @@ export const useStore = defineStore('store', {
   getters: {
     // 菜单对象: key为path
     menuObj(state) {
-      return getMenuObj(state.userMenus);
+      return arrayToObj(state.userMenus);
     },
     // 首个菜单
     firstMenu(state) {
       if (state.userMenus.length < 1) {
         return '/login';
       }
-      return getFirstMenu(state.userMenus[0]);
+      return calcFirstMenu(state.userMenus[0]);
     }
   },
   actions: {
