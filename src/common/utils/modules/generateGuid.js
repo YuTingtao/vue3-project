@@ -1,6 +1,6 @@
 /**
  * 生成guid
- * @returns string
+ * @returns {String}
  */
 export default function generateGuid() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

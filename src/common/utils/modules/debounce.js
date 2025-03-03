@@ -2,7 +2,7 @@
  * 防抖函数
  * @param {Function} fn 执行函数
  * @param {Number} wait 时间间隔
- * @returns Function
+ * @returns {Function}
  */
 export default function debounce(fn, wait = 500) {
   var timer;

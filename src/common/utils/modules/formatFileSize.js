@@ -1,7 +1,7 @@
 /**
  * 格式化文件大小(KB、MB、G、T)
- * @param {number} size 文件大小
- * @returns string
+ * @param {Number} size 文件大小
+ * @returns {String}
  */
 export default function formatFileSize(size) {
   if (!size) {

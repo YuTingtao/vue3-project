@@ -1,7 +1,7 @@
 /**
  * 数据流保存为文件
- * @param res: 服务端返回数据
- * @param fileName: 自定义文件名，选填
+ * @param {Blob} res 服务端返回数据
+ * @param {String} fileName 自定义文件名，选填
  */
 export default function saveBlobFile(res, fileName) {
   if (!fileName) {

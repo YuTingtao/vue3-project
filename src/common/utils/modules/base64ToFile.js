@@ -2,7 +2,7 @@
  * base64转文件
  * @param {String} base64 base64字符串
  * @param {String} fileName 文件名（不带格式后缀）
- * @returns File
+ * @returns {File}
  */
 export default function base64ToFile(base64, fileName = Date.now()) {
   let arr = base64.split(',');

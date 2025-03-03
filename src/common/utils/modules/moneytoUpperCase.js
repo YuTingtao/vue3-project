@@ -1,7 +1,7 @@
 /**
  * 金额转中文大写
- * @param n 金额数字
- * @returns string 金额中文大写
+ * @param {Number} n 金额数字
+ * @returns {String} 金额中文大写
  */
 export default function moneytoUpperCase(n) {
     const fraction = ['角', '分'];
