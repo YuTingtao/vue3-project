@@ -1,6 +1,6 @@
 /**
  * 复制文本
- * @param {stirng} text文本 
+ * @param {String} text 要复制的文本 
  */
 export default function copyText(text) {
   if (navigator.clipboard && navigator.permissions) {
