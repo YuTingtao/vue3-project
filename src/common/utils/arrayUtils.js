@@ -16,7 +16,7 @@ export function arrayToTree(arr) {
 
   // 遍历数组，将每个对象添加到其父对象的children数组中
   arr.forEach(item => {
-    if (item.parentId === null) {
+    if (!item.parentId) {
       result.push(map[item.id]);
     } else {
       if (map[item.parentId]) {
