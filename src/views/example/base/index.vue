@@ -26,12 +26,13 @@
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
-import hasPermission from '@/common/utils/permission.js'
+import { usePermission } from '@/common/hooks/permission.js'
 import viewImg from '@/components/imgView'
 
 const router = useRouter()
 const route = useRoute()
 const store = useStore()
+const { hasPermission } = usePermission()
 
 // 图片地址
 const urlList = ref([
