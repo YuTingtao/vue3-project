@@ -1,5 +1,3 @@
-/* eslint-disable semi */
-
 /**
  * 数组转树
  * @param {array} arr 数组
