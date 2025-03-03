@@ -1,7 +1,6 @@
-/* eslint-disable no-prototype-builtins */
 /**
  * 深拷贝
- * @param obj 原始数据
+ * @param {Object | String | Number | Boolean | Null | Undefined} obj 原始数据
  * @returns 拷贝后的数据
  */
 export default function deepCopy(obj, hash = new WeakMap()) {
