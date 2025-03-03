@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-this-alias */
 /**
  * 防抖函数
- * @param {function} fn 执行函数
- * @param {number} wait 时间间隔
- * @returns function
+ * @param {Function} fn 执行函数
+ * @param {Number} wait 时间间隔
+ * @returns Function
  */
 export default function debounce(fn, wait = 500) {
   var timer;
