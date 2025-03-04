@@ -3,17 +3,17 @@ export default {
   mounted(el, binding) {
     if (el.src) {
       el.onerror = () => {
-        el.src = binding.value;
-        el.onerror = null;
-      };
+        el.src = binding.value
+        el.onerror = null
+      }
     }
   },
   updated(el, binding) {
     if (el.src) {
       el.onerror = () => {
-        el.src = binding.value;
-        el.onerror = null;
-      };
+        el.src = binding.value
+        el.onerror = null
+      }
     }
   }
-};
+}

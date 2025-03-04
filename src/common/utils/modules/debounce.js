@@ -5,14 +5,15 @@
  * @returns {Function}
  */
 export default function debounce(fn, wait = 500) {
-  var timer;
+  var timer
   return function() {
-    var context = this, args = arguments;
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    var context = this, args = arguments
     if (timer) {
-      clearTimeout(timer);
+      clearTimeout(timer)
     }
     timer = setTimeout(function() {
-      fn.apply(context, args);
-    }, wait);
-  };
+      fn.apply(context, args)
+    }, wait)
+  }
 }

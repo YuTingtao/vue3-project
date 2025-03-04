@@ -5,14 +5,14 @@
  * @returns {File}
  */
 export default function base64ToFile(base64, fileName = Date.now()) {
-  var arr = base64.split(',');
-  var mime = arr[0].match(/:(.*?);/)[1];
-  var bstr = atob(arr[1]);
-  var n = bstr.length;
-  var u8arr = new Uint8Array(n);
+  var arr = base64.split(',')
+  var mime = arr[0].match(/:(.*?);/)[1]
+  var bstr = atob(arr[1])
+  var n = bstr.length
+  var u8arr = new Uint8Array(n)
   while (n--) {
-    u8arr[n] = bstr.charCodeAt(n);
+    u8arr[n] = bstr.charCodeAt(n)
   }
-  fileName = fileName + '.' + mime.split('/')[1];
-  return new File([u8arr], fileName, { type: mime });
+  fileName = fileName + '.' + mime.split('/')[1]
+  return new File([u8arr], fileName, { type: mime })
 }

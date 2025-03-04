@@ -4,17 +4,17 @@
  * @returns {Array}
  */
 export function treeToArray(tree) {
-  var result = [];
+  var result = []
 
   function traverse(node) {
-    if (!node) return;
-    result.push(node);
+    if (!node) return
+    result.push(node)
     if (node.children && node.children.length > 0) {
-      node.children.forEach(child => traverse(child));
+      node.children.forEach(child => traverse(child))
     }
   }
 
-  tree.forEach(rootNode => traverse(rootNode));
+  tree.forEach(rootNode => traverse(rootNode))
 
-  return result;
+  return result
 }

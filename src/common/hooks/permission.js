@@ -1,10 +1,10 @@
 // 权限
-import { useStore } from '@/store';
-import router from '@/router/index.js';
-const currentRoute = router.currentRoute;
+import { useStore } from '@/store'
+import router from '@/router/index.ts'
+const currentRoute = router.currentRoute
 
 export function usePermission() {
-  const store = useStore();
+  const store = useStore()
 
   /**
    * 是否有按钮权限
@@ -14,13 +14,13 @@ export function usePermission() {
    */
   function hasPermission(str, name) {
     if (!name) {
-      name = currentRoute.value.name;
+      name = currentRoute.value.name
     }
-    const buttons = store.menuObj[name]?.meta?.buttons || [];
+    const buttons = store.menuObj[name]?.meta?.buttons || []
     if (buttons.some(item => item == str)) {
-      return true;
+      return true
     } else {
-      return false;
+      return false
     }
   }
   return {

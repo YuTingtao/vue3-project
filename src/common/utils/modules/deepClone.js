@@ -5,27 +5,27 @@
  */
 export default function deepClone(obj, hash = new WeakMap()) {
   if (obj === null || typeof obj !== 'object') {
-    return obj;
+    return obj
   }
   if (hash.has(obj)) {
-    return hash.get(obj);
+    return hash.get(obj)
   }
 
-  let copy;
+  let copy
   if (obj instanceof Date) {
-    copy = new Date(obj);
+    copy = new Date(obj)
   } else if (obj instanceof RegExp) {
-    copy = new RegExp(obj);
+    copy = new RegExp(obj)
   } else {
-    copy = Array.isArray(obj) ? [] : {};
+    copy = Array.isArray(obj) ? [] : {}
   }
   
-  hash.set(obj, copy);
+  hash.set(obj, copy)
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
-      copy[key] = deepCopy(obj[key], hash);
+      copy[key] = deepClone(obj[key], hash)
     }
   }
 
-  return copy;
+  return copy
 }
