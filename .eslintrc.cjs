@@ -38,6 +38,7 @@ module.exports = {
     'no-multiple-empty-lines': ['error', { 'max': 2 }],   // 最大2空行
     'no-undef': ['error', { 'typeof': true }],            // 禁用未声明的变量
     'no-unused-vars': 'error',                            // 未使用变量
+    'no-prototype-builtins': 'off',                       // 禁止在对象上调用 Object.prototype 方法
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-explicit-any': 'off',
     'vue/html-indent': ['error', 2, { 'alignAttributesVertically': false }],
