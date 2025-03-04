@@ -4,7 +4,7 @@
  * @returns {Array}
  */
 export function treeToArray(tree) {
-  const result = [];
+  var result = [];
 
   function traverse(node) {
     if (!node) return;

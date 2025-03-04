@@ -12,7 +12,7 @@ export default function saveBlobFile(res, fileName) {
     }
   }
   // 将二进制流转为blob
-  const blob = new Blob([res.data], {
+  var blob = new Blob([res.data], {
     type: res.headers['content-type'] || 'application/octet-stream'
   });
   // 兼容IE：window.navigator.msSaveBlob以本地方式保存文件
@@ -20,8 +20,8 @@ export default function saveBlobFile(res, fileName) {
     window.navigator.msSaveBlob(blob, decodeURI(fileName));
   } else {
     // 创建blob url地址
-    const blobURL = window.URL.createObjectURL(blob);
-    const dom = document.createElement('a');
+    var blobURL = window.URL.createObjectURL(blob);
+    var dom = document.createElement('a');
     dom.style.display = 'none';
     dom.href = blobURL;
     dom.setAttribute('download', decodeURI(fileName));
