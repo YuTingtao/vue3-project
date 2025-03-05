@@ -2,11 +2,12 @@ import globals from 'globals'
 import pluginJs from '@eslint/js'
 import tseslint from 'typescript-eslint'
 import pluginVue from 'eslint-plugin-vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   { files: ['**/*.{js,mjs,cjs,ts,vue}'] },
-  { languageOptions: { globals: globals.browser } },
+  { languageOptions: { globals: [ ...globals.browser, ...globals.node, ElMessage, ElMessageBox] } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...pluginVue.configs['flat/essential'],
@@ -28,7 +29,7 @@ export default [
       'object-curly-spacing': ['error', 'always'],          // 对象括号内带空格
       'no-multiple-empty-lines': ['error', { 'max': 2 }],   // 最大2空行
       'no-undef': ['error', { 'typeof': true }],            // 禁用未声明的变量
-      'no-unused-vars': 'warn',                              // 未使用变量
+      'no-unused-vars': 'warn',                             // 未使用变量
       'no-prototype-builtins': 'off',                       // 禁止在对象上调用 Object.prototype 方法
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-explicit-any': 'off',
