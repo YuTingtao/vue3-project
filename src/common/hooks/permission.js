@@ -1,6 +1,6 @@
 // 权限
 import { useStore } from '@/store'
-import router from '@/router/index.ts'
+import router from '@/router'
 const currentRoute = router.currentRoute
 
 export function usePermission() {

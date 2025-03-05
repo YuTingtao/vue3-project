@@ -1,4 +1,6 @@
 // 检测版本是否有更新，提示刷新页面
+import { ElMessage, ElMessageBox } from 'element-plus'
+
 let lastVersion // 最近版本
 
 // 检测更新函数

@@ -1,6 +1,7 @@
 import Axios from 'axios'
-import router from '../router/index.ts'
+import router from '../router'
 import { useStore } from '@/store'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 // message提示
 function toast(msg) {
