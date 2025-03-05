@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.ts'
-import piniaInstall from './store/piniaInstall.js'
+import pinia from './store/createPinia.js'
 import { useStore } from './store/index.js'
 
 // 公共样式
@@ -23,7 +23,7 @@ app.config.errorHandler = (err, instance, info) => {
   checkUpdate() // 检测更新
 }
 app.use(router)
-app.use(piniaInstall)
+app.use(pinia)
 
 // 注册自定义指令
 import registerDirectives from './common/directives/index.js'
