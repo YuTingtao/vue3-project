@@ -12,6 +12,13 @@ export default [
   ...pluginVue.configs['flat/essential'],
   { files: ['**/*.vue'], languageOptions: { parserOptions: { parser: tseslint.parser } } },
   {
+    globals: {
+      ...globals.node,
+      ...globals.es6,
+      ...globals.vue,
+    }
+  },
+  {
     rules: {
       'indent': ['error', 2, { 'SwitchCase': 1 }],          // 缩进2个空格
       'semi': ['error', 'never'],                           // 结尾不加分号
