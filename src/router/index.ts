@@ -1,9 +1,9 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router'
 import { useStore } from '@/store'
-import routes from './modules/index.js'
+import routes from './modules/index.ts'
 import { checkUpdate } from '@/common/utils/checkUpdate.js'
 
-const allRoutes = [
+const allRoutes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'layout',
@@ -21,7 +21,7 @@ const allRoutes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes: allRoutes,
-  scrollBehavior(to, from) {
+  scrollBehavior(to, _from) {
     if (to.hash) {
       return {
         el: to.hash,
@@ -37,7 +37,7 @@ const router = createRouter({
 // 不需要鉴权路由names
 const notAuthNames = ['layout', 'login']
 // 路由拦截
-router.beforeEach((to, from) => {
+router.beforeEach((to, _from) => {
   const store = useStore()
   // 权限菜单names
   const authNames = Object.keys(store.menuObj)
@@ -51,7 +51,7 @@ router.beforeEach((to, from) => {
     return store.firstMenu
   }
   // 权限拦截
-  const toName = to.name || ''
+  const toName = (to.name || '') as string
   if (!authNames.includes(toName) && !notAuthNames.includes(toName)) {
     return store.firstMenu
   }

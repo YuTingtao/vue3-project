@@ -68,7 +68,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
-import routes from '@/router/modules/index'
+import routes from '@/router/modules/index.ts'
 
 const router = useRouter()
 const route = useRoute()

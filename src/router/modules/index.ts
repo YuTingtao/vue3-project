@@ -1,5 +1,5 @@
-import example from './example.js'
-import system from './system.js'
+import example from './example.ts'
+import system from './system.ts'
 
 export default [
   // 使用案例

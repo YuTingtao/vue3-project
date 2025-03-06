@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { arrayToObj, calcFirstMenu } from './utils.js'
-import routes from '@/router/modules/index.js'
+import routes from '@/router/modules/index.ts'
 
 export const useStore = defineStore('store', {
   state: () => ({
