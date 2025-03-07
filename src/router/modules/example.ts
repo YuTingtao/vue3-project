@@ -27,20 +27,6 @@ export default [
           parentPath: '',
         }
       },
-      // 表格
-      {
-        path: '/example/table',
-        name: 'exampleTable',
-        component: () => import('@/views/example/table/index.vue'),
-        meta: {
-          title: '表格案例',
-          icon: '',
-          visible: 1,
-          buttons: ['add', 'edit', 'delete'], // 按钮权限
-          activePath: '',
-          parentPath: '',
-        }
-      },
       // 画板/白板
       {
         path: '/example/whiteBoard',

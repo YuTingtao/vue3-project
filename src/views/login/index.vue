@@ -5,9 +5,9 @@
 
       <!-- 表单 -->
       <el-form :model="loginForm" ref="formRef" :rules="rules" size="large">
-        <el-form-item label="" prop="userName">
+        <el-form-item label="" prop="account">
           <el-input
-            v-model="loginForm.userName"
+            v-model="loginForm.account"
             placeholder="请输入账号/手机号/邮箱"
             prefix-icon="user">
           </el-input>
@@ -30,11 +30,11 @@
   </div>
 </template>
 
-<script setup name="Login">
-import { ref, reactive, toRaw } from 'vue'
+<script setup lang="ts" name="Login">
+import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useStore } from '@/store'
-import loginApi from '@/api/login/index.js'
+import { useStore } from '@/store/index.ts'
+import { loginApi } from '@/api/user/login.ts'
 
 const router = useRouter()
 const route = useRoute()
@@ -44,25 +44,25 @@ const formRef = ref()
 
 // 登录参数
 const loginForm = ref({
-  userName: 'admin',
+  account: 'admin',
   password: '123456'
 })
 
 // 校验规则
 const rules = reactive({
-  userName: [{ required: true, message: '请输入账号/手机号/邮箱', trigger: 'blur' }],
+  account: [{ required: true, message: '请输入账号/手机号/邮箱', trigger: 'blur' }],
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 })
 
 const loading = ref(false)
 // 提交表单
 async function onSubmit() {
-  await formRef.value?.validate(valid => {
+  await formRef.value?.validate((valid: any) => {
     if (loading.value) return
     if (!valid) return
     loading.value = true
-    loginApi.login(loginForm.value).then((res) => {
-      if (res.code == '200') {
+    loginApi(loginForm.value).then(res => {
+      if (res.code === 200) {
         loading.value = false
         loginSuccess()
       }
@@ -76,12 +76,14 @@ async function onSubmit() {
 // 登录成功
 async function loginSuccess() {
   store.setLogin({
+    id: 1,
     token: 'Token-123456789',
-    userInfo: { name: 'admin', avatar: '' }
+    userName: 'admin',
+    avatar: ''
   })
   await store.getUserMenus()
   if (route.query.redirect) {
-    router.replace(route.query.redirect)
+    router.replace(route.query.redirect as string)
   } else {
     router.replace('/')
   }

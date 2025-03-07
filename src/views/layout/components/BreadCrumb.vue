@@ -7,7 +7,7 @@
   </el-breadcrumb>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 
@@ -15,7 +15,11 @@ const router = useRouter()
 const route = useRoute()
 
 // 面包屑
-const breadcrumbs = ref([])
+interface BreadcrumbItem {
+  path: string
+  title: string
+}
+const breadcrumbs = ref<BreadcrumbItem[]>([])
 // 所有路由
 const routes = router.getRoutes()
 // console.log(routes)
@@ -37,11 +41,11 @@ function getBreadcrumbs() {
         path = ''
       }
       breadcrumbs.value.unshift({
-        path: path,
-        title: item.meta.title
+        path: path as string,
+        title: item.meta.title as string
       })
       // 添加自定义parentPath
-      const parentPath = item.meta.parentPath || ''
+      const parentPath = (item.meta.parentPath || '') as string
       if (parentPath) {
         breadcrumbs.value.unshift(...getParentsBread(parentPath))
       }
@@ -50,15 +54,15 @@ function getBreadcrumbs() {
 }
 
 // 递归获取父级面包屑
-function getParentsBread(path, arr = []) {
+function getParentsBread(path: string, arr: BreadcrumbItem[] = []) {
   const parent = routes.find(item => item.path == path)
-  if (parent) {
+  if (parent && parent.meta && typeof parent.meta.title === 'string') {
     arr.unshift({
       path: parent.path || '',
       title: parent.meta.title
     })
   }
-  if (parent.meta.parentPath) {
+  if (typeof parent?.meta?.parentPath === 'string') {
     return getParentsBread(parent.meta.parentPath, arr)
   } else {
     return arr

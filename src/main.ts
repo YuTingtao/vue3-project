@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.ts'
-import pinia from './store/createPinia.js'
-import { useStore } from './store/index.js'
+import pinia from './store/createPinia.ts'
+import { useStore } from './store/index.ts'
 
 // 公共样式
 import './assets/style/main.scss'
@@ -13,9 +13,6 @@ import 'lazysizes'
 // 检测更新
 import { checkUpdate, autoCheckUpdate } from '@/common/utils/checkUpdate.js'
 autoCheckUpdate()
-
-// 模拟数据
-import './mock/index.js'
 
 const app = createApp(App)
 app.config.errorHandler = (err, instance, info) => {

@@ -67,12 +67,10 @@
 <script setup name="SystemMenu">
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useStore } from '@/store'
 import routes from '@/router/modules/index.ts'
 
 const router = useRouter()
 const route = useRoute()
-const store = useStore()
 
 // 筛选条件
 const filter = ref({

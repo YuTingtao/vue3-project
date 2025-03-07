@@ -2,7 +2,7 @@
 import { writeFileSync } from 'node:fs'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 
 // Element Plus按需自动导入
 import AutoImport from 'unplugin-auto-import/vite'

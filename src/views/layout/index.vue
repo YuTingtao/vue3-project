@@ -18,7 +18,7 @@
           shape="circle"
           fit="cover">
         </el-avatar>
-        <span>{{ userInfo.name }}</span>
+        <span>{{ userInfo.userName }}</span>
         <el-icon><arrow-down /></el-icon>
       </div>
 
@@ -53,14 +53,14 @@
   </div>
 </template>
 
-<script setup name="Layout">
-import { ref, reactive, computed, watch } from 'vue'
+<script setup lang="ts" name="Layout">
+import { ref, reactive, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useStore } from '@/store'
-import { useAppStore } from '@/store/app.js'
+import { useStore } from '@/store/index.ts'
+import { useAppStore } from '@/store/app.ts'
 import MenuItem from './components/MenuItem.vue'
 import BreadCrumb from './components/BreadCrumb.vue'
-import loginApi from '@/api/login/index.js'
+import { logoutApi } from '@/api/user/login.js'
 
 const router = useRouter()
 const route = useRoute()
@@ -80,7 +80,7 @@ function toggleCollapse() {
 
 // 退出登录
 function handleLogout() {
-  loginApi.logout().finally(() => {
+  logoutApi().finally(() => {
     store.setLogout()
     router.push('/login')
   })

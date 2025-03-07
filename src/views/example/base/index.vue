@@ -25,13 +25,11 @@
 <script setup name="BaseCase">
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useStore } from '@/store'
 import { usePermission } from '@/common/hooks/permission.js'
 import viewImg from '@/components/imgView'
 
 const router = useRouter()
 const route = useRoute()
-const store = useStore()
 const { hasPermission } = usePermission()
 
 // 图片地址

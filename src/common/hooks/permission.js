@@ -1,5 +1,5 @@
 // 权限
-import { useStore } from '@/store'
+import { useStore } from '@/store/index.ts'
 import router from '@/router'
 const currentRoute = router.currentRoute
 
