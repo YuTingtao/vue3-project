@@ -87,7 +87,7 @@ const total = ref(0)
 // 获取列表
 function getList() {
   tableData.value = routes
-  total.value = 100
+  total.value = routes.length
 }
 getList()
 

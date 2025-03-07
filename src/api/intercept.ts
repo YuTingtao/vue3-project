@@ -2,14 +2,13 @@ import Axios from 'axios'
 import type { InternalAxiosRequestConfig, AxiosResponse } from 'axios'
 import router from '../router'
 import { useStore } from '@/store/index.ts'
-import { ElMessage } from 'element-plus'
 
 // message提示
 function toast(msg: string) {
-  ElMessage.closeAll()
   ElMessage.error({
     message: msg,
-    duration: 2000
+    duration: 2000,
+    grouping: true
   })
 }
 
