@@ -75,7 +75,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="WhiteBoard">
 import { ref, reactive, onMounted } from 'vue'
 
 const canvas = ref()

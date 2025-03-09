@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script setup name="WangEditor">
+<script setup lang="ts" name="WangEditor">
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 

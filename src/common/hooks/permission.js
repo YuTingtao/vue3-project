@@ -12,10 +12,7 @@ export function usePermission() {
    * @param {String} name 路由name
    * @returns 
    */
-  function hasPermission(str, name) {
-    if (!name) {
-      name = currentRoute.value.name
-    }
+  function hasPermission(str, name = currentRoute.value.name) {
     const buttons = store.menuObj[name]?.meta?.buttons || []
     if (buttons.some(item => item == str)) {
       return true

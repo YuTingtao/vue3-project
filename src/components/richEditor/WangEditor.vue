@@ -212,4 +212,7 @@ defineExpose({
   left: 50% !important;
   transform: translate(-50%, -50%);
 }
+.w-e-full-screen-container {
+  z-index: 999;
+}
 </style>

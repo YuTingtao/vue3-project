@@ -64,9 +64,9 @@
   </div>
 </template>
 
-<script setup name="SystemMenu">
+<script setup lang="ts" name="SystemMenu">
 import { ref, reactive } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute, type RouteRecordRaw } from 'vue-router'
 import routes from '@/router/modules/index.ts'
 
 const router = useRouter()
@@ -81,7 +81,7 @@ const filter = ref({
 })
 
 // 表格数据
-const tableData = ref([])
+const tableData = ref<Array<RouteRecordRaw>>([])
 const total = ref(0)
 
 // 获取列表

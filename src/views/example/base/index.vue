@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<script setup name="BaseCase">
+<script setup lang="ts" name="BaseCase">
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { usePermission } from '@/common/hooks/permission.js'

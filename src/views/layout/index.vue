@@ -94,7 +94,7 @@ function handleLogout() {
   top: 0;
   left: 210px;
   right: 0;
-  z-index: 100;
+  z-index: 10;
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -136,7 +136,7 @@ function handleLogout() {
   top: 0;
   left: 0;
   bottom: 0;
-  z-index: 110;
+  z-index: 10;
   background: #3c4f60;
   .el-menu--vertical {
     --el-menu-text-color: #fff;
