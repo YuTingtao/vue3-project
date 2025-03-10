@@ -41,20 +41,6 @@ export default [
           parentPath: '',
         },
       },
-      // 富文本编辑
-      {
-        path: '/example/wangEditor',
-        name: 'exampleWangEditor',
-        component: () => import('@/views/example/wangEditor/index.vue'),
-        meta: {
-          title: '富文本编辑',
-          icon: '',
-          visible: 1,
-          buttons: [],
-          activePath: '',
-          parentPath: '',
-        },
-      },
     ]
   }
 ]
