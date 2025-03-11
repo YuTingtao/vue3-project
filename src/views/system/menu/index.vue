@@ -75,7 +75,7 @@ const route = useRoute()
 // 筛选条件
 const filter = ref({
   keyword: '',
-  status: null,
+  status: undefined,
   pageNum: 1,
   pageSize: 10
 })
@@ -100,7 +100,7 @@ function handleSearch() {
 function handleReset() {
   filter.value = {
     keyword: '',
-    status: null,
+    status: undefined,
     pageNum: 1,
     pageSize: 10
   }

@@ -40,7 +40,7 @@
       <el-menu
         :collapse="!appStore.menu.isExpand"
         :unique-opened="true"
-        :default-active="$route.meta.activePath || $route.path || $route.name">
+        :default-active="(route.meta.activePath || route.path || route.name) as string">
         <MenuItem v-for="item in userMenus" :key="item.path" :item="item"></MenuItem>
       </el-menu>
     </el-scrollbar>
