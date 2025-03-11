@@ -42,11 +42,7 @@ export default defineConfig({
       }
     }
   },
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, 'src')
-    }
-  },
+  resolve: { alias: { '@': resolve(__dirname, 'src') } },
   css: {
     preprocessorOptions: {
       scss: {
@@ -56,20 +52,8 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    AutoImport({
-      resolvers: [
-        ElementPlusResolver({
-          importStyle: 'sass'
-        })
-      ],
-    }),
-    Components({
-      resolvers: [
-        ElementPlusResolver({
-          importStyle: 'sass'
-        })
-      ]
-    }),
+    AutoImport({ resolvers: [ElementPlusResolver({ importStyle: 'sass' })] }),
+    Components({ resolvers: [ElementPlusResolver({ importStyle: 'sass' })] }),
     VueSetupExtend(),
     createSvgIconsPlugin({
       iconDirs: [resolve(process.cwd(), 'src/assets/icon')],
@@ -77,13 +61,10 @@ export default defineConfig({
       inject: 'body-last',
       customDomId: 'svg__icon__dom'
     }),
-    ViteCompression({
-      threshold: 10240, // 大于10K的文件进行gzip压缩
-    }),
+    // 大于10K的文件进行gzip压缩
+    ViteCompression({ threshold: 10240 }),
     // 打包分析
-    // visualizer({
-    //   open: true
-    // })
+    // visualizer({ open: true })
   ],
   build: {
     outDir: 'docs', // 打包输出目录
