@@ -12,7 +12,8 @@
     },
     "types": [
       "node",
-      "pinia-plugin-persistedstate"
+      "pinia-plugin-persistedstate",
+      "element-plus/global",
     ],
 
     /* Bundler mode */
