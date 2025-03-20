@@ -29,27 +29,6 @@ if (process.env.NODE_ENV !== 'development') {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './', // 公共基础路径
-  server: {
-    host: '0.0.0.0',
-    port: 8080,
-    open: true,
-    proxy: {
-      '/api': {
-        target: 'http:xxx.com',
-        changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
-  },
-  resolve: { alias: { '@': resolve(__dirname, 'src') } },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use '@/assets/style/element.scss' as *;`
-      }
-    }
-  },
   plugins: [
     vue(),
     AutoImport({ resolvers: [ElementPlusResolver({ importStyle: 'sass' })] }),
@@ -66,6 +45,17 @@ export default defineConfig({
     // 打包分析
     // visualizer({ open: true })
   ],
+  resolve: { alias: { '@': resolve(__dirname, 'src') } },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use '@/assets/style/element.scss' as *;`
+      }
+    }
+  },
+  // 公共基础路径
+  base: './',
+  // 打包配置
   build: {
     outDir: 'docs', // 打包输出目录
     chunkSizeWarningLimit: 1024 * 500,
@@ -91,5 +81,18 @@ export default defineConfig({
         }
       }
     }
-  }
+  },
+  // 开发服务配置
+  server: {
+    host: '0.0.0.0',
+    port: 8080,
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'http:xxx.com',
+        changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
 })

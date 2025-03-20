@@ -3,7 +3,7 @@ export default [
   {
     path: '/example',
     name: 'example',
-    component: () => import('@/views/layout/RouteView.vue'),
+    component: () => import('@/layout/RouteView.vue'),
     meta: {
       title: '使用案例', // 标题
       icon: 'document', // 图标
