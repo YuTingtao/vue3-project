@@ -26,19 +26,19 @@
 </template>
 
 <script setup>
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router';
 
-const router = useRouter()
+const router = useRouter();
 const props = defineProps({
   item: {
     type: Object,
     default: () => {}
   }
-})
+});
 
 // 路由跳转
 function routerTo(path) {
-  router.push(path)
+  router.push(path);
 }
 </script>
 

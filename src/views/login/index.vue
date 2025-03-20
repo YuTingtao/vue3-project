@@ -31,46 +31,46 @@
 </template>
 
 <script setup lang="ts" name="Login">
-import { ref, reactive } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useStore } from '@/store/index.ts'
-import { loginApi } from '@/api/user/login.ts'
+import { ref, reactive } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { useStore } from '@/store/index.ts';
+import { loginApi } from '@/api/user/login.ts';
 
-const router = useRouter()
-const route = useRoute()
-const store = useStore()
+const router = useRouter();
+const route = useRoute();
+const store = useStore();
 
-const formRef = ref()
+const formRef = ref();
 
 // 登录参数
 const loginForm = ref({
   account: 'admin',
   password: '123456'
-})
+});
 
 // 校验规则
 const rules = reactive({
   account: [{ required: true, message: '请输入账号/手机号/邮箱', trigger: 'blur' }],
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
-})
+});
 
-const loading = ref(false)
+const loading = ref(false);
 // 提交表单
 async function onSubmit() {
   await formRef.value?.validate((valid: any) => {
-    if (loading.value) return
-    if (!valid) return
-    loading.value = true
+    if (loading.value) return;
+    if (!valid) return;
+    loading.value = true;
     loginApi(loginForm.value).then(res => {
       if (res.code === 200) {
-        loading.value = false
-        loginSuccess()
+        loading.value = false;
+        loginSuccess();
       }
     }).catch(() => {
-      loading.value = false
-      loginSuccess()
-    })
-  })
+      loading.value = false;
+      loginSuccess();
+    });
+  });
 }
 
 // 登录成功
@@ -80,12 +80,12 @@ async function loginSuccess() {
     token: 'Token-123456789',
     userName: 'admin',
     avatar: ''
-  })
-  await store.getUserMenus()
+  });
+  await store.getUserMenus();
   if (route.query.redirect) {
-    router.replace(route.query.redirect as string)
+    router.replace(route.query.redirect as string);
   } else {
-    router.replace('/')
+    router.replace('/');
   }
 }
 </script>

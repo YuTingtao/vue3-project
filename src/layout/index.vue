@@ -54,36 +54,36 @@
 </template>
 
 <script setup lang="ts" name="Layout">
-import { ref, reactive, computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useStore } from '@/store/index.ts'
-import { useAppStore } from '@/store/app.ts'
-import MenuItem from './components/MenuItem.vue'
-import BreadCrumb from './components/BreadCrumb.vue'
-import { logoutApi } from '@/api/user/login.js'
+import { ref, reactive, computed } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { useStore } from '@/store/index.ts';
+import { useAppStore } from '@/store/app.ts';
+import MenuItem from './components/MenuItem.vue';
+import BreadCrumb from './components/BreadCrumb.vue';
+import { logoutApi } from '@/api/user/login.js';
 
-const router = useRouter()
-const route = useRoute()
-const store = useStore()
-const appStore = useAppStore()
+const router = useRouter();
+const route = useRoute();
+const store = useStore();
+const appStore = useAppStore();
 
 // 用户信息
-const userInfo = computed(() => store.userInfo)
+const userInfo = computed(() => store.userInfo);
 
 // 用户菜单
-const userMenus = computed(() => store.userMenus)
+const userMenus = computed(() => store.userMenus);
 
 // 菜单展开收起
 function toggleCollapse() {
-  appStore.menu.isExpand = !appStore.menu.isExpand
+  appStore.menu.isExpand = !appStore.menu.isExpand;
 }
 
 // 退出登录
 function handleLogout() {
   logoutApi().finally(() => {
-    store.setLogout()
-    router.push('/login')
-  })
+    store.setLogout();
+    router.push('/login');
+  });
 }
 </script>
 

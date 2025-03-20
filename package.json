@@ -8,7 +8,8 @@
     "build": "vue-tsc && vite build",
     "build:test": "vue-tsc --noEmit && vite build --mode test",
     "preview": "vite preview",
-    "lint": "eslint src --ext .js,.jsx,.ts,.vue"
+    "lint": "eslint src --ext .js,.jsx,.ts,.vue",
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.vue --fix"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
@@ -31,6 +32,7 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "eslint": "^9.22.0",
     "eslint-plugin-vue": "^10.0.0",
+    "globals": "^16.0.0",
     "prettier": "^3.5.3",
     "rollup-plugin-visualizer": "^5.14.0",
     "sass": "^1.85.1",

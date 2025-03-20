@@ -1,6 +1,6 @@
-import axios from '../intercept.ts'
-import { Response } from '../intercept.ts'
-import { LoginData } from './type.ts'
+import axios from '../intercept.ts';
+import { Response } from '../intercept.ts';
+import { LoginData } from './type.ts';
 
 // 登录
 interface LoginParams {
@@ -12,7 +12,7 @@ export function loginApi(data: LoginParams): Promise<Response<LoginData>> {
     url: '/api/user/login',
     method: 'post',
     data,
-  })
+  });
 }
 
 // 退出登录
@@ -21,5 +21,5 @@ export function logoutApi(): Promise<Response<any>> {
     url: '/api/user/logout',
     method: 'get',
     timeout: 500
-  })
+  });
 }

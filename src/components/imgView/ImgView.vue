@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 const props = defineProps({
   modelValue: {
@@ -19,8 +19,8 @@ const props = defineProps({
     type: Array,
     default: () => []
   }
-})
-const emit = defineEmits(['update:modelValue'])
+});
+const emit = defineEmits(['update:modelValue']);
 </script>
 
 <style lang="scss" scoped>

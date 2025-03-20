@@ -23,20 +23,20 @@
 </template>
 
 <script setup lang="ts" name="BaseCase">
-import { ref, reactive } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { usePermission } from '@/common/hooks/permission.js'
-import viewImg from '@/components/imgView/index.js'
+import { ref, reactive } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { usePermission } from '@/common/hooks/permission.js';
+import viewImg from '@/components/imgView/index.js';
 
-const router = useRouter()
-const route = useRoute()
-const { hasPermission } = usePermission()
+const router = useRouter();
+const route = useRoute();
+const { hasPermission } = usePermission();
 
 // 图片地址
 const urlList = ref([
   'https://img2.baidu.com/it/u=2193238619,3962578777&fm=253&fmt=auto&app=120&f=JPEG?w=1067&h=800',
   'https://img0.baidu.com/it/u=2099628,2438611947&fm=253&fmt=auto&app=138&f=JPEG?w=755&h=500'
-])
+]);
 </script>
 
 <style lang="scss" scoped>

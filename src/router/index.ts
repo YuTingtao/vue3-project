@@ -1,7 +1,7 @@
-import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router'
-import { useStore } from '@/store/index.ts'
-import routes from './modules/index.ts'
-import { checkUpdate } from '@/common/utils/checkUpdate.js'
+import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router';
+import { useStore } from '@/store/index.ts';
+import routes from './modules/index.ts';
+import { checkUpdate } from '@/common/utils/checkUpdate.js';
 
 const allRoutes: Array<RouteRecordRaw> = [
   {
@@ -17,7 +17,7 @@ const allRoutes: Array<RouteRecordRaw> = [
     name: 'login',
     component: () => import('@/views/login/index.vue'),
   },
-]
+];
 const router = createRouter({
   history: createWebHashHistory(),
   routes: allRoutes,
@@ -26,40 +26,40 @@ const router = createRouter({
       return {
         el: to.hash,
         behavior: 'smooth',
-      }
+      };
     }
     return {
       top: 0
-    }
+    };
   }
-})
+});
 
 // 不需要鉴权路由names
-const notAuthNames = ['layout', 'login']
+const notAuthNames = ['layout', 'login'];
 // 路由拦截
 router.beforeEach((to, _from) => {
-  const store = useStore()
+  const store = useStore();
   // 权限菜单names
-  const authNames = Object.keys(store.menuObj)
+  const authNames = Object.keys(store.menuObj);
   
   // 未登录拦截
   if (!store.token && to.path !== '/login') {
-    return '/login'
+    return '/login';
   }
   // 首页跳转
   if (to.path == '/') {
-    return store.firstMenu
+    return store.firstMenu;
   }
   // 权限拦截
-  const toName = (to.name || '') as string
+  const toName = (to.name || '') as string;
   if (!authNames.includes(toName) && !notAuthNames.includes(toName)) {
-    return store.firstMenu
+    return store.firstMenu;
   }
-})
+});
 
 router.onError((error) => {
-  console.error(error)
-  checkUpdate() // 检测更新
-})
+  console.error(error);
+  checkUpdate(); // 检测更新
+});
 
-export default router
+export default router;

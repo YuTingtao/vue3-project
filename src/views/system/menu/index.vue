@@ -65,12 +65,12 @@
 </template>
 
 <script setup lang="ts" name="SystemMenu">
-import { ref, reactive } from 'vue'
-import { useRouter, useRoute, type RouteRecordRaw } from 'vue-router'
-import routes from '@/router/modules/index.ts'
+import { ref, reactive } from 'vue';
+import { useRouter, useRoute, type RouteRecordRaw } from 'vue-router';
+import routes from '@/router/modules/index.ts';
 
-const router = useRouter()
-const route = useRoute()
+const router = useRouter();
+const route = useRoute();
 
 // 筛选条件
 const filter = ref({
@@ -78,23 +78,23 @@ const filter = ref({
   status: undefined,
   pageNum: 1,
   pageSize: 10
-})
+});
 
 // 表格数据
-const tableData = ref<Array<RouteRecordRaw>>([])
-const total = ref(0)
+const tableData = ref<Array<RouteRecordRaw>>([]);
+const total = ref(0);
 
 // 获取列表
 function getList() {
-  tableData.value = routes
-  total.value = routes.length
+  tableData.value = routes;
+  total.value = routes.length;
 }
-getList()
+getList();
 
 // 搜索
 function handleSearch() {
-  filter.value.pageNum = 1
-  getList()
+  filter.value.pageNum = 1;
+  getList();
 }
 
 function handleReset() {
@@ -103,8 +103,8 @@ function handleReset() {
     status: undefined,
     pageNum: 1,
     pageSize: 10
-  }
-  getList()
+  };
+  getList();
 }
 </script>
 

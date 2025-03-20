@@ -1,7 +1,7 @@
-import globals from 'globals'
-import pluginJs from '@eslint/js'
-import tseslint from 'typescript-eslint'
-import pluginVue from 'eslint-plugin-vue'
+import globals from 'globals';
+import pluginJs from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import pluginVue from 'eslint-plugin-vue';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -24,7 +24,7 @@ export default [
   {
     rules: {
       'indent': ['error', 2, { 'SwitchCase': 1 }],          // 缩进2个空格
-      'semi': ['error', 'never'],                           // 结尾不加分号
+      'semi': ['error', 'always'],                          // 结尾加分号
       'quotes': ['error', 'single', { 'allowTemplateLiterals': true }], // js定义字符串使用单引号
       'comma-dangle': ['error', 'only-multiline'],          // 多行允许使用末尾逗号
       'comma-spacing': ['error', { 'before': false, 'after': true }], // 逗号后面带一个空格
@@ -38,16 +38,16 @@ export default [
       'object-curly-spacing': ['error', 'always'],          // 对象括号内带空格
       'no-multiple-empty-lines': ['error', { 'max': 2 }],   // 最大2空行
       'no-undef': ['error', { 'typeof': true }],            // 禁用未声明的变量
-      'no-unused-vars': 'off',                             // 未使用变量
-      'no-prototype-builtins': 'off',                       // 禁止在对象上调用 Object.prototype 方法
-      '@typescript-eslint/no-unused-vars': 'off',
+      'no-unused-vars': 'warn',                             // 未使用变量
+      'no-prototype-builtins': 'error',                     // 禁止在对象上调用 Object.prototype 方法
+      '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-explicit-any': 'off',
       'vue/html-indent': ['error', 2, { 'alignAttributesVertically': false }],
       'vue/multi-word-component-names': 'off',
-      'vue/no-unused-vars': 'off',
+      'vue/no-unused-vars': 'warn',
     },
   },
   {
     ignores: ['node_modules/', 'dist/', 'docs/']
   }
-]
+];
