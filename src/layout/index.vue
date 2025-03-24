@@ -60,7 +60,7 @@ import { useStore } from '@/store/index.ts';
 import { useAppStore } from '@/store/app.ts';
 import MenuItem from './components/MenuItem.vue';
 import BreadCrumb from './components/BreadCrumb.vue';
-import { logoutApi } from '@/api/user/login.js';
+import loginApi from '@/api/user/login.js';
 
 const router = useRouter();
 const route = useRoute();
@@ -80,7 +80,7 @@ function toggleCollapse() {
 
 // 退出登录
 function handleLogout() {
-  logoutApi().finally(() => {
+  loginApi.logout().finally(() => {
     store.setLogout();
     router.push('/login');
   });

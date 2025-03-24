@@ -34,7 +34,7 @@
 import { ref, reactive } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from '@/store/index.ts';
-import { loginApi } from '@/api/user/login.ts';
+import loginApi from '@/api/user/login.ts';
 
 const router = useRouter();
 const route = useRoute();
@@ -61,7 +61,7 @@ async function onSubmit() {
     if (loading.value) return;
     if (!valid) return;
     loading.value = true;
-    loginApi(loginForm.value).then(res => {
+    loginApi.login(loginForm.value).then(res => {
       if (res.code === 200) {
         loading.value = false;
         loginSuccess();

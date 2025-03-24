@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { arrayToObj, calcFirstMenu } from './utils.js';
 import routes from '@/router/modules/index.ts';
-import type { UserInfo, LoginData } from '@/api/user/type.ts';
+import type { UserInfo, LoginData } from '@/api/user/types.js';
 import type { RouteRecordRaw } from 'vue-router';
 
 export const useStore = defineStore('store', {
