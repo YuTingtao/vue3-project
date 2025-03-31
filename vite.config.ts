@@ -16,7 +16,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import { visualizer } from 'rollup-plugin-visualizer';
 
 // 生成版本JSON文件
-if (process.env.NODE_ENV !== 'development') {
+if (process.env.NODE_ENV === 'production') {
   try {
     writeFileSync(
       resolve(__dirname, 'public/version.json'),
