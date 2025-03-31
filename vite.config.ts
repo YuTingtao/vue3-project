@@ -10,7 +10,7 @@ import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 import VueSetupExtend from 'vite-plugin-vue-setup-extend';
-import ViteCompression from 'vite-plugin-compression';
+import { compression } from 'vite-plugin-compression2';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 // 打包分析
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -40,8 +40,8 @@ export default defineConfig({
       inject: 'body-last',
       customDomId: 'svg__icon__dom'
     }),
-    // 大于10K的文件进行gzip压缩
-    ViteCompression({ threshold: 10240 }),
+    // 大于50K的文件进行gzip压缩
+    compression({ threshold: 1024 * 50 }),
     // 打包分析
     // visualizer({ open: true })
   ],
@@ -66,7 +66,6 @@ export default defineConfig({
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 资源文件像：字体、图片等
         manualChunks: (id) => {
           if(id.includes('node_modules')) {
-            // return id.toString().split('node_modules/')[1].split('/')[0].toString()
             return 'vender';
           }
         },

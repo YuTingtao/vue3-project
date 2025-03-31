@@ -90,9 +90,9 @@ importers:
       vite:
         specifier: ^6.2.1
         version: 6.2.1(@types/node@22.13.10)(jiti@2.4.2)(sass@1.85.1)
-      vite-plugin-compression:
-        specifier: ^0.5.1
-        version: 0.5.1(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(sass@1.85.1))
+      vite-plugin-compression2:
+        specifier: ^1.3.3
+        version: 1.3.3(rollup@4.35.0)(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(sass@1.85.1))
       vite-plugin-svg-icons:
         specifier: ^2.0.1
         version: 2.0.1(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(sass@1.85.1))
@@ -2535,6 +2535,9 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
+  tar-mini@0.2.0:
+    resolution: {integrity: sha512-+qfUHz700DWnRutdUsxRRVZ38G1Qr27OetwaMYTdg8hcPxf46U0S1Zf76dQMWRBmusOt2ZCK5kbIaiLkoGO7WQ==}
+
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
@@ -2713,10 +2716,10 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  vite-plugin-compression@0.5.1:
-    resolution: {integrity: sha512-5QJKBDc+gNYVqL/skgFAP81Yuzo9R+EAf19d+EtsMF/i8kFUpNi3J/H01QD3Oo8zBQn+NzoCIFkpPLynoOzaJg==}
+  vite-plugin-compression2@1.3.3:
+    resolution: {integrity: sha512-Mb+xi/C5b68awtF4fNwRBPtoZiyUHU3I0SaBOAGlerlR31kusq1si6qG31lsjJH8T7QNg/p3IJY2HY9O9SvsfQ==}
     peerDependencies:
-      vite: '>=2.0.0'
+      vite: ^2.0.0||^3.0.0||^4.0.0||^5.0.0 ||^6.0.0
 
   vite-plugin-svg-icons@2.0.1:
     resolution: {integrity: sha512-6ktD+DhV6Rz3VtedYvBKKVA2eXF+sAQVaKkKLDSqGUfnhqXl3bj5PPkVTl3VexfTuZy66PmINi8Q6eFnVfRUmA==}
@@ -5499,6 +5502,8 @@ snapshots:
       picocolors: 1.1.1
       stable: 0.1.8
 
+  tar-mini@0.2.0: {}
+
   tar@6.2.1:
     dependencies:
       chownr: 2.0.0
@@ -5755,14 +5760,13 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite-plugin-compression@0.5.1(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(sass@1.85.1)):
+  vite-plugin-compression2@1.3.3(rollup@4.35.0)(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(sass@1.85.1)):
     dependencies:
-      chalk: 4.1.2
-      debug: 4.4.0
-      fs-extra: 10.1.0
+      '@rollup/pluginutils': 5.1.4(rollup@4.35.0)
+      tar-mini: 0.2.0
       vite: 6.2.1(@types/node@22.13.10)(jiti@2.4.2)(sass@1.85.1)
     transitivePeerDependencies:
-      - supports-color
+      - rollup
 
   vite-plugin-svg-icons@2.0.1(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(sass@1.85.1)):
     dependencies:
