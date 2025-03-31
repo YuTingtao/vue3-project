@@ -18,9 +18,12 @@ import { visualizer } from 'rollup-plugin-visualizer';
 // 生成版本JSON文件
 if (process.env.NODE_ENV !== 'development') {
   try {
-    writeFileSync(resolve(__dirname, 'public/version.json'), JSON.stringify({
-      version: 'v_' +  Date.now()
-    }));
+    writeFileSync(
+      resolve(__dirname, 'public/version.json'),
+      JSON.stringify({
+        version: 'v_' + Date.now()
+      })
+    );
     console.log('JSON文件写入成功');
   } catch (err) {
     console.log('JSON文件写入失败:', err);
@@ -41,7 +44,7 @@ export default defineConfig({
       customDomId: 'svg__icon__dom'
     }),
     // 大于50K的文件进行gzip压缩
-    compression({ threshold: 1024 * 50 }),
+    compression({ threshold: 1024 * 50 })
     // 打包分析
     // visualizer({ open: true })
   ],
@@ -64,19 +67,16 @@ export default defineConfig({
         chunkFileNames: 'assets/js/[name]-[hash].js', // 引入文件名的名称
         entryFileNames: 'assets/js/[name]-[hash].js', // 包的入口文件名称
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 资源文件像：字体、图片等
-        manualChunks: (id) => {
-          if(id.includes('node_modules')) {
-            return 'vender';
-          }
+        manualChunks: {
+          'vue-render': ['vue', 'vue-router', 'pinia', 'axios'],
+          'element-plus': ['element-plus']
         },
         // 解决github: _plugin-vue_export-helper.js报404
         sanitizeFileName(name) {
           const match = /^[a-z]:/i.exec(name);
           const driveLetter = match ? match[0] : '';
           const reg = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g;
-          return (
-            driveLetter + name.slice(driveLetter.length).replace(reg, '_').replace(/^_/, '')
-          );
+          return driveLetter + name.slice(driveLetter.length).replace(reg, '_').replace(/^_/, '');
         }
       }
     }
@@ -89,9 +89,9 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'http:xxx.com',
-        changeOrigin: true,
+        changeOrigin: true
         // rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
-  },
+  }
 });
