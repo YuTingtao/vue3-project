@@ -1,5 +1,5 @@
 import axios from '../intercept.ts';
-import { Response } from '../intercept.ts';
+import type { Response } from '../intercept.ts';
 import type { LoginParams, LoginData } from './types.ts';
 
 export default {
