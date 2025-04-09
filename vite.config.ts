@@ -13,7 +13,7 @@ import VueSetupExtend from 'vite-plugin-vue-setup-extend';
 import { compression } from 'vite-plugin-compression2';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 // 打包分析
-import { visualizer } from 'rollup-plugin-visualizer';
+// import { visualizer } from 'rollup-plugin-visualizer';
 
 // 生成版本JSON文件
 if (process.env.NODE_ENV === 'production') {
@@ -68,6 +68,9 @@ export default defineConfig({
         entryFileNames: 'assets/js/[name]-[hash].js', // 包的入口文件名称
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 资源文件像：字体、图片等
         manualChunks(id) {
+          // if (/node_modules\/(vue|@vue|vue-router|pinia|axios)/.test(id)) {
+          //   return 'vue';
+          // }
           if (id.includes('node_modules/element-plus')) {
             return 'element-plus';
           }
