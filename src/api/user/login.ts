@@ -1,19 +1,18 @@
-import axios from '../intercept.ts';
-import type { Response } from '../intercept.ts';
-import type { LoginParams, LoginData } from './types.ts';
+import axios, { type Res } from '../intercept.ts';
+import type { LoginReq, LoginRes } from './type.ts';
 
 export default {
   // 登录
-  login(data: LoginParams): Promise<Response<LoginData>> {
+  login(data: LoginReq): Promise<Res<LoginRes>> {
     return axios.request({
       url: '/api/user/login',
       method: 'post',
-      data,
+      data
     });
   },
 
   // 退出登录
-  logout(): Promise<Response<any>> {
+  logout() {
     return axios.request({
       url: '/api/user/logout',
       method: 'get',

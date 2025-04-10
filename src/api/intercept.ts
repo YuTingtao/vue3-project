@@ -1,5 +1,4 @@
 import Axios from 'axios';
-import type { InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 import router from '../router';
 import { useStore } from '@/store/index.ts';
 
@@ -23,13 +22,13 @@ function toLogin() {
 }
 
 const axios = Axios.create({
-  baseURL: '',
+  baseURL: ''
   // timeout: 10000 // 请求超时 10s
 });
 
 // 请求拦截
 axios.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
+  config => {
     const store = useStore();
     // Content-Type: application/json、application/x-www-form-urlencoded、multipart/form-data
     config.headers['Content-Type'] = 'application/json';
@@ -45,7 +44,7 @@ axios.interceptors.request.use(
 
 // 相应拦截
 axios.interceptors.response.use(
-  (res: AxiosResponse) => {
+  res => {
     const store = useStore();
     if (res.status === 200) {
       if (res.data instanceof Blob || res.data instanceof ArrayBuffer) {
@@ -54,7 +53,8 @@ axios.interceptors.response.use(
       if (res.data.code !== 200) {
         toast(res.data.msg);
       }
-      if (res.data.code === 401) { // 需要登录
+      if (res.data.code === 401) {
+        // 需要登录
         store.setLogout();
         toLogin();
       }
@@ -89,8 +89,8 @@ axios.interceptors.response.use(
 
 export default axios;
 
-export interface Response<T> {
-  code: number
-  msg: string
-  data?: T
+export interface Res<T = any> {
+  code: number;
+  msg: string;
+  data?: T;
 }

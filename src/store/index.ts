@@ -1,14 +1,14 @@
 import { defineStore } from 'pinia';
 import { arrayToObj, calcFirstMenu } from './utils.js';
 import routes from '@/router/modules/index.ts';
-import type { UserInfo, LoginData } from '@/api/user/types.js';
+import type { UserInfo, LoginRes } from '@/api/user/type.js';
 import type { RouteRecordRaw } from 'vue-router';
 
 export const useStore = defineStore('store', {
   state: () => ({
     token: '',
     userInfo: {} as UserInfo, // 用户信息
-    userMenus: [] as RouteRecordRaw[], // 用户菜单
+    userMenus: [] as RouteRecordRaw[] // 用户菜单
   }),
   getters: {
     // 菜单对象: key为path
@@ -25,7 +25,7 @@ export const useStore = defineStore('store', {
   },
   actions: {
     // 登录
-    setLogin(obj: LoginData) {
+    setLogin(obj: LoginRes) {
       const { token, ...userInfo } = obj;
       this.token = token;
       this.userInfo = userInfo;

@@ -6,19 +6,12 @@
       <!-- 表单 -->
       <el-form :model="loginForm" ref="formRef" :rules="rules" size="large">
         <el-form-item label="" prop="account">
-          <el-input
-            v-model="loginForm.account"
-            placeholder="请输入账号/手机号/邮箱"
-            prefix-icon="user">
+          <el-input v-model="loginForm.account" placeholder="请输入账号/手机号/邮箱" prefix-icon="user">
           </el-input>
         </el-form-item>
 
         <el-form-item label="" prop="password">
-          <el-input
-            v-model="loginForm.password"
-            placeholder="请输入密码"
-            type="password"
-            prefix-icon="lock">
+          <el-input v-model="loginForm.password" placeholder="请输入密码" type="password" prefix-icon="lock">
           </el-input>
         </el-form-item>
 
@@ -109,6 +102,7 @@ async function loginSuccess() {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(0, 0, 0, .15);
+
   .title {
     margin-bottom: 40px;
     text-align: center;
@@ -116,12 +110,14 @@ async function loginSuccess() {
     font-weight: normal;
     color: var(--el-color-primary);
   }
+
   .el-form-item {
     &:last-child {
       margin-top: 40px;
       margin-bottom: 0;
     }
   }
+
   :deep(.el-icon) {
     font-size: 16px;
   }
@@ -140,6 +136,7 @@ async function loginSuccess() {
   .login-page {
     justify-content: center;
   }
+
   .login-box {
     margin: 0 4%;
   }
