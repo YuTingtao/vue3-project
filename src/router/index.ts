@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router';
 import { useStore } from '@/store/index.ts';
 import routes from './modules/index.ts';
-import { checkUpdate } from '@/common/utils/checkUpdate.js';
+import { checkUpdate } from '@/utils/checkUpdate.js';
 
 const allRoutes: Array<RouteRecordRaw> = [
   {

@@ -11,7 +11,7 @@ import './assets/style/main.scss';
 import 'lazysizes';
 
 // 检测更新
-import { checkUpdate, autoCheckUpdate } from '@/common/utils/checkUpdate.js';
+import { checkUpdate, autoCheckUpdate } from '@/utils/checkUpdate.js';
 autoCheckUpdate();
 
 const app = createApp(App);
