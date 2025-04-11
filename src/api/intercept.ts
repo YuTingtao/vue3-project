@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import type { AxiosRequestConfig } from 'axios';
 import router from '../router';
 import { useStore } from '@/store/index.ts';
 
@@ -87,10 +88,14 @@ axios.interceptors.response.use(
   }
 );
 
-export default axios;
-
-export interface Res<T = any> {
+interface Data<T> {
   code: number;
   msg: string;
   data?: T;
 }
+
+function request<T = any>(config: AxiosRequestConfig) {
+  return axios.request<T, Data<T>>(config);
+}
+
+export default request;
