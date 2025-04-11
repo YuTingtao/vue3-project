@@ -22,7 +22,7 @@ export default function deepClone(obj, hash = new WeakMap()) {
   
   hash.set(obj, copy);
   for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
       copy[key] = deepClone(obj[key], hash);
     }
   }
