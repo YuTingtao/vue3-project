@@ -5,7 +5,7 @@ export default {
     let method = binding.value;
 
     if (typeof binding.value === 'object') {
-      dom = document.querySelector(binding.value.el);
+      dom = el.querySelector(binding.value.child);
       method = binding.value.method;
     }
     if (!dom) return;
