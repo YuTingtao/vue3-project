@@ -35,7 +35,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="BaseCase">
+<script setup lang="ts" name="BaseExample">
 import { ref, reactive } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { usePermission } from '@/common/hooks/permission.js';
