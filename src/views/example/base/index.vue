@@ -5,7 +5,7 @@
       <span>svg-icon：</span>
       <svg-icon name="edit"></svg-icon>
     </div>
-    
+
     <div class="row-box">
       <span>按钮权限：</span>
       <el-button v-if="hasPermission('add')" type="primary">新增</el-button>
@@ -18,6 +18,16 @@
     <div class="row-box">
       <span>图片预览：</span>
       <el-button type="primary" @click="viewImg(urlList)">预览</el-button>
+    </div>
+
+    <div class="row-box">
+      <span>加载更多指令：</span>
+      <el-select style="width: 220px;" v-model="selected"
+        v-loadmore="{ trigger: '.select-loadmore .el-select-dropdown__wrap', callback: getOptions }" popper-class="select-loadmore"
+        placeholder="请选择" clearable>
+        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+        </el-option>
+      </el-select>
     </div>
   </div>
 </template>
@@ -37,6 +47,22 @@ const urlList = ref([
   'https://img2.baidu.com/it/u=2193238619,3962578777&fm=253&fmt=auto&app=120&f=JPEG?w=1067&h=800',
   'https://img0.baidu.com/it/u=2099628,2438611947&fm=253&fmt=auto&app=138&f=JPEG?w=755&h=500'
 ]);
+
+// 加载更多指令
+const selectEl = ref();
+const selected = ref();
+const options = ref<{ label: string; value: number }[]>([]);
+function getOptions() {
+  console.log('getOptions');
+  for (let i = 0; i < 10; i++) {
+    const random = Math.floor(Math.random() * 100);
+    options.value.push({
+      label: `选项${random}`,
+      value: random
+    });
+  }
+}
+getOptions();
 </script>
 
 <style lang="scss" scoped>

@@ -81,7 +81,7 @@ const filter = ref({
 });
 
 // 表格数据
-const tableData = ref<Array<RouteRecordRaw>>([]);
+const tableData = ref<RouteRecordRaw[]>([]);
 const total = ref(0);
 
 // 获取列表
