@@ -21,11 +21,14 @@
     </div>
 
     <div class="row-box">
-      <span>加载更多指令：</span>
-      <el-select style="width: 220px;" v-model="selected"
-        v-loadmore="{ trigger: '.select-loadmore .el-select-dropdown__wrap', callback: getOptions }" popper-class="select-loadmore"
-        placeholder="请选择" clearable>
-        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+      <span>v-loadmore指令：</span>
+      <el-select style="width: 220px;"
+        v-model="selected" placeholder="请选择" clearable
+        v-loadmore="{ el: '.select-loadmore .el-select-dropdown__wrap', method: getOptions }"
+        popper-class="select-loadmore">
+        <el-option
+          v-for="item in options" :key="item.value"
+          :label="item.label" :value="item.value">
         </el-option>
       </el-select>
     </div>
@@ -49,11 +52,12 @@ const urlList = ref([
 ]);
 
 // 加载更多指令
-const selectEl = ref();
 const selected = ref();
 const options = ref<{ label: string; value: number }[]>([]);
 function getOptions() {
-  console.log('getOptions');
+  if (options.value.length >= 100) {
+    return false;
+  }
   for (let i = 0; i < 10; i++) {
     const random = Math.floor(Math.random() * 100);
     options.value.push({
