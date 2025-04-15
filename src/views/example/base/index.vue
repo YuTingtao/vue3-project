@@ -24,7 +24,7 @@
       <span>v-loadmore指令：</span>
       <el-select style="width: 220px;"
         v-model="selected" placeholder="请选择" clearable
-        v-loadmore="{ child: '.el-select-dropdown__wrap', method: getOptions }"
+        v-loadmore="{ scrollEl: '.el-select-dropdown__wrap', method: getOptions }"
         :teleported="false">
         <el-option
           v-for="item in options" :key="item.value"
