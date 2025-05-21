@@ -44,9 +44,9 @@ export default defineConfig({
       customDomId: 'svg__icon__dom'
     }),
     // 大于50K的文件进行gzip压缩
-    compression({ threshold: 1024 * 50 })
+    compression({ threshold: 1024 * 50 }),
     // 打包分析
-    // visualizer({ open: true })
+    // visualizer({ open: true, filename: 'docs/stats.html' })
   ],
   resolve: { alias: { '@': resolve(__dirname, 'src') } },
   css: {

@@ -1,4 +1,6 @@
 // 加载更多
+import { debounce } from 'lodash-es';
+
 export default {
   mounted(el, binding) {
     let dom = el;
@@ -10,11 +12,11 @@ export default {
     }
     if (!dom) return;
 
-    dom.addEventListener('scroll', () => {
+    dom.addEventListener('scroll', debounce(() => {
       const { scrollTop, scrollHeight, clientHeight } = dom;
       if (scrollTop + clientHeight >= scrollHeight) {
         method();
       }
-    });
+    }, 300));
   }
 };
