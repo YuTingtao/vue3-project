@@ -11,7 +11,7 @@ import './assets/style/main.scss';
 import 'lazysizes';
 
 // 检测更新
-import { checkUpdate, autoCheckUpdate } from '@/utils/checkUpdate.js';
+import { checkUpdate, autoCheckUpdate } from './utils/checkUpdate.js';
 autoCheckUpdate();
 
 const app = createApp(App);
@@ -23,7 +23,7 @@ app.use(router);
 app.use(pinia);
 
 // 注册自定义指令
-import registerDirectives from './common/directives/index.js';
+import registerDirectives from './directives/index.js';
 registerDirectives(app);
 
 // 注册el-icon组件
@@ -36,6 +36,11 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 import SvgIcon from './components/svgIcon/SvgIcon.vue';
 import 'virtual:svg-icons-register';
 app.component('svg-icon', SvgIcon);
+
+// 按钮权限
+import { usePermission } from './hooks/permission.js';
+const { hasPermission } = usePermission();
+app.config.globalProperties.$hasPermission = hasPermission;
 
 const store = useStore();
 // 登录状态，获取用户菜单

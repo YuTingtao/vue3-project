@@ -8,11 +8,11 @@
 
     <div class="row-box">
       <span>按钮权限：</span>
-      <el-button v-if="hasPermission('add')" type="primary">新增</el-button>
-      <el-button v-if="hasPermission('edit')" type="primary">编辑</el-button>
-      <el-button v-if="hasPermission('delete')" type="primary">删除</el-button>
+      <el-button v-if="$hasPermission('add')" type="primary">新增</el-button>
+      <el-button v-if="$hasPermission('edit')" type="primary">编辑</el-button>
+      <el-button v-if="$hasPermission('delete')" type="primary">删除</el-button>
       <!-- 无权限 -->
-      <el-button v-if="hasPermission('export')" type="primary">导出</el-button>
+      <el-button v-if="$hasPermission('export')" type="primary">导出</el-button>
     </div>
 
     <div class="row-box">
@@ -38,12 +38,10 @@
 <script setup lang="ts" name="BaseExample">
 import { ref, reactive } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { usePermission } from '@/common/hooks/permission.js';
 import viewImg from '@/components/imgView/index.js';
 
 const router = useRouter();
 const route = useRoute();
-const { hasPermission } = usePermission();
 
 // 图片地址
 const urlList = ref([

@@ -1,5 +1,5 @@
 // 权限指令 v-permission
-import { usePermission } from '@/common/hooks/permission.js';
+import { usePermission } from '@/hooks/permission.js';
 
 export default {
   mounted(el, binding) {
