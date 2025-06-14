@@ -68,16 +68,11 @@ export default defineConfig({
         entryFileNames: 'assets/js/[name]-[hash].js', // 包的入口文件名称
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 资源文件像：字体、图片等
         manualChunks(id) {
-          if (/node_modules\/(vue|@vue|vue-router|pinia|axios)/.test(id)) {
-            return 'vue';
-          }
           if (id.includes('node_modules/element-plus')) {
             return 'element-plus';
-          }
-          if (id.includes('node_modules')) {
+          } else if (id.includes('node_modules')) {
             return 'vendor';
           }
-          return undefined;
         },
         // 解决github: _plugin-vue_export-helper.js报404
         sanitizeFileName(name) {
