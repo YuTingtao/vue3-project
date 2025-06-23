@@ -68,7 +68,11 @@ export default defineConfig({
         entryFileNames: 'assets/js/[name]-[hash].js', // 包的入口文件名称
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 资源文件像：字体、图片等
         manualChunks(id) {
-          if (id.includes('node_modules/element-plus')) {
+          /* if (/node_modules\/(vue|vue-router|pinia|axios)/.test(id)) {
+            return 'vue';
+          } else  */if (id.includes('node_modules/echarts')) {
+            return 'echarts';
+          } else if (id.includes('node_modules/element-plus')) {
             return 'element-plus';
           } else if (id.includes('node_modules')) {
             return 'vendor';

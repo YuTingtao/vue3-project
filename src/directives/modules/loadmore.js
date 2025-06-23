@@ -14,7 +14,8 @@ export default {
 
     dom.addEventListener('scroll', debounce(() => {
       const { scrollTop, scrollHeight, clientHeight } = dom;
-      if (scrollTop + clientHeight >= scrollHeight) {
+      console.log(scrollTop, scrollHeight, clientHeight);
+      if (scrollTop + clientHeight >= scrollHeight - 20) {
         method();
       }
     }, 300));
