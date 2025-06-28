@@ -9,10 +9,10 @@ export function usePermission() {
   /**
    * 是否有按钮权限
    * @param {String} str 按钮标识
-   * @param {String} name 路由name
-   * @returns 
+   * @param {String} name 路由path/name
+   * @returns
    */
-  function hasPermission(str, name = currentRoute.value.name) {
+  function hasPermission(str, name = currentRoute.value.name || currentRoute.value.path) {
     const buttons = store.menuObj[name]?.meta?.buttons || [];
     if (buttons.some(item => item == str)) {
       return true;

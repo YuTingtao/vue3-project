@@ -26,7 +26,7 @@ const props = defineProps({
   prefix: {
     type: String,
     default: 'icon'
-  },
+  }
 });
 const symbolId = computed(() => {
   return `#${props.prefix}-${props.name}`;

@@ -21,5 +21,5 @@ export {
   formatFileSize,
   generateGuid,
   moneytoUpperCase,
-  saveBlobFile,
+  saveBlobFile
 };

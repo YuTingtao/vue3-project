@@ -12,12 +12,14 @@ export default {
     }
     if (!dom) return;
 
-    dom.addEventListener('scroll', debounce(() => {
-      const { scrollTop, scrollHeight, clientHeight } = dom;
-      console.log(scrollTop, scrollHeight, clientHeight);
-      if (scrollTop + clientHeight >= scrollHeight - 20) {
-        method();
-      }
-    }, 300));
+    dom.addEventListener(
+      'scroll',
+      debounce(() => {
+        const { scrollTop, scrollHeight, clientHeight } = dom;
+        if (scrollTop + clientHeight >= scrollHeight - 20) {
+          method();
+        }
+      }, 300)
+    );
   }
 };

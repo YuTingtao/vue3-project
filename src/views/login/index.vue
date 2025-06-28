@@ -6,8 +6,7 @@
       <!-- 表单 -->
       <el-form :model="loginForm" ref="formRef" :rules="rules" size="large">
         <el-form-item label="" prop="account">
-          <el-input v-model="loginForm.account" placeholder="请输入账号/手机号/邮箱" prefix-icon="user">
-          </el-input>
+          <el-input v-model="loginForm.account" placeholder="请输入账号/手机号/邮箱" prefix-icon="user"> </el-input>
         </el-form-item>
 
         <el-form-item label="" prop="password">
@@ -54,15 +53,18 @@ async function onSubmit() {
     if (loading.value) return;
     if (!valid) return;
     loading.value = true;
-    loginApi.login(loginForm.value).then(res => {
-      if (res.code === 200) {
+    loginApi
+      .login(loginForm.value)
+      .then(res => {
+        if (res.code === 200) {
+          loading.value = false;
+          loginSuccess();
+        }
+      })
+      .catch(() => {
         loading.value = false;
         loginSuccess();
-      }
-    }).catch(() => {
-      loading.value = false;
-      loginSuccess();
-    });
+      });
   });
 }
 
@@ -101,7 +103,7 @@ async function loginSuccess() {
   margin: 0 14%;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, .15);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
 
   .title {
     margin-bottom: 40px;

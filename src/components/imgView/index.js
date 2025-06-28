@@ -9,7 +9,7 @@ function viewImg(urls) {
   const app = createApp(ImgView, {
     modelValue: true,
     urlList: urls,
-    'onUpdate:modelValue': (val) => {
+    'onUpdate:modelValue': val => {
       // console.log(val)
       if (!val) {
         app.unmount(div);

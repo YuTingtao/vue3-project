@@ -1,6 +1,6 @@
 <!-- 菜单权限 -->
 <template>
-  <div class="">
+  <div class="page-menu">
     <!-- 筛选条件 -->
     <el-form class="app-filter" :model="filter" label-width="">
       <el-form-item label="关键词">
@@ -14,7 +14,7 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item style="margin-right: auto;">
+      <el-form-item style="margin-right: auto">
         <el-button type="primary" @click="handleSearch">搜索</el-button>
         <el-button type="primary" plain @click="handleReset">重置</el-button>
       </el-form-item>
@@ -23,7 +23,7 @@
         <el-button type="primary">新增</el-button>
       </el-form-item>
     </el-form>
-    
+
     <!-- 表格 -->
     <el-table :data="tableData" border row-key="path" default-expand-all>
       <el-table-column prop="meta.title" label="菜单" min-width="150">
@@ -114,6 +114,7 @@ function handleReset() {
     margin-right: 5px;
     font-size: 16px;
   }
+
   .item-name {
     display: inline-block;
     vertical-align: middle;

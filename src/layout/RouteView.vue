@@ -3,6 +3,4 @@
   <router-view></router-view>
 </template>
 
-<script setup lang="ts" name="ModuleLayout">
-
-</script>
+<script setup lang="ts" name="ModuleLayout"></script>

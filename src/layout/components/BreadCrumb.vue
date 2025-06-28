@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 
 const router = useRouter();
@@ -16,8 +16,8 @@ const route = useRoute();
 
 // 面包屑
 interface BreadcrumbItem {
-  path: string
-  title: string
+  path: string;
+  title: string;
 }
 const breadcrumbs = ref<BreadcrumbItem[]>([]);
 // 所有路由
@@ -70,14 +70,15 @@ function getParentsBread(path: string, arr: BreadcrumbItem[] = []) {
 }
 
 // 监听路由path
-watch(() => route.path, () => {
-  getBreadcrumbs();
-}, {
-  immediate: true
-});
-
+watch(
+  () => route.path,
+  () => {
+    getBreadcrumbs();
+  },
+  {
+    immediate: true
+  }
+);
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

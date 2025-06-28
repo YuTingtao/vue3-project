@@ -16,6 +16,7 @@ autoCheckUpdate();
 
 const app = createApp(App);
 app.config.errorHandler = (err, instance, info) => {
+  // eslint-disable-next-line no-console
   console.error(err, instance, info);
   checkUpdate(); // 检测更新
 };
@@ -26,11 +27,10 @@ app.use(pinia);
 import registerDirectives from './directives/index.js';
 registerDirectives(app);
 
-// 注册el-icon组件
-import * as ElementPlusIconsVue from '@element-plus/icons-vue';
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component);
-}
+// 注册svg-icon组件
+import SvgIcon from './components/svgIcon/SvgIcon.vue';
+import 'virtual:svg-icons-register';
+app.component('svg-icon', SvgIcon);
 
 // 按钮权限
 import { usePermission } from './hooks/permission.js';
@@ -46,5 +46,5 @@ if (store.token) {
 // 挂载
 app.mount('#app');
 
-// console.log('node_env:', process.env.NODE_ENV);
-// console.log('vite_env:', import.meta.env);
+// eslint-disable-next-line no-console
+console.log('vite_env:', import.meta.env);

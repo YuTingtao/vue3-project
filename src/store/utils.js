@@ -1,8 +1,9 @@
 // 数组转对象: key为name
-function arrayToObj(tree) {
+function getMenuObj(tree) {
   const result = {};
   function handle(node) {
-    result[node.name] = node;
+    // 以name或者path为key
+    result[node.name || node.path] = node;
     if (Array.isArray(node.children)) {
       node.children.forEach(item => handle(item));
     }
@@ -12,7 +13,7 @@ function arrayToObj(tree) {
 }
 
 // 第一个菜单
-function calcFirstMenu(menu) {
+function getFirstMenu(menu) {
   let result;
   function handle(node) {
     if (node.children && node.children.length > 0) {
@@ -25,7 +26,4 @@ function calcFirstMenu(menu) {
   return result || '/login';
 }
 
-export {
-  arrayToObj,
-  calcFirstMenu,
-};
+export { getMenuObj, getFirstMenu };

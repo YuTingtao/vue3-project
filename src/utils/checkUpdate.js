@@ -1,5 +1,5 @@
 // 检测版本是否有更新，提示刷新页面
-import { ElMessage, ElMessageBox } from 'element-plus';
+import { ElMessageBox } from 'element-plus';
 
 let lastVersion; // 最近版本
 
@@ -7,7 +7,7 @@ let lastVersion; // 最近版本
 export function checkUpdate() {
   const xhr = new XMLHttpRequest();
   xhr.open('get', './version.json?t=' + Date.now(), true);
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
       const res = JSON.parse(xhr.responseText);
       if (!lastVersion) {

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { arrayToObj, calcFirstMenu } from './utils.js';
+import { getMenuObj, getFirstMenu } from './utils.js';
 import routes from '@/router/modules/index.ts';
 import type { UserInfo, LoginRes } from '@/api/user/type.js';
 import type { RouteRecordRaw } from 'vue-router';
@@ -7,20 +7,20 @@ import type { RouteRecordRaw } from 'vue-router';
 export const useStore = defineStore('store', {
   state: () => ({
     token: '',
-    userInfo: {} as UserInfo | object, // 用户信息
+    userInfo: {} as UserInfo, // 用户信息
     userMenus: [] as RouteRecordRaw[] // 用户菜单
   }),
   getters: {
     // 菜单对象: key为path
     menuObj(state) {
-      return arrayToObj(state.userMenus);
+      return getMenuObj(state.userMenus);
     },
     // 首个菜单
     firstMenu(state) {
       if (state.userMenus.length < 1) {
         return '/login';
       }
-      return calcFirstMenu(state.userMenus[0]);
+      return getFirstMenu(state.userMenus[0]);
     }
   },
   actions: {
@@ -33,7 +33,11 @@ export const useStore = defineStore('store', {
     // 退出登录
     setLogout() {
       this.token = '';
-      this.userInfo = {};
+      this.userInfo = {
+        id: '',
+        userName: '',
+        avatar: ''
+      };
       this.userMenus = [];
     },
     // 获取菜单

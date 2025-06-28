@@ -27,10 +27,12 @@ export default defineConfig([
       indent: ['error', 2, { SwitchCase: 1 }],
       // 结尾加分号
       semi: ['error', 'always'],
-      // js定义字符串使用单引号
+      // 字符串使用单引号
       quotes: ['error', 'single', { allowTemplateLiterals: true }],
       // 驼峰命名
       camelcase: 'error',
+      // 一行最大160长度
+      'max-len': ['error', { code: 120, tabWidth: 2 }],
       // 多行允许使用末尾逗号
       'comma-dangle': ['error', 'only-multiline'],
       // 逗号后面带一个空格
@@ -41,8 +43,6 @@ export default defineConfig([
       'func-call-spacing': ['error', 'never'],
       // 使用函数声明定义函数
       'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
-      // 一行最大160长度
-      'max-len': ['error', { code: 160, tabWidth: 2 }],
       // 构造函数
       'new-cap': ['error', { capIsNew: false }],
       // 注释斜杠后面加空格
@@ -68,7 +68,7 @@ export default defineConfig([
       // vue缩进2个空格
       'vue/html-indent': ['error', 2, { alignAttributesVertically: false }],
       // vue组件命名
-      'vue/multi-word-component-names': 'warn',
+      'vue/multi-word-component-names': ['warn', { ignores: ['index'] }],
       // vue未使用变量
       'vue/no-unused-vars': ['warn', { ignorePattern: '^_' }]
     }

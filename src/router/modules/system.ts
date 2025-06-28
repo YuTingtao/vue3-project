@@ -2,7 +2,6 @@
 export default [
   {
     path: '/system',
-    name: 'system',
     component: () => import('@/layout/RouteView.vue'),
     meta: {
       title: '系统设置',
@@ -10,13 +9,12 @@ export default [
       visible: 1,
       buttons: [],
       activePath: '',
-      parentPath: '',
+      parentPath: ''
     },
     children: [
       // 菜单设置
       {
         path: '/system/menu',
-        name: 'systemMenu',
         component: () => import('@/views/system/menu/index.vue'),
         meta: {
           title: '菜单设置',
@@ -24,9 +22,9 @@ export default [
           visible: 1,
           buttons: [],
           activePath: '',
-          parentPath: '',
-        },
-      },
+          parentPath: ''
+        }
+      }
     ]
   }
 ];

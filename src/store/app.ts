@@ -4,15 +4,11 @@ export const useAppStore = defineStore('appStore', {
   state: () => ({
     // 菜单
     menu: {
-      isExpand: true, // 是否展开
+      isExpand: true // 是否展开
     }
   }),
-  getters: {
-    
-  },
-  actions: {
-
-  },
+  getters: {},
+  actions: {},
   // 状态持久化
   persist: {
     key: 'appStore',

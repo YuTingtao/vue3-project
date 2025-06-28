@@ -2,22 +2,15 @@
 <template>
   <!-- 头部 -->
   <div class="app-head" :style="`left: ${appStore.menu.isExpand ? '210px' : '64px'};`">
-    <el-icon class="menu-collapse" @click="toggleCollapse">
-      <component :is="appStore.menu.isExpand ? 'Fold' : 'Expand'"></component>
-    </el-icon>
+    <svg-icon class="menu-collapse" :name="appStore.menu.isExpand ? 'fold' : 'expand'" @click="toggleCollapse">
+    </svg-icon>
 
     <!-- 面包屑 -->
     <BreadCrumb></BreadCrumb>
-    
+
     <el-dropdown trigger="hover">
       <div>
-        <el-avatar
-          :src="userInfo.avatar"
-          :size="32"
-          icon="UserFilled"
-          shape="circle"
-          fit="cover">
-        </el-avatar>
+        <el-avatar :src="userInfo.avatar" :size="32" shape="circle" fit="cover"></el-avatar>
         <span>{{ userInfo.userName }}</span>
         <el-icon><arrow-down /></el-icon>
       </div>
@@ -34,20 +27,20 @@
   <div class="app-aside">
     <el-scrollbar>
       <div class="app-logo" :class="appStore.menu.isExpand ? '' : 'collapsed'">
-        <img class="app-logo-img" src="@/assets/img/logo.png" alt="">
+        <img class="app-logo-img" src="@/assets/img/logo.png" alt="" />
         <span>Vue3管理后台</span>
       </div>
       <el-menu
         :collapse="!appStore.menu.isExpand"
         :unique-opened="true"
-        :default-active="(route.meta.activePath || route.path || route.name) as string">
-        <MenuItem v-for="item in userMenus" :key="item.path" :item="item"></MenuItem>
+        :default-active="route.meta.activePath || route.path || route.name">
+        <MenuItem v-for="item in userMenus" :key="item.path" :item="item"> </MenuItem>
       </el-menu>
     </el-scrollbar>
   </div>
 
   <!-- 主体 -->
-  <div class="app-main" :style="`padding-left: ${appStore.menu.isExpand ? '210px':'64px'};`">
+  <div class="app-main" :style="`padding-left: ${appStore.menu.isExpand ? '210px' : '64px'};`">
     <!-- 页面主体 -->
     <router-view class="app-view"></router-view>
   </div>
@@ -105,23 +98,28 @@ function handleLogout() {
   border-bottom: 1px solid var(--el-border-color-extra-light);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.04);
   transition: left var(--el-transition-duration) ease-in-out;
+
   .menu-collapse {
     font-size: 18px;
     color: #333;
     cursor: pointer;
   }
+
   .el-breadcrumb {
     flex-shrink: 0;
     margin-left: 12px;
     margin-right: 20px;
   }
+
   .el-dropdown {
     margin-left: auto;
     display: flex;
     align-items: center;
+
     .el-avatar {
       margin-right: 5px;
     }
+
     .el-tooltip__trigger {
       display: flex;
       align-items: center;
@@ -138,15 +136,18 @@ function handleLogout() {
   bottom: 0;
   z-index: 10;
   background: #3c4f60;
+
   .el-menu--vertical {
     --el-menu-text-color: #fff;
     --el-menu-bg-color: #3c4f60;
     --el-menu-hover-bg-color: #303f4d;
     border-right: none;
+
     &:not(.el-menu--collapse) {
       width: 210px;
     }
   }
+
   .el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item {
     padding-left: calc(var(--el-menu-base-level-padding) + var(--el-menu-level) * var(--el-menu-level-padding) + 9px);
   }
@@ -167,6 +168,7 @@ function handleLogout() {
   font-weight: bolder;
   white-space: nowrap;
   transition: width 0.3s ease-in-out;
+
   &.collapsed {
     width: 44px;
   }

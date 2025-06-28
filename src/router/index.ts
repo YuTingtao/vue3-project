@@ -6,17 +6,13 @@ import { checkUpdate } from '@/utils/checkUpdate.js';
 const allRoutes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'layout',
     component: () => import('@/layout/index.vue'),
-    children: [
-      ...routes,
-    ]
+    children: [...routes]
   },
   {
     path: '/login',
-    name: 'login',
-    component: () => import('@/views/login/index.vue'),
-  },
+    component: () => import('@/views/login/index.vue')
+  }
 ];
 const router = createRouter({
   history: createWebHashHistory(),
@@ -25,7 +21,7 @@ const router = createRouter({
     if (to.hash) {
       return {
         el: to.hash,
-        behavior: 'smooth',
+        behavior: 'smooth'
       };
     }
     return {
@@ -34,14 +30,12 @@ const router = createRouter({
   }
 });
 
-// 不需要鉴权路由names
-const notAuthNames = ['layout', 'login'];
 // 路由拦截
 router.beforeEach((to, from) => {
   const store = useStore();
-  // 权限菜单names
-  const authNames = Object.keys(store.menuObj);
-  
+  // 基础路由+权限菜单 keys
+  const allRouteKeys = ['/', '/login', ...Object.keys(store.menuObj)];
+
   // 未登录拦截
   if (!store.token && to.path !== '/login') {
     return '/login';
@@ -51,13 +45,14 @@ router.beforeEach((to, from) => {
     return store.firstMenu;
   }
   // 权限拦截
-  const toName = (to.name || '') as string;
-  if (!authNames.includes(toName) && !notAuthNames.includes(toName)) {
+  const toKey = (to.name || to.path) as string;
+  if (!allRouteKeys.includes(toKey)) {
     return store.firstMenu;
   }
 });
 
-router.onError((error) => {
+router.onError(error => {
+  // eslint-disable-next-line no-console
   console.error(error);
   checkUpdate(); // 检测更新
 });
