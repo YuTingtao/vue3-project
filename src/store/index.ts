@@ -7,7 +7,7 @@ import type { RouteRecordRaw } from 'vue-router';
 export const useStore = defineStore('store', {
   state: () => ({
     token: '',
-    userInfo: {} as UserInfo, // 用户信息
+    userInfo: {} as UserInfo | object, // 用户信息
     userMenus: [] as RouteRecordRaw[] // 用户菜单
   }),
   getters: {
@@ -33,6 +33,8 @@ export const useStore = defineStore('store', {
     // 退出登录
     setLogout() {
       this.token = '';
+      this.userInfo = {};
+      this.userMenus = [];
     },
     // 获取菜单
     getUserMenus() {

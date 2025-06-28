@@ -32,11 +32,6 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component);
 }
 
-// 注册svg-icon组件
-import SvgIcon from './components/svgIcon/SvgIcon.vue';
-import 'virtual:svg-icons-register';
-app.component('svg-icon', SvgIcon);
-
 // 按钮权限
 import { usePermission } from './hooks/permission.js';
 const { hasPermission } = usePermission();
@@ -51,5 +46,5 @@ if (store.token) {
 // 挂载
 app.mount('#app');
 
-console.log('node_env:', process.env.NODE_ENV);
-console.log('vite_env:', import.meta.env);
+// console.log('node_env:', process.env.NODE_ENV);
+// console.log('vite_env:', import.meta.env);

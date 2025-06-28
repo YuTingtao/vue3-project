@@ -21,7 +21,7 @@ const allRoutes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes: allRoutes,
-  scrollBehavior(to, _from) {
+  scrollBehavior(to, from) {
     if (to.hash) {
       return {
         el: to.hash,
@@ -37,7 +37,7 @@ const router = createRouter({
 // 不需要鉴权路由names
 const notAuthNames = ['layout', 'login'];
 // 路由拦截
-router.beforeEach((to, _from) => {
+router.beforeEach((to, from) => {
   const store = useStore();
   // 权限菜单names
   const authNames = Object.keys(store.menuObj);
