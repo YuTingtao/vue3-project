@@ -28,7 +28,7 @@ const routes = router.getRoutes();
 function getBreadcrumbs() {
   breadcrumbs.value = [];
   let matched = route.matched;
-  if (matched[0].name == 'layout') {
+  if (matched[0].path === '/') {
     matched = matched.slice(1);
   }
   // console.log(matched)
@@ -41,11 +41,11 @@ function getBreadcrumbs() {
         path = '';
       }
       breadcrumbs.value.unshift({
-        path: path as string,
-        title: item.meta.title as string
+        path: path,
+        title: item.meta.title
       });
       // 添加自定义parentPath
-      const parentPath = (item.meta.parentPath || '') as string;
+      const parentPath = item.meta.parentPath || '';
       if (parentPath) {
         breadcrumbs.value.unshift(...getParentsBread(parentPath));
       }

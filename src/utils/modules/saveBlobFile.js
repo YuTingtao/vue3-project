@@ -12,26 +12,21 @@ export default function saveBlobFile(res, fileName) {
     }
   }
   // 将二进制流转为blob
-  var blob = new Blob([res.data], {
+  const blob = new Blob([res.data], {
     type: res.headers['content-type'] || 'application/octet-stream'
   });
-  // 兼容IE：window.navigator.msSaveBlob以本地方式保存文件
-  if (typeof window.navigator.msSaveBlob !== 'undefined') {
-    window.navigator.msSaveBlob(blob, decodeURI(fileName));
-  } else {
-    // 创建blob url地址
-    var blobURL = window.URL.createObjectURL(blob);
-    var dom = document.createElement('a');
-    dom.style.display = 'none';
-    dom.href = blobURL;
-    dom.setAttribute('download', decodeURI(fileName));
-    if (typeof dom.download === 'undefined') {
-      dom.setAttribute('target', '_blank');
-    }
-    document.body.appendChild(dom);
-    dom.click();
-    document.body.removeChild(dom);
-    // 释放blob url地址
-    window.URL.revokeObjectURL(blobURL);
+  // 创建blob url地址
+  const blobURL = window.URL.createObjectURL(blob);
+  let link = document.createElement('a');
+  link.style.display = 'none';
+  link.href = blobURL;
+  link.setAttribute('download', decodeURI(fileName));
+  if (typeof link.download === 'undefined') {
+    link.setAttribute('target', '_blank');
   }
+  document.body.appendChild(link);
+  link.click();
+  window.URL.revokeObjectURL(blobURL);
+  document.body.removeChild(link);
+  link = null;
 }

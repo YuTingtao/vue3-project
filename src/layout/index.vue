@@ -9,10 +9,12 @@
     <BreadCrumb></BreadCrumb>
 
     <el-dropdown trigger="hover">
-      <div>
-        <el-avatar :src="userInfo.avatar" :size="32" shape="circle" fit="cover"></el-avatar>
+      <div class="app-avatar-dropdown">
+        <el-avatar :src="userInfo.avatar" :size="32">
+          <svg-icon name="avatar"></svg-icon>
+        </el-avatar>
         <span>{{ userInfo.userName }}</span>
-        <el-icon><arrow-down /></el-icon>
+        <svg-icon name="arrow-down"></svg-icon>
       </div>
 
       <template #dropdown>
@@ -179,6 +181,12 @@ function handleLogout() {
   height: 24px;
   margin-left: 20px;
   margin-right: 10px;
+}
+
+.app-avatar-dropdown {
+  .el-avatar {
+    font-size: 18px;
+  }
 }
 
 // 主体
