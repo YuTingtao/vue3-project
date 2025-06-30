@@ -132,17 +132,17 @@ function handleLogout() {
 
 // 侧边菜单
 .app-aside {
+  --el-menu-bg-color: #36415e;
+  --el-menu-hover-bg-color: #404d70;
+  --el-menu-text-color: #fff;
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   z-index: 10;
-  background: #3c4f60;
+  background: var(--el-menu-bg-color);
 
   .el-menu--vertical {
-    --el-menu-text-color: #fff;
-    --el-menu-bg-color: #3c4f60;
-    --el-menu-hover-bg-color: #303f4d;
     border-right: none;
 
     &:not(.el-menu--collapse) {
@@ -164,7 +164,7 @@ function handleLogout() {
   overflow: hidden;
   width: 210px;
   padding: 15px 0;
-  background: #3c4f60;
+  background: var(--el-menu-bg-color);
   color: #fff;
   font-size: 16px;
   font-weight: bolder;
