@@ -27,7 +27,7 @@ export default [
       },
       // 菜单设置-详情
       {
-        path: '/system/menu/:id',
+        path: '/system/menu/:id(\\d+)',
         name: 'system-menu-detail',
         component: () => import('@/views/system/menu/detail/index.vue'),
         meta: {
