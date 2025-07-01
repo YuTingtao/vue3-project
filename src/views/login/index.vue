@@ -6,11 +6,18 @@
       <!-- 表单 -->
       <el-form :model="loginForm" ref="formRef" :rules="rules" size="large">
         <el-form-item label="" prop="account">
-          <el-input v-model="loginForm.account" placeholder="请输入账号/手机号/邮箱" prefix-icon="user"> </el-input>
+          <el-input v-model="loginForm.account" placeholder="请输入账号/手机号/邮箱">
+            <template #prefix>
+              <svg-icon name="user" />
+            </template>
+          </el-input>
         </el-form-item>
 
         <el-form-item label="" prop="password">
-          <el-input v-model="loginForm.password" placeholder="请输入密码" type="password" prefix-icon="lock">
+          <el-input v-model="loginForm.password" placeholder="请输入密码" type="password">
+            <template #prefix>
+              <svg-icon name="lock" />
+            </template>
           </el-input>
         </el-form-item>
 
@@ -49,7 +56,7 @@ const rules = reactive({
 const loading = ref(false);
 // 提交表单
 async function onSubmit() {
-  await formRef.value?.validate((valid: any) => {
+  await formRef.value?.validate(valid => {
     if (loading.value) return;
     if (!valid) return;
     loading.value = true;
@@ -120,7 +127,7 @@ async function loginSuccess() {
     }
   }
 
-  :deep(.el-icon) {
+  .svg-icon {
     font-size: 16px;
   }
 }

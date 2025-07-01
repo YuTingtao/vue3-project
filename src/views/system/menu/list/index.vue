@@ -65,12 +65,9 @@
 </template>
 
 <script setup lang="ts" name="SystemMenu">
-import { ref, reactive } from 'vue';
-import { useRouter, useRoute, type RouteRecordRaw } from 'vue-router';
+import { ref } from 'vue';
+import type { RouteRecordRaw } from 'vue-router';
 import routes from '@/router/modules/index.ts';
-
-const router = useRouter();
-const route = useRoute();
 
 // 筛选条件
 const filter = ref({

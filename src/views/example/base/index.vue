@@ -36,12 +36,8 @@
 </template>
 
 <script setup lang="ts" name="BaseExample">
-import { ref, reactive } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { ref } from 'vue';
 import viewImg from '@/components/imgView/index.js';
-
-const router = useRouter();
-const route = useRoute();
 
 // 图片地址
 const urlList = ref([

@@ -15,7 +15,7 @@ export default [
       // 菜单设置
       {
         path: '/system/menu',
-        component: () => import('@/views/system/menu/index.vue'),
+        component: () => import('@/views/system/menu/list/index.vue'),
         meta: {
           title: '菜单设置',
           icon: '',
@@ -23,6 +23,20 @@ export default [
           buttons: [],
           activePath: '',
           parentPath: ''
+        }
+      },
+      // 菜单设置-详情
+      {
+        path: '/system/menu/:id',
+        name: 'system-menu-detail',
+        component: () => import('@/views/system/menu/detail/index.vue'),
+        meta: {
+          title: '菜单详情',
+          icon: '',
+          visible: 0,
+          buttons: [],
+          activePath: '/system/menu',
+          parentPath: '/system/menu'
         }
       }
     ]

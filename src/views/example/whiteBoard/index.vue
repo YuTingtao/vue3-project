@@ -259,8 +259,7 @@ function drawText(e) {
   let textArr = e.target.innerText.split(/\n\r|\n/);
   textArr.forEach((item, index) => {
     ctx.value.fillStyle = config.color;
-    ctx.value.font =
-      '14px "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif';
+    ctx.value.font = '14px "Helvetica Neue", Helvetica, "Microsoft YaHei", Arial, sans-serif';
     let x = startX.value + 9;
     let y = startY.value - 14 + (index + 1) * 20;
     ctx.value.fillText(item, x, y);
