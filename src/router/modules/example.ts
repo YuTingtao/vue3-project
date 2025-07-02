@@ -20,7 +20,11 @@ export default [
           title: '基础案例',
           icon: '',
           visible: 1,
-          buttons: ['add', 'edit', 'delete'], // 按钮权限
+          buttons: [
+            { name: 'add', title: '新增' },
+            { name: 'edit', title: '编辑' },
+            { name: 'delete', title: '删除' }
+          ], // 按钮权限
           activePath: '',
           parentPath: ''
         }

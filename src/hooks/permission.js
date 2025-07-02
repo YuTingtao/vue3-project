@@ -14,7 +14,7 @@ export function usePermission() {
    */
   function hasPermission(str, name = currentRoute.value.name || currentRoute.value.path) {
     const buttons = store.menuObj[name]?.meta?.buttons || [];
-    if (buttons.some(item => item == str)) {
+    if (buttons.some(item => item.name === str)) {
       return true;
     } else {
       return false;

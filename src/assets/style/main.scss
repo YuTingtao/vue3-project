@@ -9,7 +9,8 @@ body {
   background: #fff;
 }
 
-.lazyload, .lazyloading {
+.lazyload,
+.lazyloading {
   opacity: 0;
 }
 .lazyloaded {
@@ -18,20 +19,22 @@ body {
 }
 
 // vue transition
-.v-fade-enter-active, .v-fade-leave-active {
+.v-fade-enter-active,
+.v-fade-leave-active {
   transition: opacity 0.2s ease;
 }
-.v-fade-enter-from, .v-fade-leave-to {
+.v-fade-enter-from,
+.v-fade-leave-to {
   opacity: 0;
 }
 
 body {
-  .el-breadcrumb__inner.is-link, .el-breadcrumb__inner a {
+  .el-breadcrumb__inner.is-link,
+  .el-breadcrumb__inner a {
     font-weight: normal;
   }
   .el-table {
     --el-table-header-bg-color: var(--el-fill-color-light);
-    --el-table-header-text-color: var(--el-text-color-regular);
   }
   .el-button:focus-visible {
     outline: none;
@@ -55,7 +58,8 @@ body {
       margin-right: 0;
     }
   }
-  .el-input, .el-select {
+  .el-input,
+  .el-select {
     width: 190px;
   }
 }

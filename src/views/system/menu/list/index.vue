@@ -26,27 +26,32 @@
 
     <!-- 表格 -->
     <el-table :data="tableData" border row-key="path" default-expand-all>
-      <el-table-column prop="meta.title" label="菜单" min-width="150">
+      <el-table-column prop="meta.title" label="菜单" min-width="200">
         <template #default="scope">
           <svg-icon v-if="scope.row.meta.icon" :name="scope.row.meta.icon"></svg-icon>
           <span class="item-name">{{ scope.row.meta.title }}</span>
         </template>
       </el-table-column>
-      <el-table-column prop="meta.type" label="类型" min-width="150">
+
+      <el-table-column prop="meta.visible" label="显示 / 隐藏" min-width="150">
         <template #default="scope">
-          {{ scope.row.meta.type == 0 ? '模块' : '菜单' }}
+          {{ scope.row.meta.visible ? '显示' : '隐藏' }}
         </template>
       </el-table-column>
-      <el-table-column prop="meta.visible" label="是否显示" min-width="150">
+
+      <el-table-column prop="meta.buttons" label="按钮" min-width="200">
         <template #default="scope">
-          {{ scope.row.meta.visible ? '是' : '否' }}
+          <div class="btn-box">
+            <span v-for="item in scope.row.meta.buttons" :key="item.name" class="btn">
+              {{ item.title }}
+            </span>
+          </div>
         </template>
       </el-table-column>
+
       <el-table-column prop="" label="操作" min-width="150">
         <template #default="scope">
-          <el-button v-if="scope.row.meta.type == 0" type="primary" link>新增</el-button>
-          <el-button type="primary" link>编辑</el-button>
-          <el-button type="primary" link>删除</el-button>
+          <el-button type="primary" link @click="toDetail(scope.row)">详情</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -64,10 +69,13 @@
   </div>
 </template>
 
-<script setup lang="ts" name="SystemMenu">
+<script setup lang="ts" name="MenuList">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import routes from '@/router/modules/index.ts';
+
+const router = useRouter();
 
 // 筛选条件
 const filter = ref({
@@ -94,6 +102,7 @@ function handleSearch() {
   getList();
 }
 
+// 重置
 function handleReset() {
   filter.value = {
     keyword: '',
@@ -102,6 +111,11 @@ function handleReset() {
     pageSize: 10
   };
   getList();
+}
+
+// 详情
+function toDetail(row: RouteRecordRaw) {
+  router.push(`/system/menu/12345?path=${row.path}`);
 }
 </script>
 
@@ -115,6 +129,15 @@ function handleReset() {
   .item-name {
     display: inline-block;
     vertical-align: middle;
+  }
+}
+
+.btn-box {
+  margin-top: -10px;
+  .btn {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 20px;
   }
 }
 </style>

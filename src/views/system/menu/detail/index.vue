@@ -1,19 +1,19 @@
 <template>
   <div class="menu-detail">
-    <div class="menu-title">{{ detail.title }}</div>
+    <div class="menu-title">{{ detail.meta.title }}</div>
   </div>
 </template>
 
-<script setup name="MenuDetail">
-import { ref } from 'vue';
+<script setup lang="ts" name="MenuEdit">
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+import { useStore } from '@/store/index.ts';
 
-const detail = ref({
-  title: '菜单详情'
-});
+const route = useRoute();
+const store = useStore();
+
+// 详情
+const detail = computed(() => store.menuObj[route.query.path]);
 </script>
 
-<style lang="scss" scoped>
-.menu-title {
-  font-size: 16px;
-}
-</style>
+<style lang="scss" scoped></style>
