@@ -47,19 +47,3 @@ body {
     }
   }
 }
-
-// 列表页筛序条件
-.app-filter {
-  display: flex;
-  flex-wrap: wrap;
-  .el-form-item {
-    margin-right: 32px;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-  .el-input,
-  .el-select {
-    width: 190px;
-  }
-}

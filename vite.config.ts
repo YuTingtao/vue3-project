@@ -2,7 +2,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'node:path';
-import { writeFileSync } from 'node:fs';
 
 // Element Plus按需自动导入
 import AutoImport from 'unplugin-auto-import/vite';
@@ -15,25 +14,8 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 // 打包分析
 // import { visualizer } from 'rollup-plugin-visualizer';
 
-function writeVersonFile() {
-  try {
-    writeFileSync(
-      resolve(__dirname, 'public/version.json'),
-      JSON.stringify({
-        version: 'v_' + Date.now()
-      })
-    );
-    console.log('JSON文件写入成功');
-  } catch (err) {
-    console.log('JSON文件写入失败:', err);
-  }
-}
-
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
-  if (command === 'build' && !isPreview) {
-    writeVersonFile();
-  }
   return {
     plugins: [
       vue(),
@@ -49,7 +31,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
       // 大于50K的文件进行gzip压缩
       compression({ threshold: 1024 * 50 })
       // 打包分析
-      // visualizer({ open: true, filename: 'docs/stats.html' })
+      // visualizer({ open: true, filename: 'dist/stats.html' })
     ],
     resolve: { alias: { '@': resolve(__dirname, 'src') } },
     css: {
@@ -63,7 +45,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     base: './',
     // 打包配置
     build: {
-      outDir: 'docs', // 打包输出目录
+      outDir: 'dist', // 打包输出目录
       chunkSizeWarningLimit: 1024 * 500,
       rollupOptions: {
         output: {

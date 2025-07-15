@@ -1,52 +1,9 @@
 import { defineStore } from 'pinia';
-import { getMenuObj, getFirstMenu } from './utils.js';
-import routes from '@/router/modules/index.ts';
-import type { UserInfo, LoginRes } from '@/api/user/type.js';
-import type { RouteRecordRaw } from 'vue-router';
 
 export const useStore = defineStore('store', {
-  state: () => ({
-    token: '',
-    userInfo: {} as UserInfo, // 用户信息
-    userMenus: [] as RouteRecordRaw[] // 用户菜单
-  }),
-  getters: {
-    // 菜单对象: key为path
-    menuObj(state) {
-      return getMenuObj(state.userMenus);
-    },
-    // 首个菜单
-    firstMenu(state) {
-      if (state.userMenus.length < 1) {
-        return '/login';
-      }
-      return getFirstMenu(state.userMenus[0]);
-    }
-  },
-  actions: {
-    // 登录
-    setLogin(obj: LoginRes) {
-      const { token, ...userInfo } = obj;
-      this.token = token;
-      this.userInfo = userInfo;
-    },
-    // 退出登录
-    setLogout() {
-      this.token = '';
-      this.userInfo = {
-        id: '',
-        userName: '',
-        avatar: ''
-      };
-      this.userMenus = [];
-    },
-    // 获取菜单
-    getUserMenus() {
-      setTimeout(() => {
-        this.userMenus = routes;
-      }, 100);
-    }
-  },
+  state: () => ({}),
+  getters: {},
+  actions: {},
   // 状态持久化
   persist: {
     key: 'store',
