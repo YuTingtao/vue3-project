@@ -1,29 +1,35 @@
-/**
- * 深拷贝
- * @param {Object | String | Number | Boolean | Null | Undefined} obj 原始数据
- * @returns {Object | String | Number | Boolean | Null | Undefined} 拷贝后的数据
- */
-export default function deepClone(obj, hash = new WeakMap()) {
-  if (obj === null || typeof obj !== 'object') {
-    return obj;
-  }
-  if (hash.has(obj)) {
-    return hash.get(obj);
+// 深拷贝
+export default function deepClone(obj, visited = new Map()) {
+  // 处理循环引用
+  if (visited.has(obj)) {
+    return visited.get(obj);
   }
 
-  let copy;
-  if (obj instanceof Date) {
-    copy = new Date(obj);
-  } else if (obj instanceof RegExp) {
-    copy = new RegExp(obj);
-  } else {
-    copy = Array.isArray(obj) ? [] : {};
+  // 基础类型和 null
+  if (typeof obj !== 'object' || obj === null) {
+    return obj;
   }
-  
-  hash.set(obj, copy);
+
+  // 特殊对象处理
+  if (obj instanceof Date) {
+    return new Date(obj);
+  }
+  if (obj instanceof RegExp) {
+    return new RegExp(obj);
+  }
+  if (typeof obj === 'function') {
+    const copy = new Function('return ' + obj.toString())();
+    visited.set(obj, copy);
+    return copy;
+  }
+
+  // 数组或对象
+  const copy = Array.isArray(obj) ? [] : {};
+  visited.set(obj, copy);
+
   for (let key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      copy[key] = deepClone(obj[key], hash);
+      copy[key] = deepClone(obj[key], visited);
     }
   }
 

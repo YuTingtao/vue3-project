@@ -23,8 +23,8 @@ function toLogin() {
 }
 
 const axios = Axios.create({
-  baseURL: ''
-  // timeout: 10000 // 请求超时 10s
+  baseURL: '/',
+  timeout: null
 });
 
 // 请求拦截
@@ -65,6 +65,7 @@ axios.interceptors.response.use(
     }
   },
   error => {
+    if (error.config.signal.abor)
     const store = useStore();
     if (error.response) {
       switch (error.response.status) {
