@@ -65,7 +65,9 @@ axios.interceptors.response.use(
     }
   },
   error => {
-    if (error.config.signal.abor)
+    if (error.config.signal.aborted) {
+      return;
+    }
     const store = useStore();
     if (error.response) {
       switch (error.response.status) {

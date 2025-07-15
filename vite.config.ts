@@ -2,7 +2,7 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'node:path';
-import { writeVersonFile } from '@/utils/viteBuild.js';
+import { writeFileSync } from 'node:fs';
 
 // Element Plus按需自动导入
 import AutoImport from 'unplugin-auto-import/vite';
@@ -14,6 +14,20 @@ import { compression } from 'vite-plugin-compression2';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 // 打包分析
 // import { visualizer } from 'rollup-plugin-visualizer';
+
+function writeVersonFile() {
+  try {
+    writeFileSync(
+      resolve(__dirname, 'public/version.json'),
+      JSON.stringify({
+        version: 'v_' + Date.now()
+      })
+    );
+    console.log('JSON文件写入成功');
+  } catch (err) {
+    console.log('JSON文件写入失败:', err);
+  }
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
@@ -33,7 +47,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
         customDomId: '__svg_icon_dom__'
       }),
       // 大于50K的文件进行gzip压缩
-      compression({ threshold: 1024 * 50 }),
+      compression({ threshold: 1024 * 50 })
       // 打包分析
       // visualizer({ open: true, filename: 'docs/stats.html' })
     ],
@@ -59,7 +73,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
           manualChunks(id) {
             /* if (/node_modules\/(vue|vue-router|pinia|axios)/.test(id)) {
               return 'vue';
-            } else  */if (id.includes('node_modules/echarts')) {
+            } else  */ if (id.includes('node_modules/echarts')) {
               return 'echarts';
             } else if (id.includes('node_modules/element-plus')) {
               return 'element-plus';
@@ -90,5 +104,5 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
         }
       }
     }
-  }
+  };
 });
