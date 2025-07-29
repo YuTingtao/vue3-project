@@ -4,12 +4,12 @@ import type { ResolvedConfig } from 'vite';
 
 interface IOptions {
   name: string;
-  json: Record<string, any>;
+  data: any;
 }
 
-// 生成JSON文件的 Vite 插件
-export function writeJsonFile(options: IOptions) {
-  const { name, json } = options;
+// 生成Text文件的 Vite 插件
+export function writeFile(options: IOptions) {
+  const { name, data } = options;
   let config = {} as ResolvedConfig;
   return {
     name: 'vite:write-json',
@@ -22,7 +22,11 @@ export function writeJsonFile(options: IOptions) {
         return;
       }
       try {
-        writeFileSync(`${config.publicDir}/${name}.json`, JSON.stringify(json));
+        let textData = data;
+        if (typeof data === 'object') {
+          textData = JSON.stringify(data);
+        }
+        writeFileSync(`${config.publicDir}/${name}`, textData);
       } catch (err) {
         throw new Error('JSON文件写入失败: ' + err);
       }

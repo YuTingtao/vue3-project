@@ -13,7 +13,7 @@ import { compression } from 'vite-plugin-compression2';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 // 打包分析
 // import { visualizer } from 'rollup-plugin-visualizer';
-import { writeJsonFile } from './plugins/writeJsonFile.ts';
+import { writeFile } from './plugins/writeFile.ts';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,7 +32,7 @@ export default defineConfig({
     compression({ threshold: 1024 * 50 }),
     // 打包分析
     // visualizer({ open: true, filename: 'docs/stats.html' }),
-    writeJsonFile({ name: 'version', json: { version: 'v_' + Date.now() } })
+    writeFile({ name: 'version.json', data: { version: Date.now() } })
   ],
   resolve: { alias: { '@': resolve(__dirname, 'src') } },
   css: {

@@ -47,16 +47,17 @@ const urlList = ref([
 
 // 加载更多指令
 const selected = ref();
-const options = ref<{ label: string; value: number }[]>([]);
+const options = ref<{ label: string; value: string }[]>([]);
+const index = ref(0);
 function getOptions() {
   if (options.value.length >= 100) {
     return false;
   }
   for (let i = 0; i < 10; i++) {
-    const random = Math.floor(Math.random() * 100);
+    index.value = index.value + 1;
     options.value.push({
-      label: `选项${random}`,
-      value: random
+      label: `选项 ${index.value}`,
+      value: `${index.value}`
     });
   }
 }
