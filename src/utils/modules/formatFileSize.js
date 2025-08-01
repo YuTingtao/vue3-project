@@ -3,7 +3,7 @@
  * @param {Number} size 文件大小
  * @returns {String}
  */
-export default function formatFileSize(size) {
+export function formatFileSize(size) {
   if (!size) {
     return '';
   }

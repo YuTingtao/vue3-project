@@ -3,7 +3,7 @@
  * @param {String} text 要复制的文本
  * @returns Promise
  */
-export default function copyText(text) {
+export function copyText(text) {
   if (!text) return;
   return new Promise((resolve, reject) => {
     if (navigator.clipboard && navigator.permissions) {

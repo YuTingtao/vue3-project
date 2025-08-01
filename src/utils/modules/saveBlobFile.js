@@ -3,7 +3,7 @@
  * @param {Blob} res 服务端返回数据
  * @param {String} fileName 自定义文件名，选填
  */
-export default function saveBlobFile(res, fileName) {
+export function saveBlobFile(res, fileName) {
   if (!fileName) {
     if (res.headers['content-disposition']) {
       fileName = res.headers['content-disposition'].match(/filename=(.*)/)[1];

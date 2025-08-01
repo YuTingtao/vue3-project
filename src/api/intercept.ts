@@ -22,13 +22,13 @@ function toLogin() {
   router.push(path);
 }
 
-const axios = Axios.create({
+const instance = Axios.create({
   baseURL: '/',
-  timeout: null
+  timeout: undefined
 });
 
 // 请求拦截
-axios.interceptors.request.use(
+instance.interceptors.request.use(
   config => {
     const store = useStore();
     // Content-Type: application/json、application/x-www-form-urlencoded、multipart/form-data
@@ -44,7 +44,7 @@ axios.interceptors.request.use(
 );
 
 // 相应拦截
-axios.interceptors.response.use(
+instance.interceptors.response.use(
   res => {
     const store = useStore();
     if (res.status === 200) {
@@ -56,7 +56,7 @@ axios.interceptors.response.use(
       }
       if (res.data.code === 401) {
         // 需要登录
-        store.setLogout();
+        store.token = '';
         toLogin();
       }
       return res.data;
@@ -65,7 +65,7 @@ axios.interceptors.response.use(
     }
   },
   error => {
-    if (error.config.signal.aborted) {
+    if (error.config?.signal?.aborted) {
       return;
     }
     const store = useStore();
@@ -73,7 +73,7 @@ axios.interceptors.response.use(
       switch (error.response.status) {
         case 401:
           toast('登录过期，请重新登录');
-          store.setLogout();
+          store.token = '';
           toLogin();
           break;
         case 404:
@@ -91,14 +91,14 @@ axios.interceptors.response.use(
   }
 );
 
-interface Data<T> {
+export interface IResData<T> {
   code: number;
   msg: string;
   data?: T;
 }
 
 function request<T = any>(config: AxiosRequestConfig) {
-  return axios.request<T, Data<T>>(config);
+  return instance.request<T, IResData<T>>(config);
 }
 
 export default request;

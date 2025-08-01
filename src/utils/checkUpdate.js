@@ -6,10 +6,14 @@ let lastVersion; // 最近版本
 // 检测更新函数
 export function checkUpdate() {
   const xhr = new XMLHttpRequest();
-  xhr.open('get', './version.json?t=' + Date.now(), true);
+  let url = `./version.json?t=${Date.now()}`;
+  if (import.meta.env.BASE_URL !== '/') {
+    url = `./${import.meta.env.BASE_URL}/version.json?t=${Date.now()}`;
+  }
+  xhr.open('get', url, true);
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
-      const res = JSON.parse(xhr.responseText);
+      const res = xhr.responseText;
       if (!lastVersion) {
         lastVersion = res.version;
         return;
