@@ -13,7 +13,7 @@ export function checkUpdate() {
   xhr.open('get', url, true);
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
-      const res = JSON.parse(xhr.responseText);
+      const res = xhr.responseText;
       if (!lastVersion) {
         lastVersion = res.version;
         return;

@@ -42,9 +42,12 @@ export const useStore = defineStore('store', {
     },
     // 获取菜单
     getUserMenus() {
-      setTimeout(() => {
-        this.userMenus = routes;
-      }, 100);
+      return new Promise(resolve => {
+        setTimeout(() => {
+          this.userMenus = routes;
+          resolve(null);
+        }, 100);
+      });
     }
   },
   // 状态持久化

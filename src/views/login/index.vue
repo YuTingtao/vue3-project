@@ -22,7 +22,7 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button class="row-btn" type="primary" :loading="loading" @click="onSubmit">登 录</el-button>
+          <el-button class="row-btn" type="primary" :loading="loading" @click="onSubmit"> 登 录 </el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -33,7 +33,7 @@
 import { ref, reactive } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from '@/store/index.ts';
-import loginApi from '@/api/user/login.ts';
+import { loginApi } from '@/api/user/login.ts';
 
 const router = useRouter();
 const route = useRoute();
@@ -49,28 +49,40 @@ const loginForm = ref({
 
 // 校验规则
 const rules = reactive({
-  account: [{ required: true, message: '请输入账号/手机号/邮箱', trigger: 'blur' }],
-  password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+  account: [
+    {
+      required: true,
+      message: '请输入账号/手机号/邮箱',
+      trigger: 'blur'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      message: '请输入密码',
+      trigger: 'blur'
+    }
+  ]
 });
 
 const loading = ref(false);
 // 提交表单
 async function onSubmit() {
-  await formRef.value?.validate(valid => {
+  await formRef.value?.validate((valid: boolean) => {
     if (loading.value) return;
     if (!valid) return;
     loading.value = true;
-    loginApi
-      .login(loginForm.value)
+    loginApi(loginForm.value)
       .then(res => {
         if (res.code === 200) {
-          loading.value = false;
           loginSuccess();
         }
       })
-      .catch(() => {
-        loading.value = false;
+      .catch(err => {
         loginSuccess();
+      })
+      .finally(() => {
+        loading.value = false;
       });
   });
 }
