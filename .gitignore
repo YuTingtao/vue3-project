@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 auto-imports.d.ts
-compoments.d.ts
+components.d.ts
 
 # Editor directories and files
 .vscode
