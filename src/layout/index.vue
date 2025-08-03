@@ -11,7 +11,7 @@
     <el-dropdown trigger="hover">
       <div class="app-avatar-dropdown">
         <el-avatar :src="userInfo.avatar" :size="32">
-          <svg-icon name="avatar"></svg-icon>
+          <svg-icon name="avatar-filled"></svg-icon>
         </el-avatar>
         <span>{{ userInfo.userName }}</span>
         <svg-icon name="arrow-down"></svg-icon>
