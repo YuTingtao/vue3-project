@@ -1,10 +1,10 @@
 <template>
   <div>
     <!-- svg-icon -->
-    <h3 class="row-title">SVG-ICON</h3>
+    <h3 class="row-title">svg-icon:</h3>
     <div class="row-box">
       <div v-for="(item, index) in svgIcons" :key="index" class="svg-icon-box">
-        <svg-icon :name="item" />
+        <svg-icon :name="item"></svg-icon>
         <span>{{ item }}</span>
       </div>
     </div>

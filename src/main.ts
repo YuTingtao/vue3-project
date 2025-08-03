@@ -45,6 +45,3 @@ if (store.token) {
 
 // 挂载
 app.mount('#app');
-
-// eslint-disable-next-line no-console
-console.log('vite_env:', import.meta.env);
