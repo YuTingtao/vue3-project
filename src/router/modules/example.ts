@@ -12,29 +12,42 @@ export default [
       parentPath: '' // 设置面包屑父级路径
     },
     children: [
-      // 基础案例
+      // 公共组件
       {
-        path: '/example/base',
-        component: () => import('@/views/example/base/index.vue'),
+        path: '/example/baseComponent',
+        component: () => import('@/views/example/BaseComponent.vue'),
         meta: {
-          title: '基础案例',
+          title: '公共组件',
+          icon: '',
+          visible: 1,
+          buttons: [],
+          activePath: '',
+          parentPath: ''
+        }
+      },
+      // 按钮权限
+      {
+        path: '/example/buttonPermission',
+        component: () => import('@/views/example/ButtonPermission.vue'),
+        meta: {
+          title: '按钮权限',
           icon: '',
           visible: 1,
           buttons: [
             { name: 'add', title: '新增' },
             { name: 'edit', title: '编辑' },
             { name: 'delete', title: '删除' }
-          ], // 按钮权限
+          ],
           activePath: '',
           parentPath: ''
         }
       },
-      // 画板/白板
+      // 自定义指令
       {
-        path: '/example/whiteBoard',
-        component: () => import('@/views/example/whiteBoard/index.vue'),
+        path: '/example/CustomDirective',
+        component: () => import('@/views/example/CustomDirective.vue'),
         meta: {
-          title: '画板/白板',
+          title: '自定义指令',
           icon: '',
           visible: 1,
           buttons: [],
