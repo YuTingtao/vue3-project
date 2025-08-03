@@ -2,11 +2,16 @@
   <div>
     <!-- svg-icon -->
     <h3 class="row-title">svg-icon:</h3>
-    <div class="row-box">
+    <div class="row-box flex-wrap">
       <div v-for="(item, index) in svgIcons" :key="index" class="svg-icon-box">
         <svg-icon :name="item"></svg-icon>
         <span>{{ item }}</span>
       </div>
+    </div>
+
+    <h3 class="row-title">QuillEditor富文本:</h3>
+    <div class="row-box">
+      <QuillEditor v-model:content="richText" contentType="html"></QuillEditor>
     </div>
 
     <h3 class="row-title">图片预览：</h3>
@@ -18,6 +23,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { QuillEditor } from '@vueup/vue-quill';
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import viewImg from '@/components/imgView/index.js';
 
 // svg-icon
@@ -27,6 +34,9 @@ for (const path in svgFiles) {
   const name = path.replace(/(.*\/)*([^.]+).*/gi, '$2');
   svgIcons.value.push(name);
 }
+
+// 富文本内容
+const richText = ref<string>('');
 
 // 图片地址
 const urlList = ref([
@@ -42,9 +52,12 @@ const urlList = ref([
 }
 
 .row-box {
+  margin-bottom: 20px;
+}
+
+.flex-wrap {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 20px;
 }
 
 .svg-icon-box {
