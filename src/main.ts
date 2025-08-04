@@ -6,9 +6,6 @@ import pinia from './store/createPinia.ts';
 // 公共样式
 import './assets/style/main.scss';
 
-// 图片懒加载: <img class="lazyload" data-src="" />
-import 'lazysizes';
-
 const app = createApp(App);
 app.use(router);
 app.use(pinia);
