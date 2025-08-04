@@ -89,7 +89,6 @@ function handleLogout() {
   top: 0;
   left: 210px;
   right: 0;
-  z-index: 10;
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -139,7 +138,6 @@ function handleLogout() {
   top: 0;
   left: 0;
   bottom: 0;
-  z-index: 10;
   background: var(--el-menu-bg-color);
 
   .el-menu--vertical {

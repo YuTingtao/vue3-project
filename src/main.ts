@@ -7,9 +7,6 @@ import { useStore } from './store/index.ts';
 // 公共样式
 import './assets/style/main.scss';
 
-// 图片懒加载: <img class="lazyload" data-src="" />
-import 'lazysizes';
-
 // 检测更新
 import { checkUpdate, autoCheckUpdate } from './utils/checkUpdate.js';
 autoCheckUpdate();

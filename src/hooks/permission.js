@@ -1,4 +1,4 @@
-// 权限
+// 判断按钮权限
 import { useStore } from '@/store/index.ts';
 import router from '@/router';
 const currentRoute = router.currentRoute;
@@ -8,8 +8,8 @@ export function usePermission() {
 
   /**
    * 是否有按钮权限
-   * @param {String} str 按钮标识
-   * @param {String} name 路由path/name
+   * @param {string} str 按钮标识
+   * @param {string} name 路由path/name
    * @returns
    */
   function hasPermission(str, name = currentRoute.value.name || currentRoute.value.path) {

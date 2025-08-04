@@ -22,10 +22,6 @@ ul, ol, li {
   list-style-type: none;
 }
 
-i, em {
-  font-style: normal;
-}
-
 img {
   border: none;
   vertical-align: top;

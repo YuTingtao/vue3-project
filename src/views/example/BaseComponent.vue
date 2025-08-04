@@ -1,20 +1,20 @@
 <template>
-  <div>
+  <div class="app-view">
     <!-- svg-icon -->
     <h3 class="row-title">svg-icon:</h3>
     <div class="row-box flex-wrap">
-      <div v-for="(item, index) in svgIcons" :key="index" class="svg-icon-box">
+      <div v-for="(item, index) in svgIcons" :key="index" class="svg-icon-box" @click="copySvgIcon(item)">
         <svg-icon :name="item"></svg-icon>
         <span>{{ item }}</span>
       </div>
     </div>
 
-    <h3 class="row-title">QuillEditor富文本:</h3>
+    <h3 class="row-title">QuillEditor富文本编辑器:</h3>
     <div class="row-box">
-      <QuillEditor v-model:content="richText" contentType="html"></QuillEditor>
+      <VueQuill v-model:content="richText"></VueQuill>
     </div>
 
-    <h3 class="row-title">图片预览：</h3>
+    <h3 class="row-title">命令式图片预览：</h3>
     <div class="row-box">
       <el-button type="primary" @click="viewImg(urlList)">预览</el-button>
     </div>
@@ -22,10 +22,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { QuillEditor } from '@vueup/vue-quill';
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import { ref, onMounted } from 'vue';
+import VueQuill from '@/components/richEditor/VueQuill.vue';
 import viewImg from '@/components/imgView/index.js';
+import { copyText } from '@/utils/index.js';
+
+defineOptions({
+  inheritAttrs: false
+});
 
 // svg-icon
 const svgIcons = ref<string[]>([]);
@@ -35,8 +39,17 @@ for (const path in svgFiles) {
   svgIcons.value.push(name);
 }
 
+// 复制svg-icon
+function copySvgIcon(name: string) {
+  copyText(`<svg-icon name="${name}"></svg-icon>`);
+  ElMessage.success('已复制到剪切板');
+}
+
 // 富文本内容
 const richText = ref<string>('');
+onMounted(() => {
+  richText.value = '<p>这是一个富文本编辑器的示例内容。</p>';
+});
 
 // 图片地址
 const urlList = ref([
@@ -50,18 +63,19 @@ const urlList = ref([
   font-size: 16px;
   margin-bottom: 10px;
 }
-
 .row-box {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .flex-wrap {
   display: flex;
   flex-wrap: wrap;
 }
-
 .svg-icon-box {
-  margin: 0 20px 10px 0;
+  margin: 0 20px 20px 0;
+  min-width: 80px;
+  text-align: center;
+  cursor: pointer;
   .svg-icon {
     display: block;
     margin: 0 auto 5px auto;

@@ -25,6 +25,19 @@ export default [
           parentPath: ''
         }
       },
+      // 自定义指令
+      {
+        path: '/example/CustomDirective',
+        component: () => import('@/views/example/CustomDirective.vue'),
+        meta: {
+          title: '自定义指令',
+          icon: '',
+          visible: 1,
+          buttons: [],
+          activePath: '',
+          parentPath: ''
+        }
+      },
       // 按钮权限
       {
         path: '/example/buttonPermission',
@@ -38,19 +51,6 @@ export default [
             { name: 'edit', title: '编辑' },
             { name: 'delete', title: '删除' }
           ],
-          activePath: '',
-          parentPath: ''
-        }
-      },
-      // 自定义指令
-      {
-        path: '/example/CustomDirective',
-        component: () => import('@/views/example/CustomDirective.vue'),
-        meta: {
-          title: '自定义指令',
-          icon: '',
-          visible: 1,
-          buttons: [],
           activePath: '',
           parentPath: ''
         }
