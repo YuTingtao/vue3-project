@@ -41,7 +41,7 @@ export default defineConfig({
     }
   },
   // 公共基础路径
-  base: '/',
+  base: './',
   // 打包配置
   build: {
     outDir: 'dist', // 打包输出目录
