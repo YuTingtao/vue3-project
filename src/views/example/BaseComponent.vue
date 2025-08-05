@@ -45,7 +45,7 @@ function copySvgIcon(name: string) {
   ElMessage.success('已复制到剪切板');
 }
 
-// 富文本内容
+// 富文本
 const richText = ref<string>('');
 onMounted(() => {
   richText.value = '<p>这是一个富文本编辑器的示例内容。</p>';
