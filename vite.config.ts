@@ -11,7 +11,6 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import VueSetupExtend from 'vite-plugin-vue-setup-extend';
 import { compression } from 'vite-plugin-compression2';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
-// 打包分析
 // import { visualizer } from 'rollup-plugin-visualizer';
 import { writeFile } from './plugins/writeFile.ts';
 
@@ -47,7 +46,6 @@ export default defineConfig({
   // 打包配置
   build: {
     outDir: 'docs', // 打包输出目录
-    chunkSizeWarningLimit: 1024 * 500,
     rollupOptions: {
       output: {
         chunkFileNames: 'assets/js/[name]-[hash].js', // 引入文件名的名称
