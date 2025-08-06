@@ -27,7 +27,7 @@ export default [
       },
       // 自定义指令
       {
-        path: '/example/CustomDirective',
+        path: '/example/customDirective',
         component: () => import('@/views/example/CustomDirective.vue'),
         meta: {
           title: '自定义指令',
