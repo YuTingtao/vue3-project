@@ -51,7 +51,7 @@ export default defineConfig({
         chunkFileNames: 'assets/js/[name]-[hash].js', // 引入文件名的名称
         entryFileNames: 'assets/js/[name]-[hash].js', // 包的入口文件名称
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 资源文件像：字体、图片等
-        manualChunks(id) {
+        manualChunks(id: string) {
           if (id.includes('node_modules')) {
             if (id.includes('echarts')) {
               return 'echarts';
@@ -64,7 +64,7 @@ export default defineConfig({
           }
         },
         // 解决github: _plugin-vue_export-helper.js报404
-        sanitizeFileName(name) {
+        sanitizeFileName(name: string): string {
           const match = /^[a-z]:/i.exec(name);
           const driveLetter = match ? match[0] : '';
           const reg = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g;
