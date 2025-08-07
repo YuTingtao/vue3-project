@@ -10,6 +10,10 @@ import ImageUploader from 'quill-image-uploader';
 import axios from 'axios';
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
+defineOptions({
+  inheritAttrs: false
+});
+
 const attrs = useAttrs();
 const _attrs = computed(() => {
   return {

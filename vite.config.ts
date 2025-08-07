@@ -53,12 +53,12 @@ export default defineConfig({
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 资源文件像：字体、图片等
         manualChunks(id: string) {
           if (id.includes('node_modules')) {
-            if (id.includes('echarts')) {
-              return 'echarts';
+            const dirName = __dirname.replace(/\\/g, '/');
+            id = id.replace(dirName, '');
+            if (id.includes('@vueup/vue-quill') || id.includes('quill')) {
+              return 'vendor-quill';
             } else if (id.includes('element-plus')) {
-              return 'element-plus';
-            } else if (id.includes('@vueup/vue-quill') || id.includes('quill')) {
-              return 'vue-quill';
+              return 'vendor-element';
             }
             return 'vendor';
           }

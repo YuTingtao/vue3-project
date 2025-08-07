@@ -1,5 +1,5 @@
 <template>
-  <div class="app-view">
+  <div>
     <!-- svg-icon -->
     <h3 class="row-title">svg-icon:</h3>
     <div class="row-box flex-wrap">
@@ -26,10 +26,6 @@ import { ref, onMounted } from 'vue';
 import VueQuill from '@/components/richEditor/VueQuill.vue';
 import viewImg from '@/components/imgView/index.js';
 import { copyText } from '@/utils/index.js';
-
-defineOptions({
-  inheritAttrs: false
-});
 
 // svg-icon
 const svgIcons = ref<string[]>([]);
