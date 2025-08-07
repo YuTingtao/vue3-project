@@ -46,6 +46,7 @@ export default defineConfig({
   // 打包配置
   build: {
     outDir: 'docs', // 打包输出目录
+    target: ['chrome87', 'edge88', 'firefox78', 'safari14'],
     rollupOptions: {
       output: {
         chunkFileNames: 'assets/js/[name]-[hash].js', // 引入文件名的名称
