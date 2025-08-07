@@ -53,10 +53,12 @@ export default defineConfig({
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 资源文件像：字体、图片等
         manualChunks(id) {
           if (id.includes('node_modules')) {
+            const dirName = __dirname.replace(/\\/g, '/');
+            id = id.replace(dirName, '');
             if (id.includes('echarts')) {
-              return 'echarts';
+              return 'vendor-charts';
             } else if (id.includes('element-plus')) {
-              return 'element-plus';
+              return 'vendor-element';
             }
             return 'vendor';
           }
