@@ -10,8 +10,9 @@
         </el-icon>
         <span>{{ item.meta.title }}</span>
       </template>
-      <MenuItem v-for="item2 in item.children" :key="item2.path" :item="item2"> </MenuItem>
+      <MenuItem v-for="item2 in item.children" :key="item2.path" :item="item2"></MenuItem>
     </el-sub-menu>
+
     <!-- 一层菜单 -->
     <el-menu-item v-else :index="item.path" @click="routerTo(item.path)">
       <el-icon v-if="item.meta.icon">
@@ -26,7 +27,7 @@
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const props = defineProps({
+defineProps({
   item: {
     type: Object,
     default: () => {}
@@ -39,4 +40,4 @@ function routerTo(path) {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

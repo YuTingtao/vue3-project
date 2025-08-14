@@ -35,8 +35,8 @@
       <el-menu
         :collapse="!appStore.menu.isExpand"
         :unique-opened="true"
-        :default-active="route.meta.activePath || route.path || route.name">
-        <MenuItem v-for="item in userMenus" :key="item.path" :item="item"> </MenuItem>
+        :default-active="String(route.meta.activePath || route.path || route.name)">
+        <MenuItem v-for="item in userMenus" :key="item.path" :item="item"></MenuItem>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -48,8 +48,8 @@
   </div>
 </template>
 
-<script setup lang="ts" name="Layout">
-import { ref, reactive, computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from '@/store/index.ts';
 import { useAppStore } from '@/store/app.ts';
@@ -99,28 +99,23 @@ function handleLogout() {
   border-bottom: 1px solid var(--el-border-color-extra-light);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.04);
   transition: left var(--el-transition-duration) ease-in-out;
-
   .menu-collapse {
     font-size: 18px;
     color: #333;
     cursor: pointer;
   }
-
   .el-breadcrumb {
     flex-shrink: 0;
     margin-left: 12px;
     margin-right: 20px;
   }
-
   .el-dropdown {
     margin-left: auto;
     display: flex;
     align-items: center;
-
     .el-avatar {
       margin-right: 5px;
     }
-
     .el-tooltip__trigger {
       display: flex;
       align-items: center;
@@ -139,15 +134,12 @@ function handleLogout() {
   left: 0;
   bottom: 0;
   background: var(--el-menu-bg-color);
-
   .el-menu--vertical {
     border-right: none;
-
     &:not(.el-menu--collapse) {
       width: 210px;
     }
   }
-
   .el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item {
     padding-left: calc(var(--el-menu-base-level-padding) + var(--el-menu-level) * var(--el-menu-level-padding) + 9px);
   }
@@ -168,7 +160,6 @@ function handleLogout() {
   font-weight: bolder;
   white-space: nowrap;
   transition: width 0.3s ease-in-out;
-
   &.collapsed {
     width: 44px;
   }

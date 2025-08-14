@@ -8,7 +8,6 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
-import VueSetupExtend from 'vite-plugin-vue-setup-extend';
 import { compression } from 'vite-plugin-compression2';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 // import { visualizer } from 'rollup-plugin-visualizer';
@@ -20,7 +19,6 @@ export default defineConfig({
     vue(),
     AutoImport({ resolvers: [ElementPlusResolver({ importStyle: 'sass' })] }),
     Components({ resolvers: [ElementPlusResolver({ importStyle: 'sass' })] }),
-    VueSetupExtend(),
     createSvgIconsPlugin({
       iconDirs: [resolve(process.cwd(), 'src/assets/icon')],
       symbolId: 'icon-[dir]-[name]',

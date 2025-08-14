@@ -69,11 +69,15 @@
   </div>
 </template>
 
-<script setup lang="ts" name="MenuList">
+<script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import routes from '@/router/modules/index.ts';
+
+defineOptions({
+  name: 'MenuList'
+});
 
 const router = useRouter();
 

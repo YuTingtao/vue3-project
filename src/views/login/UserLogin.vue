@@ -29,7 +29,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="Login">
+<script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from '@/store/index.ts';

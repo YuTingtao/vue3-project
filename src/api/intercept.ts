@@ -97,6 +97,7 @@ export interface IResData<T> {
   data?: T;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function request<T = any>(config: AxiosRequestConfig) {
   return instance.request<T, IResData<T>>(config);
 }

@@ -4,10 +4,14 @@
   </div>
 </template>
 
-<script setup lang="ts" name="MenuEdit">
+<script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from '@/store/index.ts';
+
+defineOptions({
+  name: 'MenuEdit'
+});
 
 const route = useRoute();
 const store = useStore();

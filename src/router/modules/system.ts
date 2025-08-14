@@ -2,7 +2,7 @@
 export default [
   {
     path: '/system',
-    component: () => import('@/layout/RouteView.vue'),
+    component: () => import('@/layout/AppRouterView.vue'),
     meta: {
       title: '系统设置',
       icon: 'setting',
@@ -15,7 +15,7 @@ export default [
       // 菜单设置
       {
         path: '/system/menu',
-        component: () => import('@/views/system/menu/list/index.vue'),
+        component: () => import('@/views/system/menu/list/MenuList.vue'),
         meta: {
           title: '菜单设置',
           icon: '',
@@ -29,7 +29,7 @@ export default [
       {
         path: '/system/menu/:id(\\d+)',
         name: 'system-menu-detail',
-        component: () => import('@/views/system/menu/detail/index.vue'),
+        component: () => import('@/views/system/menu/detail/MenuDetail.vue'),
         meta: {
           title: '菜单详情',
           icon: '',
