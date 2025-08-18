@@ -4,6 +4,6 @@ vue3 + vite + vue-router + pinia + element-plus 项目模板，支持自定义�
 
 ## 包管理工具pnpm
 
-pnpm i 
-pnpm run dev 
-pnpm run build 
+pnpm i  
+pnpm run dev  
+pnpm run build  
