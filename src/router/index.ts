@@ -6,7 +6,7 @@ import { checkUpdate } from '@/utils/checkUpdate.js';
 const allRoutes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    component: () => import('@/layout/AppLayout.vue'),
+    component: () => import('@/layouts/AppLayout.vue'),
     children: [...routes]
   },
   {

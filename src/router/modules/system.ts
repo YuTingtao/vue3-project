@@ -2,7 +2,7 @@
 export default [
   {
     path: '/system',
-    component: () => import('@/layout/AppRouterView.vue'),
+    component: () => import('@/layouts/AppRouterView.vue'),
     meta: {
       title: '系统设置',
       icon: 'setting',
