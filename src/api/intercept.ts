@@ -91,14 +91,14 @@ instance.interceptors.response.use(
   }
 );
 
-export interface IResData<T> {
+export interface ResData<T> {
   code: number;
   msg: string;
-  data?: T;
+  data: T;
 }
 
-function request<T = any>(config: AxiosRequestConfig) {
-  return instance.request<T, IResData<T>>(config);
+function request<T>(config: AxiosRequestConfig) {
+  return instance.request<T, ResData<T>>(config);
 }
 
 export default request;
