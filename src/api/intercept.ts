@@ -91,15 +91,14 @@ instance.interceptors.response.use(
   }
 );
 
-export interface IResData<T> {
+export interface ResData<T> {
   code: number;
   msg: string;
-  data?: T;
+  data: T;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function request<T = any>(config: AxiosRequestConfig) {
-  return instance.request<T, IResData<T>>(config);
+function request<T>(config: AxiosRequestConfig) {
+  return instance.request<T, ResData<T>>(config);
 }
 
 export default request;
