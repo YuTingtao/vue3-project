@@ -1,4 +1,4 @@
-@import './reset.css';
+@use './reset.css' as *;
 
 body {
   min-width: 1300px;
@@ -35,6 +35,10 @@ body {
   }
   .el-table {
     --el-table-header-bg-color: var(--el-fill-color-light);
+    --el-table-header-text-color: var(--el-text-color-primary);
+    thead th {
+      font-weight: normal;
+    }
   }
   .el-button:focus-visible {
     outline: none;
