@@ -2,7 +2,7 @@
 export default [
   {
     path: '/example',
-    component: () => import('@/layouts/AppRouterView.vue'),
+    component: () => import('@/views/layout/AppRouterView.vue'),
     meta: {
       title: '使用案例', // 标题
       icon: 'document', // 图标
@@ -14,7 +14,7 @@ export default [
     children: [
       // 公共组件
       {
-        path: '/example/baseComponent',
+        path: '/example/base-component',
         component: () => import('@/views/example/BaseComponent.vue'),
         meta: {
           title: '公共组件',
@@ -27,7 +27,7 @@ export default [
       },
       // 自定义指令
       {
-        path: '/example/customDirective',
+        path: '/example/custom-directive',
         component: () => import('@/views/example/CustomDirective.vue'),
         meta: {
           title: '自定义指令',
@@ -40,7 +40,7 @@ export default [
       },
       // 按钮权限
       {
-        path: '/example/buttonPermission',
+        path: '/example/button-permission',
         component: () => import('@/views/example/ButtonPermission.vue'),
         meta: {
           title: '按钮权限',

@@ -17,7 +17,6 @@ defineOptions({
 const attrs = useAttrs();
 const _attrs = computed(() => {
   return {
-    ...attrs,
     theme: 'snow' as const,
     contentType: 'html' as const,
     options: { debug: 'error' },
@@ -50,7 +49,8 @@ const _attrs = computed(() => {
           }
         }
       }
-    ]
+    ],
+    ...attrs
   };
 });
 
