@@ -1,4 +1,5 @@
-name: Github Pages CI # 任务名称
+# 任务名称
+name: Github Pages CI
 on:
   # 监听push操作
   push:
@@ -12,7 +13,7 @@ jobs:
     # 步骤
     steps:
       # 官方action，将代码拉取到虚拟机
-      - name: Checkout  ️
+      - name: Checkout
         uses: actions/checkout@v4
 
       # 安装 Node.js
