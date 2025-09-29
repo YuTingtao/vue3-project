@@ -18,16 +18,15 @@ export default {
       method = binding.value.method;
     }
 
-    dom.addEventListener(
-      'scroll',
-      debounce(() => {
-        const { scrollTop, scrollHeight, clientHeight } = dom;
-        if (scrollTop + clientHeight >= scrollHeight - 20) {
-          if (typeof method === 'function') {
-            method();
-          }
+    const handleScroll = debounce(() => {
+      const { scrollTop, scrollHeight, clientHeight } = dom;
+      if (scrollTop + clientHeight >= scrollHeight - 20) {
+        if (typeof method === 'function') {
+          method();
         }
-      }, 300)
-    );
+      }
+    }, 300);
+
+    dom.addEventListener('scroll', handleScroll);
   }
 };

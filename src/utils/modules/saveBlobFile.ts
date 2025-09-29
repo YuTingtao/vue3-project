@@ -21,7 +21,7 @@ export function saveBlobFile(res: AxiosResponse, fileName: string) {
 
   // 创建blob url地址
   const blobURL = window.URL.createObjectURL(blob);
-  const link = document.createElement('a');
+  let link: HTMLAnchorElement | null = document.createElement('a');
   link.style.display = 'none';
   link.href = blobURL;
   link.setAttribute('download', decodeURI(fileName));
@@ -32,4 +32,5 @@ export function saveBlobFile(res: AxiosResponse, fileName: string) {
   link.click();
   window.URL.revokeObjectURL(blobURL);
   document.body.removeChild(link);
+  link = null;
 }

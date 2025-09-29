@@ -15,7 +15,7 @@ export function copyText(text: string) {
       }
     } else {
       try {
-        const dom = document.createElement('textarea');
+        let dom: HTMLTextAreaElement | null = document.createElement('textarea');
         dom.value = text;
         dom.style.width = '0px';
         dom.style.position = 'fixed';
@@ -26,6 +26,7 @@ export function copyText(text: string) {
         dom.select();
         document.execCommand('copy');
         document.body.removeChild(dom);
+        dom = null;
         resolve(text);
       } catch (error) {
         reject(error);

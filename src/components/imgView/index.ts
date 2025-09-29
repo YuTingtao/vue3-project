@@ -6,7 +6,7 @@ import ImgView from '../imgView/ImgView.vue';
  * @param urls 图片地址数组
  */
 function viewImg(urls: string[]) {
-  const div = document.createElement('div');
+  let div: HTMLElement | null = document.createElement('div');
   div.classList.add('img-viewer-box');
   document.body.append(div);
 
@@ -17,7 +17,8 @@ function viewImg(urls: string[]) {
       // console.log(val)
       if (!val) {
         app.unmount();
-        document.body.removeChild(div);
+        document.body.removeChild(div!);
+        div = null;
       }
     }
   });
