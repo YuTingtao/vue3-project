@@ -2,7 +2,7 @@
 <template>
   <!-- 头部 -->
   <div class="app-head" :style="`left: ${appStore.menu.isExpand ? '210px' : '64px'};`">
-    <svg-icon class="menu-collapse" :name="appStore.menu.isExpand ? 'fold' : 'expand'" @click="toggleCollapse">
+    <svg-icon class="menu-collapse" :icon="appStore.menu.isExpand ? 'fold' : 'expand'" @click="toggleCollapse">
     </svg-icon>
 
     <!-- 面包屑 -->
@@ -11,10 +11,10 @@
     <el-dropdown trigger="hover">
       <div class="app-avatar-dropdown">
         <el-avatar :src="userInfo.avatar" :size="32">
-          <svg-icon name="avatar-filled"></svg-icon>
+          <svg-icon icon="avatar-filled"></svg-icon>
         </el-avatar>
         <span>{{ userInfo.userName }}</span>
-        <svg-icon name="arrow-down"></svg-icon>
+        <svg-icon icon="arrow-down"></svg-icon>
       </div>
 
       <template #dropdown>

@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { usePermission } from '@/hooks/permission';
+import { usePermission } from '@/hooks/permission.ts';
 const { hasPermission } = usePermission();
 
 // js中使用hasPermission

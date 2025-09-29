@@ -8,7 +8,7 @@
         <el-form-item label="" prop="account">
           <el-input v-model="loginForm.account" placeholder="请输入账号/手机号/邮箱">
             <template #prefix>
-              <svg-icon name="user" />
+              <svg-icon icon="user"></svg-icon>
             </template>
           </el-input>
         </el-form-item>
@@ -16,7 +16,7 @@
         <el-form-item label="" prop="password">
           <el-input v-model="loginForm.password" placeholder="请输入密码" type="password">
             <template #prefix>
-              <svg-icon name="lock" />
+              <svg-icon icon="lock"></svg-icon>
             </template>
           </el-input>
         </el-form-item>

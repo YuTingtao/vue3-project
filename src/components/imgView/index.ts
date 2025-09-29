@@ -1,7 +1,11 @@
 import { createApp } from 'vue';
 import ImgView from '../imgView/ImgView.vue';
 
-function viewImg(urls) {
+/**
+ * 预览图片
+ * @param urls 图片地址数组
+ */
+function viewImg(urls: string[]) {
   const div = document.createElement('div');
   div.classList.add('img-viewer-box');
   document.body.append(div);
@@ -9,11 +13,11 @@ function viewImg(urls) {
   const app = createApp(ImgView, {
     modelValue: true,
     urlList: urls,
-    'onUpdate:modelValue': val => {
+    'onUpdate:modelValue': (val: string[]) => {
       // console.log(val)
       if (!val) {
-        app.unmount(div);
-        div.remove();
+        app.unmount();
+        document.body.removeChild(div);
       }
     }
   });

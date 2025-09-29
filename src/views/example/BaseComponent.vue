@@ -4,7 +4,7 @@
     <h3 class="row-title">svg-icon:</h3>
     <div class="row-box flex-wrap">
       <div v-for="(item, index) in svgIcons" :key="index" class="svg-icon-box" @click="copySvgIcon(item)">
-        <svg-icon :name="item"></svg-icon>
+        <svg-icon :icon="item"></svg-icon>
         <span>{{ item }}</span>
       </div>
     </div>
@@ -24,8 +24,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import VueQuill from '@/components/richEditor/VueQuill.vue';
-import viewImg from '@/components/imgView/index.js';
-import { copyText } from '@/utils/index.js';
+import viewImg from '@/components/imgView/index.ts';
+import { copyText } from '@/utils/index.ts';
 
 // svg-icon
 const svgIcons = ref<string[]>([]);
@@ -37,7 +37,7 @@ for (const path in svgFiles) {
 
 // 复制svg-icon
 function copySvgIcon(name: string) {
-  copyText(`<svg-icon name="${name}"></svg-icon>`);
+  copyText(`<svg-icon icon="${name}"></svg-icon>`);
   ElMessage.success('已复制到剪切板');
 }
 

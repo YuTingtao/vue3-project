@@ -1,13 +1,13 @@
 /**
  * 格式化文件大小(KB、MB、G、T)
- * @param {Number} size 文件大小
- * @returns {String}
+ * @param {number} size 文件大小
+ * @returns {string}
  */
-export function formatFileSize(size) {
+export function formatFileSize(size: number) {
   if (!size) {
     return '';
   }
-  var num = 1024.0;
+  const num = 1024.0;
   if (size < num) {
     return size + 'B';
   }

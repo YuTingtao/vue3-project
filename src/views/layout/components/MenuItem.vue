@@ -6,7 +6,7 @@
       :index="item.path || item.meta.title">
       <template #title>
         <el-icon v-if="item.meta.icon">
-          <svg-icon :name="item.meta.icon"></svg-icon>
+          <svg-icon :icon="item.meta.icon"></svg-icon>
         </el-icon>
         <span>{{ item.meta.title }}</span>
       </template>
@@ -16,7 +16,7 @@
     <!-- 一层菜单 -->
     <el-menu-item v-else :index="item.path" @click="routerTo(item.path)">
       <el-icon v-if="item.meta.icon">
-        <svg-icon :name="item.meta.icon"></svg-icon>
+        <svg-icon :icon="item.meta.icon"></svg-icon>
       </el-icon>
       <span>{{ item.meta.title }}</span>
     </el-menu-item>

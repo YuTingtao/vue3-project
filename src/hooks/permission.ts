@@ -1,6 +1,12 @@
 // 判断按钮权限
 import { useStore } from '@/store/index.ts';
 import router from '@/router';
+
+interface IButton {
+  name: string;
+  title: string;
+}
+
 const currentRoute = router.currentRoute;
 
 export function usePermission() {
@@ -12,14 +18,15 @@ export function usePermission() {
    * @param {string} name 路由path/name
    * @returns
    */
-  function hasPermission(str, name = currentRoute.value.name || currentRoute.value.path) {
-    const buttons = store.menuObj[name]?.meta?.buttons || [];
+  function hasPermission(str: string, name = currentRoute.value.name || currentRoute.value.path) {
+    const buttons = (store.menuObj[name as string]?.meta?.buttons as IButton[]) || [];
     if (buttons.some(item => item.name === str)) {
       return true;
     } else {
       return false;
     }
   }
+
   return {
     hasPermission
   };

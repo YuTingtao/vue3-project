@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { getMenuObj, getFirstMenu } from './utils.js';
+import { getMenuObj, getFirstMenu } from './utils.ts';
 import routes from '@/router/modules/index.ts';
 import type { UserInfo, LoginRes } from '@/api/user/type.js';
 import type { RouteRecordRaw } from 'vue-router';
@@ -20,7 +20,7 @@ export const useStore = defineStore('store', {
       if (state.userMenus.length < 1) {
         return '/login';
       }
-      return getFirstMenu(state.userMenus[0]);
+      return getFirstMenu(state.userMenus);
     }
   },
   actions: {

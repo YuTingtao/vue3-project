@@ -8,7 +8,7 @@ import { useStore } from './store/index.ts';
 import './assets/style/main.scss';
 
 // 检测更新
-import { checkUpdate, autoCheckUpdate } from './utils/checkUpdate.js';
+import { checkUpdate, autoCheckUpdate } from './utils/checkUpdate.ts';
 autoCheckUpdate();
 
 const app = createApp(App);
@@ -21,7 +21,7 @@ app.use(router);
 app.use(pinia);
 
 // 注册自定义指令
-import registerDirectives from './directives/index.js';
+import registerDirectives from './directives/index.ts';
 registerDirectives(app);
 
 // 注册svg-icon组件
@@ -30,7 +30,7 @@ import 'virtual:svg-icons-register';
 app.component('svg-icon', SvgIcon);
 
 // 按钮权限
-import { usePermission } from './hooks/permission.js';
+import { usePermission } from './hooks/permission.ts';
 const { hasPermission } = usePermission();
 app.config.globalProperties.$hasPermission = hasPermission;
 

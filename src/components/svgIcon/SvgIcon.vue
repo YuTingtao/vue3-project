@@ -4,14 +4,14 @@
   </svg>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
 defineOptions({
   name: 'SvgIcon'
 });
 
 const props = defineProps({
-  name: {
+  icon: {
     type: String,
     required: true
   },
@@ -29,7 +29,7 @@ const props = defineProps({
   }
 });
 const symbolId = computed(() => {
-  return `#${props.prefix}-${props.name}`;
+  return `#${props.prefix}-${props.icon}`;
 });
 </script>
 

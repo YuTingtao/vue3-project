@@ -1,23 +1,31 @@
 // 加载更多
 import { debounce } from 'lodash-es';
+import type { Ref } from 'vue';
+
+type BindingType = (() => void) | { method: () => void; scrollEl: string };
 
 export default {
-  mounted(el, binding) {
+  mounted(el: HTMLElement, binding: Ref<BindingType>) {
     let dom = el;
     let method = binding.value;
 
     if (typeof binding.value === 'object') {
-      dom = el.querySelector(binding.value.scrollEl);
+      const scrollDom = el.querySelector(binding.value.scrollEl);
+      if (!scrollDom) {
+        return;
+      }
+      dom = scrollDom as HTMLElement;
       method = binding.value.method;
     }
-    if (!dom) return;
 
     dom.addEventListener(
       'scroll',
       debounce(() => {
         const { scrollTop, scrollHeight, clientHeight } = dom;
         if (scrollTop + clientHeight >= scrollHeight - 20) {
-          method();
+          if (typeof method === 'function') {
+            method();
+          }
         }
       }, 300)
     );

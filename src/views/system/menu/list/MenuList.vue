@@ -28,7 +28,7 @@
     <el-table :data="tableData" border row-key="path" default-expand-all>
       <el-table-column prop="meta.title" label="菜单" min-width="200">
         <template #default="scope">
-          <svg-icon v-if="scope.row.meta.icon" :name="scope.row.meta.icon"></svg-icon>
+          <svg-icon v-if="scope.row.meta.icon" :icon="scope.row.meta.icon"></svg-icon>
           <span class="item-name">{{ scope.row.meta.title }}</span>
         </template>
       </el-table-column>

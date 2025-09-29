@@ -1,23 +1,27 @@
+import type { AxiosResponse } from 'axios';
+
 /**
  * 数据流保存为文件
  * @param {Blob} res 服务端返回数据
- * @param {String} fileName 自定义文件名，选填
+ * @param {string} fileName 自定义文件名，选填
  */
-export function saveBlobFile(res, fileName) {
+export function saveBlobFile(res: AxiosResponse, fileName: string) {
   if (!fileName) {
     if (res.headers['content-disposition']) {
       fileName = res.headers['content-disposition'].match(/filename=(.*)/)[1];
     } else {
-      fileName = Date.now();
+      fileName = `${Date.now()}`;
     }
   }
+
   // 将二进制流转为blob
   const blob = new Blob([res.data], {
     type: res.headers['content-type'] || 'application/octet-stream'
   });
+
   // 创建blob url地址
   const blobURL = window.URL.createObjectURL(blob);
-  let link = document.createElement('a');
+  const link = document.createElement('a');
   link.style.display = 'none';
   link.href = blobURL;
   link.setAttribute('download', decodeURI(fileName));
@@ -28,5 +32,4 @@ export function saveBlobFile(res, fileName) {
   link.click();
   window.URL.revokeObjectURL(blobURL);
   document.body.removeChild(link);
-  link = null;
 }

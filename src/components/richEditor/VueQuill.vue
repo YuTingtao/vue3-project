@@ -1,14 +1,18 @@
 <template>
-  <QuillEditor ref="editorRef" v-bind="_attrs"></QuillEditor>
+  <QuillEditor ref="editorRef" v-bind="_attrs">
+    <template v-for="(_, name) in $slots" :key="name" #[name]="scope">
+      <slot v-if="name" :name="name" v-bind="scope"></slot>
+    </template>
+  </QuillEditor>
 </template>
 
 <script setup lang="ts">
-import { ref, useAttrs, computed } from 'vue';
+import { ref, computed, useAttrs } from 'vue';
 import { QuillEditor, type Delta } from '@vueup/vue-quill';
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import BlotFormatter from 'quill-blot-formatter';
 import ImageUploader from 'quill-image-uploader';
 import axios from 'axios';
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 defineOptions({
   inheritAttrs: false

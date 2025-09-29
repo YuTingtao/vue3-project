@@ -1,9 +1,9 @@
 /**
  * 复制文本
- * @param {String} text 要复制的文本
+ * @param {string} text 要复制的文本
  * @returns Promise
  */
-export function copyText(text) {
+export function copyText(text: string) {
   if (!text) return;
   return new Promise((resolve, reject) => {
     if (navigator.clipboard && navigator.permissions) {
@@ -15,9 +15,9 @@ export function copyText(text) {
       }
     } else {
       try {
-        var dom = document.createElement('textarea');
+        const dom = document.createElement('textarea');
         dom.value = text;
-        dom.style.width = 0;
+        dom.style.width = '0px';
         dom.style.position = 'fixed';
         dom.style.left = '-999px';
         dom.style.top = '10px';

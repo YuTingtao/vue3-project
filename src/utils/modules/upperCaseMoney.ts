@@ -1,9 +1,9 @@
 /**
  * 金额转中文大写
- * @param {Number} n 金额数字
- * @returns {String} 金额中文大写
+ * @param {number} n 金额数字
+ * @returns {string} 金额中文大写
  */
-export function upperCaseMoney(n) {
+export function upperCaseMoney(n: number) {
   const fraction = ['角', '分'];
   const digit = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
   const unit = [
@@ -11,7 +11,7 @@ export function upperCaseMoney(n) {
     ['', '拾', '佰', '仟']
   ];
 
-  let head = n < 0 ? '负' : '';
+  const head = n < 0 ? '负' : '';
   n = Math.abs(n);
 
   let s = '';

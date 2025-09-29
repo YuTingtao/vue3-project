@@ -3,14 +3,14 @@
   <el-image-viewer v-if="modelValue" :url-list="urlList" @close="emit('update:modelValue', false)"></el-image-viewer>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
   modelValue: {
     type: Boolean,
     default: false
   },
   urlList: {
-    type: Array,
+    type: Array as () => string[],
     default: () => []
   }
 });
