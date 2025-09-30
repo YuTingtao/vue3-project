@@ -54,6 +54,19 @@ export default [
           activePath: '',
           parentPath: ''
         }
+      },
+      // 大文件上传
+      {
+        path: '/example/large-file-upload',
+        component: () => import('@/views/example/LargeFileUpload.vue'),
+        meta: {
+          title: '大文件上传',
+          icon: '',
+          visible: 1,
+          buttons: [],
+          activePath: '',
+          parentPath: ''
+        }
       }
     ]
   }
