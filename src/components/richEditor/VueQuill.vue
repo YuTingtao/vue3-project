@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, useAttrs } from 'vue';
+import { ref, computed, useAttrs, onBeforeUnmount } from 'vue';
 import { QuillEditor, type Delta } from '@vueup/vue-quill';
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import BlotFormatter from 'quill-blot-formatter';
@@ -59,6 +59,14 @@ const _attrs = computed(() => {
 });
 
 const editorRef = ref();
+
+onBeforeUnmount(() => {
+  // 删除插入的img
+  const tempImg = document.querySelector('.blot-formatter__proxy-image') as HTMLImageElement;
+  if (tempImg) {
+    document.body.removeChild(tempImg);
+  }
+});
 
 function getHTML(): string {
   return editorRef.value?.getHTML();

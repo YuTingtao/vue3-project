@@ -2,12 +2,12 @@
  * 计算文件hash值
  */
 
-self.importScripts('/js/spark-md5.min.js');
+self.importScripts('./spark-md5.min.js');
 
 self.onmessage = function (e) {
-  const { fileChunks } = e.data;
-  const spark = new self.SparkMD5.ArrayBuffer();
-  let count = 0;
+  var fileChunks = e.data.fileChunks;
+  var spark = new self.SparkMD5.ArrayBuffer();
+  var count = 0;
 
   function loadNext(index) {
     const reader = new FileReader();
