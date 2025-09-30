@@ -19,7 +19,6 @@ import type { UploadFile, UploadUserFile } from 'element-plus';
 
 interface FileChunk {
   file: Blob; // 切片文件
-  hash: string; // 切片标识
   progressLoaded: number; // 已上传字节数
 }
 
@@ -28,6 +27,9 @@ const fileChunks = ref<FileChunk[]>([]);
 
 // 文件列表
 const fileList = ref<UploadUserFile[]>([]);
+
+// 文件hash
+const hash = ref('');
 
 // 上传进度
 const uploadProgress = computed(() => {
@@ -44,15 +46,12 @@ const uploadProgress = computed(() => {
 function createFileChunk(file: File, size = 1024 * 1024 * 10) {
   const fileChunks = [];
   let current = 0;
-  let index = 0;
   while (current < file.size) {
     fileChunks.push({
       file: file.slice(current, current + size),
-      hash: file.name + index,
       progressLoaded: 0
     });
     current = current + size;
-    index++;
   }
   return fileChunks;
 }
@@ -80,12 +79,12 @@ const uploading = ref(false);
 // 上传切片
 async function uploadChunks() {
   uploading.value = true;
-  const hash = await getFileHash();
+  hash.value = (await getFileHash()) as string;
   const uploadList = fileChunks.value.map((item, index) => {
     const formData = new FormData();
     formData.append('fileName', fileList.value[0].name);
     formData.append('file', item.file);
-    formData.append('hash', `${hash}-${index}`);
+    formData.append('hash', `${hash.value}-${index}`);
     return axios({
       url: '/api/upload/uploadChunk',
       method: 'POST',
@@ -113,7 +112,7 @@ async function uploadChunks() {
 async function mergeChunksRequst() {
   const res = await axios.post('/api/upload/merge', {
     fileName: fileList.value[0].name,
-    hash: fileChunks.value.map(item => item.hash)
+    hash: hash.value
   });
   if (res.status === 200) {
     fileList.value[0].url = res.data?.url || '';
