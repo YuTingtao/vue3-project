@@ -16,6 +16,7 @@
 import { computed, ref } from 'vue';
 import axios from 'axios';
 import type { UploadFile, UploadUserFile } from 'element-plus';
+import { runPool } from '@/utils/index.ts';
 
 interface FileChunk {
   file: Blob; // 切片文件
@@ -58,13 +59,13 @@ function createFileChunk(file: File, size = 1024 * 1024 * 10) {
 
 // 获取文件hash
 function getFileHash() {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const worker = new Worker('/js/hash.js');
     const data = {
-      fileChunks: fileChunks.value.map(item => item.file)
+      fileChunks: fileChunks.value.map((item) => item.file)
     };
     worker.postMessage(data);
-    worker.onmessage = e => {
+    worker.onmessage = (e) => {
       const { hash } = e.data;
       if (hash) {
         resolve(hash);
@@ -85,23 +86,24 @@ async function uploadChunks() {
     formData.append('fileName', fileList.value[0].name);
     formData.append('file', item.file);
     formData.append('hash', `${hash.value}-${index}`);
-    return axios({
-      url: '/api/upload/uploadChunk',
-      method: 'POST',
-      data: formData,
-      onUploadProgress: progressEvent => {
-        if (progressEvent?.total) {
-          item.progressLoaded = progressEvent.loaded;
+    return () =>
+      axios({
+        url: '/api/upload/uploadChunk',
+        method: 'POST',
+        data: formData,
+        onUploadProgress: (progressEvent) => {
+          if (progressEvent?.total) {
+            item.progressLoaded = progressEvent.loaded;
+          }
         }
-      }
-    });
+      });
   });
-  await Promise.all(uploadList).catch(err => {
+  await runPool(uploadList, 5).catch((errs) => {
     ElMessage.error('上传失败');
     uploading.value = false;
     fileList.value = [];
   });
-  await mergeChunksRequst().catch(err => {
+  await mergeChunksRequst().catch((err) => {
     uploading.value = false;
     fileList.value = [];
   });
