@@ -90,6 +90,7 @@ async function uploadChunks() {
       axios({
         url: '/api/upload/uploadChunk',
         method: 'POST',
+        headers: { 'Content-Type': 'multipart/form-data' },
         data: formData,
         onUploadProgress: (progressEvent) => {
           if (progressEvent?.total) {
