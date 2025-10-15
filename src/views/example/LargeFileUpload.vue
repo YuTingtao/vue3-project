@@ -75,7 +75,8 @@ function getUploadProgress(uid: number) {
   const uploaded = fileChunk[uid].chunks.reduce((acc, chunk) => acc + chunk.progressLoaded, 0);
   if (!fileList.value[index]?.size) return 100;
   const size = fileList.value[index].size;
-  return Math.floor((uploaded / size) * 100);
+  const percent = (uploaded / size) * 100;
+  return percent > 100 ? 100 : percent;
 }
 
 // 合并切片请求
@@ -118,6 +119,7 @@ async function uploadChunks(options: UploadRequestOptions) {
   });
   const resArr = await runPool(uploadList, 5).catch((errs) => {
     options.onError(errs);
+    delete fileChunk[uid];
     ElMessage.error('上传失败');
   });
   if (resArr) {
@@ -127,6 +129,7 @@ async function uploadChunks(options: UploadRequestOptions) {
       })
       .catch((err) => {
         options.onError(err);
+        delete fileChunk[uid];
         ElMessage.error('上传失败');
       });
   }
