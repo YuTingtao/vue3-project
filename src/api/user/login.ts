@@ -1,4 +1,4 @@
-import request from '../intercept.ts';
+import request from '../request.ts';
 import type { LoginReq, LoginRes } from './type.ts';
 
 // 登录
