@@ -5,4 +5,3 @@ export * from './modules/formatFileSize.ts';
 export * from './modules/generateGuid.ts';
 export * from './modules/saveBlobFile.ts';
 export * from './modules/upperCaseMoney.ts';
-export * from './modules/runPool.ts';

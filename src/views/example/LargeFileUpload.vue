@@ -16,6 +16,7 @@ import { reactive, ref } from 'vue';
 import axios from 'axios';
 import type { UploadProgressEvent, UploadRequestOptions, UploadUserFile } from 'element-plus';
 import { runPool } from '@/utils/index.ts';
+import pLimit from 'p-limit';
 
 interface FileChunk {
   [key: number]: {
@@ -32,6 +33,9 @@ const fileList = ref<UploadUserFile[]>([]);
 
 // 文件列表切片对象
 const fileChunk: FileChunk = reactive({});
+
+// 并发控制
+const limit = pLimit(5);
 
 /**
  * 创建文件切片
@@ -94,12 +98,12 @@ async function mergeChunksRequst(uid: number) {
 async function uploadChunks(options: UploadRequestOptions) {
   const uid = options.file.uid;
   const hash = fileChunk[uid].hash;
-  const uploadList = fileChunk[uid].chunks.map((item, index) => {
+  const uploadChunks = fileChunk[uid].chunks.map((item, index) => {
     const formData = new FormData();
     formData.append('fileName', fileList.value[0].name);
     formData.append('file', item.file);
     formData.append('hash', `${hash}-${index}`);
-    return () =>
+    return limit(() =>
       axios({
         url: '/api/upload/uploadChunk',
         method: 'POST',
@@ -115,9 +119,10 @@ async function uploadChunks(options: UploadRequestOptions) {
           };
           options.onProgress(evt as unknown as UploadProgressEvent);
         }
-      });
+      })
+    );
   });
-  const resArr = await runPool(uploadList, 5).catch((errs) => {
+  const resArr = await Promise.all(uploadChunks).catch((errs) => {
     options.onError(errs);
     delete fileChunk[uid];
     ElMessage.error('上传失败');
