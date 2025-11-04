@@ -33,16 +33,12 @@ export const useStore = defineStore('store', {
     // 退出登录
     setLogout() {
       this.token = '';
-      this.userInfo = {
-        id: '',
-        userName: '',
-        avatar: ''
-      };
+      this.userInfo = {} as UserInfo;
       this.userMenus = [];
     },
     // 获取菜单
     getUserMenus() {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         setTimeout(() => {
           this.userMenus = routes;
           resolve(null);
