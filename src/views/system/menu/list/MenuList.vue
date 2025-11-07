@@ -57,15 +57,13 @@
     </el-table>
 
     <!-- 分页 -->
-    <el-pagination
+    <BasePagination
       v-model:current-page="filter.pageNum"
       v-model:page-size="filter.pageSize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :background="true"
       :total="total"
       @size-change="handleSearch"
       @current-change="getList">
-    </el-pagination>
+    </BasePagination>
   </div>
 </template>
 
@@ -74,10 +72,6 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import routes from '@/router/modules/index.ts';
-
-defineOptions({
-  name: 'MenuList'
-});
 
 const router = useRouter();
 

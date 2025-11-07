@@ -43,13 +43,6 @@ body {
   .el-button:focus-visible {
     outline: none;
   }
-  .el-pagination {
-    justify-content: flex-end;
-    margin-top: 20px;
-    .el-select {
-      width: 100px;
-    }
-  }
 }
 
 // 列表页筛序条件
