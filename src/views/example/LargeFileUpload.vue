@@ -15,7 +15,6 @@
 import { reactive, ref } from 'vue';
 import axios from 'axios';
 import type { UploadProgressEvent, UploadRequestOptions, UploadUserFile } from 'element-plus';
-import { runPool } from '@/utils/index.ts';
 import pLimit from 'p-limit';
 
 interface FileChunk {
