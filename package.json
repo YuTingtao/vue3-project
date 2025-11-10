@@ -9,7 +9,9 @@
     "build:test": "vue-tsc --noEmit && vite build --mode test",
     "preview": "vite preview",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx,.vue",
-    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx,.vue --fix"
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx,.vue --fix",
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
@@ -39,6 +41,8 @@
     "eslint": "^9.38.0",
     "eslint-plugin-vue": "^10.5.1",
     "globals": "^16.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
     "rollup-plugin-visualizer": "^6.0.5",
     "sass": "^1.93.2",
@@ -50,5 +54,8 @@
     "vite-plugin-compression2": "^2.3.1",
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-tsc": "^3.1.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": ["eslint --fix"]
   }
 }
