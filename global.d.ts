@@ -1,6 +1,2 @@
-export {};
-declare module 'vue' {
-  interface ComponentCustomProperties {
-    $hasPermission: (permission: string) => boolean;
-  }
-}
+declare module 'virtual:svg-icons-register';
+declare module 'quill-image-uploader';

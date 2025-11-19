@@ -17,13 +17,5 @@
     "noUncheckedSideEffectImports": true,
     "allowImportingTsExtensions": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "auto-imports.d.ts",
-    "components.d.ts",
-    "src/vite-env.d.ts",
-    "global.d.ts"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "auto-imports.d.ts", "components.d.ts", "global.d.ts"]
 }

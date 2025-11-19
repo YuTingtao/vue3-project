@@ -43,10 +43,10 @@ const _attrs = computed(() => {
               formData.append('image', file);
               axios
                 .post('/api/upload', formData)
-                .then(res => {
+                .then((res) => {
                   resolve(res.data.url);
                 })
-                .catch(err => {
+                .catch((err) => {
                   reject('Upload failed');
                 });
             });
