@@ -33,6 +33,7 @@
 import { ref, reactive } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from '@/store/index.ts';
+import sha256 from 'crypto-js/sha256';
 import { loginApi } from '@/api/user/login.ts';
 
 const router = useRouter();
@@ -72,13 +73,15 @@ async function onSubmit() {
     if (loading.value) return;
     if (!valid) return;
     loading.value = true;
-    loginApi(loginForm.value)
-      .then(res => {
+    const params = { ...loginForm.value };
+    params.password = sha256(params.password).toString();
+    loginApi(params)
+      .then((res) => {
         if (res.code === 200) {
           loginSuccess();
         }
       })
-      .catch(err => {
+      .catch((err) => {
         loginSuccess();
       })
       .finally(() => {
