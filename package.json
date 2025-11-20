@@ -8,8 +8,6 @@
     "build": "vue-tsc && vite build",
     "build:test": "vue-tsc --noEmit && vite build --mode test",
     "preview": "vite preview",
-    "lint": "eslint src --ext .js,.jsx,.ts,.tsx,.vue",
-    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx,.vue --fix",
     "prepare": "husky",
     "lint-staged": "lint-staged"
   },
