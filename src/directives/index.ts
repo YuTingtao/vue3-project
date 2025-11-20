@@ -10,9 +10,11 @@ for (const path in modules) {
   obj[key] = (modules[path] as { default: Directive }).default;
 }
 
-// 注册自定义指令
+// 批量注册自定义指令
 export default function registerDirectives(app: App) {
   for (const key in obj) {
-    app.directive(key, obj[key]);
+    if (obj[key]) {
+      app.directive(key, obj[key]);
+    }
   }
 }

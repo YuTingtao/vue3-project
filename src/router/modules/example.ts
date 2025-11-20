@@ -1,5 +1,7 @@
+import type { RouteRecordRaw } from 'vue-router';
+
 // 使用案例
-export default [
+const example: RouteRecordRaw[] = [
   {
     path: '/example',
     component: () => import('@/views/layout/AppRouterView.vue'),
@@ -71,3 +73,5 @@ export default [
     ]
   }
 ];
+
+export default example;

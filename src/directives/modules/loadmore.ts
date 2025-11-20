@@ -1,11 +1,18 @@
 // 加载更多
 import { debounce } from 'lodash-es';
-import type { Ref } from 'vue';
+import type { Directive } from 'vue';
 
-type BindingType = (() => void) | { method: () => void; scrollEl: string };
+export type LoadmoreBinding = (() => void) | { method: () => void; scrollEl: string };
+export type LoadmoreDirective = Directive<HTMLElement, LoadmoreBinding>;
+declare module 'vue' {
+  export interface ComponentCustomProperties {
+    // 使用 v 作为前缀 (v-loadmore)
+    vLoadmore: LoadmoreDirective;
+  }
+}
 
 export default {
-  mounted(el: HTMLElement, binding: Ref<BindingType>) {
+  mounted(el, binding) {
     let dom = el;
     let method = binding.value;
 
@@ -29,4 +36,4 @@ export default {
 
     dom.addEventListener('scroll', handleScroll);
   }
-};
+} satisfies LoadmoreDirective;

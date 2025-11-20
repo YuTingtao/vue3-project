@@ -1,5 +1,7 @@
+import type { RouteRecordRaw } from 'vue-router';
+
 // 系统设置
-export default [
+const system: RouteRecordRaw[] = [
   {
     path: '/system',
     component: () => import('@/views/layout/AppRouterView.vue'),
@@ -42,3 +44,5 @@ export default [
     ]
   }
 ];
+
+export default system;
