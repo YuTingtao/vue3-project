@@ -1,9 +1,8 @@
 <!-- 全局layout -->
 <template>
   <!-- 头部 -->
-  <div class="app-head" :style="`left: ${appStore.menu.isExpand ? '210px' : '64px'};`">
-    <svg-icon class="menu-collapse" :icon="appStore.menu.isExpand ? 'fold' : 'expand'" @click="toggleCollapse">
-    </svg-icon>
+  <div class="app-head" :style="`left: ${store.isExpand ? '210px' : '64px'};`">
+    <svg-icon class="menu-collapse" :icon="store.isExpand ? 'fold' : 'expand'" @click="toggleCollapse"> </svg-icon>
 
     <!-- 面包屑 -->
     <BreadCrumb></BreadCrumb>
@@ -28,12 +27,12 @@
   <!-- 侧边菜单 -->
   <div class="app-aside">
     <el-scrollbar>
-      <div class="app-logo" :class="appStore.menu.isExpand ? '' : 'collapsed'">
+      <div class="app-logo" :class="store.isExpand ? '' : 'collapsed'">
         <img class="app-logo-img" src="@/assets/img/logo.png" alt="" />
         <span>Vue3管理后台</span>
       </div>
       <el-menu
-        :collapse="!appStore.menu.isExpand"
+        :collapse="!store.isExpand"
         :unique-opened="true"
         :default-active="String(route.meta.activePath || route.path || route.name)">
         <MenuItem v-for="item in userMenus" :key="item.path" :item="item"></MenuItem>
@@ -42,7 +41,7 @@
   </div>
 
   <!-- 主体 -->
-  <div class="app-main" :style="`padding-left: ${appStore.menu.isExpand ? '210px' : '64px'};`">
+  <div class="app-main" :style="`padding-left: ${store.isExpand ? '210px' : '64px'};`">
     <!-- 页面主体 -->
     <router-view class="app-view"></router-view>
   </div>
@@ -52,7 +51,6 @@
 import { computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from '@/store/index.ts';
-import { useAppStore } from '@/store/app.ts';
 import MenuItem from './components/MenuItem.vue';
 import BreadCrumb from './components/BreadCrumb.vue';
 import { logoutApi } from '@/api/user/login.ts';
@@ -60,7 +58,6 @@ import { logoutApi } from '@/api/user/login.ts';
 const router = useRouter();
 const route = useRoute();
 const store = useStore();
-const appStore = useAppStore();
 
 // 用户信息
 const userInfo = computed(() => store.userInfo);
@@ -70,7 +67,7 @@ const userMenus = computed(() => store.userMenus);
 
 // 菜单展开收起
 function toggleCollapse() {
-  appStore.menu.isExpand = !appStore.menu.isExpand;
+  store.isExpand = !store.isExpand;
 }
 
 // 退出登录

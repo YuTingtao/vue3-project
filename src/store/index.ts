@@ -6,7 +6,8 @@ import type { RouteRecordRaw } from 'vue-router';
 
 export const useStore = defineStore('store', {
   state: () => ({
-    token: '',
+    isExpand: true, // 左侧菜单是否展开
+    token: '', // token
     userInfo: {} as UserInfo, // 用户信息
     userMenus: [] as RouteRecordRaw[] // 用户菜单
   }),
