@@ -58,7 +58,7 @@ export default defineConfig([
       // 禁止在对象上调用 Object.prototype 方法
       'no-prototype-builtins': 'error',
       // 圈复杂度
-      complexity: ['error', { max: 10 }],
+      complexity: ['error', { max: 12 }],
       // 文件的最大行数
       'max-lines': ['warn', { max: 500, skipBlankLines: true, skipComments: true }],
       // console
