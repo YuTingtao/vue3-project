@@ -63,7 +63,7 @@ const userMenus = computed(() => store.userMenus);
   align-items: center;
   overflow: hidden;
   width: 210px;
-  padding: 15px 0;
+  padding: 16px 0;
   background: var(--el-menu-bg-color);
   color: #fff;
   font-size: 16px;
