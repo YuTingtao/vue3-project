@@ -52,7 +52,7 @@ const userMenus = computed(() => store.userMenus);
 }
 
 .el-menu--popup {
-  --el-menu-item-height: 50px;
+  --el-menu-item-height: 44px;
 }
 
 .app-sider-top {
