@@ -3,7 +3,7 @@
     <el-scrollbar>
       <div class="app-sider-top" :class="store.isExpand ? '' : 'is-expand'">
         <img class="app-sider-logo" src="@/assets/img/logo.png" alt="" />
-        <span>Vue3管理后台</span>
+        <span>Vue3企业中台</span>
       </div>
 
       <el-menu
