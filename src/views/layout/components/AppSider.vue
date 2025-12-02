@@ -1,7 +1,7 @@
 <template>
   <div class="app-sider">
     <el-scrollbar>
-      <div class="app-sider-top" :class="store.isExpand ? '' : 'collapsed'">
+      <div class="app-sider-top" :class="store.isExpand ? '' : 'is-expand'">
         <img class="app-sider-logo" src="@/assets/img/logo.png" alt="" />
         <span>Vue3管理后台</span>
       </div>
@@ -70,7 +70,7 @@ const userMenus = computed(() => store.userMenus);
   font-weight: bolder;
   white-space: nowrap;
   transition: width 0.3s ease-in-out;
-  &.collapsed {
+  &.is-expand {
     width: 44px;
   }
 }

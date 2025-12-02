@@ -64,8 +64,7 @@ function handleLogout() {
   padding: 0 20px;
   color: #333;
   background: #fff;
-  border-bottom: 1px solid var(--el-border-color-extra-light);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   transition: left var(--el-transition-duration) ease-in-out;
   .menu-collapse {
     font-size: 18px;
