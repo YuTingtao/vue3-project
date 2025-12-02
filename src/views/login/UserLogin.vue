@@ -34,7 +34,7 @@ import { ref, reactive } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from '@/store/index.ts';
 import sha256 from 'crypto-js/sha256';
-import { loginApi } from '@/api/user/login.ts';
+import { loginApi } from '@/api/account/login';
 
 const router = useRouter();
 const route = useRoute();
