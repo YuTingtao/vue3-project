@@ -10,23 +10,19 @@
         :collapse="!store.isExpand"
         :unique-opened="true"
         :default-active="String(route.meta.activePath || route.path || route.name)">
-        <MenuItem v-for="item in userMenus" :key="item.path" :item="item"></MenuItem>
+        <MenuItem v-for="item in store.userMenus" :key="item.path" :item="item"></MenuItem>
       </el-menu>
     </el-scrollbar>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from '@/store';
 import MenuItem from './MenuItem.vue';
 
 const route = useRoute();
 const store = useStore();
-
-// 用户菜单
-const userMenus = computed(() => store.userMenus);
 </script>
 
 <style lang="scss">
