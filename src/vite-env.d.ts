@@ -11,13 +11,14 @@ declare module 'vue' {
 
 declare module 'vue-router' {
   interface RouteMeta {
-    title?: string;
-    icon?: string;
+    title?: string; // 菜单标题
+    icon?: string; // 菜单图标
     buttons?: {
       name: string;
       title: string;
-    }[];
-    activePath?: string;
-    parentPath?: string;
+    }[]; // 按钮权限
+    activePath?: string; // 菜单高亮path
+    parentPath?: string; // 父级path
+    needAuth?: boolean; // 是否需要权限验证
   }
 }

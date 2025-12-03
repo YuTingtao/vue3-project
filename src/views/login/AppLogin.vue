@@ -94,8 +94,8 @@ async function onSubmit() {
 async function loginSuccess() {
   store.setLogin({
     id: 1,
-    token: 'Token-123456789',
-    userName: 'admin',
+    token: 'token-123456789',
+    name: 'admin',
     avatar: ''
   });
   await store.getUserMenus();

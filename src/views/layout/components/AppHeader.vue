@@ -10,7 +10,7 @@
         <el-avatar :src="userInfo.avatar" :size="32">
           <svg-icon icon="avatar-filled"></svg-icon>
         </el-avatar>
-        <span>{{ userInfo.userName }}</span>
+        <span>{{ userInfo.name }}</span>
         <svg-icon icon="arrow-down"></svg-icon>
       </div>
 

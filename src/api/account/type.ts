@@ -7,7 +7,7 @@ export interface LoginReq {
 // 用户信息
 export interface UserInfo {
   id: string | number;
-  userName: string;
+  name: string;
   avatar: string;
 }
 

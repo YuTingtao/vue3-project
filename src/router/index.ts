@@ -11,7 +11,10 @@ const allRoutes: Array<RouteRecordRaw> = [
   },
   {
     path: '/login',
-    component: () => import('@/views/login/UserLogin.vue')
+    component: () => import('@/views/login/AppLogin.vue'),
+    meta: {
+      needAuth: false
+    }
   }
 ];
 const router = createRouter({
@@ -46,7 +49,7 @@ router.beforeEach((to, from) => {
   }
   // 权限拦截
   const toKey = (to.name || to.path) as string;
-  if (!allRouteKeys.includes(toKey)) {
+  if (to.meta.needAuth !== false && !allRouteKeys.includes(toKey)) {
     return store.firstMenu;
   }
 });
