@@ -29,6 +29,9 @@ body {
 }
 
 body {
+  --el-menu-item-height: 46px;
+  --el-menu-sub-item-height: 46px;
+
   .el-breadcrumb__inner.is-link,
   .el-breadcrumb__inner a {
     font-weight: normal;
