@@ -17,5 +17,5 @@
     "noUncheckedSideEffectImports": true,
     "allowImportingTsExtensions": true
   },
-  "include": ["src/", "auto-imports.d.ts", "components.d.ts", "global.d.ts"]
+  "include": ["src/", "auto-imports.d.ts", "components.d.ts", "src/types/global.d.ts"]
 }

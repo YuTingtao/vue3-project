@@ -1,5 +1,5 @@
 import request from '../request.ts';
-import type { LoginReq, LoginRes } from './type.ts';
+import type { LoginReq, LoginRes } from '@/types/account';
 
 // 登录
 export function loginApi(data: LoginReq) {
