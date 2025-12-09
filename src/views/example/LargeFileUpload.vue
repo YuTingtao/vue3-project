@@ -14,8 +14,8 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
 import axios from 'axios';
-import type { UploadProgressEvent, UploadRequestOptions, UploadUserFile } from 'element-plus';
 import pLimit from 'p-limit';
+import type { UploadProgressEvent, UploadRequestOptions, UploadUserFile } from 'element-plus';
 
 interface FileChunk {
   [key: number]: {
