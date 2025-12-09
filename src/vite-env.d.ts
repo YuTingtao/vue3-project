@@ -11,8 +11,9 @@ declare module 'vue' {
 
 declare module 'vue-router' {
   interface RouteMeta {
-    title?: string; // 菜单标题
+    title: string; // 菜单标题
     icon?: string; // 菜单图标
+    hidden?: 0 | 1; // 是否隐藏菜单
     buttons?: {
       name: string;
       title: string;

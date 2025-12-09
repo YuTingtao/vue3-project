@@ -4,14 +4,9 @@ import type { RouteRecordRaw } from 'vue-router';
 const example: RouteRecordRaw[] = [
   {
     path: '/example',
-    component: () => import('@/views/layout/AppRouterView.vue'),
     meta: {
       title: '使用案例', // 标题
-      icon: 'document', // 图标
-      visible: 1, // 是否可见
-      buttons: [], // 按钮权限
-      activePath: '', // 设置高亮菜单路径，例如详情页设置列表页高亮
-      parentPath: '' // 设置面包屑父级路径
+      icon: 'document' // 图标
     },
     children: [
       // 公共组件
@@ -19,12 +14,7 @@ const example: RouteRecordRaw[] = [
         path: '/example/base-component',
         component: () => import('@/views/example/BaseComponent.vue'),
         meta: {
-          title: '公共组件',
-          icon: '',
-          visible: 1,
-          buttons: [],
-          activePath: '',
-          parentPath: ''
+          title: '公共组件'
         }
       },
       // 自定义指令
@@ -32,12 +22,7 @@ const example: RouteRecordRaw[] = [
         path: '/example/custom-directive',
         component: () => import('@/views/example/CustomDirective.vue'),
         meta: {
-          title: '自定义指令',
-          icon: '',
-          visible: 1,
-          buttons: [],
-          activePath: '',
-          parentPath: ''
+          title: '自定义指令'
         }
       },
       // 按钮权限
@@ -46,15 +31,11 @@ const example: RouteRecordRaw[] = [
         component: () => import('@/views/example/ButtonPermission.vue'),
         meta: {
           title: '按钮权限',
-          icon: '',
-          visible: 1,
           buttons: [
             { name: 'add', title: '新增' },
             { name: 'edit', title: '编辑' },
             { name: 'delete', title: '删除' }
-          ],
-          activePath: '',
-          parentPath: ''
+          ]
         }
       },
       // 大文件上传
@@ -62,12 +43,7 @@ const example: RouteRecordRaw[] = [
         path: '/example/large-file-upload',
         component: () => import('@/views/example/LargeFileUpload.vue'),
         meta: {
-          title: '大文件上传',
-          icon: '',
-          visible: 1,
-          buttons: [],
-          activePath: '',
-          parentPath: ''
+          title: '大文件上传'
         }
       }
     ]

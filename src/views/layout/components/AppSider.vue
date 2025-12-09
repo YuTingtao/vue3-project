@@ -43,7 +43,9 @@ const store = useStore();
     }
   }
   .el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item {
-    padding-left: calc(var(--el-menu-base-level-padding) + var(--el-menu-level) * var(--el-menu-level-padding) + 9px);
+    padding-left: calc(
+      var(--el-menu-base-level-padding) + var(--el-menu-level) * var(--el-menu-level-padding) + 9px
+    );
   }
 }
 

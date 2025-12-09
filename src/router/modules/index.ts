@@ -1,9 +1,9 @@
 import example from './example.ts';
-import system from './system.ts';
+import user from './user.ts';
 
 export default [
   // 使用案例
   ...example,
-  // 系统管理
-  ...system
+  // 用戶模块
+  ...user
 ];
