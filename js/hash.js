@@ -1,7 +1,4 @@
-/**
- * 计算文件hash值
- */
-
+// 计算文件hash值的web worker脚本
 self.importScripts('./spark-md5.min.js');
 
 self.onmessage = function (e) {
@@ -12,7 +9,7 @@ self.onmessage = function (e) {
   function loadNext(index) {
     const reader = new FileReader();
     reader.readAsArrayBuffer(fileChunks[index]);
-    reader.onload = e => {
+    reader.onload = (e) => {
       spark.append(e.target.result);
       count++;
       if (count === fileChunks.length) {
