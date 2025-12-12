@@ -4,7 +4,7 @@ import type { LoginReq, LoginRes } from '@/types/account';
 // 登录
 export function loginApi(data: LoginReq) {
   return request<LoginRes>({
-    url: '/api/user/login',
+    url: '/api/account/login',
     method: 'post',
     data
   });
@@ -13,8 +13,7 @@ export function loginApi(data: LoginReq) {
 // 退出登录
 export function logoutApi() {
   return request({
-    url: '/api/user/logout',
-    method: 'get',
-    timeout: 500
+    url: '/api/account/logout',
+    method: 'get'
   });
 }

@@ -44,12 +44,12 @@ export default defineConfig({
   // 打包配置
   build: {
     outDir: 'dist', // 打包输出目录
-    target: ['chrome87', 'edge88', 'firefox78', 'safari14'],
+    target: 'es2015',
     rollupOptions: {
       output: {
         chunkFileNames: 'assets/js/[name]-[hash].js', // 引入文件名的名称
         entryFileNames: 'assets/js/[name]-[hash].js', // 包的入口文件名称
-        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 资源文件像：字体、图片等
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 图片字体等资源文件
         manualChunks(id: string) {
           if (id.includes('node_modules')) {
             const dirName = __dirname.replace(/\\/g, '/');
@@ -58,6 +58,8 @@ export default defineConfig({
               return 'vendor-quill';
             } else if (id.includes('element-plus')) {
               return 'vendor-element';
+            } else if (id.includes('echarts')) {
+              return 'vendor-echarts';
             }
             return 'vendor';
           }
@@ -79,7 +81,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'http:xxx.com',
+        target: 'http:www.xxx.com',
         changeOrigin: true
         // rewrite: (path) => path.replace(/^\/api/, '')
       }
