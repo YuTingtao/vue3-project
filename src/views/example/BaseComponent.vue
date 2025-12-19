@@ -3,7 +3,11 @@
     <!-- svg-icon -->
     <h3 class="row-title">svg-icon:</h3>
     <div class="row-box flex-wrap">
-      <div v-for="(item, index) in svgIcons" :key="index" class="svg-icon-box" @click="copySvgIcon(item)">
+      <div
+        v-for="(item, index) in svgIcons"
+        :key="index"
+        class="svg-icon-box"
+        @click="copySvgIcon(item)">
         <svg-icon :icon="item"></svg-icon>
         <span>{{ item }}</span>
       </div>
@@ -17,6 +21,13 @@
     <h3 class="row-title">命令式图片预览：</h3>
     <div class="row-box">
       <el-button type="primary" @click="viewImg(urlList)">预览</el-button>
+    </div>
+
+    <h3 class="row-title">文本溢出tooltip提示：</h3>
+    <div class="row-box" style="width: 400px">
+      <ellipsis-tooltip
+        content="这是文本溢出tooltip提示，这是文本溢出tooltip提示，这是文本溢出tooltip提示。">
+      </ellipsis-tooltip>
     </div>
   </div>
 </template>
