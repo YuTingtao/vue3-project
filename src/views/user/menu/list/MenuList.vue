@@ -57,13 +57,13 @@
     </el-table>
 
     <!-- 分页 -->
-    <BasePagination
+    <AppPagination
       v-model:current-page="filter.pageNum"
       v-model:page-size="filter.pageSize"
       :total="total"
       @size-change="handleSearch"
       @current-change="getList">
-    </BasePagination>
+    </AppPagination>
   </div>
 </template>
 
@@ -78,7 +78,7 @@ const router = useRouter();
 // 筛选条件
 const filter = ref({
   keyword: '',
-  status: undefined,
+  status: null,
   pageNum: 1,
   pageSize: 10
 });
@@ -104,7 +104,7 @@ function handleSearch() {
 function handleReset() {
   filter.value = {
     keyword: '',
-    status: undefined,
+    status: null,
     pageNum: 1,
     pageSize: 10
   };

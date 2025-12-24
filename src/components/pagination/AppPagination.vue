@@ -1,5 +1,5 @@
 <template>
-  <el-pagination class="base-pagination" v-bind="_attrs">
+  <el-pagination class="app-pagination" v-bind="_attrs">
     <template v-for="(_, name) in $slots" :key="name" #[name]="scope">
       <slot v-if="name" :name="name" v-bind="scope"></slot>
     </template>
@@ -22,10 +22,12 @@ const _attrs = computed(() => {
     ...attrs
   };
 });
+
+console.log(attrs);
 </script>
 
 <style lang="scss">
-.base-pagination {
+.app-pagination {
   justify-content: flex-end;
   margin-top: 20px;
   .el-select {
