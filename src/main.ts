@@ -3,6 +3,10 @@ import App from './App.vue';
 import router from './router/index.ts';
 import pinia from './store/createPinia.ts';
 import { useStore } from './store/index.ts';
+import registerDirectives from './directives/index.ts';
+import SvgIcon from './components/svgIcon/index.vue';
+import 'virtual:svg-icons-register';
+import { usePermission } from './hooks/permission.ts';
 
 // 公共样式
 import './assets/style/main.scss';
@@ -21,16 +25,12 @@ app.use(router);
 app.use(pinia);
 
 // 注册自定义指令
-import registerDirectives from './directives/index.ts';
 registerDirectives(app);
 
 // 注册svg-icon组件
-import SvgIcon from './components/svgIcon/index.vue';
-import 'virtual:svg-icons-register';
 app.component('svg-icon', SvgIcon);
 
 // 按钮权限
-import { usePermission } from './hooks/permission.ts';
 const { hasPermission } = usePermission();
 app.config.globalProperties.$hasPermission = hasPermission;
 
