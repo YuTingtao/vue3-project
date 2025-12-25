@@ -8,11 +8,8 @@
 
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import type { PaginationEmits, PaginationProps } from 'element-plus';
 
-type Attrs = Partial<PaginationProps> & Partial<PaginationEmits>;
-
-const attrs: Attrs = useAttrs();
+const attrs = useAttrs();
 const _attrs = computed(() => {
   return {
     pageSizes: [10, 20, 50, 100],

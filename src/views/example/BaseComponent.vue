@@ -15,7 +15,7 @@
 
     <h3 class="row-title">QuillEditor富文本编辑器:</h3>
     <div class="row-box">
-      <VueQuill v-model:content="richText"></VueQuill>
+      <VueQuill v-model:content="richText" placeholder="请输入内容"></VueQuill>
     </div>
 
     <h3 class="row-title">命令式图片预览：</h3>
@@ -26,7 +26,7 @@
     <h3 class="row-title">文本溢出tooltip提示：</h3>
     <div class="row-box" style="width: 400px">
       <ellipsis-tooltip
-        content="这是文本溢出tooltip提示，这是文本溢出tooltip提示，这是文本溢出tooltip提示。">
+        content="这是文本溢出tooltip提示，这是文本溢出tooltip提示，这是文本溢出tooltip提示">
       </ellipsis-tooltip>
     </div>
   </div>
@@ -55,7 +55,7 @@ function copySvgIcon(name: string) {
 // 富文本
 const richText = ref<string>('');
 onMounted(() => {
-  richText.value = '<p>这是一个富文本编辑器的示例内容。</p>';
+  richText.value = '<p>这是一个富文本编辑器的示例内容</p>';
 });
 
 // 图片地址
