@@ -10,10 +10,9 @@
 import { computed, useAttrs } from 'vue';
 import type { PaginationEmits, PaginationProps } from 'element-plus';
 
-defineProps<Partial<PaginationProps>>();
-defineEmits<PaginationEmits>();
+type Attrs = Partial<PaginationProps> & Partial<PaginationEmits>;
 
-const attrs = useAttrs();
+const attrs: Attrs = useAttrs();
 const _attrs = computed(() => {
   return {
     pageSizes: [10, 20, 50, 100],
@@ -22,8 +21,6 @@ const _attrs = computed(() => {
     ...attrs
   };
 });
-
-console.log(attrs);
 </script>
 
 <style lang="scss">

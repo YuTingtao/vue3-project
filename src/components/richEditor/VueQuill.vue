@@ -14,10 +14,6 @@ import BlotFormatter from 'quill-blot-formatter';
 import ImageUploader from 'quill-image-uploader';
 import axios from 'axios';
 
-defineOptions({
-  inheritAttrs: false
-});
-
 const attrs = useAttrs();
 const _attrs = computed(() => {
   return {
