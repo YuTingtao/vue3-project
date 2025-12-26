@@ -13,28 +13,28 @@
       </div>
     </div>
 
+    <h3 class="row-title">文本溢出tooltip提示：</h3>
+    <div class="row-box" style="width: 400px">
+      <ellipsis-tooltip :content="text"></ellipsis-tooltip>
+      <ellipsis-tooltip :content="text">
+        <a href="javascript:;"> 插槽：{{ text }} </a>
+      </ellipsis-tooltip>
+    </div>
+
     <h3 class="row-title">QuillEditor富文本编辑器:</h3>
     <div class="row-box">
-      <VueQuill v-model:content="richText" placeholder="请输入内容"></VueQuill>
+      <RichEditor v-model:content="richText" placeholder="请输入内容"></RichEditor>
     </div>
 
     <h3 class="row-title">命令式图片预览：</h3>
     <div class="row-box">
       <el-button type="primary" @click="viewImg(urlList)">预览</el-button>
     </div>
-
-    <h3 class="row-title">文本溢出tooltip提示：</h3>
-    <div class="row-box" style="width: 400px">
-      <ellipsis-tooltip
-        content="这是文本溢出tooltip提示，这是文本溢出tooltip提示，这是文本溢出tooltip提示">
-      </ellipsis-tooltip>
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import VueQuill from '@/components/richEditor/VueQuill.vue';
 import viewImg from '@/components/imgView/index.ts';
 import { copyText } from '@/utils/index.ts';
 
@@ -51,6 +51,8 @@ function copySvgIcon(name: string) {
   copyText(`<svg-icon icon="${name}"></svg-icon>`);
   ElMessage.success('已复制到剪切板');
 }
+
+const text = '这是文本溢出tooltip提示，这是文本溢出tooltip提示，这是文本溢出tooltip提示';
 
 // 富文本
 const richText = ref<string>('');

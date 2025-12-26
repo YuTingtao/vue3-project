@@ -117,4 +117,13 @@ defineExpose({
 .ql-snow .ql-tooltip {
   z-index: 100;
 }
+.ql-toolbar.ql-snow {
+  border-radius: 4px 4px 0 0;
+}
+.ql-container.ql-snow {
+  border-radius: 0 0 4px 4px;
+}
+.ql-editor {
+  min-height: 84px;
+}
 </style>

@@ -5,7 +5,7 @@
       :style="{ '--lines': lines }"
       @mouseenter="onMouseEnter($event)"
       @mouseleave="onMouseLeave($event)">
-      {{ content }}
+      <slot>{{ content }}</slot>
     </div>
   </el-tooltip>
 </template>
