@@ -24,7 +24,7 @@ const system: RouteRecordRaw[] = [
         component: () => import('@/views/user/menu/detail/MenuDetail.vue'),
         meta: {
           title: '菜单详情',
-          hidden: 0,
+          hidden: 1,
           activePath: '/system/menu',
           parentPath: '/system/menu'
         }

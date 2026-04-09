@@ -1,24 +1,22 @@
 <template>
-  <template v-if="item.meta?.hidden !== 0">
-    <!-- 多层菜单 -->
-    <el-sub-menu v-if="children.length > 0" :index="(item.name as string) || item.path">
-      <template #title>
-        <el-icon v-if="item.meta?.icon">
-          <svg-icon :icon="item.meta?.icon"></svg-icon>
-        </el-icon>
-        <span>{{ item.meta?.title }}</span>
-      </template>
-      <MenuItem v-for="item2 in children" :key="item2.path" :item="item2"></MenuItem>
-    </el-sub-menu>
-
-    <!-- 一层菜单 -->
-    <el-menu-item v-else :index="item.path" @click="routerTo((item.name as string) || item.path)">
+  <!-- 多层菜单 -->
+  <el-sub-menu v-if="children.length > 0" :index="(item.name as string) || item.path">
+    <template #title>
       <el-icon v-if="item.meta?.icon">
-        <svg-icon :icon="item.meta.icon"></svg-icon>
+        <svg-icon :icon="item.meta?.icon"></svg-icon>
       </el-icon>
       <span>{{ item.meta?.title }}</span>
-    </el-menu-item>
-  </template>
+    </template>
+    <MenuItem v-for="item2 in children" :key="item2.path" :item="item2"></MenuItem>
+  </el-sub-menu>
+
+  <!-- 一层菜单 -->
+  <el-menu-item v-else :index="item.path" @click="routerTo((item.name as string) || item.path)">
+    <el-icon v-if="item.meta?.icon">
+      <svg-icon :icon="item.meta.icon"></svg-icon>
+    </el-icon>
+    <span>{{ item.meta?.title }}</span>
+  </el-menu-item>
 </template>
 
 <script setup lang="ts">
@@ -37,7 +35,7 @@ const props = defineProps<{
 }>();
 
 const children = computed(() => {
-  return props.item.children?.filter((item) => item.meta?.hidden !== 0) || [];
+  return props.item.children?.filter((item) => item.meta?.hidden !== 1) || [];
 });
 
 // 路由跳转
