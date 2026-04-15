@@ -43,8 +43,8 @@ export default defineConfig({
   // 打包配置
   build: {
     outDir: 'dist', // 打包输出目录
-    target: ['chrome87', 'edge88', 'firefox78', 'safari14'],
-    rollupOptions: {
+    target: 'es2015', // 兼容目标
+    rolldownOptions: {
       output: {
         chunkFileNames: 'assets/js/[name]-[hash].js', // 引入文件名的名称
         entryFileNames: 'assets/js/[name]-[hash].js', // 包的入口文件名称
