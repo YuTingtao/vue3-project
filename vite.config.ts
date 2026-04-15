@@ -25,7 +25,7 @@ export default defineConfig({
       inject: 'body-last',
       customDomId: '__svg_icon_dom__'
     }),
-    // 大于50K的文件进行gzip压缩
+    // 大于50K的文件进行压缩
     compression({ threshold: 1024 * 50 }),
     // 打包分析
     // visualizer({ open: true, filename: 'docs/stats.html' }),
@@ -45,7 +45,7 @@ export default defineConfig({
   build: {
     outDir: 'dist', // 打包输出目录
     target: 'es2015',
-    rollupOptions: {
+    rolldownOptions: {
       output: {
         chunkFileNames: 'assets/js/[name]-[hash].js', // 引入文件名的名称
         entryFileNames: 'assets/js/[name]-[hash].js', // 包的入口文件名称
