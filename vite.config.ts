@@ -50,19 +50,35 @@ export default defineConfig({
         chunkFileNames: 'assets/js/[name]-[hash].js', // 引入文件名的名称
         entryFileNames: 'assets/js/[name]-[hash].js', // 包的入口文件名称
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 图片字体等资源文件
-        manualChunks(id: string) {
-          if (id.includes('node_modules')) {
-            const dirName = __dirname.replace(/\\/g, '/');
-            id = id.replace(dirName, '');
-            if (id.includes('@vueup/vue-quill') || id.includes('quill')) {
-              return 'vendor-quill';
-            } else if (id.includes('element-plus')) {
-              return 'vendor-element';
-            } else if (id.includes('echarts')) {
-              return 'vendor-echarts';
+        codeSplitting: {
+          maxSize: 1024 * 1024 * 500, // 超过500M的文件进行分割
+          groups: [
+            {
+              name: 'vendor-vue',
+              test: /node_modules[\\/](vue|vue-router|pinia|axios)/,
+              priority: 50
+            },
+            {
+              name: 'vendor-element',
+              test: /node_modules[\\/]element-plus/,
+              priority: 45
+            },
+            {
+              name: 'vendor-echarts',
+              test: /node_modules[\\/]echarts/,
+              priority: 40
+            },
+            {
+              name: 'vendor-quill',
+              test: /node_modules[\\/](quill|@vueup\/vue-quill)/,
+              priority: 35
+            },
+            {
+              name: 'vendor-common',
+              test: /node_modules[\\/]/,
+              priority: 5
             }
-            return 'vendor';
-          }
+          ]
         },
         // 解决github: _plugin-vue_export-helper.js报404
         sanitizeFileName(name: string): string {
