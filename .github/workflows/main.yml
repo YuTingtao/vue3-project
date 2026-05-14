@@ -28,12 +28,17 @@ jobs:
           version: latest
           run_install: false # 不自动执行安装依赖命令
 
-      # 安装依赖、打包
-      - name: Install and Build
-        run: |
-          pnpm install
-          pnpm approve-builds --all
-          pnpm run build
+      # 安装依赖
+      - name: Install Dependencies
+        run: pnpm install
+
+      # 允许构建
+      - name: Approve Builds
+        run: pnpm approve-builds --all
+
+      # 打包
+      - name: Build
+        run: pnpm run build
 
       # 部署到 GitHub Pages
       - name: Deploy
