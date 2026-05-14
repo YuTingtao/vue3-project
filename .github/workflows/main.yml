@@ -31,9 +31,7 @@ jobs:
       # 安装依赖
       - name: Install dependencies
         run: |
-          pnpm config set ignore-scripts false
-          pnpm install
-          pnpm config set ignore-scripts true
+          pnpm install --allowed-dep-scripts=@parcel/watcher,esbuild,vue-demi
 
       # 打包
       - name: Build
