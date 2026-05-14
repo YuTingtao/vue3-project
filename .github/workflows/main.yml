@@ -31,6 +31,7 @@ jobs:
       # 安装依赖
       - name: Install Dependencies
         run: |
+          pnpm config set ignore-scripts false
           pnpm install
           pnpm approve-builds --all
 
