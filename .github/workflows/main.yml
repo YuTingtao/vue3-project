@@ -29,11 +29,11 @@ jobs:
           run_install: false # 不自动执行安装依赖命令
 
       # 安装依赖
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
           pnpm config set ignore-scripts false
           pnpm install
-          pnpm approve-builds --all
+          pnpm config set ignore-scripts true
 
       # 打包
       - name: Build
