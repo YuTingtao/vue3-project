@@ -11,7 +11,7 @@ app.use(router);
 app.use(pinia);
 
 // 注册自定义指令
-import registerDirectives from './directives/index.js';
+import registerDirectives from './directives/index.ts';
 registerDirectives(app);
 
 // 注册svg-icon组件
