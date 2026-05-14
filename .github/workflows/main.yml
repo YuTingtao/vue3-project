@@ -28,13 +28,14 @@ jobs:
           version: latest
           run_install: false # 不自动执行安装依赖命令
 
+      - name: Approve builds
+        run: pnpm approve-builds --all
+
       # 安装依赖
       - name: Install Dependencies
-        run: pnpm install
-
-      # 允许构建
-      - name: Approve Builds
-        run: pnpm approve-builds --all
+        run: |
+          pnpm config set ignore-scripts false
+          pnpm install
 
       # 打包
       - name: Build
