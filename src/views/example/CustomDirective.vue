@@ -10,7 +10,12 @@
         clearable
         v-loadmore="{ scrollEl: '.el-select-dropdown__wrap', method: getOptions }"
         :teleported="false">
-        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
       </el-select>
     </div>
   </div>
