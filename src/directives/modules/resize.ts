@@ -20,5 +20,6 @@ export default {
   },
   unmounted(el: HTMLElement) {
     ob.unobserve(el);
+    map.delete(el);
   }
 };
