@@ -13,32 +13,19 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-defineOptions({
-  name: 'EllipsisTooltip'
-});
-
-const props = defineProps({
-  // 文本内容
-  content: {
-    type: String,
-    required: true
-  },
-  // 文本溢出行数
-  lines: {
-    type: Number,
-    default: 1
-  },
-  // tooltip出现位置
-  placement: {
-    type: String,
-    default: 'top'
-  },
-  // tooltip主题
-  effect: {
-    type: String,
-    default: 'dark'
+const props = withDefaults(
+  defineProps<{
+    content: string;
+    lines: number;
+    placement: string;
+    effect: string;
+  }>(),
+  {
+    lines: 1,
+    placement: 'top',
+    effect: 'dark'
   }
-});
+);
 
 const visible = ref(false);
 

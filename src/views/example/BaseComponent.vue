@@ -15,10 +15,10 @@
 
     <h3 class="row-title">文本溢出tooltip提示：</h3>
     <div class="row-box" style="width: 400px">
-      <ellipsis-tooltip :content="text"></ellipsis-tooltip>
-      <ellipsis-tooltip :content="text">
+      <EllipsisTooltip :content="text"></EllipsisTooltip>
+      <EllipsisTooltip :content="text">
         <a href="javascript:;"> 插槽：{{ text }} </a>
-      </ellipsis-tooltip>
+      </EllipsisTooltip>
     </div>
 
     <h3 class="row-title">QuillEditor富文本编辑器:</h3>
