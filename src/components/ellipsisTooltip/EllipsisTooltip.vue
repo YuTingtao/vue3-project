@@ -16,9 +16,9 @@ import { ref } from 'vue';
 const props = withDefaults(
   defineProps<{
     content: string;
-    lines: number;
-    placement: string;
-    effect: string;
+    lines?: number;
+    placement?: string;
+    effect?: string;
   }>(),
   {
     lines: 1,
