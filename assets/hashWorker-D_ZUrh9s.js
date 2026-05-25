@@ -1,0 +1,1 @@
+(function(){self.importScripts(`/js/spark-md5.min.js`),self.onmessage=function(e){let t=e.data.fileChunks,n=new self.SparkMD5.ArrayBuffer;for(let e=0;e<t.length;e++){let r=new FileReader;r.readAsArrayBuffer(t[e]),r.onload=r=>{n.append(r.target.result),e===t.length-1&&(self.postMessage({hash:n.end()}),self.close())}}}})();
