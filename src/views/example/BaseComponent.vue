@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import viewImg from '@/components/imgView/index.ts';
 import { copyText } from '@/utils/index.ts';
 

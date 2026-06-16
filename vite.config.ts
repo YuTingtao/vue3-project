@@ -7,6 +7,9 @@ import { resolve } from 'node:path';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 
 import { compression } from 'vite-plugin-compression2';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
@@ -17,10 +20,34 @@ import { writeFile } from './plugins/writeFile.ts';
 export default defineConfig({
   plugins: [
     vue(),
-    AutoImport({ resolvers: [ElementPlusResolver({ importStyle: 'sass' })] }),
-    Components({ resolvers: [ElementPlusResolver({ importStyle: 'sass' })] }),
+    AutoImport({
+      resolvers: [
+        ElementPlusResolver({ importStyle: 'sass' }),
+        // 自动导入图标组件
+        IconsResolver()
+      ]
+    }),
+    Components({
+      resolvers: [
+        ElementPlusResolver({ importStyle: 'sass' }),
+        // 自动注册图标组件
+        IconsResolver({
+          prefix: '',
+          enabledCollections: ['ep'],
+          customCollections: ['icon']
+        })
+      ]
+    }),
+    Icons({
+      compiler: 'vue3',
+      autoInstall: true,
+      customCollections: {
+        // 自定义图标集合，使用时需要加上前缀 `icon`
+        icon: FileSystemIconLoader('./src/assets/icon')
+      }
+    }),
     createSvgIconsPlugin({
-      iconDirs: [resolve(process.cwd(), 'src/assets/icon')],
+      iconDirs: [resolve(process.cwd(), './src/assets/icon')],
       symbolId: 'icon-[dir]-[name]',
       inject: 'body-last',
       customDomId: '__svg_icon_dom__'
