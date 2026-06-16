@@ -17,7 +17,7 @@
     "bignumber.js": "^10.0.2",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.20",
-    "element-plus": "^2.13.6",
+    "element-plus": "^2.14.2",
     "js-base64": "^3.7.8",
     "lodash-es": "^4.18.1",
     "p-limit": "^7.3.0",
