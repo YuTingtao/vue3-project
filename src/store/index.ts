@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { getMenuObj, getFirstMenu } from './utils.ts';
 import routes from '@/router/modules/index.ts';
 import type { RouteRecordRaw } from 'vue-router';
-import type { UserInfo, LoginRes } from '@/types/account';
+import type { UserInfo, LoginRes } from '@/api/account/loginType.ts';
 
 export const useStore = defineStore('store', {
   state: () => ({
