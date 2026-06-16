@@ -1,1 +1,0 @@
-import{t as e}from"./store-B0TzPSYq.js";import{t}from"./router-BYmaUCG_.js";var n=t.currentRoute;function r(){let t=e();function r(e,r=n.value.name||n.value.path){var i;return!!(((i=t.menuObj[r])==null||(i=i.meta)==null?void 0:i.buttons)||[]).some(t=>t.name===e)}return{hasPermission:r}}export{r as t};
