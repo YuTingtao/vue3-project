@@ -21,11 +21,6 @@
       </EllipsisTooltip>
     </div>
 
-    <h3 class="row-title">QuillEditor富文本编辑器:</h3>
-    <div class="row-box">
-      <RichEditor v-model:content="richText" placeholder="请输入内容"></RichEditor>
-    </div>
-
     <h3 class="row-title">命令式图片预览：</h3>
     <div class="row-box">
       <el-button type="primary" @click="viewImg(urlList)">预览</el-button>
@@ -53,12 +48,6 @@ function copySvgIcon(name: string) {
 }
 
 const text = '这是文本溢出tooltip提示，这是文本溢出tooltip提示，这是文本溢出tooltip提示';
-
-// 富文本
-const richText = ref<string>('');
-onMounted(() => {
-  richText.value = '<p>这是一个富文本编辑器的示例内容</p>';
-});
 
 // 图片地址
 const urlList = ref([

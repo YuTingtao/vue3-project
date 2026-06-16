@@ -57,7 +57,7 @@ function createFileChunk(file: File, size = 1024 * 1024 * 10) {
 // 获取文件hash
 function getFileHash(key: number) {
   return new Promise((resolve) => {
-    const worker = new Worker('/js/hash.js');
+    const worker = new Worker(new URL('@/assets/js/hashWorker.js', import.meta.url));
     const data = {
       fileChunks: fileChunk[key].chunks.map((item) => item.file)
     };

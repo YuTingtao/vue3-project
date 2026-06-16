@@ -61,17 +61,12 @@ export default defineConfig({
             {
               name: 'vendor-element',
               test: /node_modules[\\/]element-plus/,
-              priority: 45
+              priority: 40
             },
             {
               name: 'vendor-echarts',
               test: /node_modules[\\/]echarts/,
-              priority: 40
-            },
-            {
-              name: 'vendor-quill',
-              test: /node_modules[\\/](quill|@vueup\/vue-quill)/,
-              priority: 35
+              priority: 30
             },
             {
               name: 'vendor-common',
