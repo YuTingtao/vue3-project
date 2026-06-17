@@ -45,7 +45,7 @@ getOptions();
 
 <style lang="scss" scoped>
 .row-title {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 10px;
 }
 .row-box {
