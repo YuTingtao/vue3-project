@@ -1,0 +1,1 @@
+import{K as e,w as t,x as n}from"./vendor-vue-rGLCb444.js";var r={xmlns:`http://www.w3.org/2000/svg`,viewBox:`0 0 1024 1024`};function i(i,a){return e(),t(`svg`,r,[...a[0]||(a[0]=[n(`path`,{fill:`currentColor`,d:`M896 192H128v128h768zm0 256H384v128h512zm0 256H128v128h768zM320 384 128 512l192 128z`},null,-1)])])}var a={render:i};export{a as default,i as render};
