@@ -1,5 +1,9 @@
 <template>
-  <component :is="iconComponent" class="svg-icon" :width="size" :height="size"></component>
+  <component
+    :is="iconComponent"
+    class="svg-icon"
+    :width="width || size"
+    :height="height || size"></component>
 </template>
 
 <script setup lang="ts">
@@ -13,10 +17,18 @@ const props = defineProps({
   size: {
     type: [String, Number],
     default: '1em'
+  },
+  width: {
+    type: [String, Number]
+  },
+  height: {
+    type: [String, Number]
   }
 });
 
-const iconComponent = defineAsyncComponent(() => import(`@/assets/icon/${props.icon}.svg`));
+const iconComponent = defineAsyncComponent(
+  () => import(`@/assets/icon/${props.icon}.svg?component`)
+);
 </script>
 
 <style lang="scss">

@@ -10,8 +10,8 @@ import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
-// import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 
+// 打包压缩、分析
 import { compression } from 'vite-plugin-compression2';
 // import { visualizer } from 'rollup-plugin-visualizer';
 import { writeFile } from './plugins/writeFile.ts';
@@ -20,33 +20,24 @@ import { writeFile } from './plugins/writeFile.ts';
 export default defineConfig({
   plugins: [
     vue(),
-    svgLoader({ defaultImport: 'component' }),
+    svgLoader({
+      svgoConfig: {
+        multipass: true,
+        plugins: [{ name: 'convertColors', params: { currentColor: true } }]
+      }
+    }),
     AutoImport({
-      resolvers: [
-        ElementPlusResolver({ importStyle: 'sass' }),
-        // 自动导入图标组件
-        IconsResolver()
-      ]
+      resolvers: [ElementPlusResolver({ importStyle: 'sass' }), IconsResolver()]
     }),
     Components({
       resolvers: [
         ElementPlusResolver({ importStyle: 'sass' }),
-        // 自动注册图标组件
-        IconsResolver({
-          prefix: '',
-          enabledCollections: ['ep']
-          // customCollections: ['icon']
-        })
+        IconsResolver({ prefix: '', enabledCollections: ['ep'] })
       ]
     }),
     Icons({
       compiler: 'vue3',
-      autoInstall: true,
-      // 自定义图标集合
-      customCollections: {
-        // 使用时需要加上前缀 `icon`
-        // icon: FileSystemIconLoader('./src/assets/icon')
-      }
+      autoInstall: true
     }),
     // 大于50K的文件进行压缩
     compression({ threshold: 1024 * 50 }),
@@ -79,22 +70,22 @@ export default defineConfig({
             {
               name: 'vendor-vue',
               test: /node_modules[\\/](vue|vue-router|pinia|axios)/,
-              priority: 50
+              priority: 100
             },
             {
               name: 'vendor-element',
               test: /node_modules[\\/]element-plus/,
-              priority: 40
+              priority: 90
             },
             {
               name: 'vendor-echarts',
               test: /node_modules[\\/]echarts/,
-              priority: 30
+              priority: 80
             },
             {
               name: 'vendor-common',
               test: /node_modules[\\/]/,
-              priority: 5
+              priority: 10
             }
           ]
         },
