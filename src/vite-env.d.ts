@@ -1,5 +1,6 @@
 /* eslint-disable spaced-comment */
 /// <reference types="vite/client" />
+/// <reference types="vite-svg-loader" />
 
 // 定义vue全局属性的类型
 // export {};

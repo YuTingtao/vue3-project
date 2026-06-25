@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router/index.ts';
 import pinia from './store/createPinia.ts';
+import SvgIcon from '@/components/svgIcon/SvgIcon.vue';
 
 // 公共样式
 import './assets/style/main.scss';
@@ -15,8 +16,6 @@ import registerDirectives from './directives/index.ts';
 registerDirectives(app);
 
 // 注册svg-icon组件
-import SvgIcon from './components/svgIcon/index.vue';
-import 'virtual:svg-icons-register';
 app.component('svg-icon', SvgIcon);
 
 // 挂载

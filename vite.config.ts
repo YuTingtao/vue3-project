@@ -2,33 +2,46 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'node:path';
+import svgLoader from 'vite-svg-loader';
 
-// Element Plus按需自动导入
+// 按需自动导入
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
 
+// 打包压缩、分析
 import { compression } from 'vite-plugin-compression2';
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
-// 打包分析
 // import { visualizer } from 'rollup-plugin-visualizer';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    AutoImport({ resolvers: [ElementPlusResolver({ importStyle: 'sass' })] }),
-    Components({ resolvers: [ElementPlusResolver({ importStyle: 'sass' })] }),
-    createSvgIconsPlugin({
-      iconDirs: [resolve(process.cwd(), 'src/assets/icon')],
-      symbolId: 'icon-[dir]-[name]',
-      inject: 'body-last',
-      customDomId: '__svg_icon_dom__'
+    svgLoader({
+      svgoConfig: {
+        multipass: true,
+        plugins: [{ name: 'convertColors', params: { currentColor: true } }]
+      }
     }),
-    // 大于50K的文件进行gzip压缩
+    AutoImport({
+      resolvers: [ElementPlusResolver({ importStyle: 'sass' }), IconsResolver()]
+    }),
+    Components({
+      resolvers: [
+        ElementPlusResolver({ importStyle: 'sass' }),
+        IconsResolver({ prefix: '', enabledCollections: ['ep'] })
+      ]
+    }),
+    Icons({
+      compiler: 'vue3',
+      autoInstall: true
+    }),
+    // 大于50K的文件进行压缩
     compression({ threshold: 1024 * 50 })
     // 打包分析
-    // visualizer({ open: true, filename: 'dist/stats.html' })
+    // visualizer({ open: true, filename: 'docs/stats.html' }),
   ],
   resolve: { alias: { '@': resolve(__dirname, 'src') } },
   css: {
@@ -48,39 +61,34 @@ export default defineConfig({
       output: {
         chunkFileNames: 'assets/js/[name]-[hash].js', // 引入文件名的名称
         entryFileNames: 'assets/js/[name]-[hash].js', // 包的入口文件名称
-        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 资源文件像：字体、图片等
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]', // 图片字体等资源文件
         codeSplitting: {
           maxSize: 1024 * 1024 * 500, // 超过500M的文件进行分割
           groups: [
             {
               name: 'vendor-vue',
               test: /node_modules[\\/](vue|vue-router|pinia|axios)/,
-              priority: 50
+              priority: 100
             },
             {
               name: 'vendor-element',
               test: /node_modules[\\/]element-plus/,
-              priority: 45
+              priority: 90
             },
             {
               name: 'vendor-echarts',
               test: /node_modules[\\/]echarts/,
-              priority: 40
-            },
-            {
-              name: 'vendor-quill',
-              test: /node_modules[\\/](quill|@vueup\/vue-quill)/,
-              priority: 35
+              priority: 80
             },
             {
               name: 'vendor-common',
               test: /node_modules[\\/]/,
-              priority: 5
+              priority: 10
             }
           ]
         },
         // 解决github: _plugin-vue_export-helper.js报404
-        sanitizeFileName(name) {
+        sanitizeFileName(name: string): string {
           const match = /^[a-z]:/i.exec(name);
           const driveLetter = match ? match[0] : '';
           const reg = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g;
@@ -96,7 +104,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'http:xxx.com',
+        target: 'http:www.xxx.com',
         changeOrigin: true
         // rewrite: (path) => path.replace(/^\/api/, '')
       }
