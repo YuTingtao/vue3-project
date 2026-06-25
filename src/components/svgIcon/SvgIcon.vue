@@ -1,9 +1,5 @@
 <template>
-  <component
-    :is="iconComponent"
-    class="svg-icon"
-    :width="width || size"
-    :height="height || size"></component>
+  <component :is="iconComponent" class="svg-icon" :width="width" :height="height"></component>
 </template>
 
 <script setup lang="ts">
@@ -14,15 +10,13 @@ const props = defineProps({
     type: String,
     required: true
   },
-  size: {
+  width: {
     type: [String, Number],
     default: '1em'
   },
-  width: {
-    type: [String, Number]
-  },
   height: {
-    type: [String, Number]
+    type: [String, Number],
+    default: '1em'
   }
 });
 
